@@ -75,7 +75,7 @@ def get_embeddings_from_dataframe(df, classifier):
 #main code
 def main():
 
-    df= pd.DataFrame()
+    df= pd.DataFrame( columns=["PID", "file_path"])
     classifier.load_model()
 
     rootdir_lung = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/lung'
