@@ -33,6 +33,7 @@ def get_slices_3d(volume, every_n=1):
         pil_img = Image.fromarray(slice_img).convert("RGB")
         slices.append(pil_img)
     return slices
+
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 from medimageinsightmodel import MedImageInsight
 classifier = MedImageInsight(
@@ -82,9 +83,9 @@ def main():
     rootdir_lung = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/lung'
     rootdir_ws = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws'
     rootdir_masked = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/masked'
-
+    print("Searching lung files...")
     df = search_files( rootdir_lung, df)  
-
+    print("starting embeddings extraction...")
     embeddings = get_embeddings_from_dataframe(df, classifier)
     print(embeddings)
 
