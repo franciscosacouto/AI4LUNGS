@@ -50,8 +50,10 @@ def pil_to_base64(pil_img):
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
 
-def get_embedding(pil_img_path, classifier):
-    pil_img = Image.open((np.load(pil_img_path)*255).astype(np.uint8)).convert("RGB")
+def get_embedding(npy_img_path, classifier):
+    npy_img = np.load(npy_img_path)
+    # Assuming npy_img is a 2D array (single slice), convert to PIL image
+    pil_img = Image.fromarray((npy_img * 255).astype(np.uint8)) 
     img_base64 = pil_to_base64(pil_img)
     images = [img_base64]
 
