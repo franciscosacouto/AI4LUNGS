@@ -35,10 +35,10 @@ def search_files(rootdir, df):
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 from medimageinsightmodel import MedImageInsight
 classifier = MedImageInsight(
-    model_dir="MedImageInsights/2024.09.27",
+    model_dir="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27",
 
-    vision_model_name="medimageinsigt-v1.0.0.pt",
-    language_model_name="language_model.pth"
+    vision_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/vision_model/medimageinsigt-v1.0.0.pt",
+    language_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/language_model/language_model.pth"
 )
 
 #get embeddings for each slice
