@@ -34,7 +34,7 @@ def get_slices_3d(volume, every_n=1):
         slices.append(pil_img)
     return slices
 
-sys.path.insert(1, 'nas-ctm01/home/fmferreira/MedImageInsight')
+sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsight')
 from medimageinsightmodel import MedImageInsight
 classifier = MedImageInsight(
     model_dir="MedImageInsights/2024.09.27",
@@ -80,9 +80,10 @@ def main():
     df= pd.dataframe()
     classifier.load_model()
 
-    rootdir_lung = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\lung'
-    rootdir_ws = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\ws'
-    rootdir_masked = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\masked'
+    rootdir_lung = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/lung'
+    rootdir_ws = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws'
+    rootdir_masked = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/masked'
+
     df = search_files( rootdir_lung, df)  
 
     embeddings = get_embeddings_from_dataframe(df, classifier)
