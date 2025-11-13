@@ -1,11 +1,4 @@
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-os.environ["OMP_NUM_THREADS"] = "1"
-os.environ["MKL_NUM_THREADS"] = "1"
-
-# Optional: on Windows, you can force PyTorch to use OpenBLAS instead of MKL
-# os.environ["MKL_SERVICE_FORCE_INTEL"] = "1"
-
 from transformers import AutoProcessor, AutoModel
 import torch
 from PIL import Image
@@ -17,20 +10,22 @@ import torch
 import base64
 import io
 
+import pandas as pd
 
-scan, scan_header = nrrd.read("100012_1/100012_scan.nrrd")
-mask, mask_header = nrrd.read("100012_1/100012_1_mask_corrected_normalized.nrrd")
 
-# Apply lung mask
-lung_only = scan * mask
 
-# Normalize to [0, 1]
-lung_only = (lung_only - np.min(lung_only)) / (np.max(lung_only) - np.min(lung_only))
-print("Lung only volume shape:", lung_only.shape)
+def search_files(rootdir,df):
+    for  file in os.walk(rootdir):
+        print(os.path.join(file))
+        new_row ={ "PID": file.split('_')[0], "file_path": os.path.join( file)}
+        #attach file name to df
+        df.append(new_row, ignore_index=True)
 
-from PIL import Image
+    return df
 
-def get_slices(volume, every_n=1):
+
+
+def get_slices_3d(volume, every_n=1):
     slices = []
     # Iterate over the depth axis (axis=3)
     for i in range(0, volume.shape[2], every_n):
@@ -39,16 +34,8 @@ def get_slices(volume, every_n=1):
         slices.append(pil_img)
     return slices
 
-slices = get_slices(lung_only)
-print("Prepared", len(slices), "slices.")
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-
-sys.path.insert(1, 'MedImageInsights')
-
+sys.path.insert(1, 'nas-ctm01/home/fmferreira/MedImageInsight')
 from medimageinsightmodel import MedImageInsight
-
 classifier = MedImageInsight(
     model_dir="MedImageInsights/2024.09.27",
 
@@ -56,12 +43,7 @@ classifier = MedImageInsight(
     language_model_name="language_model.pth"
 )
 
-
-
-classifier.load_model()
-
 #get embeddings for each slice
-
 
 def pil_to_base64(pil_img):
     """Convert PIL image to base64 string."""
@@ -70,7 +52,8 @@ def pil_to_base64(pil_img):
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
 
-def get_embedding(pil_img, classifier):
+def get_embedding(pil_img_path, classifier):
+    pil_img = Image.open(pil_img_path).convert("RGB")
     img_base64 = pil_to_base64(pil_img)
     images = [img_base64]
 
@@ -82,6 +65,33 @@ def get_embedding(pil_img, classifier):
     return emb_tensor.squeeze()
 
 
-all_embeddings = [get_embedding(img, classifier) for img in slices]
-all_embeddings_tensor = torch.stack(all_embeddings)
-print("All embeddings shape:", all_embeddings_tensor.shape)
+def get_embeddings_from_dataframe(df, classifier):
+    embeddings = {}
+    for row in df.iterrows():
+        pid = row['PID']
+        file_path = row['file_path']
+        emb = get_embedding(file_path, classifier)
+        embeddings[pid] = emb
+    return embeddings
+
+#main code
+def main():
+
+    df= pd.dataframe()
+    classifier.load_model()
+
+    rootdir_lung = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\lung'
+    rootdir_ws = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\ws'
+    rootdir_masked = 'nas-ctm01\datasets\public\medical_datasets\lung_ct_datasets\nlst\preprocessed_data\protocol_5\2d\masked'
+    df = search_files( rootdir_lung, df)  
+
+    embeddings = get_embeddings_from_dataframe(df, classifier)
+    print(embeddings)
+
+
+    
+if __name__ == "__main__":
+    main()
+
+
+
