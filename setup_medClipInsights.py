@@ -33,8 +33,7 @@ def get_slices_3d(volume, every_n=1):
         pil_img = Image.fromarray(slice_img).convert("RGB")
         slices.append(pil_img)
     return slices
-
-sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsight')
+sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 from medimageinsightmodel import MedImageInsight
 classifier = MedImageInsight(
     model_dir="MedImageInsights/2024.09.27",
