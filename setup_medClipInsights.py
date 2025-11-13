@@ -87,9 +87,19 @@ def main():
     df = search_files( rootdir_lung, df)  
     print("starting embeddings extraction...")
     embeddings = get_embeddings_from_dataframe(df, classifier)
-    print(embeddings)
 
 
+    #save embeddings
+    output_file = 'nlst_lung_ct_embeddings_protocol_5_2d_lung.pt'
+    torch.save(embeddings, output_file)   
+
+    #save as csv pid and embeddings
+    emb_list = []
+    for pid, emb in embeddings.items():
+        emb_list.append({'PID': pid, 'embedding': emb.numpy()}) 
+    emb_df = pd.DataFrame(emb_list)
+    emb_df.to_csv('nlst_lung_ct_embeddings_protocol_5_2d_lung.csv', index=False)
+    print(f"Embeddings saved to {output_file} and nlst_lung_ct_embeddings_protocol_5_2d_lung.csv")
     
 if __name__ == "__main__":
     main()
