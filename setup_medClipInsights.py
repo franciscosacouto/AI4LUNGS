@@ -51,7 +51,7 @@ def pil_to_base64(pil_img):
 
 
 def get_embedding(pil_img_path, classifier):
-    pil_img = Image.open(pil_img_path).convert("RGB")
+    pil_img = Image.open((np.load(pil_img_path)*255).astype(np.uint8)).convert("RGB")
     img_base64 = pil_to_base64(pil_img)
     images = [img_base64]
 
