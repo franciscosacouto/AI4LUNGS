@@ -6,10 +6,10 @@ import numpy as np
 import sys
 import base64
 import io
-
+from hydra import initialize, compose
 import pandas as pd
 
-
+@hydra.main(version_base=None, config_path=".", config_name="config")
 
 def search_files(rootdir, df):
     for dirpath, _, filenames in os.walk(rootdir):
@@ -75,14 +75,14 @@ def get_embeddings_from_dataframe(df, classifier):
     return embeddings
 
 #main code
-def main():
+def main(config):
 
-    df= pd.DataFrame( columns=["PID", "file_path"])
+    df= pd.DataFrame( columns=[config.data.pid, config.data.file_path])
     classifier.load_model()
 
-    rootdir_lung = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/lung'
-    rootdir_ws = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws'
-    rootdir_masked = '/nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/masked'
+    rootdir_lung = config.directories.rootdir_lung
+    rootdir_ws = config.directories.rootdir_ws
+    rootdir_masked = config.directories.rootdir_masked
     print("Searching lung files...")
     df = search_files( rootdir_lung, df)  
     print("starting embeddings extraction...")
