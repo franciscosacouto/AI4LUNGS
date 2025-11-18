@@ -10,7 +10,7 @@ import hydra
 from hydra import initialize, compose
 import pandas as pd
 
-@hydra.main(version_base=None, config_path=".", config_name="config")
+
 
 def search_files(rootdir, df):
     for dirpath, _, filenames in os.walk(rootdir):
@@ -76,6 +76,9 @@ def get_embeddings_from_dataframe(df, classifier):
     return embeddings
 
 #main code
+@hydra.main(version_base=None,
+             config_path=".", 
+             config_name="config")
 def main(config):
 
     df= pd.DataFrame( columns=[config.data.pid, config.data.file_path])
