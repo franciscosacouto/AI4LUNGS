@@ -81,7 +81,8 @@ def get_embeddings_from_dataframe(df, classifier):
              config_name="config")
 def main(config):
 
-    df= pd.DataFrame( columns=[config.data.pid, config.data.file_path])
+    df= pd.DataFrame( columns=[config.data.columns.pid, 
+                               config.data.columns.file_path])
     classifier.load_model()
 
     rootdir_lung = config.directories.rootdir_lung
