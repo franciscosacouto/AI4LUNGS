@@ -18,8 +18,7 @@ import random
 import numpy as np
 import hydra
 import wandb
-
-
+from lightning.pytorch.loggers import WandbLogger   
 
 
 class SurvivalDataset(Dataset):
@@ -58,7 +57,7 @@ class MLP_decoder(L.LightningModule):
         log_hz = self(x)
         loss = cox.neg_partial_log_likelihood(log_hz, event, time, reduction="mean")
         self.log("train_loss", loss)
-        wandb.log({"train_loss": loss})
+        # wandb.log({"train_loss": loss})
         return loss
     
     def validation_step(self, batch, batch_idx):
@@ -66,7 +65,7 @@ class MLP_decoder(L.LightningModule):
         log_hz = self(x)
         loss = cox.neg_partial_log_likelihood(log_hz, event, time, reduction="mean")
         self.log("val_loss", loss, prog_bar=True)
-        wandb.log({"val_loss": loss})
+        # wandb.log({"val_loss": loss})
 
     def test_step(self, batch, batch_idx):
         x, (event, time) = batch
@@ -98,7 +97,7 @@ class MLP_decoder(L.LightningModule):
 
         self.log("test_cindex", cindex_val, prog_bar=True)
         self.log("test_auc_mean", auc_values.mean(), prog_bar=True)
-        wandb.log({"test_cindex": cindex_val, "test_auc_mean": auc_values.mean()})
+        # wandb.log({"test_cindex": cindex_val, "test_auc_mean": auc_values.mean()})
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
@@ -181,11 +180,9 @@ def main(config):
     )
 
     torch.manual_seed(SEED)
-    wandb.login()
-
-    run = wandb.init(
+    wandb_logger = WandbLogger(
         project="survival_analysis",
-        name="MLP_Cox_model",
+        name="MLP_Cox_model_300",
         config={
             "learning_rate": LEARNING_RATE,
             "epochs": EPOCHS,
@@ -195,7 +192,7 @@ def main(config):
     )
 
     lightning_model = MLP_decoder(cox_model, LEARNING_RATE)
-    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True)
+    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger)
     trainer.fit(lightning_model, dataloader_train, dataloader_val)
     lightning_model.eval()
 
@@ -204,10 +201,6 @@ def main(config):
     # plot loss curve
     import matplotlib.pyplot as plt     
     # Get training and validation losses
-
-
-    #concordance index over full test set
-
 
 
     trainer.test(lightning_model, dataloaders=dataloader_test)

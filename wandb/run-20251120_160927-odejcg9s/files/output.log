@@ -1,0 +1,48 @@
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\pytorch_lightning\trainer\connectors\logger_connector\logger_connector.py:67: UserWarning: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+  warning_cache.warn(
+
+  | Name  | Type       | Params
+-------------------------------------
+0 | model | Sequential | 37.0 K
+-------------------------------------
+37.0 K    Trainable params
+0         Non-trainable params
+37.0 K    Total params
+0.148     Total estimated model params size (MB)
+Epoch 399: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [00:00<00:00, 53.79it/s, v_num=24, val_loss=10.90]
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:442: PossibleUserWarning: The dataloader, val_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\torchsurv\loss\cox.py:222: UserWarning: Ties in event time detected; using efron's method to handle ties.
+  warnings.warn(
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:442: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\pytorch_lightning\loops\fit_loop.py:281: PossibleUserWarning: The number of training batches (8) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+  rank_zero_warn(
+Testing DataLoader 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 478.64it/s]
+`Trainer.fit` stopped: `max_epochs=400` reached.
+C:\Users\franc\miniconda3\envs\nlst_fm\Lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:442: PossibleUserWarning: The dataloader, test_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+Test C-index = 0.4932  (95% CI: 0.2247, 0.7617)
+
+Time-dependent AUC(t):
+Times: tensor([  90.,  348.,  394.,  491.,  553.,  645.,  649.,  664.,  703.,  819.,
+         950.,  964., 1074., 1099., 1101., 1239., 1355., 1732., 1779., 1794.,
+        2012., 2064., 2140., 2202., 2216., 2227., 2242., 2252., 2253., 2255.,
+        2255., 2260., 2261., 2309., 2318., 2326., 2326., 2338., 2349., 2362.,
+        2392., 2394., 2400., 2401., 2405., 2406., 2407., 2429., 2439., 2445.,
+        2451., 2452., 2455., 2461., 2474., 2483., 2484., 2489., 2499., 2504.,
+        2520., 2531., 2543., 2556., 2561., 2599., 2601., 2607., 2624., 2625.,
+        2631., 2632., 2634., 2644., 2648., 2667., 2732., 2760., 2765., 2783.])
+AUC: tensor([0.6456, 0.5833, 0.6450, 0.6809, 0.5920, 0.5383, 0.5875, 0.5446, 0.5137,
+        0.5662, 0.5210, 0.5442, 0.5231, 0.4844, 0.4529, 0.4284, 0.4561, 0.4870])
+Testing DataLoader 0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 27.18it/s]
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Runningstage.testing metric      DataLoader 0
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      test_auc_mean         0.5441299080848694
+       test_cindex          0.49317270517349243
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
