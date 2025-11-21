@@ -88,7 +88,7 @@ class encoder_decoder(L.LightningModule):
                 emb = torch.tensor(emb)
                 embeddings.append(emb.float())
             
-            return torch.stack(embeddings, dim=0)
+        return torch.stack(embeddings, dim=0)
 
     def forward(self, x):
         embeddings = self.encode_batch(x)
