@@ -226,10 +226,14 @@ def main(config):
     dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False)
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False)
 
-    x, (event, time)= next(iter(dataloader_train))
-
+    # x, (event, time)= next(iter(dataloader_train))
+    x, _ = next(iter(dataloader_train))
+    print("DEBUG RAW X[0] = ", x[0])
+    print("TYPE:", type(x[0]))
+    print("LENGTH:", len(x[0]))
+    exit()
     sample_emb = classifier.encode(x[0])
-
+    
     num_features = sample_emb.shape[0]
     print("Embedding dimension =", num_features)
 
