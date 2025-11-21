@@ -222,7 +222,7 @@ def main(config):
 
     x, (event, time)= next(iter(dataloader_train))
 
-    sample_emb = classifier.encode_image(x[0])
+    sample_emb = classifier.encode(x[0])
 
     num_features = sample_emb.shape[0]
     print("Embedding dimension =", num_features)
