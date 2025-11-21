@@ -7,17 +7,12 @@ import io
 from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
-from torchsurv.loss import cox, weibull
+from torchsurv.loss import cox
 from torchsurv.metrics.auc import Auc
-from torchsurv.metrics.brier_score import BrierScore
 from torchsurv.metrics.cindex import ConcordanceIndex
-from torchsurv.stats.kaplan_meier import KaplanMeierEstimator
 import torch
 from torch.utils.data import Dataset
-import sympy
 import pytorch_lightning as L
-import torchmetrics
-from torchmetrics.functional import accuracy, auroc, precision, recall
 import random
 import numpy as np
 import hydra
@@ -212,8 +207,7 @@ def main(config):
 
     EPOCHS = config.EPOCHS
     LEARNING_RATE = config.LEARNING_RATE
-    embeds_path = config.embeds_path
-    cancer_path = config.cancer_path
+
     SEED = config.SEED
     test_size = config.test_size
     random.seed(SEED)
