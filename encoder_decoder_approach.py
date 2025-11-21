@@ -199,8 +199,8 @@ def main(config):
     torch.manual_seed(SEED)
     torch.cuda.manual_seed_all(SEED)
 
+    classifier.load_model()
     
-
     df= pd.DataFrame( columns=[config.data.columns.pid, 
                                config.data.columns.file_path])
 
