@@ -50,12 +50,18 @@ class SurvivalDataset(Dataset):
         return len(self.df)
 
     def __getitem__(self, idx):
-        # Load image (.npy file)
-        npy_path = self.df.loc[idx, 'file_path']
-        
-        img = pil_to_base64(npy_path)
-        x= img
-        return x, (self.event[idx], self.time[idx])
+        npy_path = self.df.loc[idx, "file_path"]
+
+        npy_img = np.load(npy_path, allow_pickle=True)
+
+        if not isinstance(npy_img, np.ndarray):
+            raise ValueError(f"Loaded object is not a numpy array: {npy_path}")
+
+        print("DEBUG:", idx, npy_path, npy_img.shape, npy_img.dtype)
+
+        img_b64 = pil_to_base64(npy_path)
+
+        return img_b64, (self.event[idx], self.time[idx])
 
 class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate):
