@@ -44,17 +44,7 @@ class SurvivalDataset(Dataset):
         self.time = torch.tensor(self.df['fup_days'].values, dtype=torch.float32)
 
         # Optional: detect tabular columns besides file_path, 5y, fup_days
-        self.tabular_cols = [
-            c for c in self.df.columns if c not in ['pid', 'file_path', '5y', 'fup_days']
-        ]
-
-        if self.tabular_cols:
-            self.tabular_x = torch.tensor(
-                self.df[self.tabular_cols].values,
-                dtype=torch.float32
-            )
-        else:
-            self.tabular_x = None
+        
 
     def __len__(self):
         return len(self.df)
@@ -64,13 +54,7 @@ class SurvivalDataset(Dataset):
         npy_path = self.df.loc[idx, 'file_path']
         
         img = pil_to_base64(npy_path)
-
-        # Include tabular features if they exist
-        if self.tabular_x is not None:
-            x = (img, self.tabular_x[idx])
-        else:
-            x = img
-
+        x= img
         return x, (self.event[idx], self.time[idx])
 
 class encoder_decoder(L.LightningModule):
@@ -236,9 +220,12 @@ def main(config):
     dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False)
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False)
 
-    x, (event, time) = next(iter(dataloader_train))
+    x, (event, time)= next(iter(dataloader_train))
 
-    num_features = x.size(1)
+    sample_emb = classifier.encode_image(x[0])
+
+    num_features = sample_emb.shape[0]
+    print("Embedding dimension =", num_features)
 
     print(f"x (shape)    = {x.shape}")
     print(f"num_features = {num_features}")
