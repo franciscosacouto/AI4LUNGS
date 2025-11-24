@@ -248,11 +248,7 @@ def main(config):
     num_features = image_emb.shape[-1] 
     print("Embedding dimension =", num_features)
 
-    print(f"x (shape)    = {x.shape}")
-    print(f"num_features = {num_features}")
-    print(f"event        = {event.shape}")
-    print(f"time         = {time.shape}")
-
+  
     # Initiate Weibull model
     cox_model = torch.nn.Sequential(
         torch.nn.BatchNorm1d(num_features),  # Batch normalization
