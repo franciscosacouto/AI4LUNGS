@@ -184,6 +184,13 @@ def pil_to_base64(npy_img_path):
     pil_img.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
 
+def collate_survival(batch):
+    # batch is a list of: (img_b64, (event, time))
+    imgs = [item[0] for item in batch]
+    events = torch.stack([item[1][0] for item in batch])
+    times = torch.stack([item[1][1] for item in batch])
+    return imgs, (events, times)
+
 
 @hydra.main(version_base=None, config_path=".", config_name="config")
 def main(config):
@@ -222,9 +229,9 @@ def main(config):
     df_train, df_val = train_test_split(df_train, test_size=test_size, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
-    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,collate_fn=lambda x: list(zip(*x)))
-    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False)
-    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False)
+    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,collate_fn=collate_survival)
+    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,collate_fn=collate_survival)
+    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,collate_fn=collate_survival)
 
     x, (event, time)= next(iter(dataloader_train))
     print("X[0] type:", type(x[0]))
