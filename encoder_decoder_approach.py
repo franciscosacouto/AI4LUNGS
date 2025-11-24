@@ -241,12 +241,10 @@ def main(config):
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,collate_fn=collate_survival)
 
     x, (event, time)= next(iter(dataloader_train))
-    print("BATCH TYPE:", type(x))
-    print("FIRST ELEMENT TYPE:", type(x[0]))
-    print("FIRST ELEMENT LENGTH:", len(x[0]) if isinstance(x[0], (str, list)) else "N/A")
-    print("FIRST ELEMENT PREVIEW:", x[0][:50] if isinstance(x[0], str) else x[0])
-    sample_emb = classifier.encode(images=[x[0]])
     
+    sample_emb = classifier.encode(images=[x[0]])
+    print(sample_emb.keys())
+
     num_features = sample_emb.shape[0]
     print("Embedding dimension =", num_features)
 
