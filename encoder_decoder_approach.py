@@ -245,7 +245,7 @@ def main(config):
     print("FIRST ELEMENT TYPE:", type(x[0]))
     print("FIRST ELEMENT LENGTH:", len(x[0]) if isinstance(x[0], (str, list)) else "N/A")
     print("FIRST ELEMENT PREVIEW:", x[0][:50] if isinstance(x[0], str) else x[0])
-    sample_emb = classifier.encode(x[0])
+    sample_emb = classifier.encode(images=[x[0]])
     
     num_features = sample_emb.shape[0]
     print("Embedding dimension =", num_features)
