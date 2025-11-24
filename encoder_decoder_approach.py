@@ -86,16 +86,17 @@ class encoder_decoder(L.LightningModule):
         self.test_times = []
     
     def encode_batch(self, base64_list):
-
         embeddings = []
 
-        for b64 in base64_list:
-            emb = self.encoder.encode_image(b64)
-            if isinstance(emb, np.ndarray):
-                emb = torch.tensor(emb)
-                embeddings.append(emb.float())
-            
-        return torch.stack(embeddings, dim=0)
+        # MedImageInsight expects: encode(images=[base64_str, ...])
+        out = self.encoder.encode(images=base64_list) 
+        img_emb = out["image_embeddings"]  # numpy array or tensor
+
+        # convert each embedding to tensor
+        if isinstance(img_emb, np.ndarray):
+            img_emb = torch.tensor(img_emb)
+
+        return img_emb.float()
 
     def forward(self, x):
         embeddings = self.encode_batch(x)
