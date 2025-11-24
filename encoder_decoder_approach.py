@@ -53,6 +53,13 @@ class SurvivalDataset(Dataset):
         npy_path = self.df.loc[idx, "file_path"]
 
         npy_img = np.load(npy_path)
+        arr = np.load(npy_path)
+        print("TYPE:", type(arr))
+        print("DTYPE:", arr.dtype)
+        print("SHAPE:", arr.shape)
+        print("MIN:", np.min(arr))
+        print("MAX:", np.max(arr))
+        print("FIRST 20:", arr.flatten()[:20])
 
         if not isinstance(npy_img, np.ndarray):
             raise ValueError(f"Loaded object is not a numpy array: {npy_path}")
