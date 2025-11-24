@@ -244,8 +244,8 @@ def main(config):
     
     sample_emb = classifier.encode(images=[x[0]])
     print(sample_emb.keys())
-
-    num_features = sample_emb.shape[0]
+    image_emb = sample_emb['image']  # extract the actual embeddings
+    num_features = image_emb.shape[-1] 
     print("Embedding dimension =", num_features)
 
     print(f"x (shape)    = {x.shape}")
