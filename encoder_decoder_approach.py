@@ -52,7 +52,7 @@ class SurvivalDataset(Dataset):
     def __getitem__(self, idx):
         npy_path = self.df.loc[idx, "file_path"]
 
-        npy_img = np.load(npy_path, allow_pickle=True)
+        npy_img = np.load(npy_path)
 
         if not isinstance(npy_img, np.ndarray):
             raise ValueError(f"Loaded object is not a numpy array: {npy_path}")
@@ -222,7 +222,7 @@ def main(config):
     df_train, df_val = train_test_split(df_train, test_size=test_size, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
-    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True)
+    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,collate_fn=lambda x: list(zip(*x)))
     dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False)
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False)
 
