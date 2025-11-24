@@ -234,9 +234,6 @@ def main(config):
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,collate_fn=collate_survival)
 
     x, (event, time)= next(iter(dataloader_train))
-    print("X[0] type:", type(x[0]))
-    print("X[0] example:", x[0])
-    exit()
     sample_emb = classifier.encode(x[0])
     
     num_features = sample_emb.shape[0]
