@@ -54,20 +54,12 @@ class SurvivalDataset(Dataset):
         npy_path = self.df.loc[idx, "file_path"]
 
         npy_img = np.load(npy_path)
-        arr = np.load(npy_path)
-        print("TYPE:", type(arr))
-        print("DTYPE:", arr.dtype)
-        print("SHAPE:", arr.shape)
-        print("MIN:", np.min(arr))
-        print("MAX:", np.max(arr))
-        print("FIRST 20:", arr.flatten()[:20])
+        
 
         if not isinstance(npy_img, np.ndarray):
             raise ValueError(f"Loaded object is not a numpy array: {npy_path}")
 
-        print("DEBUG:", idx, npy_path, npy_img.shape, npy_img.dtype)
-
-        img_b64 = pil_to_base64(npy_path)
+        img_b64 = array_to_base64(npy_img)
 
         return img_b64, (self.event[idx], self.time[idx])
 
@@ -96,7 +88,8 @@ class encoder_decoder(L.LightningModule):
         # convert each embedding to tensor
         if isinstance(img_emb, np.ndarray):
             img_emb = torch.tensor(img_emb)
-
+            
+        img_emb = img_emb.to(self.device)
         return img_emb.float()
 
     def forward(self, x):
@@ -160,10 +153,10 @@ class encoder_decoder(L.LightningModule):
 
 def load_data(image_path,cancer_path):
     data_df = pd.read_csv(image_path)
-    data_df['pid'] = data_df['pid'].astype(int)
+    data_df['pid'] = data_df['pid'].astype(str)
     # Load cancer metadata
     cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y', 'fup_days'])
-    cancer_df['pid'] = cancer_df['pid'].astype(int)
+    cancer_df['pid'] = cancer_df['pid'].astype(str)
 
     # Merge
     merged_df = pd.merge(cancer_df, data_df, on="pid", how="inner")
@@ -175,20 +168,21 @@ def load_data(image_path,cancer_path):
 
 
 def search_files(rootdir, df):
+    records = []
     for dirpath, _, filenames in os.walk(rootdir):
         for filename in filenames:
             full_path = os.path.join(dirpath, filename)
             pid = filename.split('_')[0]   # extract PID
-            new_row = {"pid": pid, "file_path": full_path}
-            df.loc[len(df)] = new_row
-            print(f"Found file: {full_path}")
-    return df
+
+            records.append({"pid": str(pid), "file_path": full_path})
+
+       # FIX: Return a new DataFrame with PID as index
+    return pd.DataFrame(records).set_index('pid')
 
 
-def pil_to_base64(npy_img_path):
-    npy_img = np.load(npy_img_path)
+def array_to_base64(npy_img):
+
     pil_img = Image.fromarray((npy_img * 255).astype(np.uint8)) 
-    """Convert PIL image to base64 string."""
     buffered = io.BytesIO()
     pil_img.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
@@ -230,21 +224,25 @@ def main(config):
     rootdir_lung = config.directories.rootdir_lung
     rootdir_ws = config.directories.rootdir_ws
     rootdir_masked = config.directories.rootdir_masked
-    print("Searching lung files...")
-    df = search_files( rootdir_lung, df)  
-    save_df_as_csv = df.to_csv('lung_file_paths.csv', index=False)
-    
-    merged_data_df = load_data(config.directories.image_df_path,config.directories.cancer_path)
-    df_train, df_test = train_test_split(merged_data_df, test_size=test_size, random_state=SEED)
-    df_train, df_val = train_test_split(df_train, test_size=test_size, random_state=SEED)
+    df_paths = search_files(rootdir_lung, pd.DataFrame())
+    print("Loading survival outcomes and merging paths...")
+    df_outcomes = load_data(config.directories.image_df_path, config.directories.cancer_path)
+    merged_data_df = df_outcomes.join(df_paths, how="inner")
+    df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
+    df_val, df_test = train_test_split(df_test_val, test_size=0.5, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
-    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=0,
-    pin_memory=False,collate_fn=collate_survival)
-    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,num_workers=0,
-    pin_memory=False,collate_fn=collate_survival)
-    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,num_workers=0,
-    pin_memory=False,collate_fn=collate_survival)
+
+
+
+   
+
+    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=8,
+    pin_memory=True,collate_fn=collate_survival)
+    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,num_workers=8,
+    pin_memory=True,collate_fn=collate_survival)
+    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,num_workers=8,
+    pin_memory=True,collate_fn=collate_survival)
 
     x, (event, time)= next(iter(dataloader_train))
     
