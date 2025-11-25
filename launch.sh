@@ -8,6 +8,7 @@
 
 # Commands / scripts to run (e.g., python3 train.py)
 # (...)
+conda activate ai4lungs
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
-python  encoder_decoder_approach.py
+python  encoder_decoder_approach.py 
