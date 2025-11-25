@@ -19,6 +19,7 @@ import hydra
 import wandb
 from lightning.pytorch.loggers import WandbLogger   
 
+
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 from medimageinsightmodel import MedImageInsight
 classifier = MedImageInsight(
@@ -219,6 +220,7 @@ def main(config):
     np.random.seed(SEED)
     torch.manual_seed(SEED)
     torch.cuda.manual_seed_all(SEED)
+    torch.use_deterministic_algorithms(True)
 
     classifier.load_model()
     
@@ -237,9 +239,12 @@ def main(config):
     df_train, df_val = train_test_split(df_train, test_size=test_size, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
-    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,collate_fn=collate_survival)
-    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,collate_fn=collate_survival)
-    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,collate_fn=collate_survival)
+    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=0,
+    pin_memory=False,collate_fn=collate_survival)
+    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,num_workers=0,
+    pin_memory=False,collate_fn=collate_survival)
+    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,num_workers=0,
+    pin_memory=False,collate_fn=collate_survival)
 
     x, (event, time)= next(iter(dataloader_train))
     
