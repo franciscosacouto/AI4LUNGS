@@ -1,0 +1,63 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchmetrics/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_decoder_approach.py", line 242, in main
+    x, (event, time)= next(iter(dataloader_train))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1345, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1371, in _process_data
+    data.reraise()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/_utils.py", line 694, in reraise
+    raise exception
+KeyError: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3802, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 153, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 182, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'file_path'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_decoder_approach.py", line 54, in __getitem__
+    npy_path = self.df.loc[idx, "file_path"]
+               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pandas/core/indexing.py", line 1184, in __getitem__
+    return self.obj._get_value(*key, takeable=self._takeable)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pandas/core/frame.py", line 4202, in _get_value
+    series = self._get_item_cache(col)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pandas/core/frame.py", line 4626, in _get_item_cache
+    loc = self.columns.get_loc(item)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3809, in get_loc
+    raise KeyError(key) from err
+KeyError: 'file_path'
+
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
