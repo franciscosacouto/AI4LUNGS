@@ -151,20 +151,36 @@ class encoder_decoder(L.LightningModule):
         return optimizer
 
 
-def load_data(image_path,cancer_path):
-    data_df = pd.read_csv(image_path)
-    data_df['pid'] = data_df['pid'].astype(str)
+def load_data(cancer_path, rootdir):
+    """
+    Loads cancer metadata and merges with dynamically found image file paths.
+    
+    Parameters:
+        image_path (str): Path to the CSV with image metadata (optional columns like 'pid')
+        cancer_path (str): Path to the CSV with cancer outcomes ('pid', '5y', 'fup_days')
+        rootdir (str): Root directory to search for image .npy files
+    
+    Returns:
+        pd.DataFrame: Merged dataframe with 'file_path' and outcomes, indexed by 'pid'
+    """
+
     # Load cancer metadata
     cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y', 'fup_days'])
     cancer_df['pid'] = cancer_df['pid'].astype(str)
 
-    # Merge
-    merged_df = pd.merge(cancer_df, data_df, on="pid", how="inner")
+    # Optionally load image metadata CSV if needed
+    
+    # Dynamically search for file paths
+    df_paths = search_files(rootdir, pd.DataFrame())  # returns DataFrame with 'pid' index and 'file_path'
+    
+    # Merge dynamically found file paths
+    merged_df = cancer_df.merge(df_paths, left_on='pid', right_index=True, how='inner')
 
-    # PID as index
+    # Set PID as index
     merged_df.set_index('pid', inplace=True)
 
     return merged_df
+
 
 
 def search_files(rootdir, df):
@@ -224,10 +240,10 @@ def main(config):
     rootdir_lung = config.directories.rootdir_lung
     rootdir_ws = config.directories.rootdir_ws
     rootdir_masked = config.directories.rootdir_masked
-    df_paths = search_files(rootdir_lung, pd.DataFrame())
+    # df_paths = search_files(rootdir_lung, pd.DataFrame())
     print("Loading survival outcomes and merging paths...")
-    df_outcomes = load_data(config.directories.image_df_path, config.directories.cancer_path)
-    merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
+    df_outcomes = load_data( config.directories.cancer_path, rootdir_lung)
+    # merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
     print(merged_data_df.columns)
     df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
     df_val, df_test = train_test_split(df_test_val, test_size=0.5, random_state=SEED)
