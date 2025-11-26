@@ -227,15 +227,10 @@ def main(config):
     df_paths = search_files(rootdir_lung, pd.DataFrame())
     print("Loading survival outcomes and merging paths...")
     df_outcomes = load_data(config.directories.image_df_path, config.directories.cancer_path)
-    merged_data_df = df_outcomes.join(df_paths, how="inner")
+    merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
     df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
     df_val, df_test = train_test_split(df_test_val, test_size=0.5, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
-
-
-
-
-   
 
     dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=8,
     pin_memory=True,collate_fn=collate_survival)
