@@ -242,7 +242,7 @@ def main(config):
     rootdir_masked = config.directories.rootdir_masked
     # df_paths = search_files(rootdir_lung, pd.DataFrame())
     print("Loading survival outcomes and merging paths...")
-    df_outcomes = load_data( config.directories.cancer_path, rootdir_lung)
+    merged_data_df = load_data( config.directories.cancer_path, rootdir_lung)
     # merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
     print(merged_data_df.columns)
     df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
