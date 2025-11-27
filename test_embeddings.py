@@ -182,7 +182,7 @@ def main(config):
     torch.manual_seed(SEED)
     wandb_logger = WandbLogger(
         project="survival_analysis",
-        name="MLP_Cox_model_300",
+        name="MLP_Cox_model",
         config={
             "learning_rate": LEARNING_RATE,
             "epochs": EPOCHS,
