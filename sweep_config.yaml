@@ -1,0 +1,15 @@
+program: encoder_decoder_approach.py
+method: random
+metric:
+  name: val_loss
+  goal: minimize
+parameters:
+  learning_rate:
+    values: [0.00001, 0.0001, 0.001, 0.01, 0.1]
+  epochs:
+    values: [100, 200, 300, 400, 500]
+  batch_size_gpu:
+    values: [32, 64, 128]
+  batch_size_cpu:
+    values: [32, 64, 128]
+

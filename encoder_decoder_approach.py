@@ -152,17 +152,6 @@ class encoder_decoder(L.LightningModule):
 
 
 def load_data(cancer_path, rootdir):
-    """
-    Loads cancer metadata and merges with dynamically found image file paths.
-    
-    Parameters:
-        image_path (str): Path to the CSV with image metadata (optional columns like 'pid')
-        cancer_path (str): Path to the CSV with cancer outcomes ('pid', '5y', 'fup_days')
-        rootdir (str): Root directory to search for image .npy files
-    
-    Returns:
-        pd.DataFrame: Merged dataframe with 'file_path' and outcomes, indexed by 'pid'
-    """
 
     # Load cancer metadata
     cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y', 'fup_days'])
@@ -214,6 +203,8 @@ def collate_survival(batch):
 @hydra.main(version_base=None, config_path=".", config_name="config")
 def main(config):
 
+    wandb.init()
+    
     if any([torch.cuda.is_available(), torch.backends.mps.is_available()]):
         print("CUDA-enabled GPU/TPU is available.")
         BATCH_SIZE = config.BATCH_SIZE_GPU # batch size for training
@@ -221,8 +212,10 @@ def main(config):
         print("No CUDA-enabled GPU found, using CPU.")
         BATCH_SIZE = config.BATCH_SIZE_CPU  # batch size for training
 
-    EPOCHS = config.EPOCHS
-    LEARNING_RATE = config.LEARNING_RATE
+    BATCH_SIZE_GPU = wandb.config.batch_size_gpu
+    BATCH_SIZE_CPU = wandb.config.batch_size_cpu
+    EPOCHS = wandb.config.epochs
+    LEARNING_RATE = wandb.config.learning_rate
 
     SEED = config.SEED
     test_size = config.test_size
@@ -280,13 +273,8 @@ def main(config):
     torch.manual_seed(SEED)
     wandb_logger = WandbLogger(
         project="survival_analysis",
-        name="joint_encoder_decoder_mlp_cox_model",
-        config={
-            "learning_rate": LEARNING_RATE,
-            "epochs": EPOCHS,
-            "batch_size": BATCH_SIZE,
-            "model_type": "MLP_Cox",
-        },
+        name=f"sweep_lr{LEARNING_RATE}_e{EPOCHS}_bs{BATCH_SIZE}",
+        config=wandb.config, # Log the sweep config directly
     )
 
     lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE)
@@ -306,7 +294,7 @@ def main(config):
     # Save the trained model
     torch.save(lightning_model.state_dict(), "mlp_cox_model.pth")
 
-    wandb.finish()
+    # wandb.finish()
 
 
 if __name__ == "__main__":
