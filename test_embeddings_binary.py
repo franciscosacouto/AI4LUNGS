@@ -67,7 +67,7 @@ class MLP_decoder(L.LightningModule):
         self.log("val_loss", loss, prog_bar=True)
         # Log validation AUROC for sweep metric monitoring
         self.log("val_auroc", self.auroc_metric(logits, event), on_step=False, on_epoch=True)
-        self.log("val_f1_score", self.f1_metric(logits, event), on_step=False, on_epoch=True)
+        self.log("val_f1_score", self.f1score(logits, event), on_step=False, on_epoch=True)
 
 
     def test_step(self, batch, batch_idx):
@@ -84,7 +84,7 @@ class MLP_decoder(L.LightningModule):
 
         # 1. Calculate AUROC (using logits, as it handles sigmoid internally)
         auroc_val = self.auroc_metric(preds, events)
-        f1_val = self.f1_metric(preds, events)
+        f1_val = self.f1score(preds, events)
         # 2. Calculate Accuracy (needs probabilities or hard predictions)
         # We use threshold=0 (equivalent to sigmoid > 0.5) for hard prediction
 
