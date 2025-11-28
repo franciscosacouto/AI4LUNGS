@@ -181,10 +181,10 @@ def main(config):
         torch.nn.BatchNorm1d(num_features), # Batch normalization
         torch.nn.Linear(num_features,128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.4),
+        torch.nn.Dropout(p=0.7),
         torch.nn.Linear(128, 128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.4),
+        torch.nn.Dropout(p=0.7),
         torch.nn.Linear(128, 1),# Outputs one logit for BCE Loss
     )
 
