@@ -44,8 +44,8 @@ class MLP_decoder(L.LightningModule):
 
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
-        self.loss_fn = torch.nn.BCEWithLogitsLoss()
-
+        pos_weight = torch.tensor([4.0]) # Calculate this ratio based on your df
+        self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight=4)
         self.test_preds = []
         self.test_events = []
 
