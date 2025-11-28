@@ -179,13 +179,13 @@ def main(config):
     # Initiate MLP model (Architecture remains the same, but function changes)
     cox_model = torch.nn.Sequential(
         torch.nn.BatchNorm1d(num_features), # Batch normalization
-        torch.nn.Linear(num_features, 32),
+        torch.nn.Linear(num_features,128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(),
-        torch.nn.Linear(32, 64),
+        torch.nn.Dropout(p=0.4),
+        torch.nn.Linear(128, 128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(),
-        torch.nn.Linear(64, 1),# Outputs one logit for BCE Loss
+        torch.nn.Dropout(p=0.4),
+        torch.nn.Linear(128, 1),# Outputs one logit for BCE Loss
     )
 
     torch.manual_seed(SEED)
