@@ -14,15 +14,15 @@ import random
 import numpy as np
 import hydra
 import wandb
-from lightning.pytorch.loggers import WandbLogger   
+from lightning.pytorch.loggers import WandbLogger
 
 
 class SurvivalDataset(Dataset):
     def __init__(self, df):
         # Features are all columns *except* the '5y' event column
-        self.x = torch.tensor(df.drop(columns=['5y']).values, dtype=torch.float32)   
+        self.x = torch.tensor(df.drop(columns=['5y']).values, dtype=torch.float32) 
         # Target must be float for BCE loss
-        self.event = torch.tensor(df['5y'].values, dtype=torch.float32)    
+        self.event = torch.tensor(df['5y'].values, dtype=torch.float32)
 
     def __len__(self):
         return len(self.x)
@@ -128,7 +128,7 @@ def load_data(embeds_path,cancer_path):
     
     # PID remains as a column or index for splitting. We keep it as a column for now.
     # We drop the PID column before passing to the Dataset, as the Dataset expects only features and target.
-    merged_data_df.set_index('pid', inplace=True)  
+    merged_data_df.set_index('pid', inplace=True)
 
     return merged_data_df
 
@@ -141,7 +141,7 @@ def main(config):
         BATCH_SIZE = config.BATCH_SIZE_GPU # batch size for training
     else:
         print("No CUDA-enabled GPU found, using CPU.")
-        BATCH_SIZE = config.BATCH_SIZE_CPU  # batch size for training
+        BATCH_SIZE = config.BATCH_SIZE_CPU # batch size for training
 
     EPOCHS = config.EPOCHS
     LEARNING_RATE = config.LEARNING_RATE
@@ -168,20 +168,20 @@ def main(config):
 
     num_features = x.size(1)
 
-    print(f"x (shape)    = {x.shape}")
+    print(f"x (shape) = {x.shape}")
     print(f"num_features = {num_features}")
-    print(f"event        = {event.shape}")
+    print(f"event = {event.shape}")
 
     # Initiate MLP model (Architecture remains the same, but function changes)
     cox_model = torch.nn.Sequential(
-        torch.nn.BatchNorm1d(num_features),  # Batch normalization
+        torch.nn.BatchNorm1d(num_features), # Batch normalization
         torch.nn.Linear(num_features, 32),
         torch.nn.ReLU(),
         torch.nn.Dropout(),
         torch.nn.Linear(32, 64),
         torch.nn.ReLU(),
         torch.nn.Dropout(),
-        torch.nn.Linear(64, 1),  # Outputs one logit for BCE Loss
+        torch.nn.Linear(64, 1),# Outputs one logit for BCE Loss
     )
 
     torch.manual_seed(SEED)
@@ -205,7 +205,7 @@ def main(config):
     #test the model
 
     # plot loss curve
-    import matplotlib.pyplot as plt     
+    import matplotlib.pyplot as plt
     # Get training and validation losses
 
 
