@@ -153,7 +153,7 @@ def main(config):
     np.random.seed(SEED)
     torch.manual_seed(SEED)
     # torch.cuda.manual_seed_all(SEED) # Removed, use torch.manual_seed for CUDA too
-
+    torch.use_deterministic_algorithms(True, warn_only=True)
 
     merged_data_df = load_data(embeds_path,cancer_path)
     df_train, df_test = train_test_split(merged_data_df, test_size=test_size, random_state=SEED)
