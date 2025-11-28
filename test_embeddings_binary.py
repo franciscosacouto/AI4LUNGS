@@ -9,7 +9,7 @@ from torch.utils.data import Dataset
 import pytorch_lightning as L
 import torchmetrics
 # Import the required binary metrics
-from torchmetrics.classification import BinaryAUROC, BinaryAccuracy 
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score
 import random
 import numpy as np
 import hydra
@@ -41,8 +41,7 @@ class MLP_decoder(L.LightningModule):
 
         # Initialize Binary Classification Metrics
         self.auroc_metric = BinaryAUROC()
-        self.accuracy_metric = BinaryAccuracy()
-
+        self.f1score = BinaryF1Score()
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
         self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight =torch.tensor([4.0]))
