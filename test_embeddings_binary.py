@@ -45,7 +45,7 @@ class MLP_decoder(L.LightningModule):
 
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
-        self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight =4)
+        self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight =torch.tensor([4.0]))
         self.test_preds = []
         self.test_events = []
 
@@ -101,9 +101,14 @@ class MLP_decoder(L.LightningModule):
 
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
+        # Recommendation: Set a small weight decay (e.g., 1e-5 to 1e-4)
+        # and include it in your WandB sweep.
+        optimizer = torch.optim.Adam(
+            self.parameters(), 
+            lr=self.learning_rate, 
+            weight_decay=1e-5 # ADD THIS: Test different values (1e-4, 1e-5, 1e-6)
+        )
         return optimizer
-
 
 def load_data(embeds_path,cancer_path):
     data = torch.load(embeds_path)
