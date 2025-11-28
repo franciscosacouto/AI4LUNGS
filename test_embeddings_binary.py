@@ -154,7 +154,6 @@ def main(config):
     torch.manual_seed(SEED)
     # torch.cuda.manual_seed_all(SEED) # Removed, use torch.manual_seed for CUDA too
     torch.use_deterministic_algorithms(True, warn_only=True)
-
     merged_data_df = load_data(embeds_path,cancer_path)
     df_train, df_test = train_test_split(merged_data_df, test_size=test_size, random_state=SEED)
     df_train, df_val = train_test_split(df_train, test_size=test_size, random_state=SEED)
@@ -198,7 +197,7 @@ def main(config):
     )
 
     lightning_model = MLP_decoder(cox_model, LEARNING_RATE)
-    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger)
+    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, logger = wandb_logger)
     trainer.fit(lightning_model, dataloader_train, dataloader_val)
     lightning_model.eval()
 
