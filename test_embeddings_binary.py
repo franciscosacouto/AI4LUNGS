@@ -165,8 +165,8 @@ def main(config):
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
     dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True)
-    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False)
-    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False)
+    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=BATCH_SIZE, shuffle=False)
+    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=BATCH_SIZE, shuffle=False)
 
     x, event = next(iter(dataloader_train))
 
