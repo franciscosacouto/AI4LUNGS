@@ -74,10 +74,39 @@ class MLP_decoder(L.LightningModule):
         # Log validation AUROC for sweep metric monitoring
         self.val_preds.append(logits.detach().cpu())
         self.val_events.append(event.detach().cpu())
+
+    def print_inbalance(self, predicted_activated_labels, labels, stage_name=""):
+        # Check how many predictions are 0 and 1
+        num_pred_0 = (predicted_activated_labels == 0).sum().item()
+        num_pred_1 = (predicted_activated_labels == 1).sum().item()
+
+        # Check how many actual labels are 0 and 1
+        num_true_0 = (labels == 0).sum().item()
+        num_true_1 = (labels == 1).sum().item()
+
+        print("\n" + "="*50)
+        print(f"Stage: {stage_name}")
+
+        print(f"Predicted class distribution: 0s = {num_pred_0}, 1s = {num_pred_1}")
+        print(f"Actual label distribution:    0s = {num_true_0}, 1s = {num_true_1}")
+        print(f"Actual Imbalance Ratio (0:1): {num_true_0 / (num_true_1 + 1e-8):.2f}:1")
+        print("="*50)
+
+        if num_pred_1 == 0 and num_pred_0 > 0:
+            print("⚠️  Model is predicting only class 0 (majority class). It is ignoring the minority class!")
+        elif num_pred_0 == 0 and num_pred_1 > 0:
+            print("⚠️  Model is predicting only class 1 (minority class). It is ignoring the majority class!")
+        else:
+            print("✅ Model is predicting both classes.")
+
+        return
         
     def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str):
         # Calculate True Positives (TP), False Negatives (FN), etc.
         # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
+        hard_preds = (preds > 0).int()
+        events_int = events.int() # True labels must be int for comparisons
+        self.print_inbalance(hard_preds, events_int, stage_name=prefix.upper())
         stats = self.stats_metric(preds, events)
         
         TP, FP, TN, FN, _ = stats.unbind() 
