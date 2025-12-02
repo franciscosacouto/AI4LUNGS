@@ -107,18 +107,17 @@ class encoder_decoder(L.LightningModule):
         
     
     def training_step(self, batch, batch_idx):
-        x, (event, time) = batch
+        x, event = batch
         logits = self(x)
-        loss = self.loss_fn(logits, event) 
-
+        loss = self.loss_fn(logits, event.unsqueeze(1)) # event needs to be (B, 1) for BCEWithLogitsLoss if logits is (B, 1)
         self.log("train_loss", loss)
         # wandb.log({"train_loss": loss})
         return loss
     
     def validation_step(self, batch, batch_idx):
-        x, (event, time) = batch
+        x, event = batch
         logits = self(x)
-        loss = self.loss_fn(logits, event)
+        loss = self.loss_fn(logits, event.unsqueeze(1))
         self.log("val_loss", loss, prog_bar=True)
         self.val_preds.append(logits.detach().cpu())
         self.val_events.append(event.detach().cpu())
@@ -274,9 +273,8 @@ def array_to_base64(npy_img):
 def collate_survival(batch):
     # batch is a list of: (img_b64, (event, time))
     imgs = [item[0] for item in batch]
-    events = torch.stack([item[1][0] for item in batch])
-    times = torch.stack([item[1][1] for item in batch])
-    return imgs, (events, times)
+    events = torch.stack([item[1] for item in batch])
+    return imgs, events
 
 
 @hydra.main(version_base=None, config_path=".", config_name="config")
@@ -324,7 +322,7 @@ def main(config):
     dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,num_workers=8,
     pin_memory=True,collate_fn=collate_survival)
 
-    x, (event, time)= next(iter(dataloader_train))
+    x, event= next(iter(dataloader_train))
     
     sample_emb = classifier.encode(images=[x[0]])
     print(sample_emb.keys())
