@@ -18,6 +18,7 @@ import numpy as np
 import hydra
 import wandb
 from lightning.pytorch.loggers import WandbLogger   
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
 
 
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
@@ -72,11 +73,19 @@ class encoder_decoder(L.LightningModule):
 
      # Metrics
         self.cindex_metric = ConcordanceIndex()
-        self.auc_metric = Auc()   # time-dependent AUC
+        self.auroc_metric = BinaryAUROC()
+        self.f1score = BinaryF1Score()
+
+        self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
+        # Define the binary classification loss function
+        # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
+        self.loss_fn = torch.nn.BCEWithLogitsLoss()
 
         self.test_preds = []
         self.test_events = []
-        self.test_times = []
+        self.val_preds = []
+        self.val_events = []
+
     
     def encode_batch(self, base64_list):
         embeddings = []
@@ -101,53 +110,114 @@ class encoder_decoder(L.LightningModule):
     
     def training_step(self, batch, batch_idx):
         x, (event, time) = batch
-        log_hz = self(x)
-        loss = cox.neg_partial_log_likelihood(log_hz, event, time, reduction="mean")
+        logits = self(x)
+        loss = self.loss_fn(logits, event) 
+
         self.log("train_loss", loss)
         # wandb.log({"train_loss": loss})
         return loss
     
     def validation_step(self, batch, batch_idx):
         x, (event, time) = batch
-        log_hz = self(x)
-        loss = cox.neg_partial_log_likelihood(log_hz, event, time, reduction="mean")
+        logits = self(x)
+        loss = self.loss_fn(logits, event)
         self.log("val_loss", loss, prog_bar=True)
-        # wandb.log({"val_loss": loss})
+        self.val_preds.append(logits.detach().cpu())
+        self.val_events.append(event.detach().cpu())
+
+    
+
+    def print_inbalance(self, predicted_activated_labels, labels, stage_name=""):
+        # Check how many predictions are 0 and 1
+        num_pred_0 = (predicted_activated_labels == 0).sum().item()
+        num_pred_1 = (predicted_activated_labels == 1).sum().item()
+
+        # Check how many actual labels are 0 and 1
+        num_true_0 = (labels == 0).sum().item()
+        num_true_1 = (labels == 1).sum().item()
+
+        print("\n" + "="*50)
+        print(f"Stage: {stage_name}")
+
+        print(f"Predicted class distribution: 0s = {num_pred_0}, 1s = {num_pred_1}")
+        print(f"Actual label distribution:    0s = {num_true_0}, 1s = {num_true_1}")
+        print(f"Actual Imbalance Ratio (0:1): {num_true_0 / (num_true_1 + 1e-8):.2f}:1")
+        print("="*50)
+
+        if num_pred_1 == 0 and num_pred_0 > 0:
+            print("⚠️  Model is predicting only class 0 (majority class). It is ignoring the minority class!")
+        elif num_pred_0 == 0 and num_pred_1 > 0:
+            print("⚠️  Model is predicting only class 1 (minority class). It is ignoring the majority class!")
+        else:
+            print("✅ Model is predicting both classes.")
+
+        return
+    
+    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str):
+        # Calculate True Positives (TP), False Negatives (FN), etc.
+        # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
+        hard_preds = (preds > 0).int()
+        events_int = events.int() # True labels must be int for comparisons
+        self.print_inbalance(hard_preds, events_int, stage_name=prefix.upper())
+        stats = self.stats_metric(preds, events)
+        
+        TP, FP, TN, FN, _ = stats.unbind() 
+        
+        # Calculate Sensitivity (Recall): TP / (TP + FN)
+        sensitivity = TP / (TP + FN + 1e-8) 
+        
+        # Calculate Specificity: TN / (TN + FP)
+        specificity = TN / (TN + FP + 1e-8)
+        
+        # Calculate Balanced Accuracy: (Sensitivity + Specificity) / 2
+        balanced_accuracy = (sensitivity + specificity) / 2
+        
+        # Calculate F1 Score and AUROC (which you still want to keep)
+        auroc_val = self.auroc_metric(preds, events)
+        f1_val = self.f1score(preds, events)
+        
+        self.log_dict({
+            f'{prefix}_auroc': auroc_val,
+            f'{prefix}_f1_score': f1_val,
+            f'{prefix}_balanced_accuracy': balanced_accuracy, # The desired metric
+        }, on_step=False, on_epoch=True)
+
+    def on_validation_epoch_end(self):
+        preds = torch.cat(self.val_preds)
+        events = torch.cat(self.val_events)
+
+        self._calculate_balanced_metrics(preds, events, 'val')
+
+        # Clear lists for the next epoch
+        self.val_preds.clear()
+        self.val_events.clear()
 
     def test_step(self, batch, batch_idx):
-        x, (event, time) = batch
-        preds = self(x).squeeze()
+        x, event = batch
+        logits = self(x)
 
         # store for epoch_end
-        self.test_preds.append(preds.detach().cpu())
+        self.test_preds.append(logits.detach().cpu())
         self.test_events.append(event.detach().cpu())
-        self.test_times.append(time.detach().cpu())
         
+
     def on_test_epoch_end(self):
         preds = torch.cat(self.test_preds)
         events = torch.cat(self.test_events)
-        times = torch.cat(self.test_times)
 
-        # C-index
-        cindex_val = self.cindex_metric(preds, events, times)
-        ci_low, ci_high = self.cindex_metric.confidence_interval()
-
-        print(f"\nTest C-index = {cindex_val:.4f}  (95% CI: {ci_low:.4f}, {ci_high:.4f})")
-
-        # Time-dependent AUC
-        auc_values = self.auc_metric(preds, events, times)   # 1D tensor
-        auc_time = self.auc_metric.time                   
-
-        print("\nTime-dependent AUC(t):")
-        print("Times:", auc_time)
-        print("AUC:", auc_values)
-
-        self.log("test_cindex", cindex_val, prog_bar=True)
-        self.log("test_auc_mean", auc_values.mean(), prog_bar=True)
-        # wandb.log({"test_cindex": cindex_val, "test_auc_mean": auc_values.mean()})
+        # Calculate metrics for the test set
+        self._calculate_balanced_metrics(preds, events, 'test')
+        
+        # Clear lists
+        self.test_preds.clear()
+        self.test_events.clear()
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
+        optimizer = torch.optim.Adam(
+            self.parameters(), 
+            lr=self.learning_rate, 
+            weight_decay=1e-5 
+        )
         return optimizer
 
 
@@ -165,7 +235,7 @@ def load_data(cancer_path, rootdir):
     """
 
     # Load cancer metadata
-    cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y', 'fup_days'])
+    cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y'])
     cancer_df['pid'] = cancer_df['pid'].astype(str)
 
     # Optionally load image metadata CSV if needed
@@ -267,20 +337,20 @@ def main(config):
   
     # Initiate Weibull model
     cox_model = torch.nn.Sequential(
-        torch.nn.BatchNorm1d(num_features),  # Batch normalization
-        torch.nn.Linear(num_features, 32),
+        torch.nn.BatchNorm1d(num_features), # Batch normalization
+        torch.nn.Linear(num_features,128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(),
-        torch.nn.Linear(32, 64),
+        torch.nn.Dropout(p=0.7),
+        torch.nn.Linear(128, 128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(),
-        torch.nn.Linear(64, 1),  # Estimating log hazards for Cox models
+        torch.nn.Dropout(p=0.7),
+        torch.nn.Linear(128, 1),# Outputs one logit for BCE Loss
     )
 
     torch.manual_seed(SEED)
     wandb_logger = WandbLogger(
-        project="survival_analysis",
-        name="joint_encoder_decoder_mlp_cox_model_32",
+        project="decoder_encoder",
+        name="mlp_cox_model_32",
         config={
             "learning_rate": LEARNING_RATE,
             "epochs": EPOCHS,
