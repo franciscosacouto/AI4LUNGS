@@ -36,7 +36,6 @@ class SurvivalDataset(Dataset):
         df must contain:
             - 'file_path' : path to .npy image
             - '5y' : event indicator
-            - 'fup_days' : follow-up time
         """
 
         self.df = df.reset_index()   # keep pid but use sequential indices
@@ -61,7 +60,7 @@ class SurvivalDataset(Dataset):
 
         img_b64 = array_to_base64(npy_img)
 
-        return img_b64, (self.event[idx], self.time[idx])
+        return img_b64, self.event[idx]
 
 class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate):
