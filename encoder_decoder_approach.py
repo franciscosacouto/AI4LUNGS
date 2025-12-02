@@ -43,7 +43,6 @@ class SurvivalDataset(Dataset):
 
         # Extract outcomes
         self.event = torch.tensor(self.df['5y'].values, dtype=torch.bool)
-        self.time = torch.tensor(self.df['fup_days'].values, dtype=torch.float32)
 
         # Optional: detect tabular columns besides file_path, 5y, fup_days
         
