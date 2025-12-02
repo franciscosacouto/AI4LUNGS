@@ -93,7 +93,7 @@ class MLP_decoder(L.LightningModule):
         
         # Calculate F1 Score and AUROC (which you still want to keep)
         auroc_val = self.auroc_metric(preds, events)
-        f1_val = self.f1_metric(preds, events)
+        f1_val = self.f1score(preds, events)
         
         self.log_dict({
             f'{prefix}_auroc': auroc_val,
