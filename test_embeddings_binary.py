@@ -2,6 +2,8 @@ import torch
 import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from torchmetrics.functional import accuracy, auroc, precision, recall
+from sklearn.metrics import balanced_accuracy_score
 from torch.utils.data import DataLoader
 # Removed unused survival loss and metric imports
 import torch
@@ -9,7 +11,7 @@ from torch.utils.data import Dataset
 import pytorch_lightning as L
 import torchmetrics
 # Import the required binary metrics
-from torchmetrics.classification import BinaryAUROC, BinaryF1Score
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
 import random
 import numpy as np
 import hydra
@@ -42,11 +44,15 @@ class MLP_decoder(L.LightningModule):
         # Initialize Binary Classification Metrics
         self.auroc_metric = BinaryAUROC()
         self.f1score = BinaryF1Score()
+
+        self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
         self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight =torch.tensor([4.0]))
         self.test_preds = []
         self.test_events = []
+        self.val_preds = []
+        self.val_events = []
 
     def forward(self, x):
         x = self.model(x).squeeze(-1) # Ensure output is [Batch_Size]
@@ -66,9 +72,45 @@ class MLP_decoder(L.LightningModule):
         loss = self.loss_fn(logits, event)
         self.log("val_loss", loss, prog_bar=True)
         # Log validation AUROC for sweep metric monitoring
-        self.log("val_auroc", self.auroc_metric(logits, event), on_step=False, on_epoch=True)
-        self.log("val_f1_score", self.f1score(logits, event), on_step=False, on_epoch=True)
+        self.val_preds.append(logits.detach().cpu())
+        self.val_events.append(event.detach().cpu())
+        
+    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str):
+        # Calculate True Positives (TP), False Negatives (FN), etc.
+        # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
+        stats = self.stats_metric(preds, events)
+        
+        TP, FP, TN, FN, _ = stats.unbind() 
+        
+        # Calculate Sensitivity (Recall): TP / (TP + FN)
+        sensitivity = TP / (TP + FN + 1e-8) 
+        
+        # Calculate Specificity: TN / (TN + FP)
+        specificity = TN / (TN + FP + 1e-8)
+        
+        # Calculate Balanced Accuracy: (Sensitivity + Specificity) / 2
+        balanced_accuracy = (sensitivity + specificity) / 2
+        
+        # Calculate F1 Score and AUROC (which you still want to keep)
+        auroc_val = self.auroc_metric(preds, events)
+        f1_val = self.f1_metric(preds, events)
+        
+        self.log_dict({
+            f'{prefix}_auroc': auroc_val,
+            f'{prefix}_f1_score': f1_val,
+            f'{prefix}_balanced_accuracy': balanced_accuracy, # The desired metric
+        }, on_step=False, on_epoch=True)
+        
 
+    def on_validation_epoch_end(self):
+         preds = torch.cat(self.val_preds)
+         events = torch.cat(self.val_events)
+
+         self._calculate_balanced_metrics(preds, events, 'val')
+
+        # Clear lists for the next epoch
+         self.val_preds.clear()
+         self.val_events.clear()
 
     def test_step(self, batch, batch_idx):
         x, event = batch
@@ -82,28 +124,19 @@ class MLP_decoder(L.LightningModule):
         preds = torch.cat(self.test_preds)
         events = torch.cat(self.test_events)
 
-        # 1. Calculate AUROC (using logits, as it handles sigmoid internally)
-        auroc_val = self.auroc_metric(preds, events)
-        f1_val = self.f1score(preds, events)
-        # 2. Calculate Accuracy (needs probabilities or hard predictions)
-        # We use threshold=0 (equivalent to sigmoid > 0.5) for hard prediction
-
-        print(f"\nTest AUROC = {auroc_val:.4f}")
-        print(f"Test F1 Score = {f1_val:.4f}") # Changed print statement
-        self.log("test_auroc", auroc_val, prog_bar=True)
-        self.log("test_f1_score", f1_val, prog_bar=True) # Changed log name
+        # Calculate metrics for the test set
+        self._calculate_balanced_metrics(preds, events, 'test')
+        
         # Clear lists
         self.test_preds.clear()
         self.test_events.clear()
 
 
     def configure_optimizers(self):
-        # Recommendation: Set a small weight decay (e.g., 1e-5 to 1e-4)
-        # and include it in your WandB sweep.
         optimizer = torch.optim.Adam(
             self.parameters(), 
             lr=self.learning_rate, 
-            weight_decay=1e-5 # ADD THIS: Test different values (1e-4, 1e-5, 1e-6)
+            weight_decay=1e-5 
         )
         return optimizer
 
