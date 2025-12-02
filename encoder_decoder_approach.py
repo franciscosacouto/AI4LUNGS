@@ -41,7 +41,7 @@ class SurvivalDataset(Dataset):
         self.df = df.reset_index()   # keep pid but use sequential indices
 
         # Extract outcomes
-        self.event = torch.tensor(self.df['5y'].values, dtype=torch.bool)
+        self.event = torch.tensor(self.df['5y'].values, dtype=torch.float32)
 
         # Optional: detect tabular columns besides file_path, 5y, fup_days
         
@@ -66,9 +66,12 @@ class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate):
         super().__init__()
         self.survival_head = survival_head
-        self.encoder = encoder
+        self._encoder_wrapper = encoder        
+        self.vision_encoder = encoder.model.image_encoder
         self.learning_rate = learning_rate
-
+        self.vision_encoder.eval() 
+        for param in self.vision_encoder.parameters():
+            param.requires_grad = False
      # Metrics
         self.cindex_metric = ConcordanceIndex()
         self.auroc_metric = BinaryAUROC()
@@ -89,7 +92,7 @@ class encoder_decoder(L.LightningModule):
         embeddings = []
 
         # MedImageInsight expects: encode(images=[base64_str, ...])
-        out = self.encoder.encode(images=base64_list) 
+        out = self._encoder_wrapper.encode(images=base64_list)
         img_emb = out["image_embeddings"]  # numpy array or tensor
 
         # convert each embedding to tensor
@@ -210,12 +213,23 @@ class encoder_decoder(L.LightningModule):
         self.test_events.clear()
 
     def configure_optimizers(self):
+        # Unfreeze the encoder parameters for fine-tuning
+        for param in self.vision_encoder.parameters():
+            param.requires_grad = True
+
+        encoder_lr = self.learning_rate / 10.0 
+        
+        param_groups = [
+            {'params': self.survival_head.parameters(), 'lr': self.learning_rate},
+            {'params': self.vision_encoder.parameters(), 'lr': encoder_lr},
+        ]
+        
         optimizer = torch.optim.Adam(
-            self.parameters(), 
-            lr=self.learning_rate, 
+            param_groups, 
             weight_decay=1e-5 
         )
         return optimizer
+   
 
 
 def load_data(cancer_path, rootdir):
