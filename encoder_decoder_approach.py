@@ -63,7 +63,7 @@ class SurvivalDataset(Dataset):
         return img_b64, self.event[idx]
 
 class encoder_decoder(L.LightningModule):
-    def __init__(self, encoder, survival_head, learning_rate):
+    def __init__(self, encoder, survival_head, learning_rate, pos_weight):
         super().__init__()
         self.survival_head = survival_head
         self._encoder_wrapper = encoder        
@@ -80,13 +80,14 @@ class encoder_decoder(L.LightningModule):
         self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
-        self.loss_fn = torch.nn.BCEWithLogitsLoss()
+        self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight = pos_weight)
 
         self.test_preds = []
         self.test_events = []
         self.val_preds = []
         self.val_events = []
-
+        self.train_preds = [] 
+        self.train_events = []
     
     def encode_batch(self, base64_list):
         embeddings = []
@@ -114,6 +115,9 @@ class encoder_decoder(L.LightningModule):
         logits = self(x)
         loss = self.loss_fn(logits, event.unsqueeze(1)) # event needs to be (B, 1) for BCEWithLogitsLoss if logits is (B, 1)
         self.log("train_loss", loss)
+        self.train_preds.append(logits.detach().cpu())
+        self.train_events.append(event.detach().cpu())
+
         # wandb.log({"train_loss": loss})
         return loss
     
@@ -201,6 +205,12 @@ class encoder_decoder(L.LightningModule):
         self.test_preds.append(logits.detach().cpu())
         self.test_events.append(event.detach().cpu())
         
+    def on_training_epoch_end(self):
+        preds = torch.cat(self.train_preds)
+        events = torch.cat(self.train_events)
+        self._calculate_balanced_metrics(preds, events, 'train')
+        self.train_preds.clear()
+        self.train_events.clear()
 
     def on_test_epoch_end(self):
         preds = torch.cat(self.test_preds)
@@ -330,6 +340,10 @@ def main(config):
     df_val, df_test = train_test_split(df_test_val, test_size=0.5, random_state=SEED)
     print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
+    n_pos = df_train['5y'].sum()
+    n_neg = len(df_train) - n_pos
+    pos_weight = torch.tensor([n_neg / n_pos], dtype=torch.float32)
+
     dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=8,
     pin_memory=True,collate_fn=collate_survival)
     dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,num_workers=8,
@@ -351,10 +365,10 @@ def main(config):
         torch.nn.BatchNorm1d(num_features), # Batch normalization
         torch.nn.Linear(num_features,128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.7),
+        torch.nn.Dropout(p=0.5),
         torch.nn.Linear(128, 128),
         torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.7),
+        torch.nn.Dropout(p=0.5),
         torch.nn.Linear(128, 1),# Outputs one logit for BCE Loss
     )
 
@@ -370,7 +384,7 @@ def main(config):
         },
     )
 
-    lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE)
+    lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE, pos_weight)
     trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger)
     trainer.fit(lightning_model, dataloader_train, dataloader_val)
     lightning_model.eval()
