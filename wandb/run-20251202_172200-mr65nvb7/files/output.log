@@ -1,0 +1,452 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name         | Type              | Params
+---------------------------------------------------
+0 | model        | Sequential        | 149 K
+1 | auroc_metric | BinaryAUROC       | 0
+2 | f1score      | BinaryF1Score     | 0
+3 | stats_metric | BinaryStatScores  | 0
+4 | loss_fn      | BCEWithLogitsLoss | 0
+---------------------------------------------------
+149 K     Trainable params
+0         Non-trainable params
+149 K     Total params
+0.600     Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/nn/modules/linear.py:114: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:156.)
+  return F.linear(input, self.weight, self.bias)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (11) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/autograd/__init__.py:251: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:156.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:00<00:00, 38.19it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 48
+Actual label distribution:  0s = 38, 1s = 10
+Actual Imbalance Ratio (0:1): 3.80:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0: 100%|██████████| 11/11 [00:00<00:00, 94.82it/s, v_num=nvb7]
+==================================================00<00:00, 675.19it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1: 100%|██████████| 11/11 [00:00<00:00, 206.20it/s, v_num=nvb7, val_loss=0.707]
+==================================================00<00:00, 572.00it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2: 100%|██████████| 11/11 [00:00<00:00, 177.90it/s, v_num=nvb7, val_loss=0.705]
+==================================================00<00:00, 491.92it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 3: 100%|██████████| 11/11 [00:00<00:00, 170.64it/s, v_num=nvb7, val_loss=0.702]
+==================================================00<00:00, 457.34it/s]
+Stage: VAL
+Predicted class distribution: 0s = 4, 1s = 60
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 4: 100%|██████████| 11/11 [00:00<00:00, 181.33it/s, v_num=nvb7, val_loss=0.698]
+==================================================00<00:00, 485.83it/s]
+Stage: VAL
+Predicted class distribution: 0s = 42, 1s = 22
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 5: 100%|██████████| 11/11 [00:00<00:00, 173.60it/s, v_num=nvb7, val_loss=0.691]
+==================================================00<00:00, 459.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 60, 1s = 4
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 6: 100%|██████████| 11/11 [00:00<00:00, 172.81it/s, v_num=nvb7, val_loss=0.679]
+==================================================00<00:00, 359.54it/s]
+Stage: VAL
+Predicted class distribution: 0s = 61, 1s = 3
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 7: 100%|██████████| 11/11 [00:00<00:00, 166.46it/s, v_num=nvb7, val_loss=0.661]
+==================================================00<00:00, 407.36it/s]
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 2
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 8: 100%|██████████| 11/11 [00:00<00:00, 161.50it/s, v_num=nvb7, val_loss=0.642]
+==================================================00<00:00, 439.06it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 9: 100%|██████████| 11/11 [00:00<00:00, 177.66it/s, v_num=nvb7, val_loss=0.625]
+==================================================00<00:00, 391.31it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 10: 100%|██████████| 11/11 [00:00<00:00, 177.10it/s, v_num=nvb7, val_loss=0.613]
+==================================================00<00:00, 444.99it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 11: 100%|██████████| 11/11 [00:00<00:00, 163.15it/s, v_num=nvb7, val_loss=0.600]
+==================================================00<00:00, 352.23it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 12: 100%|██████████| 11/11 [00:00<00:00, 165.83it/s, v_num=nvb7, val_loss=0.591]
+==================================================00<00:00, 467.28it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 13: 100%|██████████| 11/11 [00:00<00:00, 159.13it/s, v_num=nvb7, val_loss=0.584]
+==================================================00<00:00, 408.76it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 14: 100%|██████████| 11/11 [00:00<00:00, 169.17it/s, v_num=nvb7, val_loss=0.575]
+==================================================00<00:00, 366.62it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 15: 100%|██████████| 11/11 [00:00<00:00, 165.75it/s, v_num=nvb7, val_loss=0.568]
+==================================================00<00:00, 443.83it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 16: 100%|██████████| 11/11 [00:00<00:00, 170.73it/s, v_num=nvb7, val_loss=0.562]
+==================================================00<00:00, 472.47it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 17: 100%|██████████| 11/11 [00:00<00:00, 170.79it/s, v_num=nvb7, val_loss=0.557]
+==================================================00<00:00, 476.88it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 18: 100%|██████████| 11/11 [00:00<00:00, 169.92it/s, v_num=nvb7, val_loss=0.549]
+==================================================00<00:00, 478.82it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 19: 100%|██████████| 11/11 [00:00<00:00, 185.43it/s, v_num=nvb7, val_loss=0.543]
+==================================================00<00:00, 470.74it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 20: 100%|██████████| 11/11 [00:00<00:00, 178.49it/s, v_num=nvb7, val_loss=0.540]
+==================================================00<00:00, 503.30it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 21: 100%|██████████| 11/11 [00:00<00:00, 164.94it/s, v_num=nvb7, val_loss=0.535]
+==================================================00<00:00, 466.29it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 22: 100%|██████████| 11/11 [00:00<00:00, 167.51it/s, v_num=nvb7, val_loss=0.530]
+==================================================00<00:00, 454.21it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 23: 100%|██████████| 11/11 [00:00<00:00, 163.28it/s, v_num=nvb7, val_loss=0.527]
+==================================================00<00:00, 416.14it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 24: 100%|██████████| 11/11 [00:00<00:00, 189.25it/s, v_num=nvb7, val_loss=0.523]
+==================================================00<00:00, 446.42it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 25: 100%|██████████| 11/11 [00:00<00:00, 190.48it/s, v_num=nvb7, val_loss=0.523]
+==================================================00<00:00, 491.48it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 26: 100%|██████████| 11/11 [00:00<00:00, 206.47it/s, v_num=nvb7, val_loss=0.522]
+==================================================00<00:00, 516.82it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 27: 100%|██████████| 11/11 [00:00<00:00, 222.49it/s, v_num=nvb7, val_loss=0.522]
+==================================================00<00:00, 509.14it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 28: 100%|██████████| 11/11 [00:00<00:00, 234.39it/s, v_num=nvb7, val_loss=0.519]
+==================================================00<00:00, 532.68it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 29: 100%|██████████| 11/11 [00:00<00:00, 226.03it/s, v_num=nvb7, val_loss=0.515]
+==================================================00<00:00, 571.33it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 30: 100%|██████████| 11/11 [00:00<00:00, 236.17it/s, v_num=nvb7, val_loss=0.515]
+==================================================00<00:00, 583.73it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 31: 100%|██████████| 11/11 [00:00<00:00, 252.13it/s, v_num=nvb7, val_loss=0.516]
+==================================================00<00:00, 558.60it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 32: 100%|██████████| 11/11 [00:00<00:00, 244.19it/s, v_num=nvb7, val_loss=0.514]
+==================================================00<00:00, 593.39it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 33: 100%|██████████| 11/11 [00:00<00:00, 246.50it/s, v_num=nvb7, val_loss=0.513]
+==================================================00<00:00, 586.97it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 34: 100%|██████████| 11/11 [00:00<00:00, 241.12it/s, v_num=nvb7, val_loss=0.513]
+==================================================00<00:00, 581.33it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 35: 100%|██████████| 11/11 [00:00<00:00, 244.45it/s, v_num=nvb7, val_loss=0.514]
+==================================================00<00:00, 585.39it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 36:   0%|          | 0/11 [00:00<?, ?it/s, v_num=nvb7, val_loss=0.514]
+Epoch 36: 100%|██████████| 11/11 [00:00<00:00, 245.10it/s, v_num=nvb7, val_loss=0.514]
+==================================================00<00:00, 607.66it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 37: 100%|██████████| 11/11 [00:00<00:00, 232.93it/s, v_num=nvb7, val_loss=0.508]
+==================================================00<00:00, 543.98it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 38: 100%|██████████| 11/11 [00:00<00:00, 245.69it/s, v_num=nvb7, val_loss=0.507]
+==================================================00<00:00, 587.49it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 39: 100%|██████████| 11/11 [00:00<00:00, 249.25it/s, v_num=nvb7, val_loss=0.505]
+==================================================00<00:00, 590.89it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 40: 100%|██████████| 11/11 [00:00<00:00, 246.51it/s, v_num=nvb7, val_loss=0.509]
+==================================================00<00:00, 593.20it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 41: 100%|██████████| 11/11 [00:00<00:00, 249.17it/s, v_num=nvb7, val_loss=0.512]
+==================================================00<00:00, 591.47it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 42: 100%|██████████| 11/11 [00:00<00:00, 241.50it/s, v_num=nvb7, val_loss=0.513]
+==================================================00<00:00, 610.64it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 43: 100%|██████████| 11/11 [00:00<00:00, 202.41it/s, v_num=nvb7, val_loss=0.514]
+==================================================00<00:00, 545.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 44: 100%|██████████| 11/11 [00:00<00:00, 221.62it/s, v_num=nvb7, val_loss=0.516]
+==================================================00<00:00, 552.78it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 45: 100%|██████████| 11/11 [00:00<00:00, 199.24it/s, v_num=nvb7, val_loss=0.519]
+==================================================00<00:00, 393.55it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 46: 100%|██████████| 11/11 [00:00<00:00, 186.56it/s, v_num=nvb7, val_loss=0.522]
+==================================================00<00:00, 511.42it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 47: 100%|██████████| 11/11 [00:00<00:00, 187.61it/s, v_num=nvb7, val_loss=0.525]
+==================================================00<00:00, 508.05it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 48: 100%|██████████| 11/11 [00:00<00:00, 174.11it/s, v_num=nvb7, val_loss=0.526]
+==================================================00<00:00, 477.77it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49: 100%|██████████| 11/11 [00:00<00:00, 167.97it/s, v_num=nvb7, val_loss=0.525]
+==================================================00<00:00, 492.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 63, 1s = 1
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49: 100%|██████████| 11/11 [00:00<00:00, 97.98it/s, v_num=nvb7, val_loss=0.528]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+SLURM auto-requeueing enabled. Setting signal handlers.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/nn/modules/linear.py:114: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:156.)
+  return F.linear(input, self.weight, self.bias)
+Testing DataLoader 0: 100%|██████████| 4/4 [00:00<00:00, 792.42it/s]
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 77, 1s = 3
+Actual label distribution:  0s = 54, 1s = 26
+Actual Imbalance Ratio (0:1): 2.08:1
+==================================================
+✅ Model is predicting both classes.
+Testing DataLoader 0: 100%|██████████| 4/4 [00:00<00:00, 265.56it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.6709401607513428     │
+│  test_balanced_accuracy   │     0.557692289352417     │
+│       test_f1_score       │    0.2068965584039688     │
+└───────────────────────────┴───────────────────────────┘

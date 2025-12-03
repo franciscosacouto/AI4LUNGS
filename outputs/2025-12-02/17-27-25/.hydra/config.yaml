@@ -1,0 +1,21 @@
+directories:
+  rootdir_lung: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/lung
+  rootdir_ws: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
+  rootdir_masked: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/masked
+  image_df_path: /nas-ctm01/homes/fmferreira/AI4LUNGS/lung_file_paths.csv
+  cancer_path: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/cancer_info_final_mapped.csv
+data:
+  columns:
+    pid: pid
+    file_path: file_path
+SEED: 42
+test_size: 0.2
+BATCH_SIZE_CPU: 32
+BATCH_SIZE_GPU: 32
+EPOCHS: 300
+LEARNING_RATE: 0.0001
+wandb:
+  project: AI4H-Code
+  entity: nlst
+  name: test-embeddings
+CUBLAS_WORKSPACE_CONFIG: :4096:8
