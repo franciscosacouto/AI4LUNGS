@@ -10,6 +10,5 @@
 # (...)
 conda activate ai4lungs
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
-export WANDB_SWEEP_ID=ra6ghk0l
 
-wandb agent $WANDB_SWEEP_ID
+python  encoder_decoder_approach.py 
