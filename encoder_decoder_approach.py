@@ -156,6 +156,7 @@ class encoder_decoder(L.LightningModule):
     def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str):
         # Calculate True Positives (TP), False Negatives (FN), etc.
         # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
+        preds = preds.squeeze(-1)
         hard_preds = (preds > 0).int()
         events_int = events.int() # True labels must be int for comparisons
         self.print_inbalance(hard_preds, events_int, stage_name=prefix.upper())
