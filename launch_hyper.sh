@@ -11,4 +11,4 @@
 conda activate ai4lungs
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
-python  encoder_decoder_approach.py 
+python  final.py 
