@@ -383,33 +383,125 @@ def main(config):
             "model_type": "MLP_Cox", 
         },
     )
-
+# ----------------------------------------------------
+    # FIRST TRAINING RUN: Find Optimal Epochs (E*)
+    # ----------------------------------------------------
+    
+    # FIX 1: Correct Metric Name
     early_stop_callback = L.callbacks.EarlyStopping(
-        monitor='val_auroc', 
-        patience=15,   
+        monitor='val_auroc', # Must match the logged name: f'{prefix}_auroc' for val
+        patience=15,
         verbose=False,
-        mode='max'  
+        mode='max'
     )
 
     trainer_callbacks = [early_stop_callback]
 
-    lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE, pos_weight)
-    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, callbacks=trainer_callbacks)
+    lightning_model = encoder_decoder(classifier, cox_model, LEARNING_RATE, pos_weight)
+    
+    trainer = L.Trainer(
+        max_epochs=EPOCHS, 
+        accelerator="auto", 
+        devices=1, 
+        deterministic=True,
+        logger=wandb_logger,
+        # Set enable_checkpointing=False as requested
+        enable_checkpointing=False, 
+        callbacks=trainer_callbacks
+    )
+    
     trainer.fit(lightning_model, dataloader_train, dataloader_val)
-    lightning_model.eval()
 
-    # plot loss curve
-    import matplotlib.pyplot as plt     
-    # Get training and validation losses
+    # FIX 2: Determine E* Safely
+    # The current_epoch is the index of the epoch that just finished. 
+    # The optimal checkpoint would be from an earlier epoch (patience epochs back).
+    # Since we don't save the checkpoint, we must estimate. 
+    # For simplicity in this implementation, we use the number of epochs completed 
+    # minus the patience margin (plus 1).
+    max_epochs_completed = trainer.current_epoch
+    optimal_epochs = max(1, max_epochs_completed - early_stop_callback.patience + 1)
+    
+    # ----------------------------------------------------
+    # SECOND TRAINING RUN: Retrain on TRAIN + VAL for E* Epochs
+    # ----------------------------------------------------
 
+    print(f"\nRetraining on Train+Val for {optimal_epochs} epochs...")
 
-    trainer.test(lightning_model, dataloaders=dataloader_test)
+    df_combined_train_val = pd.concat([df_train, df_val], axis=0)
+    
+    # Create the final training DataLoader
+    final_dataloader_train = DataLoader(
+        SurvivalDataset(df_combined_train_val), 
+        batch_size=BATCH_SIZE, 
+        shuffle=True, 
+        num_workers=8, 
+        pin_memory=True, 
+        collate_fn=collate_survival
+    )
 
-    # Save the trained model
-    torch.save(lightning_model.state_dict(), "mlp_cox_model.pth")
+    # FIX 3: Clean Restart (Need fresh model instances)
+    # WARNING: Re-instantiating the classifier is necessary to ensure 
+    # clean pre-trained weights, otherwise the fine-tuning from the first run is carried over.
+    # We must reload the model to reset its state.
+    final_classifier = MedImageInsight(
+        model_dir="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27",
+        vision_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/vision_model/medimageinsigt-v1.0.0.pt",
+        language_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/language_model/language_model.pth"
+    )
+    final_classifier.load_model()
+    
+    final_cox_model = torch.nn.Sequential(
+        torch.nn.BatchNorm1d(num_features), 
+        torch.nn.Linear(num_features,128),
+        torch.nn.ReLU(),
+        torch.nn.Dropout(p=0.5), 
+        torch.nn.Linear(128, 128),
+        torch.nn.ReLU(),
+        torch.nn.Dropout(p=0.5), 
+        torch.nn.Linear(128, 1),
+    )
 
+    final_lightning_model = encoder_decoder(
+        final_classifier, # Use fresh classifier
+        final_cox_model, 
+        LEARNING_RATE, 
+        pos_weight
+    )
+
+    # Create a NEW trainer instance, only for E* epochs
+    final_trainer = L.Trainer(
+        max_epochs=optimal_epochs, # Train only up to the optimal point
+        accelerator="auto", 
+        devices=1, 
+        deterministic=True,
+        logger=wandb_logger, 
+        enable_checkpointing=False
+    )
+
+    # Run the final training step (only using combined training data)
+    final_trainer.fit(
+        final_lightning_model, 
+        train_dataloaders=final_dataloader_train
+    )
+    final_lightning_model.eval()
+
+    # Final Testing on the model trained with ALL available data for E* epochs
+    final_trainer.test(
+        final_lightning_model, 
+        dataloaders=dataloader_test
+    )
+
+    # ----------------------------------------------------
+    # CLEANUP AND SAVING
+    # ----------------------------------------------------
+    
+    # Only save the final, best-trained model (trained on Train+Val)
+    torch.save(final_lightning_model.state_dict(), "final_retrained_model.pth")
+
+    # FIX 4: Remove redundant test call
+    # trainer.test(lightning_model, dataloaders=dataloader_test) 
+    
     wandb.finish()
-
 
 if __name__ == "__main__":
     main()
