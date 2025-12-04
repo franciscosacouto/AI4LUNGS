@@ -375,7 +375,7 @@ def main(config):
     torch.manual_seed(SEED)
     wandb_logger = WandbLogger(
         project="decoder_encoder",
-        name="mlp_cox_model_32",
+        name=config.model_name,
         config={
             "learning_rate": LEARNING_RATE,
             "epochs": EPOCHS,

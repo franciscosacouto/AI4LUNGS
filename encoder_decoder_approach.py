@@ -328,12 +328,11 @@ def main(config):
     df= pd.DataFrame( columns=[config.data.columns.pid, 
                                config.data.columns.file_path])
 
-    rootdir_lung = config.directories.rootdir_lung
-    rootdir_ws = config.directories.rootdir_ws
-    rootdir_masked = config.directories.rootdir_masked
+    rootdir = config.directories.rootdir
+    
     # df_paths = search_files(rootdir_lung, pd.DataFrame())
     print("Loading survival outcomes and merging paths...")
-    merged_data_df = load_data( config.directories.cancer_path, rootdir_lung)
+    merged_data_df = load_data( config.directories.cancer_path, rootdir)
     # merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
     print(merged_data_df.columns)
     df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
@@ -374,8 +373,8 @@ def main(config):
 
     torch.manual_seed(SEED)
     wandb_logger = WandbLogger(
-        project="decoder_encoder",
-        name="mlp_cox_model_32",
+        project=config.project,
+        name=config.model_name,
         config={
             "learning_rate": LEARNING_RATE,
             "epochs": EPOCHS,
