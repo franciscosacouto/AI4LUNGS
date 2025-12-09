@@ -216,8 +216,6 @@ def main(config):
     results_file_path = "Experiments_Summary.xlsx"
     save_results_to_excel(results_file_path, test_results)
 
-    # Save the trained model
-    torch.save(lightning_model.state_dict(), "Models/mlp_cox_model.pth")
 
     wandb.finish()
 
