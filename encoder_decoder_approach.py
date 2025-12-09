@@ -71,6 +71,29 @@ def collate_survival(batch):
     events = torch.stack([item[1] for item in batch])
     return imgs, events
 
+def save_results_to_excel(file_path, new_row):
+   
+    
+    # Convert dict to DataFrame
+    new_df = pd.DataFrame([new_row])
+    
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Load existing, concatenate, and save back
+        try:
+            existing_df = pd.read_excel(file_path)
+            updated_df = pd.concat([existing_df, new_df], ignore_index=True)
+            updated_df.to_excel(file_path, index=False)
+            print(f"✅ Results successfully appended to {file_path}")
+        except Exception as e:
+            # Handle potential file access errors or corruption
+            print(f"⚠️ Error reading or writing to existing Excel file: {e}")
+            new_df.to_excel(file_path, index=False)
+            print("Attempted to create a new file with the current run data.")
+    else:
+        # Create a new file
+        new_df.to_excel(file_path, index=False)
+        print(f"✅ Created new results file: {file_path}")
 
 @hydra.main(version_base=None, config_path="Configs/", config_name="config")
 def main(config):
@@ -154,16 +177,16 @@ def main(config):
     )
 
     early_stop_callback = L.callbacks.EarlyStopping(
-        monitor='val_auroc', 
-        patience=15,   
-        verbose=False,
-        mode='max'  
+        monitor=config.early_stopping.monitor, 
+        patience=config.early_stopping.patience,   
+        verbose=config.early_stopping.verbose,
+        mode=config.early_stopping.mode 
     )
 
     trainer_callbacks = [early_stop_callback]
 
     lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE, pos_weight)
-    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, callbacks=trainer_callbacks)
+    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, callbacks=trainer_callbacks, log_every_n_steps=1)
     trainer.fit(lightning_model, dataloader_train, dataloader_val)
     lightning_model.eval()
 
@@ -173,6 +196,25 @@ def main(config):
 
 
     trainer.test(lightning_model, dataloaders=dataloader_test)
+    test_results = {
+        # Metadata and Hyperparameters (from config)
+        "Model_Name": config.model_name,
+        "Image_Root_Dir": config.directories.rootdir,
+        "Learning_Rate": config.LEARNING_RATE,
+        "Epochs_Trained": trainer.current_epoch,
+        "Batch_Size_GPU": config.BATCH_SIZE_GPU,
+        "Test_Size": config.test_size,
+        "Seed": config.SEED,
+        
+        # Test Metrics (from the updated model instance)
+        "Test_AUROC": lightning_model.test_auroc,
+        "Test_F1_Score": lightning_model.test_f1_score,
+        "Test_Balanced_Accuracy": lightning_model.test_balanced_accuracy,
+    }
+    
+    # 2. Save the results to the central Excel file
+    results_file_path = "Experiments_Summary.xlsx"
+    save_results_to_excel(results_file_path, test_results)
 
     # Save the trained model
     torch.save(lightning_model.state_dict(), "Models/mlp_cox_model.pth")

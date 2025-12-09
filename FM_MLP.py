@@ -32,7 +32,10 @@ class encoder_decoder(L.LightningModule):
         self.val_events = []
         self.train_preds = [] 
         self.train_events = []
-    
+        self.test_auroc = None
+        self.test_f1_score = None
+        self.test_balanced_accuracy = None
+
     def encode_batch(self, base64_list):
         embeddings = []
 
@@ -101,7 +104,7 @@ class encoder_decoder(L.LightningModule):
 
         return
     
-    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str):
+    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str,  return_metrics=False):
         # Calculate True Positives (TP), False Negatives (FN), etc.
         # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
         preds = preds.squeeze(-1)
@@ -130,6 +133,12 @@ class encoder_decoder(L.LightningModule):
             f'{prefix}_f1_score': f1_val,
             f'{prefix}_balanced_accuracy': balanced_accuracy, # The desired metric
         }, on_step=False, on_epoch=True)
+        if return_metrics: 
+            return {
+            'auroc': auroc_val.item(), 
+            'f1': f1_val.item(), 
+            'balanced_accuracy': balanced_accuracy.item()
+        }
 
     def on_validation_epoch_end(self):
         preds = torch.cat(self.val_preds)
@@ -161,8 +170,10 @@ class encoder_decoder(L.LightningModule):
         events = torch.cat(self.test_events)
 
         # Calculate metrics for the test set
-        self._calculate_balanced_metrics(preds, events, 'test')
-        
+        metrics=  self._calculate_balanced_metrics(preds, events, 'test', return_metrics=True)
+        self.test_auroc = metrics['auroc']
+        self.test_f1_score = metrics['f1']
+        self.test_balanced_accuracy = metrics['balanced_accuracy']
         # Clear lists
         self.test_preds.clear()
         self.test_events.clear()

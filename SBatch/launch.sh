@@ -23,4 +23,4 @@ echo "Starting job with config file: $CONFIG_FILE_NAME"
 # Run the Python script using the Hydra command-line override
 # The 'train.py' script uses @hydra.main to handle the configuration.
 # We are overriding the default config with the provided file name.
-python ../encoder_decoder_approach.py --config-name $CONFIG_FILE_NAME
+python encoder_decoder_approach.py --config-name $CONFIG_FILE_NAME
