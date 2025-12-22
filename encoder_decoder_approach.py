@@ -17,10 +17,13 @@ import random
 import numpy as np
 import hydra
 import wandb
+from collections import defaultdict 
 from lightning.pytorch.loggers import WandbLogger   
 # from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
 from FM_MLP import encoder_decoder
-from Dataset import SurvivalDataset
+from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
+from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
+
 
 
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
@@ -37,17 +40,28 @@ classifier = MedImageInsight(
 
 def load_data(cancer_path, rootdir):
     # Load cancer metadata
-    cancer_df = pd.read_csv(cancer_path, usecols=['pid', '5y'])
-    cancer_df['pid'] = cancer_df['pid'].astype(str)
+    cancer_df = pd.read_csv(cancer_path, usecols=[
+        'pid', 
+        '5y', 
+        # ADD THESE COLUMNS FROM YOUR CSV
+        'study_yr', 
+        'reversed', 
+        'sct_slice_final_mapped',
+        'fup_days'
+        # Ensure these are the correct names in your CSV
+    ])
+    print(cancer_df.columns)
+    max_time = cancer_df['fup_days'].max()
+    cancer_df['fup_days'] = cancer_df['fup_days'] / max_time
     
+
     # Dynamically search for file paths
     df_paths = search_files(rootdir, pd.DataFrame())  # returns DataFrame with 'pid' index and 'file_path'
     
     # Merge dynamically found file paths
     merged_df = cancer_df.merge(df_paths, left_on='pid', right_index=True, how='inner')
-
+    print(merged_df.columns)
     # Set PID as index
-    merged_df.set_index('pid', inplace=True)
 
     return merged_df
 
@@ -60,16 +74,23 @@ def search_files(rootdir, df):
             full_path = os.path.join(dirpath, filename)
             pid = filename.split('_')[0]   # extract PID
 
-            records.append({"pid": str(pid), "file_path": full_path})
+            records.append({"pid": int(pid), "file_path": full_path})
 
        # FIX: Return a new DataFrame with PID as index
     return pd.DataFrame(records).set_index('pid')
 
 
 def collate_survival(batch):
-    imgs = [item[0] for item in batch]
+    imgs = [item[0] for item in batch] 
+
+    # 2. Extract and stack the label tensors.
+    # item[1] is the label tensor
     events = torch.stack([item[1] for item in batch])
-    return imgs, events
+    time_to_event = torch.stack([item[2] for item in batch]) # <-- NEW
+
+    # 'imgs' is now a LIST OF STRINGS (required by classifier.encode)
+    # 'events' is a torch.Tensor (required for training)
+    return imgs, events, time_to_event
 
 def save_results_to_excel(file_path, new_row):
    
@@ -95,6 +116,8 @@ def save_results_to_excel(file_path, new_row):
         new_df.to_excel(file_path, index=False)
         print(f"✅ Created new results file: {file_path}")
 
+
+
 @hydra.main(version_base=None, config_path="Configs/", config_name="config")
 def main(config):
 
@@ -117,108 +140,136 @@ def main(config):
     torch.use_deterministic_algorithms(True)
 
     classifier.load_model()
-    
-    df= pd.DataFrame( columns=[config.data.columns.pid, 
-                               config.data.columns.file_path])
-
     rootdir = config.directories.rootdir
-    
-    # df_paths = search_files(rootdir_lung, pd.DataFrame())
-    print("Loading survival outcomes and merging paths...")
-    merged_data_df = load_data( config.directories.cancer_path, rootdir)
-    # merged_data_df = df_outcomes.merge(df_paths, on="pid", how="inner")
-    print(merged_data_df.columns)
-    df_train, df_test_val = train_test_split(merged_data_df, test_size=2*test_size, random_state=SEED)
-    df_val, df_test = train_test_split(df_test_val, test_size=0.5, random_state=SEED)
-    print(f"(Sample size) Training:{len(df_train)} | Validation:{len(df_val)} |Testing:{len(df_test)}")
 
-    n_pos = df_train['5y'].sum()
-    n_neg = len(df_train) - n_pos
-    pos_weight = torch.tensor([n_neg / n_pos], dtype=torch.float32)
+    # Adapt your merged_data_df to be lung_metadataframe with required columns
+    lung_metadataframe = load_data(config.directories.cancer_path, rootdir)
+    print(lung_metadataframe.columns) # <-- Run this line to check column names!
+    lung_metadataframe = lung_metadataframe.rename(columns={'file_path': 'path', '5y': 'label', 'sct_slice_final_mapped': 'sct_slice_num'})
+    # Ensure 'label' is an integer for StratifiedKFold
+    lung_metadataframe['label'] = lung_metadataframe['label'].astype(int)
 
-    dataloader_train = DataLoader(SurvivalDataset(df_train), batch_size=BATCH_SIZE, shuffle=True,num_workers=8,
-    pin_memory=True,collate_fn=collate_survival)
-    dataloader_val = DataLoader(SurvivalDataset(df_val), batch_size=len(df_val), shuffle=False,num_workers=8,
-    pin_memory=True,collate_fn=collate_survival)
-    dataloader_test = DataLoader(SurvivalDataset(df_test), batch_size=len(df_test), shuffle=False,num_workers=8,
-    pin_memory=True,collate_fn=collate_survival)
+    # 1. Show every column (don't hide columns in the middle)
+    pd.set_option('display.max_columns', None)
 
-    x, event= next(iter(dataloader_train))
-    
-    sample_emb = classifier.encode(images=[x[0]])
-    print(sample_emb.keys())
-    image_emb = sample_emb['image_embeddings']  # extract the actual embeddings
-    num_features = image_emb.shape[-1] 
-    print("Embedding dimension =", num_features)
+    # 2. Show the full string content (don't truncate long file paths)
+    pd.set_option('display.max_colwidth', None)
+
+    # 3. Increase the width of the display so it doesn't wrap lines too much
+    pd.set_option('display.width', 1000)
+
+    print(lung_metadataframe.head())
+
+    # Set the dataloader kwargs from your existing variables
+    torch_dataloader_kwargs = {
+        "batch_size": BATCH_SIZE, 
+        "pin_memory": True, 
+        "num_workers": 8, 
+        "collate_fn": collate_survival
+    }
+    config.SEED =SEED
+
+    # 3. Instantiate the NLSTPreprocessedKFoldDataLoader
+    data_loader_manager = NLSTPreprocessedKFoldDataLoader(
+        config=config,
+        lung_metadataframe=lung_metadataframe
+    )
 
   
-    # Initiate Weibull model
-    cox_model = torch.nn.Sequential(
-        torch.nn.BatchNorm1d(num_features), # Batch normalization
-        torch.nn.Linear(num_features,128),
-        torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.5),
-        torch.nn.Linear(128, 128),
-        torch.nn.ReLU(),
-        torch.nn.Dropout(p=0.5),
-        torch.nn.Linear(128, 1),# Outputs one logit for BCE Loss
-    )
+    dataloaders = data_loader_manager.get_dataloaders()
+    all_fold_results = []
+    num_folds = len(dataloaders['train'])
+    train_labels = dataloaders['train'][0].dataset.labels
+    n_pos = sum(train_labels)
+    n_neg = len(train_labels) - n_pos
+    pos_weight = torch.tensor([n_neg / n_pos], dtype=torch.float32)
 
-    torch.manual_seed(SEED)
-    wandb_logger = WandbLogger(
-        project=config.project,
-        name=config.model_name,
-        config={
-            "learning_rate": LEARNING_RATE,
-            "epochs": EPOCHS,
-            "batch_size": BATCH_SIZE,
-            "model_type": "MLP_Cox", 
-        },
-    )
+    # 3b. Determine feature size (num_features)
 
-    early_stop_callback = L.callbacks.EarlyStopping(
-        monitor=config.early_stopping.monitor, 
-        patience=config.early_stopping.patience,   
-        verbose=config.early_stopping.verbose,
-        mode=config.early_stopping.mode 
-    )
-
-    trainer_callbacks = [early_stop_callback]
-
-    lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE, pos_weight)
-    trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, callbacks=trainer_callbacks, log_every_n_steps=1)
-    trainer.fit(lightning_model, dataloader_train, dataloader_val)
-    lightning_model.eval()
-
-    # plot loss curve
-    import matplotlib.pyplot as plt     
-    # Get training and validation losses
+    x_sample, event, time = next(iter(dataloaders['train'][0])) 
+    sample_emb = classifier.encode(images=x_sample) 
+    image_emb = sample_emb['image_embeddings']
+    num_features = image_emb.shape[-1]
+    print(f"Embedding dimension determined: {num_features}")
 
 
-    trainer.test(lightning_model, dataloaders=dataloader_test)
-    test_results = {
-        # Metadata and Hyperparameters (from config)
+    for fold_id in range(num_folds):
+            print(f"\n====================== STARTING FOLD {fold_id + 1}/{num_folds} ======================")
+
+            # 1. Select DataLoaders for the Current Fold
+            dataloader_train = dataloaders['train'][fold_id]
+            dataloader_val = dataloaders['validation'][fold_id]
+            dataloader_test = dataloaders['test'][fold_id]
+            
+            # 2. Reset Cox Model (CRITICAL: Re-initialize weights for each fold)
+            cox_model = torch.nn.Sequential(
+                torch.nn.BatchNorm1d(num_features),
+                torch.nn.Linear(num_features, 128),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(p=0.5),
+                torch.nn.Linear(128, 128),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(p=0.5),
+                torch.nn.Linear(128, 2),
+            )
+            
+            # 3. Initialize Lightning Model
+            lightning_model = encoder_decoder(classifier, cox_model, LEARNING_RATE, pos_weight)
+
+            # 4. Initialize Trainer and Logger for the Current Fold
+            current_wandb_logger = WandbLogger(
+                project=config.project,
+                name=f"{config.model_name}_Fold_{fold_id+1}",
+                config={"learning_rate": LEARNING_RATE, "epochs": EPOCHS, "batch_size": BATCH_SIZE, "model_type": "MLP_Cox"},
+            )
+            current_trainer = L.Trainer(
+                max_epochs=EPOCHS, 
+                accelerator="auto", 
+                devices=1, 
+                deterministic=True, 
+                logger=current_wandb_logger, 
+                enable_checkpointing=False,
+                log_every_n_steps=10
+            )
+            
+            # 5. Train, Validate, and Test
+            current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+            
+            # Run test and capture results
+            test_results_list = current_trainer.test(lightning_model, dataloaders=dataloader_test, verbose=False)
+            test_results_fold = test_results_list[0] # Test returns a list of dictionaries
+
+            # 6. Store Results and Finalize Run
+            all_fold_results.append(test_results_fold)
+            wandb.finish() 
+
+        # --- END CV LOOP ---
+
+    
+    # Calculate average metrics across all folds
+    avg_auroc = np.mean([r.get('test_auroc', 0) for r in all_fold_results])
+    avg_f1 = np.mean([r.get('test_f1_score', 0) for r in all_fold_results])
+    avg_bal_acc = np.mean([r.get('test_balanced_accuracy', 0) for r in all_fold_results])
+    avg_cindex = np.mean([r.get('test_cindex',0) for r in all_fold_results])
+    
+    print(f"\n====================== CV COMPLETE ({num_folds} Folds) ======================")
+    print(f"Average Test AUROC: {avg_auroc:.4f}")
+    print(f"Average Test F1 Score: {avg_f1:.4f}")
+    
+    # 7. Prepare and save final summary (using average metrics)
+    final_summary = {
         "Model_Name": config.model_name,
-        "Image_Root_Dir": config.directories.rootdir,
-        "Learning_Rate": config.LEARNING_RATE,
-        "Epochs_Trained": trainer.current_epoch,
-        "Batch_Size_GPU": config.BATCH_SIZE_GPU,
-        "Test_Size": config.test_size,
+        "Learning_Rate": LEARNING_RATE,
+        "Total_Folds": num_folds,
+        "Avg_Test_AUROC": avg_auroc,
+        "Avg_Test_F1_Score": avg_f1,
+        "Avg_Test_Balanced_Accuracy": avg_bal_acc,
+        "Avg_Test_CIndex": avg_cindex,
         "Seed": config.SEED,
-        
-        # Test Metrics (from the updated model instance)
-        "Test_AUROC": lightning_model.test_auroc,
-        "Test_F1_Score": lightning_model.test_f1_score,
-        "Test_Balanced_Accuracy": lightning_model.test_balanced_accuracy,
     }
     
-    # 2. Save the results to the central Excel file
     results_file_path = "Experiments_Summary.xlsx"
-    save_results_to_excel(results_file_path, test_results)
-
-
-    wandb.finish()
-
+    save_results_to_excel(results_file_path, final_summary)
 
 if __name__ == "__main__":
     main()

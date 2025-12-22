@@ -1,0 +1,3528 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 149 K
+1 | vision_encoder | DaViT            | 360 M
+2 | auroc_metric   | BinaryAUROC      | 0
+3 | f1score        | BinaryF1Score    | 0
+4 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.145 Total estimated model params size (MB)
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:12<00:12,  0.08it/s]
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:24<00:00,  0.08it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 0:  14%|█▍        | 1/7 [00:12<01:17,  0.08it/s, v_num=bpde]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/loss/cox.py:222: UserWarning: Ties in event time detected; using efron's method to handle ties.
+
+
+
+
+
+Epoch 0: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 1: 100%|██████████| 7/7 [01:21<00:00,  0.09it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 2: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 3: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 4: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 5: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 6: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 7: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 8: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 9: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 10: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================40<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 11: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 12: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 13: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 14: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 15: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 16: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 17: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 18: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 19: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================43<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 20: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 21: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 22: 100%|██████████| 7/7 [01:21<00:00,  0.09it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 23: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 24: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 25: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 26: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 27: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 28: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 29: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 30: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 31: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 32: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 33: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 34: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 35: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 36: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 37: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 38: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 39: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 40: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 41: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 42: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 43: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 44: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 45: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 46: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 47: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 48: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 49: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================43<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 50: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 51: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 52: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 53: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 54: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 55: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 56: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 57: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 58: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 59: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 60: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 61: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 62: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 63: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 64: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 65: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 66: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 67: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 68: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 69: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 70: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 71: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 72: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 73: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 74: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 75: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 76: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 77: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 78: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================40<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 79: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 80: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 81: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================43<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 82: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 83: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 84: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 85: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 86: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 87: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 88: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 89: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 90: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 91: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 92: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 93: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 94: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 95: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 96: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 97: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 98: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 99: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 100: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 101: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 102: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 103: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 104: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 105: 100%|██████████| 7/7 [01:22<00:00,  0.09it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 106: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 107: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 108: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 109: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 110: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 111: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 112: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 113: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 114: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 115: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 116: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 117: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 118: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 119: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 120: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 121: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 122: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 123: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 124: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 125: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 126: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 127: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 128: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 129: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 130: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 131: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 132: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 133: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 134: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 135: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 136: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 137: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 138: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 139: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 140: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 141: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 142: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 143: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 144: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 145: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 146: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 147: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 148: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 149: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 150: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 151: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 152: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 153: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 154: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 155: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 156: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 157: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 158: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 159: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 160: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 161: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 162: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 163: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 164: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 165: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 166: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 167: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 168: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 169: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 170: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 171: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 172: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 173: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 174: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 175: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 176: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 177: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================43<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 178: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 179: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 180: 100%|██████████| 7/7 [01:25<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 181: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 182: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 183: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 184: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 185: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 186: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 187: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 188: 100%|██████████| 7/7 [01:22<00:00,  0.09it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 189: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 190: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+
+Epoch 191: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 192: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 193: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 194: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 195: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 196: 100%|██████████| 7/7 [01:23<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 197: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================42<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 198: 100%|██████████| 7/7 [01:22<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+
+
+
+
+
+
+Epoch 199: 100%|██████████| 7/7 [01:24<00:00,  0.08it/s, v_num=bpde, val_loss=nan.0]
+
+
+
+==================================================41<00:00,  0.10it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 199: 100%|██████████| 7/7 [02:06<00:00,  0.06it/s, v_num=bpde, val_loss=nan.0]
+`Trainer.fit` stopped: `max_epochs=200` reached.
+Testing DataLoader 0:   0%|          | 0/3 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_decoder_approach.py --config-name config.yam ...
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_decoder_approach.py", line 228, in main
+    test_results_list = current_trainer.test(lightning_model, dataloaders=dataloader_test, verbose=False)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 754, in test
+    return call._call_and_handle_interrupt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 794, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 989, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1028, in _run_stage
+    return self._evaluation_loop.run()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 134, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 391, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/strategies/strategy.py", line 416, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 189, in test_step
+    self.test_times.append(time.detach().cpu())
+    ^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1695, in __getattr__
+    raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+AttributeError: 'encoder_decoder' object has no attribute 'test_times'
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

@@ -1,0 +1,61 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 149 K
+1 | vision_encoder | DaViT            | 360 M
+2 | auroc_metric   | BinaryAUROC      | 0
+3 | f1score        | BinaryF1Score    | 0
+4 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.145 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_decoder_approach.py", line 238, in main
+    current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 544, in fit
+    call._call_and_handle_interrupt(
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 580, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 989, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1033, in _run_stage
+    self._run_sanity_check()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1062, in _run_sanity_check
+    val_loop.run()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 134, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 391, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 309, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/strategies/strategy.py", line 403, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 99, in validation_step
+    loss = cox.neg_partial_log_likelihood(log_hz, event, time)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/loss/cox.py", line 205, in neg_partial_log_likelihood
+    validate_loss(log_hz, event, time, model_type="cox")
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/tools/validate_data.py", line 157, in validate_loss
+    if log_params.shape[0] != len(event):
+       ~~~~~~~~~~~~~~~~^^^
+IndexError: tuple index out of range
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0973, device='cuda:0')
+tensor(0.0973, device='cuda:0')

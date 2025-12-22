@@ -1,0 +1,452 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name         | Type              | Params
+---------------------------------------------------
+0 | model        | Sequential        | 149 K
+1 | auroc_metric | BinaryAUROC       | 0
+2 | f1score      | BinaryF1Score     | 0
+3 | stats_metric | BinaryStatScores  | 0
+4 | loss_fn      | BCEWithLogitsLoss | 0
+---------------------------------------------------
+149 K     Trainable params
+0         Non-trainable params
+149 K     Total params
+0.600     Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/nn/modules/linear.py:114: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:156.)
+  return F.linear(input, self.weight, self.bias)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/autograd/__init__.py:251: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility (Triggered internally at ../aten/src/ATen/Context.cpp:156.)
+  Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:00<00:00, 38.12it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 48
+Actual label distribution:    0s = 30, 1s = 18
+Actual Imbalance Ratio (0:1): 1.67:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0: 100%|██████████| 8/8 [00:00<00:00, 73.39it/s, v_num=ezwr]
+==================================================00<00:00, 365.64it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 80
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1: 100%|██████████| 8/8 [00:00<00:00, 199.21it/s, v_num=ezwr, val_loss=0.702]
+==================================================00<00:00, 599.59it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 80
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2: 100%|██████████| 8/8 [00:00<00:00, 179.17it/s, v_num=ezwr, val_loss=0.701]
+==================================================00<00:00, 546.47it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 80
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 3: 100%|██████████| 8/8 [00:00<00:00, 173.21it/s, v_num=ezwr, val_loss=0.700]
+==================================================00<00:00, 506.28it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 80
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 4: 100%|██████████| 8/8 [00:00<00:00, 188.96it/s, v_num=ezwr, val_loss=0.698]
+==================================================00<00:00, 691.07it/s]
+Stage: VAL
+Predicted class distribution: 0s = 3, 1s = 77
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 5: 100%|██████████| 8/8 [00:00<00:00, 242.80it/s, v_num=ezwr, val_loss=0.696]
+==================================================00<00:00, 620.83it/s]
+Stage: VAL
+Predicted class distribution: 0s = 29, 1s = 51
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 6: 100%|██████████| 8/8 [00:00<00:00, 240.75it/s, v_num=ezwr, val_loss=0.693]
+==================================================00<00:00, 627.28it/s]
+Stage: VAL
+Predicted class distribution: 0s = 61, 1s = 19
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 7: 100%|██████████| 8/8 [00:00<00:00, 244.22it/s, v_num=ezwr, val_loss=0.688]
+==================================================00<00:00, 625.13it/s]
+Stage: VAL
+Predicted class distribution: 0s = 73, 1s = 7
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 8: 100%|██████████| 8/8 [00:00<00:00, 222.29it/s, v_num=ezwr, val_loss=0.681]
+==================================================00<00:00, 609.08it/s]
+Stage: VAL
+Predicted class distribution: 0s = 78, 1s = 2
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 9: 100%|██████████| 8/8 [00:00<00:00, 227.15it/s, v_num=ezwr, val_loss=0.671]
+==================================================00<00:00, 642.29it/s]
+Stage: VAL
+Predicted class distribution: 0s = 78, 1s = 2
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 10: 100%|██████████| 8/8 [00:00<00:00, 260.87it/s, v_num=ezwr, val_loss=0.660]
+==================================================00<00:00, 652.30it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 11: 100%|██████████| 8/8 [00:00<00:00, 252.45it/s, v_num=ezwr, val_loss=0.648]
+==================================================00<00:00, 650.23it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 12: 100%|██████████| 8/8 [00:00<00:00, 202.52it/s, v_num=ezwr, val_loss=0.639]
+==================================================00<00:00, 628.15it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 13: 100%|██████████| 8/8 [00:00<00:00, 217.90it/s, v_num=ezwr, val_loss=0.631]
+==================================================00<00:00, 596.46it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 14: 100%|██████████| 8/8 [00:00<00:00, 231.94it/s, v_num=ezwr, val_loss=0.625]
+==================================================00<00:00, 603.80it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 15: 100%|██████████| 8/8 [00:00<00:00, 228.40it/s, v_num=ezwr, val_loss=0.620]
+==================================================00<00:00, 607.17it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 16: 100%|██████████| 8/8 [00:00<00:00, 198.09it/s, v_num=ezwr, val_loss=0.616]
+==================================================00<00:00, 556.13it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 17: 100%|██████████| 8/8 [00:00<00:00, 179.21it/s, v_num=ezwr, val_loss=0.612]
+==================================================00<00:00, 543.80it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 18: 100%|██████████| 8/8 [00:00<00:00, 117.47it/s, v_num=ezwr, val_loss=0.609]
+==================================================00<00:00, 423.27it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 19: 100%|██████████| 8/8 [00:00<00:00, 156.35it/s, v_num=ezwr, val_loss=0.606]
+==================================================00<00:00, 445.92it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 20: 100%|██████████| 8/8 [00:00<00:00, 173.12it/s, v_num=ezwr, val_loss=0.604]
+==================================================00<00:00, 514.54it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 21: 100%|██████████| 8/8 [00:00<00:00, 168.53it/s, v_num=ezwr, val_loss=0.601]
+==================================================00<00:00, 616.29it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 22: 100%|██████████| 8/8 [00:00<00:00, 180.68it/s, v_num=ezwr, val_loss=0.600]
+==================================================00<00:00, 547.63it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 23: 100%|██████████| 8/8 [00:00<00:00, 227.50it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 588.69it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 24: 100%|██████████| 8/8 [00:00<00:00, 196.39it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 676.69it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 25: 100%|██████████| 8/8 [00:00<00:00, 198.86it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 588.98it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 26: 100%|██████████| 8/8 [00:00<00:00, 190.87it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 660.36it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 27: 100%|██████████| 8/8 [00:00<00:00, 193.84it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 601.61it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 28: 100%|██████████| 8/8 [00:00<00:00, 191.61it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 584.02it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 29: 100%|██████████| 8/8 [00:00<00:00, 191.50it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 550.47it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 30: 100%|██████████| 8/8 [00:00<00:00, 195.58it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 505.84it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 31: 100%|██████████| 8/8 [00:00<00:00, 217.07it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 575.73it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 32: 100%|██████████| 8/8 [00:00<00:00, 158.53it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 452.09it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 33: 100%|██████████| 8/8 [00:00<00:00, 233.02it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 557.79it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 34: 100%|██████████| 8/8 [00:00<00:00, 196.32it/s, v_num=ezwr, val_loss=0.597]
+==================================================00<00:00, 618.83it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 35: 100%|██████████| 8/8 [00:00<00:00, 210.50it/s, v_num=ezwr, val_loss=0.598]
+==================================================00<00:00, 603.19it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 36: 100%|██████████| 8/8 [00:00<00:00, 200.31it/s, v_num=ezwr, val_loss=0.600]
+==================================================00<00:00, 635.72it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 37: 100%|██████████| 8/8 [00:00<00:00, 206.48it/s, v_num=ezwr, val_loss=0.601]
+==================================================00<00:00, 644.58it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 38: 100%|██████████| 8/8 [00:00<00:00, 175.39it/s, v_num=ezwr, val_loss=0.601]
+==================================================00<00:00, 562.65it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 39: 100%|██████████| 8/8 [00:00<00:00, 181.07it/s, v_num=ezwr, val_loss=0.603]
+==================================================00<00:00, 574.17it/s]
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 0
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 40: 100%|██████████| 8/8 [00:00<00:00, 185.45it/s, v_num=ezwr, val_loss=0.604]
+==================================================00<00:00, 583.35it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+`Trainer.fit` stopped: `max_epochs=50` reached.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+SLURM auto-requeueing enabled. Setting signal handlers.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:441: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=11` in the `DataLoader` to improve performance.
+Epoch 41: 100%|██████████| 8/8 [00:00<00:00, 181.94it/s, v_num=ezwr, val_loss=0.605]
+==================================================00<00:00, 632.51it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 42: 100%|██████████| 8/8 [00:00<00:00, 188.94it/s, v_num=ezwr, val_loss=0.605]
+==================================================00<00:00, 571.39it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 43: 100%|██████████| 8/8 [00:00<00:00, 195.23it/s, v_num=ezwr, val_loss=0.607]
+==================================================00<00:00, 576.06it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 44: 100%|██████████| 8/8 [00:00<00:00, 188.46it/s, v_num=ezwr, val_loss=0.607]
+==================================================00<00:00, 652.30it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 45: 100%|██████████| 8/8 [00:00<00:00, 187.44it/s, v_num=ezwr, val_loss=0.609]
+==================================================00<00:00, 497.87it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 46: 100%|██████████| 8/8 [00:00<00:00, 212.38it/s, v_num=ezwr, val_loss=0.611]
+==================================================00<00:00, 633.53it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 47: 100%|██████████| 8/8 [00:00<00:00, 205.31it/s, v_num=ezwr, val_loss=0.613]
+==================================================00<00:00, 627.37it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 48: 100%|██████████| 8/8 [00:00<00:00, 189.14it/s, v_num=ezwr, val_loss=0.617]
+==================================================00<00:00, 450.20it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49: 100%|██████████| 8/8 [00:00<00:00, 181.21it/s, v_num=ezwr, val_loss=0.617]
+==================================================00<00:00, 561.88it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 55, 1s = 25
+Actual Imbalance Ratio (0:1): 2.20:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49: 100%|██████████| 8/8 [00:00<00:00, 89.77it/s, v_num=ezwr, val_loss=0.620]
+Testing DataLoader 0: 100%|██████████| 4/4 [00:00<00:00, 788.85it/s]
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 79, 1s = 1
+Actual label distribution:    0s = 59, 1s = 21
+Actual Imbalance Ratio (0:1): 2.81:1
+==================================================
+✅ Model is predicting both classes.
+Testing DataLoader 0: 100%|██████████| 4/4 [00:00<00:00, 320.79it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.6811944842338562     │
+│  test_balanced_accuracy   │     0.523809552192688     │
+│       test_f1_score       │    0.09090909361839294    │
+└───────────────────────────┴───────────────────────────┘
+--- Collecting input features for t-SNE ---
+--- Generating Logit Distribution Plot for Test_Logit_Distribution ---
+✅ Logit distribution plot saved as logit_distribution_Test_Logit_Distribution.png

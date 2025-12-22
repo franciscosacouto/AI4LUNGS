@@ -1,0 +1,121 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 149 K
+1 | vision_encoder | DaViT            | 360 M
+2 | auroc_metric   | BinaryAUROC      | 0
+3 | f1score        | BinaryF1Score    | 0
+4 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.145 Total estimated model params size (MB)
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:06<00:06,  0.15it/s]
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:12<00:00,  0.15it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+🚨 FULL BATCH INSPECTION 🚨
+--- IMAGES (Base64 List, Len: 32) ---
+Sample 0 (first 100 chars): iVBORw0KGgoAAAANSUhEUgAAAQAAAAIACAAAAABI8e0nAABJv0lEQVR4nO39a8xtW5ofdv2fyxhzrrXe9923c61Tp67tdt/t4I6R...
+Sample 1 (first 100 chars): iVBORw0KGgoAAAANSUhEUgAAAQAAAAIACAAAAABI8e0nAABuVklEQVR4nOz959NmW3qfh6281s77yW/uePIETEQOBBFpKFAkRbFo...
+--- EVENTS (Tensor, Shape: torch.Size([32, 1])) ---
+tensor([0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+        1, 1, 0, 0, 0, 1, 0, 1], device='cuda:0')
+--- TIME (Tensor, Shape: torch.Size([32, 1])) ---
+tensor([2192.,  435.,  798., 2519.,  645., 2609.,  978., 1487., 1116.,  813.,
+        2125.,  289., 2625.,  508., 2556., 2617.,  947.,   90., 2469., 2594.,
+         553.,  978., 2667., 1567.,  289.,  255., 2212., 2667., 2380., 1592.,
+        2352., 1355.], device='cuda:0')
+--- NUMERICAL INTEGRITY ---
+Any Time <= 0? : False
+Any NaN in Event?: False
+Any NaN in Time? : False
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/loss/cox.py:222: UserWarning: Ties in event time detected; using efron's method to handle ties.
+  warnings.warn(
+
+
+Epoch 0:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=ol0c]❌ ENCODER PRODUCED NAN
+Epoch 0:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=ol0c]❌ ENCODER PRODUCED NAN
+Epoch 0:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=ol0c]❌ ENCODER PRODUCED NAN
+Epoch 0:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=ol0c]❌ ENCODER PRODUCED NAN
+Epoch 0: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=ol0c]
+
+
+
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 1: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=ol0c, val_loss=nan.0]
+
+
+
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  14%|█▍        | 1/7 [00:07<00:44,  0.14it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 2: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=ol0c, val_loss=nan.0]
+
+
+
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 3: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=ol0c, val_loss=nan.0]
+
+
+
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN
+Epoch 4:  14%|█▍        | 1/7 [00:06<00:41,  0.14it/s, v_num=ol0c, val_loss=nan.0]❌ ENCODER PRODUCED NAN

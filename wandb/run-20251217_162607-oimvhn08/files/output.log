@@ -1,0 +1,682 @@
+
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 149 K
+1 | vision_encoder | DaViT            | 360 M
+2 | auroc_metric   | BinaryAUROC      | 0
+3 | f1score        | BinaryF1Score    | 0
+4 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.145 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0991, device='cuda:0')
+tensor(0.0956, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:06<00:06,  0.15it/s]tensor(0.0997, device='cuda:0')
+tensor(0.0957, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:13<00:00,  0.15it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:  0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s]
+[EPOCH 0] First Training Batch Info:
+ - Image List Len: 32
+ - Event Tensor Shape: torch.Size([32, 1])
+ - Time Tensor Shape: torch.Size([32, 1])
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+tensor(0.6987, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3387, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  14%|█▍        | 1/7 [00:06<00:40,  0.15it/s, v_num=hn08]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/loss/cox.py:222: UserWarning: Ties in event time detected; using efron's method to handle ties.
+Epoch 0:  14%|█▍        | 1/7 [00:06<00:40,  0.15it/s, v_num=hn08]tensor(0.6602, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2158, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=hn08]tensor(0.3984, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3146, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  43%|████▎     | 3/7 [00:19<00:26,  0.15it/s, v_num=hn08]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:11<00:11,  0.18it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:17<00:05,  0.17it/s]
+==================================================20<00:00,  0.20it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  14%|█▍        | 1/7 [00:07<00:45,  0.13it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 5: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 6: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 7:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 7: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 8:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 8: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 9:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  14%|█▍        | 1/7 [00:06<00:41,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 9: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.16it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:12<00:12,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 10:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 10: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  71%|███████▏  | 5/7 [00:34<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 11: 100%|██████████| 7/7 [00:45<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 12: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 13:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  14%|█▍        | 1/7 [00:06<00:41,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 13: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 14:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 14: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================21<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 15:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 15: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  14%|█▍        | 1/7 [00:06<00:41,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  43%|████▎     | 3/7 [00:19<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  57%|█████▋    | 4/7 [00:26<00:19,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 16: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 17:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  14%|█▍        | 1/7 [00:06<00:41,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  29%|██▊       | 2/7 [00:13<00:34,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  57%|█████▋    | 4/7 [00:26<00:19,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 17: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:20<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 18:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  14%|█▍        | 1/7 [00:07<00:44,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  71%|███████▏  | 5/7 [00:34<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 18: 100%|██████████| 7/7 [00:45<00:00,  0.15it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:07<00:21,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:20<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 19:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  14%|█▍        | 1/7 [00:07<00:45,  0.13it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 19: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 20:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  14%|█▍        | 1/7 [00:07<00:44,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  57%|█████▋    | 4/7 [00:27<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  71%|███████▏  | 5/7 [00:34<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 20: 100%|██████████| 7/7 [00:45<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:19<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 21:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  14%|█▍        | 1/7 [00:07<00:44,  0.13it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  43%|████▎     | 3/7 [00:21<00:28,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  57%|█████▋    | 4/7 [00:27<00:20,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  71%|███████▏  | 5/7 [00:34<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21:  86%|████████▌ | 6/7 [00:41<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 21: 100%|██████████| 7/7 [00:45<00:00,  0.15it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.15it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:20<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 22:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  14%|█▍        | 1/7 [00:07<00:44,  0.13it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  43%|████▎     | 3/7 [00:20<00:27,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  57%|█████▋    | 4/7 [00:26<00:20,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 22: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:07<00:21,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:20<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 23:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  14%|█▍        | 1/7 [00:07<00:44,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  29%|██▊       | 2/7 [00:13<00:34,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  57%|█████▋    | 4/7 [00:26<00:19,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 23: 100%|██████████| 7/7 [00:44<00:00,  0.16it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:20,  0.14it/s]
+tensor(nan, device='cuda:0')%|█████     | 2/4 [00:13<00:13,  0.15it/s]
+tensor(nan, device='cuda:0')%|███████▌  | 3/4 [00:20<00:06,  0.15it/s]
+==================================================22<00:00,  0.18it/s]
+Stage: VAL
+Predicted class distribution: 0s = 107, 1s = 0
+Actual label distribution:  0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+Epoch 24:   0%|          | 0/7 [00:00<?, ?it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  14%|█▍        | 1/7 [00:07<00:45,  0.13it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  29%|██▊       | 2/7 [00:14<00:35,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  43%|████▎     | 3/7 [00:20<00:27,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  57%|█████▋    | 4/7 [00:27<00:20,  0.14it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  71%|███████▏  | 5/7 [00:34<00:13,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24:  86%|████████▌ | 6/7 [00:40<00:06,  0.15it/s, v_num=hn08, val_loss=nan.0]tensor(nan, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(nan, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 24: 100%|██████████| 7/7 [00:45<00:00,  0.15it/s, v_num=hn08, val_loss=nan.0]
+tensor(nan, device='cuda:0')%|          | 0/4 [00:00<?, ?it/s]
+tensor(nan, device='cuda:0')%|██▌       | 1/4 [00:06<00:19,  0.15it/s]

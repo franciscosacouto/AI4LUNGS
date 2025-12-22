@@ -4,6 +4,12 @@ import torch
 import pytorch_lightning as L
 import numpy as np
 from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
+from torchsurv.loss import cox, weibull
+from torchsurv.loss.cox import neg_partial_log_likelihood 
+from torchmetrics.functional.classification import binary_auroc, binary_f1_score
+from torchsurv.metrics.auc import Auc
+from torchsurv.metrics.brier_score import BrierScore
+from torchsurv.stats.kaplan_meier import KaplanMeierEstimator
 
 
 class encoder_decoder(L.LightningModule):
@@ -18,20 +24,28 @@ class encoder_decoder(L.LightningModule):
             param.requires_grad = False
      # Metrics
         self.cindex_metric = ConcordanceIndex()
-        self.auroc_metric = BinaryAUROC()
+        self.auroc_metric = Auc() 
         self.f1score = BinaryF1Score()
+        self.cindex_metric = ConcordanceIndex()
+
 
         self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
         # Define the binary classification loss function
         # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
-        self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight = pos_weight)
+        # self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight = pos_weight)
 
         self.test_preds = []
         self.test_events = []
+        self.test_time= []
         self.val_preds = []
         self.val_events = []
+        self.val_time = []
         self.train_preds = [] 
         self.train_events = []
+        self.train_time = []
+        self.train_log_hz_t = []
+        self.val_log_hz_t = []
+        self.test_log_hz_t = []
         self.test_auroc = None
         self.test_f1_score = None
         self.test_balanced_accuracy = None
@@ -52,29 +66,60 @@ class encoder_decoder(L.LightningModule):
 
     def forward(self, x):
         embeddings = self.encode_batch(x)
-        logits = self.survival_head(embeddings)
-        return logits
+        log_hz = self.survival_head(embeddings)
+        return log_hz
 
         
     
     def training_step(self, batch, batch_idx):
-        x, event = batch
-        logits = self(x)
-        loss = self.loss_fn(logits, event.unsqueeze(1)) # event needs to be (B, 1) for BCEWithLogitsLoss if logits is (B, 1)
+        x, event, time = batch
+        event = event.bool()
+        event = event.squeeze() # Ensure 1D
+        time = time.squeeze()          # Ensure 1D
+        log_params = self(x).squeeze()
+        if batch_idx == 0 and self.current_epoch == 0:
+            print(f"\n[EPOCH {self.current_epoch}] First Training Batch Info:")
+            print(f" - Image List Len: {len(x)}")
+            print(f" - Event Tensor Shape: {event.shape}")
+            print(f" - Time Tensor Shape: {time.shape}")
+            print(f'event tensor:{event}')
+            print(f'time tensor:{time}')
+
+        print(log_params.max())
+        print(log_params.min())
+
+        loss = weibull.neg_log_likelihood(log_params, event, time)
+        log_hz =weibull.log_hazard(log_params, time)
+        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
+        log_hz_t= weibull.log_hazard(log_params, new_time)        
         self.log("train_loss", loss)
-        self.train_preds.append(logits.detach().cpu())
+        self.train_preds.append(log_params.detach().cpu())
         self.train_events.append(event.detach().cpu())
+        self.train_time.append(time.detach().cpu())
+        self.train_log_hz_t.append(log_hz_t.detach().cpu())
 
         # wandb.log({"train_loss": loss})
         return loss
     
     def validation_step(self, batch, batch_idx):
-        x, event = batch
-        logits = self(x)
-        loss = self.loss_fn(logits, event.unsqueeze(1))
+        x, event, time = batch
+        event = event.bool()
+        x, event, time = batch
+        event = event.squeeze() # Ensure 1D
+        time = time.squeeze()          # Ensure 1D
+        
+        log_params = self(x).squeeze()
+        print(log_params.max())
+        print(log_params.min())
+        loss = weibull.neg_log_likelihood(log_params, event, time, reduction='mean')
+        log_hz =weibull.log_hazard(log_params, time)
+        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
+        log_hz_t= weibull.log_hazard(log_params,  new_time)
         self.log("val_loss", loss, prog_bar=True)
-        self.val_preds.append(logits.detach().cpu())
+        self.val_preds.append(log_params.detach().cpu())
         self.val_events.append(event.detach().cpu())
+        self.val_time.append(time.detach().cpu())
+        self.val_log_hz_t.append(log_hz_t.detach().cpu())
 
     
 
@@ -91,7 +136,7 @@ class encoder_decoder(L.LightningModule):
         print(f"Stage: {stage_name}")
 
         print(f"Predicted class distribution: 0s = {num_pred_0}, 1s = {num_pred_1}")
-        print(f"Actual label distribution:    0s = {num_true_0}, 1s = {num_true_1}")
+        print(f"Actual label distribution:    0s = {num_true_0}, 1s = {num_true_1}")
         print(f"Actual Imbalance Ratio (0:1): {num_true_0 / (num_true_1 + 1e-8):.2f}:1")
         print("="*50)
 
@@ -104,80 +149,100 @@ class encoder_decoder(L.LightningModule):
 
         return
     
-    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, prefix: str,  return_metrics=False):
+    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, time: torch.Tensor, prefix: str,  log_hz_t: torch.Tensor, return_metrics=False):
         # Calculate True Positives (TP), False Negatives (FN), etc.
-        # stats is a tensor of shape (5,) [TP, FP, TN, FN, SUPS]
-        preds = preds.squeeze(-1)
-        hard_preds = (preds > 0).int()
-        events_int = events.int() # True labels must be int for comparisons
-        self.print_inbalance(hard_preds, events_int, stage_name=prefix.upper())
-        stats = self.stats_metric(preds, events)
+        # 1. Move everything to CPU
+        preds = preds.cpu()
+        events = events.cpu()
+        time = time.cpu()
+        log_hz_t = log_hz_t.cpu()
+        self.stats_metric = self.stats_metric.cpu()
         
-        TP, FP, TN, FN, _ = stats.unbind() 
-        
-        # Calculate Sensitivity (Recall): TP / (TP + FN)
-        sensitivity = TP / (TP + FN + 1e-8) 
-        
-        # Calculate Specificity: TN / (TN + FP)
-        specificity = TN / (TN + FP + 1e-8)
-        
-        # Calculate Balanced Accuracy: (Sensitivity + Specificity) / 2
-        balanced_accuracy = (sensitivity + specificity) / 2
-        
-        # Calculate F1 Score and AUROC (which you still want to keep)
-        auroc_val = self.auroc_metric(preds, events)
-        f1_val = self.f1score(preds, events)
+        preds_for_metrics = preds[:, 0] if (preds.ndim == 2 and preds.shape[1] == 2) else preds.squeeze()
+        events_bool = events.squeeze().bool()
+        hard_preds = (preds_for_metrics > 0).int()
+        self.print_inbalance(hard_preds, events_bool, stage_name=prefix.upper())
+        log_hz = weibull.log_hazard(preds, time) 
+        new_time = torch.tensor(1825.0 / 2786.0).cpu()
+        weibull_auc = Auc() # Torchsurv objects also need to be on same device
+        auroc_val = weibull_auc(log_hz_t, events_bool, time, new_time=new_time)
+        if preds.ndim == 2 and preds.shape[1] == 2:
+        # Option A: Use the first parameter (often log-alpha) as a proxy for risk
+        # Option B: Use torchsurv's built-in risk calculation if available
+            preds_for_metrics = preds[:, 0] 
+        else:
+            preds_for_metrics = preds.squeeze()
+
+
+        surv = weibull.survival_function(preds, time) 
+        weibull_cindex = ConcordanceIndex()
+        cindex= weibull_cindex(log_hz, events_bool, time)
         
         self.log_dict({
             f'{prefix}_auroc': auroc_val,
-            f'{prefix}_f1_score': f1_val,
-            f'{prefix}_balanced_accuracy': balanced_accuracy, # The desired metric
+            f'{prefix}cindex': cindex,
         }, on_step=False, on_epoch=True)
         if return_metrics: 
             return {
             'auroc': auroc_val.item(), 
-            'f1': f1_val.item(), 
-            'balanced_accuracy': balanced_accuracy.item()
+            'cindex': cindex.item(), 
         }
 
     def on_validation_epoch_end(self):
         preds = torch.cat(self.val_preds)
         events = torch.cat(self.val_events)
-
-        self._calculate_balanced_metrics(preds, events, 'val')
+        time = torch.cat(self.val_time)
+        log_hz_t = torch.cat(self.val_log_hz_t)
+        self._calculate_balanced_metrics(preds, events, time, 'val', log_hz_t)
 
         # Clear lists for the next epoch
         self.val_preds.clear()
         self.val_events.clear()
+        self.val_time.clear()
+        self.val_log_hz_t.clear()
 
     def test_step(self, batch, batch_idx):
-        x, event = batch
-        logits = self(x)
+        x, event, time = batch
+        event=event.squeeze()
+        time= time.squeeze()
+        preds = self(x).squeeze()
+
+        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
+
+        log_hz_t =weibull.log_hazard(preds, new_time)
+        log_hz =weibull.log_hazard(preds, time)
 
         # store for epoch_end
-        self.test_preds.append(logits.detach().cpu())
+        self.test_preds.append(preds.detach().cpu())
         self.test_events.append(event.detach().cpu())
-        
+        self.test_time.append(time.detach().cpu())
+        self.test_log_hz_t.append(log_hz_t.detach().cpu())
+
+    
     def on_training_epoch_end(self):
         preds = torch.cat(self.train_preds)
         events = torch.cat(self.train_events)
-        self._calculate_balanced_metrics(preds, events, 'train')
+        time = torch.cat(self.train_time)
+        log_hz_t = torch.cat(self.train_log_hz_t)
+        self._calculate_balanced_metrics(preds, events, time, 'train', log_hz_t)
         self.train_preds.clear()
         self.train_events.clear()
+        self.train_time.clear()
+        self.train_log_hz_t.clear()
 
     def on_test_epoch_end(self):
         preds = torch.cat(self.test_preds)
         events = torch.cat(self.test_events)
-
+        time = torch.cat(self.test_time)
+        log_hz_t= torch.cat(self.test_log_hz_t)
         # Calculate metrics for the test set
-        metrics=  self._calculate_balanced_metrics(preds, events, 'test', return_metrics=True)
+        metrics=  self._calculate_balanced_metrics(preds, events, time, 'test', log_hz_t, return_metrics=True)
         self.test_auroc = metrics['auroc']
-        self.test_f1_score = metrics['f1']
-        self.test_balanced_accuracy = metrics['balanced_accuracy']
+        self.test_f1_score = metrics['cindex']
         # Clear lists
         self.test_preds.clear()
         self.test_events.clear()
-
+        self.test_log_hz_t.clear()
     def configure_optimizers(self):
         # Unfreeze the encoder parameters for fine-tuning
         for param in self.vision_encoder.parameters():
