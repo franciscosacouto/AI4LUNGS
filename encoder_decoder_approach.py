@@ -19,7 +19,7 @@ import hydra
 import wandb
 from collections import defaultdict 
 from lightning.pytorch.loggers import WandbLogger   
-# from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
 from FM_MLP import encoder_decoder
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
@@ -213,6 +213,16 @@ def main(config):
                 torch.nn.Linear(128, 2),
             )
             
+            early_stop_callback = L.callbacks.EarlyStopping(
+            monitor=config.early_stopping.monitor, 
+            patience=config.early_stopping.patience,   
+            verbose=config.early_stopping.verbose,
+            mode=config.early_stopping.mode 
+            )
+
+            trainer_callbacks = [early_stop_callback]
+
+
             # 3. Initialize Lightning Model
             lightning_model = encoder_decoder(classifier, cox_model, LEARNING_RATE, pos_weight)
 
@@ -229,6 +239,7 @@ def main(config):
                 deterministic=True, 
                 logger=current_wandb_logger, 
                 enable_checkpointing=False,
+                callbacks=trainer_callbacks,
                 log_every_n_steps=10
             )
             
@@ -249,8 +260,10 @@ def main(config):
     # Calculate average metrics across all folds
     avg_auroc = np.mean([r.get('test_auroc', 0) for r in all_fold_results])
     avg_f1 = np.mean([r.get('test_f1_score', 0) for r in all_fold_results])
-    avg_bal_acc = np.mean([r.get('test_balanced_accuracy', 0) for r in all_fold_results])
+    avg_bal_acc = np.mean([r.get('test_balanced_acc', 0) for r in all_fold_results])
     avg_cindex = np.mean([r.get('test_cindex',0) for r in all_fold_results])
+    avg_ibs = np.mean([r.get('test_ibs',0) for r in all_fold_results])
+    
     
     print(f"\n====================== CV COMPLETE ({num_folds} Folds) ======================")
     print(f"Average Test AUROC: {avg_auroc:.4f}")
@@ -262,9 +275,10 @@ def main(config):
         "Learning_Rate": LEARNING_RATE,
         "Total_Folds": num_folds,
         "Avg_Test_AUROC": avg_auroc,
-        "Avg_Test_F1_Score": avg_f1,
-        "Avg_Test_Balanced_Accuracy": avg_bal_acc,
         "Avg_Test_CIndex": avg_cindex,
+        "Avg_Test_IBrier_Score": avg_ibs,
+        "Avg_Test_balanced_acc": avg_bal_acc,
+        "Avg_Test_f1_score":avg_f1,
         "Seed": config.SEED,
     }
     

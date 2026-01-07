@@ -24,7 +24,7 @@ from AI4LUNGS.NLSTPreprocessedKFoldDataLoader import SurvivalDataset
 
 
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
-from medimageinsightmodel import MedImageInsight
+from medimageinsightmodel import MedImageInsight # type: ignore
 
 
 classifier = MedImageInsight(
@@ -178,17 +178,16 @@ def main(config):
         },
     )
 
-    # early_stop_callback = L.callbacks.EarlyStopping(
-    #     monitor=config.early_stopping.monitor, 
-    #     patience=config.early_stopping.patience,   
-    #     verbose=config.early_stopping.verbose,
-    #     mode=config.early_stopping.mode 
-    # )
+    early_stop_callback = L.callbacks.EarlyStopping(
+        monitor=config.early_stopping.monitor, 
+        patience=config.early_stopping.patience,   
+        verbose=config.early_stopping.verbose,
+        mode=config.early_stopping.mode 
+    )
 
-    # trainer_callbacks = [early_stop_callback]
+    trainer_callbacks = [early_stop_callback]
 
     lightning_model = encoder_decoder(classifier,cox_model, LEARNING_RATE, pos_weight)
-    # trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, callbacks=trainer_callbacks, log_every_n_steps=1)
     trainer = L.Trainer(max_epochs=EPOCHS, accelerator="auto", devices=1, deterministic=True,logger = wandb_logger,enable_checkpointing=False, log_every_n_steps=10)
 
     trainer.fit(lightning_model, dataloader_train, dataloader_val)

@@ -3,14 +3,16 @@ from torchsurv.metrics.cindex import ConcordanceIndex
 import torch
 import pytorch_lightning as L
 import numpy as np
-from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores, BinaryAccuracy, Accuracy
 from torchsurv.loss import cox, weibull
 from torchsurv.loss.cox import neg_partial_log_likelihood 
-from torchmetrics.functional.classification import binary_auroc, binary_f1_score
 from torchsurv.metrics.auc import Auc
 from torchsurv.metrics.brier_score import BrierScore
 from torchsurv.stats.kaplan_meier import KaplanMeierEstimator
-
+import seaborn as sns
+import matplotlib.pyplot as plt
+import wandb
+import pandas as pd
 
 class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate, pos_weight):
@@ -157,36 +159,74 @@ class encoder_decoder(L.LightningModule):
         time = time.cpu()
         log_hz_t = log_hz_t.cpu()
         self.stats_metric = self.stats_metric.cpu()
-        
-        preds_for_metrics = preds[:, 0] if (preds.ndim == 2 and preds.shape[1] == 2) else preds.squeeze()
+        new_time = torch.tensor(1825.0 / 2786.0).cpu()
+        surv_prob = weibull.survival_function(preds, new_time)
+        hard_preds = (surv_prob < 0.65).int()
         events_bool = events.squeeze().bool()
-        hard_preds = (preds_for_metrics > 0).int()
         self.print_inbalance(hard_preds, events_bool, stage_name=prefix.upper())
         log_hz = weibull.log_hazard(preds, time) 
-        new_time = torch.tensor(1825.0 / 2786.0).cpu()
+        eval_times = torch.linspace(time.min(), time.max(), steps=10).cpu().unsqueeze(0)    
+        # Weibull survival function expects (params, time)
+        # Shape of surv should be (num_samples, num_time_points)
+        surv = weibull.survival_function(preds, time) 
+
+        # 3. Use the BrierScore Class
+        # Note: BrierScore() handles the IPCW (censoring weights) internally
+        bs_metric = BrierScore()
+        
+        # surv: (N, 10), events_bool: (N,), time: (N,), eval_times: (10,)
+        scores = bs_metric(surv, events_bool, time)
+        
+        # Calculate the Integrated Brier Score (IBS)
+        ibs_val = bs_metric.integral()
         weibull_auc = Auc() # Torchsurv objects also need to be on same device
         auroc_val = weibull_auc(log_hz_t, events_bool, time, new_time=new_time)
-        if preds.ndim == 2 and preds.shape[1] == 2:
-        # Option A: Use the first parameter (often log-alpha) as a proxy for risk
-        # Option B: Use torchsurv's built-in risk calculation if available
-            preds_for_metrics = preds[:, 0] 
-        else:
-            preds_for_metrics = preds.squeeze()
+        f1 = BinaryF1Score()
+        f1_score = f1(hard_preds,events_bool)
+        balanced_acc = Accuracy(task='multiclass', num_classes=2, average='macro')        
+        acc = balanced_acc(hard_preds,events_bool)
 
-
-        surv = weibull.survival_function(preds, time) 
         weibull_cindex = ConcordanceIndex()
         cindex= weibull_cindex(log_hz, events_bool, time)
         
         self.log_dict({
             f'{prefix}_auroc': auroc_val,
-            f'{prefix}cindex': cindex,
-        }, on_step=False, on_epoch=True)
+            f'{prefix}_cindex': cindex,
+            f'{prefix}_ibs': ibs_val,
+            f'{prefix}_f1_score': f1_score,
+            f'{prefix}_balanced_acc': acc,
+         }, on_step=False, on_epoch=True)
         if return_metrics: 
             return {
             'auroc': auroc_val.item(), 
-            'cindex': cindex.item(), 
+            'cindex': cindex.item(),
+            'ibs': ibs_val.item(),
+            'f1_score': f1_score.item(),
+            'balanced_acc': acc.item(), 
         }
+
+    def plot_risk_distribution(self, preds, events, epoch):
+        plt.figure(figsize=(10, 6))
+        
+        # Weibull: Higher log_alpha (params[:, 0]) usually means higher survival
+        # We use -log_alpha as a proxy for "Risk"
+        risk_scores = -preds[:, 0].numpy() 
+        events = events.numpy()
+
+        sns.kdeplot(risk_scores[events == 1], fill=True, label="Actual Events", color="red")
+        sns.kdeplot(risk_scores[events == 0], fill=True, label="Censored", color="blue")
+        
+        plt.title(f"Epoch {epoch}: Risk Score Distribution")
+        plt.xlabel("Predicted Risk Score (-log_alpha)")
+        plt.ylabel("Density")
+        plt.legend()
+        
+        # Log to WandB via the trainer's logger
+        if self.logger:
+            self.logger.experiment.log({"risk_distribution": wandb.Image(plt)})
+        
+        plt.close()
+
 
     def on_validation_epoch_end(self):
         preds = torch.cat(self.val_preds)
@@ -194,7 +234,8 @@ class encoder_decoder(L.LightningModule):
         time = torch.cat(self.val_time)
         log_hz_t = torch.cat(self.val_log_hz_t)
         self._calculate_balanced_metrics(preds, events, time, 'val', log_hz_t)
-
+        if self.current_epoch % 5 == 0:
+            self.plot_risk_distribution(preds, events, self.current_epoch)
         # Clear lists for the next epoch
         self.val_preds.clear()
         self.val_events.clear()
@@ -235,14 +276,45 @@ class encoder_decoder(L.LightningModule):
         events = torch.cat(self.test_events)
         time = torch.cat(self.test_time)
         log_hz_t= torch.cat(self.test_log_hz_t)
-        # Calculate metrics for the test set
+
+        eval_time = torch.tensor([1825.0 / 2786.0]).to(preds.device)
+        
+        # 3. Calculate Survival Probability S(t | x)
+        # Shape will be (num_samples, 1)
+        with torch.no_grad():
+            surv_probs = weibull.survival_function(preds, eval_time.unsqueeze(0))
+        
+        # 4. Prepare data for Excel
+        # Convert to CPU/Numpy for Pandas compatibility
+        preds_np = preds.cpu().numpy()
+        events_np = events.cpu().numpy()
+        time_np = time.cpu().numpy()
+        surv_probs_np = surv_probs.squeeze().cpu().numpy()
+
+        # 5. Create DataFrame
+        df = pd.DataFrame({
+            'Actual_Time': time_np,
+            'Actual_Event': events_np,
+            'Surv_Prob_5y': surv_probs_np
+        })
+        
+        # 6. Save to Excel
+        # We use a unique name to avoid overwriting files in Cross-Validation
+        filename = f"test_results_fold_{getattr(self, 'fold_id', 'final')}.xlsx"
+        df.to_excel(filename, index=False)
+        print(f"Saved test predictions and probabilities to {filename}")        # Calculate metrics for the test set
         metrics=  self._calculate_balanced_metrics(preds, events, time, 'test', log_hz_t, return_metrics=True)
         self.test_auroc = metrics['auroc']
-        self.test_f1_score = metrics['cindex']
+        self.test_cindex = metrics['cindex']
+        self.test_ibs = metrics['ibs']
+        self.test_f1_score = metrics['f1_score']
+        self.test_balanced_acc = metrics['balanced_acc']
+        self.plot_risk_distribution(preds, events, self.current_epoch)
         # Clear lists
         self.test_preds.clear()
         self.test_events.clear()
         self.test_log_hz_t.clear()
+
     def configure_optimizers(self):
         # Unfreeze the encoder parameters for fine-tuning
         for param in self.vision_encoder.parameters():

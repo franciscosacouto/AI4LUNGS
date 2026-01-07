@@ -1,0 +1,198 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 150 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.146 Total estimated model params size (MB)
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0112, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:06<00:06,  0.15it/s]
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:06<00:06,  0.15it/s]tensor(0.0115, device='cuda:0')
+tensor(0.0010, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:12<00:00,  0.16it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 52, 1s = 12
+Actual Imbalance Ratio (0:1): 4.33:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+[EPOCH 0] First Training Batch Info:
+ - Image List Len: 32
+ - Event Tensor Shape: torch.Size([32])
+ - Time Tensor Shape: torch.Size([32])
+event tensor:tensor([False,  True, False,  True,  True,  True,  True, False,  True, False,
+        False, False,  True, False,  True, False, False, False, False, False,
+        False, False,  True,  True, False,  True, False, False,  True,  True,
+        False, False], device='cuda:0')
+time tensor:tensor([0.8816, 0.5571, 0.8618, 0.0998, 0.3855, 0.1088, 0.5416, 0.8442, 0.1823,
+        0.8543, 0.8593, 0.9490, 0.4684, 0.8618, 0.0438, 0.8101, 0.8615, 0.8816,
+        0.9009, 0.9490, 0.9045, 0.8776, 0.4864, 0.5158, 0.8431, 0.1823, 0.9225,
+        0.7793, 0.1088, 0.5075, 0.8543, 0.9490], device='cuda:0')
+tensor(0.8026, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3175, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  14%|█▍        | 1/7 [00:06<00:39,  0.15it/s, v_num=dedt]tensor(0.5679, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4139, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  29%|██▊       | 2/7 [00:10<00:26,  0.19it/s, v_num=dedt]tensor(0.5954, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2946, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  43%|████▎     | 3/7 [00:16<00:21,  0.19it/s, v_num=dedt]tensor(0.4853, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3268, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  57%|█████▋    | 4/7 [00:20<00:15,  0.19it/s, v_num=dedt]tensor(0.4456, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5010, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  71%|███████▏  | 5/7 [00:26<00:10,  0.19it/s, v_num=dedt]tensor(0.3889, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2612, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0:  86%|████████▌ | 6/7 [00:31<00:05,  0.19it/s, v_num=dedt]tensor(0.3604, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3163, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 0: 100%|██████████| 7/7 [00:35<00:00,  0.20it/s, v_num=dedt]
+tensor(0.0013, device='cuda:0')         | 0/4 [00:00<?, ?it/s]
+tensor(0.0020, device='cuda:0')█▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(0.0020, device='cuda:0')████     | 2/4 [00:12<00:12,  0.16it/s]
+tensor(-6.3746e-05, device='cuda:0')█▌  | 3/4 [00:17<00:05,  0.17it/s]
+==================================================19<00:00,  0.21it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 106
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=dedt, val_loss=0.696]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=dedt, val_loss=0.696]tensor(0.4170, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3158, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=dedt, val_loss=0.696]tensor(0.5706, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4677, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  29%|██▊       | 2/7 [00:11<00:27,  0.18it/s, v_num=dedt, val_loss=0.696]tensor(0.3498, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3156, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  43%|████▎     | 3/7 [00:16<00:22,  0.18it/s, v_num=dedt, val_loss=0.696]tensor(0.6062, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3381, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  57%|█████▋    | 4/7 [00:19<00:14,  0.21it/s, v_num=dedt, val_loss=0.696]tensor(0.5573, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3438, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  71%|███████▏  | 5/7 [00:24<00:09,  0.21it/s, v_num=dedt, val_loss=0.696]tensor(0.4955, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3200, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1:  86%|████████▌ | 6/7 [00:29<00:04,  0.21it/s, v_num=dedt, val_loss=0.696]tensor(0.4276, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3184, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 1: 100%|██████████| 7/7 [00:33<00:00,  0.21it/s, v_num=dedt, val_loss=0.696]
+tensor(0.0026, device='cuda:0')         | 0/4 [00:00<?, ?it/s]
+tensor(0.0030, device='cuda:0')█▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(0.0038, device='cuda:0')████     | 2/4 [00:11<00:11,  0.18it/s]
+tensor(0.0005, device='cuda:0')██████▌  | 3/4 [00:15<00:05,  0.19it/s]
+==================================================17<00:00,  0.23it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 106
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=dedt, val_loss=0.696]tensor(0.6501, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2606, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  14%|█▍        | 1/7 [00:07<00:43,  0.14it/s, v_num=dedt, val_loss=0.696]tensor(0.8196, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3706, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  29%|██▊       | 2/7 [00:12<00:30,  0.16it/s, v_num=dedt, val_loss=0.696]tensor(0.7282, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3520, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  43%|████▎     | 3/7 [00:17<00:23,  0.17it/s, v_num=dedt, val_loss=0.696]tensor(0.5101, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2568, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  57%|█████▋    | 4/7 [00:23<00:17,  0.17it/s, v_num=dedt, val_loss=0.696]tensor(0.5305, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4972, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  71%|███████▏  | 5/7 [00:27<00:11,  0.18it/s, v_num=dedt, val_loss=0.696]tensor(0.4928, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3670, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2:  86%|████████▌ | 6/7 [00:33<00:05,  0.18it/s, v_num=dedt, val_loss=0.696]tensor(0.7943, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3889, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 2: 100%|██████████| 7/7 [00:37<00:00,  0.19it/s, v_num=dedt, val_loss=0.696]
+tensor(0.0045, device='cuda:0')         | 0/4 [00:00<?, ?it/s]
+tensor(0.0045, device='cuda:0')         | 0/4 [00:00<?, ?it/s]
+Validation DataLoader 0:  50%|█████     | 2/4 [00:12<00:12,  0.16it/s]
+tensor(0.0021, device='cuda:0')██████▌  | 3/4 [00:15<00:05,  0.20it/s]
+                                                                      tensor(0.0187, device='cuda:0')
+tensor(0.0021, device='cuda:0')██████▌  | 3/4 [00:15<00:05,  0.20it/s]
+==================================================16<00:00,  0.25it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 106
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=dedt, val_loss=0.695]tensor(0.7561, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3759, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=dedt, val_loss=0.695]tensor(0.4500, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4093, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  29%|██▊       | 2/7 [00:12<00:30,  0.16it/s, v_num=dedt, val_loss=0.695]tensor(0.4371, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2272, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  43%|████▎     | 3/7 [00:17<00:23,  0.17it/s, v_num=dedt, val_loss=0.695]tensor(0.6254, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4332, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  57%|█████▋    | 4/7 [00:22<00:17,  0.17it/s, v_num=dedt, val_loss=0.695]tensor(1.3623, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4360, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  71%|███████▏  | 5/7 [00:26<00:10,  0.19it/s, v_num=dedt, val_loss=0.695]tensor(0.6353, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3582, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3:  86%|████████▌ | 6/7 [00:30<00:05,  0.20it/s, v_num=dedt, val_loss=0.695]tensor(0.7460, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.1993, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 3: 100%|██████████| 7/7 [00:33<00:00,  0.21it/s, v_num=dedt, val_loss=0.695]
+tensor(0.0028, device='cuda:0')         | 0/4 [00:00<?, ?it/s]
+tensor(0.0024, device='cuda:0')█▌       | 1/4 [00:06<00:19,  0.15it/s]
+tensor(0.0047, device='cuda:0')████     | 2/4 [00:10<00:10,  0.18it/s]
+tensor(0.0031, device='cuda:0')██████▌  | 3/4 [00:16<00:05,  0.18it/s]
+==================================================18<00:00,  0.22it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 106
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=dedt, val_loss=0.693]tensor(0.8217, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3017, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=dedt, val_loss=0.693]tensor(0.6741, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2963, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  29%|██▊       | 2/7 [00:12<00:32,  0.16it/s, v_num=dedt, val_loss=0.693]tensor(0.4149, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2791, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  43%|████▎     | 3/7 [00:18<00:24,  0.16it/s, v_num=dedt, val_loss=0.693]tensor(0.7534, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2968, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  57%|█████▋    | 4/7 [00:23<00:17,  0.17it/s, v_num=dedt, val_loss=0.693]tensor(0.4125, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2602, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  71%|███████▏  | 5/7 [00:26<00:10,  0.19it/s, v_num=dedt, val_loss=0.693]tensor(0.5891, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2484, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4:  86%|████████▌ | 6/7 [00:30<00:05,  0.20it/s, v_num=dedt, val_loss=0.693]tensor(0.4943, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3043, device='cuda:0', grad_fn=<MinBackward1>)
+Epoch 4: 100%|██████████| 7/7 [00:34<00:00,  0.20it/s, v_num=dedt, val_loss=0.693]
+tensor(-0.0017, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0028, device='cuda:0')▌       | 1/4 [00:07<00:21,  0.14it/s]
+tensor(0.0027, device='cuda:0')████     | 2/4 [00:13<00:13,  0.15it/s]
+Validation DataLoader 0:  75%|███████▌  | 3/4 [00:17<00:05,  0.18it/s]
+`Trainer.fit` stopped: `max_epochs=5` reached.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_decoder_approach.py --config-name config.yam ...
+tensor(0.0019, device='cuda:0')██████▌  | 3/4 [00:17<00:05,  0.18it/s]
+==================================================17<00:00,  0.23it/s]
+Stage: VAL
+Predicted class distribution: 0s = 4, 1s = 102
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 4: 100%|██████████| 7/7 [00:52<00:00,  0.13it/s, v_num=dedt, val_loss=0.692]
+
+
+
+Testing DataLoader 0: 100%|██████████| 3/3 [00:11<00:00,  0.26it/s]
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 3, 1s = 77
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+Testing DataLoader 0: 100%|██████████| 3/3 [00:12<00:00,  0.25it/s]
