@@ -1,0 +1,1186 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:639: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 283 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.678 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0692, device='cuda:0')
+tensor(-0.1857, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:00<00:00,  1.24it/s]tensor(0.0159, device='cuda:0')
+tensor(-0.1886, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:01<00:00,  1.23it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 48, 1s = 16
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s] 🔥 Successfully training: convs.0.proj.weight
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073857
+Epoch 0:  14%|█▍        | 1/7 [00:03<00:21,  0.28it/s, v_num=ds8b, train_loss_step=0.657]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090750
+Epoch 0:  29%|██▊       | 2/7 [00:07<00:17,  0.29it/s, v_num=ds8b, train_loss_step=0.569]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082800
+Epoch 0:  43%|████▎     | 3/7 [00:10<00:13,  0.29it/s, v_num=ds8b, train_loss_step=0.695]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091771
+Epoch 0:  57%|█████▋    | 4/7 [00:13<00:10,  0.29it/s, v_num=ds8b, train_loss_step=0.542]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061751
+Epoch 0:  71%|███████▏  | 5/7 [00:17<00:06,  0.29it/s, v_num=ds8b, train_loss_step=0.469]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.092308
+Epoch 0:  86%|████████▌ | 6/7 [00:20<00:03,  0.29it/s, v_num=ds8b, train_loss_step=0.647]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 0:  86%|████████▌ | 6/7 [00:20<00:03,  0.29it/s, v_num=ds8b, train_loss_step=0.647]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.065859
+Epoch 0: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.615]
+tensor(-0.2079, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.0200, device='cuda:0')
+tensor(-0.2023, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.1555, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(0.0263, device='cuda:0')
+tensor(-0.1376, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0: 100%|██████████| 7/7 [00:27<00:00,  0.26it/s, v_num=ds8b, train_loss_step=0.615, val_loss=0.763, train_loss_epoch=0.598]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.615, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.058491
+Epoch 1:  14%|█▍        | 1/7 [00:04<00:26,  0.23it/s, v_num=ds8b, train_loss_step=0.531, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064258
+Epoch 1:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.662, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062009
+Epoch 1:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.585, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075251
+Epoch 1:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.573, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075615
+Epoch 1:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.676, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062293
+Epoch 1:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.590, val_loss=0.763, train_loss_epoch=0.598]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 1:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.590, val_loss=0.763, train_loss_epoch=0.598]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077457
+Epoch 1: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.521, val_loss=0.763, train_loss_epoch=0.598]
+tensor(-0.2602, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.0130, device='cuda:0')
+tensor(-0.2623, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(-0.0029, device='cuda:0')
+tensor(-0.2072, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+tensor(-0.1275, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.521, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074598
+Epoch 2:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.702, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080822
+Epoch 2:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.766, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.058720
+Epoch 2:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.619, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080216
+Epoch 2:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.689, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084371
+Epoch 2:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.637, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.119669
+Epoch 2:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.563, val_loss=0.754, train_loss_epoch=0.595]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071502
+Epoch 2: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.0715, device='cuda:0')_loss=0.754, train_loss_epoch=0.595]
+tensor(-0.3065, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.0495, device='cuda:0')
+tensor(-0.3273, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.2897, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.0761, device='cuda:0')
+tensor(-0.1061, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.671, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082325
+Epoch 3:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.577, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081609
+Epoch 3:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.627, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071943
+Epoch 3:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.513, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077008
+Epoch 3:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.618, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.067400
+Epoch 3:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.615, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.085107
+Epoch 3:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.583, val_loss=0.735, train_loss_epoch=0.663]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.088047
+Epoch 3: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.1160, device='cuda:0')_loss=0.735, train_loss_epoch=0.663]
+tensor(-0.3707, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.0805, device='cuda:0')
+tensor(-0.4075, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.3846, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.1160, device='cuda:0')
+tensor(-0.1257, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.599, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086349
+Epoch 4:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.448, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061553
+Epoch 4:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.677, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077501
+Epoch 4:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.675, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076679
+Epoch 4:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.672, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091252
+Epoch 4:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.596, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070508
+Epoch 4:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.540, val_loss=0.717, train_loss_epoch=0.590]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.109809
+Epoch 4: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.1774, device='cuda:0')_loss=0.717, train_loss_epoch=0.590]
+tensor(-0.4361, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.4764, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.0886, device='cuda:0')
+tensor(-0.4577, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.1595, device='cuda:0')
+tensor(-0.1826, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.679, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077896
+Epoch 5:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.556, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062821
+Epoch 5:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.558, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075285
+Epoch 5:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.583, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071010
+Epoch 5:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.629, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076747
+Epoch 5:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.495, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056791
+Epoch 5:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.656, val_loss=0.698, train_loss_epoch=0.609]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090423
+Epoch 5: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.2338, device='cuda:0')_loss=0.698, train_loss_epoch=0.609]
+tensor(-0.4915, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.5341, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.1283, device='cuda:0')
+tensor(-0.5108, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(0.1946, device='cuda:0')
+tensor(-0.2141, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.453, val_loss=0.682, train_loss_epoch=0.567]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.453, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070714
+Epoch 6:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.594, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063534
+Epoch 6:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.488, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069230
+Epoch 6:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.444, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076209
+Epoch 6:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.494, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084020
+Epoch 6:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.415, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063243
+Epoch 6:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.365, val_loss=0.682, train_loss_epoch=0.567]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 6:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.365, val_loss=0.682, train_loss_epoch=0.567]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.098039
+Epoch 6: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.421, val_loss=0.682, train_loss_epoch=0.567]
+tensor(-0.4961, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.2090, device='cuda:0')
+tensor(-0.5652, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.4871, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.2274, device='cuda:0')
+tensor(-0.2048, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 7:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.421, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.068293
+Epoch 7:  14%|█▍        | 1/7 [00:04<00:26,  0.23it/s, v_num=ds8b, train_loss_step=0.595, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061964
+Epoch 7:  29%|██▊       | 2/7 [00:07<00:19,  0.26it/s, v_num=ds8b, train_loss_step=0.581, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064325
+Epoch 7:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.672, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079256
+Epoch 7:  57%|█████▋    | 4/7 [00:14<00:10,  0.27it/s, v_num=ds8b, train_loss_step=0.526, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083574
+Epoch 7:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.467, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103952
+Epoch 7:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.823, val_loss=0.659, train_loss_epoch=0.462]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103950
+Epoch 7: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.3227, device='cuda:0')_loss=0.659, train_loss_epoch=0.462]
+tensor(-0.5411, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.2455, device='cuda:0')
+tensor(-0.6682, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.5769, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.2602, device='cuda:0')
+tensor(-0.2658, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 8:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.543, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083640
+Epoch 8:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.583, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078071
+Epoch 8:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.465, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063960
+Epoch 8:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.463, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.065512
+Epoch 8:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.394, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.088979
+Epoch 8:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.390, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080257
+Epoch 8:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.501, val_loss=0.645, train_loss_epoch=0.604]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.097501
+Epoch 8: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.656, val_loss=0.645, train_loss_epoch=0.604]
+tensor(-0.5641, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.2809, device='cuda:0')
+tensor(-0.7217, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.2513, device='cuda:0')
+tensor(-0.6365, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+tensor(-0.3205, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 9:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.656, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074145
+Epoch 9:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.534, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077720
+Epoch 9:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.537, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062468
+Epoch 9:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.549, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077322
+Epoch 9:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.348, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062237
+Epoch 9:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.561, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096664
+Epoch 9:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.476, val_loss=0.630, train_loss_epoch=0.485]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.098168
+Epoch 9: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=dtensor(0.4165, device='cuda:0')_loss=0.630, train_loss_epoch=0.485]
+tensor(-0.5774, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.3496, device='cuda:0')
+tensor(-0.7544, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.6602, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.3694, device='cuda:0')
+tensor(-0.3593, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 10:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.332, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091160
+Epoch 10:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.527, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061131
+Epoch 10:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.309, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087850
+Epoch 10:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.451, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.068247
+Epoch 10:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.415, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071970
+Epoch 10:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.539, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079554
+
+Epoch 10:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.461, val_loss=0.608, train_loss_epoch=0.484]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.113382
+Epoch 10: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.4652, device='cuda:0')l_loss=0.608, train_loss_epoch=0.484]
+tensor(-0.6502, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.8216, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.3513, device='cuda:0')
+tensor(-0.7115, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.4170, device='cuda:0')
+tensor(-0.4309, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.286, val_loss=0.589, train_loss_epoch=0.434]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.286, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064458
+Epoch 11:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.424, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070547
+Epoch 11:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.382, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056034
+Epoch 11:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.324, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069586
+Epoch 11:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.409, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.067290
+Epoch 11:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.354, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070906
+Epoch 11:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.382, val_loss=0.589, train_loss_epoch=0.434]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076455
+Epoch 11: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.421, val_loss=0.589, train_loss_epoch=0.434]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 11: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.5168, device='cuda:0')l_loss=0.589, train_loss_epoch=0.434]
+tensor(-0.7001, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.4876, device='cuda:0')
+tensor(-0.8945, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.7837, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.4747, device='cuda:0')
+tensor(-0.4952, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 6, 1s = 101
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.421, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063954
+Epoch 12:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.549, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082028
+Epoch 12:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.528, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073514
+Epoch 12:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.311, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099194
+Epoch 12:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.533, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079681
+Epoch 12:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.427, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063073
+Epoch 12:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.451, val_loss=0.571, train_loss_epoch=0.383]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086966
+Epoch 12: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.5755, device='cuda:0')l_loss=0.571, train_loss_epoch=0.383]
+tensor(-0.7382, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.5589, device='cuda:0')
+tensor(-0.9362, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.8328, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.5453, device='cuda:0')
+tensor(-0.5372, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 14, 1s = 93
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 13:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.351, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077007
+Epoch 13:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.452, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.093459
+Epoch 13:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.483, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.067492
+Epoch 13:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.283, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069669
+Epoch 13:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.407, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.155598
+Epoch 13:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.680, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083942
+Epoch 13:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.413, val_loss=0.548, train_loss_epoch=0.455]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.115515
+Epoch 13: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.283, val_loss=0.548, train_loss_epoch=0.455]
+tensor(-0.7800, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.6110, device='cuda:0')
+tensor(-0.9669, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.8853, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(0.5930, device='cuda:0')
+tensor(-0.5881, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 22, 1s = 85
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 14:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.283, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.059439
+
+Epoch 14:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.425, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.130410
+Epoch 14:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.417, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073829
+Epoch 14:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.397, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.085870
+Epoch 14:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.276, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089137
+Epoch 14:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.372, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.109990
+Epoch 14:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.445, val_loss=0.537, train_loss_epoch=0.436]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094945
+Epoch 14: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.6476, device='cuda:0')l_loss=0.537, train_loss_epoch=0.436]
+tensor(-0.8009, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.0062, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.5524, device='cuda:0')
+tensor(-0.9483, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.6503, device='cuda:0')
+tensor(-0.6577, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 29, 1s = 78
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 15:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.310, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.119865
+Epoch 15:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.430, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071135
+Epoch 15:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.425, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090287
+Epoch 15:  43%|████▎     | 3/7 [00:11<00:15,  0.26it/s, v_num=ds8b, train_loss_step=0.373, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102218
+Epoch 15:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.430, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080462
+Epoch 15:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.268, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.136975
+Epoch 15:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.564, val_loss=0.521, train_loss_epoch=0.381]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.147064
+Epoch 15: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.6761, device='cuda:0')l_loss=0.521, train_loss_epoch=0.381]
+tensor(-0.8215, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.0700, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.5786, device='cuda:0')
+tensor(-1.0128, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.6813, device='cuda:0')
+tensor(-0.6867, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 36, 1s = 71
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.394, val_loss=0.507, train_loss_epoch=0.413]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.394, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.111825
+Epoch 16:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.257, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.110858
+Epoch 16:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.526, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089570
+Epoch 16:  43%|████▎     | 3/7 [00:11<00:15,  0.26it/s, v_num=ds8b, train_loss_step=0.551, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078567
+Epoch 16:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.472, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078417
+Epoch 16:  71%|███████▏  | 5/7 [00:18<00:07,  0.27it/s, v_num=ds8b, train_loss_step=0.218, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078682
+Epoch 16:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.316, val_loss=0.507, train_loss_epoch=0.413]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086588
+Epoch 16: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.370, val_loss=0.507, train_loss_epoch=0.413]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 16: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.7471, device='cuda:0')l_loss=0.507, train_loss_epoch=0.413]
+tensor(-0.7694, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.0628, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.6589, device='cuda:0')
+tensor(-0.9891, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.7563, device='cuda:0')
+tensor(-0.6611, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 49, 1s = 58
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 17:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.370, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.066028
+Epoch 17:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.343, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103804
+Epoch 17:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.540, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078876
+Epoch 17:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.274, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079065
+Epoch 17:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.329, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070765
+Epoch 17:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.370, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082725
+Epoch 17:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.430, val_loss=0.474, train_loss_epoch=0.388]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.100571
+Epoch 17: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.8106, device='cuda:0')l_loss=0.474, train_loss_epoch=0.388]
+tensor(-0.7826, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.1101, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.7235, device='cuda:0')
+tensor(-1.0384, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.8027, device='cuda:0')
+tensor(-0.6725, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 53, 1s = 54
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 18:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.227, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096746
+Epoch 18:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.333, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071655
+Epoch 18:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.445, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.124213
+Epoch 18:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.295, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.107394
+Epoch 18:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.356, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.058550
+Epoch 18:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.218, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118849
+Epoch 18:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.256, val_loss=0.452, train_loss_epoch=0.366]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.214959
+Epoch 18: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(0.8887, device='cuda:0')l_loss=0.452, train_loss_epoch=0.366]
+tensor(-0.8673, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.1412, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.7727, device='cuda:0')
+tensor(-1.0864, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.8649, device='cuda:0')
+tensor(-0.7525, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 54, 1s = 53
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 19:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.197, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089683
+Epoch 19:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.125, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075306
+Epoch 19:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.347, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.066840
+Epoch 19:  43%|████▎     | 3/7 [00:11<00:15,  0.26it/s, v_num=ds8b, train_loss_step=0.302, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087035
+Epoch 19:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.327, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105828
+Epoch 19:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.345, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.121829
+
+Epoch 19:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.229, val_loss=0.445, train_loss_epoch=0.305]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084679
+Epoch 19: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.349, val_loss=0.445, train_loss_epoch=0.305]
+tensor(-0.9255, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.9904, device='cuda:0')
+tensor(-1.1569, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.8623, device='cuda:0')
+tensor(-1.1276, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+tensor(-0.8041, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 54, 1s = 53
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 20:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.349, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.113619
+Epoch 20:  14%|█▍        | 1/7 [00:04<00:26,  0.23it/s, v_num=ds8b, train_loss_step=0.252, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.066360
+
+Epoch 20:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.314, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.126987
+Epoch 20:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.222, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.244825
+Epoch 20:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.262, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094008
+Epoch 20:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.226, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090438
+Epoch 20:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.417, val_loss=0.430, train_loss_epoch=0.286]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096250
+Epoch 20: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(1.0819, device='cuda:0')l_loss=0.430, train_loss_epoch=0.286]
+tensor(-0.9952, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.1229, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.8711, device='cuda:0')
+tensor(-1.1181, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.9809, device='cuda:0')
+tensor(-0.8364, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 53, 1s = 54
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Epoch 21:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.123, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.108064
+Epoch 21:  14%|█▍        | 1/7 [00:04<00:28,  0.21it/s, v_num=ds8b, train_loss_step=0.388, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.120036
+
+Epoch 21:  29%|██▊       | 2/7 [00:08<00:20,  0.24it/s, v_num=ds8b, train_loss_step=0.252, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077990
+Epoch 21:  43%|████▎     | 3/7 [00:12<00:16,  0.25it/s, v_num=ds8b, train_loss_step=0.296, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.120250
+Epoch 21:  57%|█████▋    | 4/7 [00:15<00:11,  0.26it/s, v_num=ds8b, train_loss_step=0.335, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105519
+Epoch 21:  71%|███████▏  | 5/7 [00:18<00:07,  0.26it/s, v_num=ds8b, train_loss_step=0.203, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073908
+Epoch 21:  86%|████████▌ | 6/7 [00:22<00:03,  0.27it/s, v_num=ds8b, train_loss_step=0.125, val_loss=0.439, train_loss_epoch=0.267]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101128
+Epoch 21: 100%|██████████| 7/7 [00:24<00:00,  0.28it/s, v_num=ds8b, train_loss_step=0.291, val_loss=0.439, train_loss_epoch=0.267]
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+tensor(-0.9062, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.1796, device='cuda:0')
+tensor(-1.0508, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.0566, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.1587, device='cuda:0')
+tensor(-0.6737, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 59, 1s = 48
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 22:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.291, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087285
+Epoch 22:  14%|█▍        | 1/7 [00:04<00:26,  0.22it/s, v_num=ds8b, train_loss_step=0.354, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095657
+Epoch 22:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.213, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102448
+Epoch 22:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.266, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082360
+Epoch 22:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.258, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118064
+Epoch 22:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.210, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090396
+Epoch 22:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.115, val_loss=0.376, train_loss_epoch=0.269]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080668
+Epoch 22: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.247, val_loss=0.376, train_loss_epoch=0.269]
+tensor(-0.8638, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.2957, device='cuda:0')
+tensor(-1.0900, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.0943, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.2677, device='cuda:0')
+tensor(-0.6154, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 23:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.247, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090934
+Epoch 23:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.292, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091587
+Epoch 23:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.432, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076552
+Epoch 23:  43%|████▎     | 3/7 [00:11<00:15,  0.26it/s, v_num=ds8b, train_loss_step=0.301, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.085769
+Epoch 23:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.165, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077064
+Epoch 23:  71%|███████▏  | 5/7 [00:18<00:07,  0.27it/s, v_num=ds8b, train_loss_step=0.220, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101686
+Epoch 23:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.176, val_loss=0.333, train_loss_epoch=0.237]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.120772
+Epoch 23: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.355, val_loss=0.333, train_loss_epoch=0.237]
+tensor(-0.8759, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.3594, device='cuda:0')
+tensor(-1.1471, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.1545, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.3338, device='cuda:0')
+tensor(-0.6513, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 24:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.355, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081472
+Epoch 24:  14%|█▍        | 1/7 [00:04<00:26,  0.23it/s, v_num=ds8b, train_loss_step=0.331, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.129974
+Epoch 24:  29%|██▊       | 2/7 [00:07<00:19,  0.25it/s, v_num=ds8b, train_loss_step=0.216, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.154527
+Epoch 24:  43%|████▎     | 3/7 [00:11<00:15,  0.27it/s, v_num=ds8b, train_loss_step=0.0814, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.142679
+Epoch 24:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.255, val_loss=0.311, train_loss_epoch=0.273] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084166
+Epoch 24:  71%|███████▏  | 5/7 [00:18<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.194, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103636
+Epoch 24:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.177, val_loss=0.311, train_loss_epoch=0.273]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.149069
+Epoch 24: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=ds8b, train_loss_step=0.0604, val_loss=0.311, train_loss_epoch=0.273]
+tensor(-0.9580, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.3905, device='cuda:0')
+tensor(-1.1650, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.3011, device='cuda:0')
+tensor(-1.1854, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+tensor(-0.8002, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 25:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0604, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.149146
+Epoch 25:  14%|█▍        | 1/7 [00:04<00:27,  0.22it/s, v_num=ds8b, train_loss_step=0.240, val_loss=0.308, train_loss_epoch=0.194] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095926
+Epoch 25:  29%|██▊       | 2/7 [00:08<00:20,  0.25it/s, v_num=ds8b, train_loss_step=0.187, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.054412
+Epoch 25:  43%|████▎     | 3/7 [00:11<00:15,  0.26it/s, v_num=ds8b, train_loss_step=0.546, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.100392
+Epoch 25:  57%|█████▋    | 4/7 [00:14<00:11,  0.27it/s, v_num=ds8b, train_loss_step=0.232, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077178
+Epoch 25:  71%|███████▏  | 5/7 [00:18<00:07,  0.27it/s, v_num=ds8b, train_loss_step=0.251, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078816
+Epoch 25:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.246, val_loss=0.308, train_loss_epoch=0.194]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.072940
+Epoch 25: 100%|██████████| 7/7 [00:23<00:00,  0.29it/s, v_num=tensor(1.4883, device='cuda:0')l_loss=0.308, train_loss_epoch=0.194]
+tensor(-1.0345, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.4391, device='cuda:0')
+tensor(-1.0976, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.25it/s]
+tensor(-1.1332, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.4744, device='cuda:0')
+tensor(-0.8878, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.46it/s]
+Stage: VAL
+Predicted class distribution: 0s = 59, 1s = 48
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 26:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.063, val_loss=0.358, train_loss_epoch=0.262]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+Epoch 26:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.063, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.065862
+Epoch 26:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.159, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.119733
+Epoch 26:  29%|██▊       | 2/7 [00:07<00:19,  0.26it/s, v_num=ds8b, train_loss_step=0.211, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.197932
+Epoch 26:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.202, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.226660
+Epoch 26:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.313, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095411
+Epoch 26:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.162, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.119884
+Epoch 26:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.231, val_loss=0.358, train_loss_epoch=0.262]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 26:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.231, val_loss=0.358, train_loss_epoch=0.262]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.145531
+Epoch 26: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.6198, device='cuda:0')al_loss=0.358, train_loss_epoch=0.262]
+tensor(-0.9918, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-1.0069, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.3237, device='cuda:0')
+tensor(-1.0581, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.5629, device='cuda:0')
+tensor(-0.8466, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 58, 1s = 49
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 27:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0108, val_loss=0.355, train_loss_epoch=0.193]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081451
+Epoch 27:  14%|█▍        | 1/7 [00:03<00:23,  0.26it/s, v_num=ds8b, train_loss_step=0.103, val_loss=0.355, train_loss_epoch=0.193] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118362
+Epoch 27:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.158, val_loss=0.355, train_loss_epoch=0.193]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.116585
+Epoch 27:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.0608, val_loss=0.355, train_loss_epoch=0.193]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071032
+Epoch 27:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.109, val_loss=0.355, train_loss_epoch=0.193] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087740
+Epoch 27:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.160, val_loss=0.355, train_loss_epoch=0.193]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104004
+Epoch 27:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.139, val_loss=0.355, train_loss_epoch=0.193]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.138114
+Epoch 27: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.0502, val_loss=0.355, train_loss_epoch=0.193]
+tensor(-0.9163, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.7446, device='cuda:0')
+tensor(-0.9327, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+tensor(-1.0329, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.7835, device='cuda:0')
+tensor(-0.7412, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 28:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0502, val_loss=0.274, train_loss_epoch=0.115]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063782
+Epoch 28:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.151, val_loss=0.274, train_loss_epoch=0.115] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082734
+Epoch 28:  29%|██▊       | 2/7 [00:07<00:19,  0.26it/s, v_num=ds8b, train_loss_step=0.128, val_loss=0.274, train_loss_epoch=0.115]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.141673
+Epoch 28:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.228, val_loss=0.274, train_loss_epoch=0.115]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074287
+Epoch 28:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0161, val_loss=0.274, train_loss_epoch=0.115]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.137589
+Epoch 28:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0221, val_loss=0.274, train_loss_epoch=0.115]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.056840
+Epoch 28:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.357, val_loss=0.274, train_loss_epoch=0.115] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.202708
+Epoch 28: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.6943, device='cuda:0')l_loss=0.274, train_loss_epoch=0.115]
+tensor(-0.8651, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.9301, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.5798, device='cuda:0')
+tensor(-1.1095, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.7487, device='cuda:0')
+tensor(-0.6846, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 69, 1s = 38
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 29:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.173, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.889566
+Epoch 29:  14%|█▍        | 1/7 [00:04<00:24,  0.25it/s, v_num=ds8b, train_loss_step=0.682, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.044708
+Epoch 29:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.326, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.116523
+Epoch 29:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.0719, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096255
+Epoch 29:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0565, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.117309
+Epoch 29:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.235, val_loss=0.242, train_loss_epoch=0.153] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.092343
+Epoch 29:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0018, val_loss=0.242, train_loss_epoch=0.153]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.123440
+Epoch 29: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.0978, val_loss=0.242, train_loss_epoch=0.153]
+tensor(-0.6244, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.6810, device='cuda:0')
+tensor(-0.7471, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.9354, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.7221, device='cuda:0')
+tensor(-0.6311, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 64, 1s = 43
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 30:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0978, val_loss=0.238, train_loss_epoch=0.215]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.133911
+Epoch 30:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.178, val_loss=0.238, train_loss_epoch=0.215] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.398614
+Epoch 30:  29%|██▊       | 2/7 [00:07<00:18,  0.26it/s, v_num=ds8b, train_loss_step=0.217, val_loss=0.238, train_loss_epoch=0.215]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075491
+
+Epoch 30:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0727, val_loss=0.238, train_loss_epoch=0.215]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118757
+Epoch 30:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.224, val_loss=0.238, train_loss_epoch=0.215] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090931
+Epoch 30:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.224, val_loss=0.238, train_loss_epoch=0.215]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.504303
+Epoch 30:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.208, val_loss=0.238, train_loss_epoch=0.215]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.219898
+Epoch 30: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.359, val_loss=0.238, train_loss_epoch=0.215]
+tensor(-0.5245, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.7181, device='cuda:0')
+tensor(-0.6805, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.6373, device='cuda:0')
+tensor(-0.8699, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+Validation DataLoader 0:  75%|███████▌  | 3/4 [00:02<00:00,  1.22it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+tensor(-0.6330, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 65, 1s = 42
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 31:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.359, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.137161
+Epoch 31:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.162, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094605
+Epoch 31:  29%|██▊       | 2/7 [00:07<00:19,  0.26it/s, v_num=ds8b, train_loss_step=0.204, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071959
+Epoch 31:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.103, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087266
+Epoch 31:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0129, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089057
+Epoch 31:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.120, val_loss=0.238, train_loss_epoch=0.204] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081675
+Epoch 31:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.00298, val_loss=0.238, train_loss_epoch=0.204]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 31:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.00298, val_loss=0.238, train_loss_epoch=0.204]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.124595
+Epoch 31: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.6867, device='cuda:0')l_loss=0.238, train_loss_epoch=0.204]
+tensor(-0.5618, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7379, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.6930, device='cuda:0')
+tensor(-0.8815, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.7563, device='cuda:0')
+tensor(-0.6803, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 64, 1s = 43
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 32:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.333, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.098654
+Epoch 32:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.182, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064169
+Epoch 32:  29%|██▊       | 2/7 [00:07<00:18,  0.26it/s, v_num=ds8b, train_loss_step=0.207, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.116350
+Epoch 32:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0454, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.577655
+Epoch 32:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.120, val_loss=0.232, train_loss_epoch=0.124] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091123
+Epoch 32:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0954, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102103
+Epoch 32:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.00156, val_loss=0.232, train_loss_epoch=0.124]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103768
+Epoch 32: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.143, val_loss=0.232, train_loss_epoch=0.124]
+tensor(-0.6368, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.8362, device='cuda:0')
+tensor(-0.8074, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-0.9425, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.8162, device='cuda:0')
+tensor(-0.7618, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 64, 1s = 43
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 33:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.143, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079759
+Epoch 33:  14%|█▍        | 1/7 [00:04<00:25,  0.24it/s, v_num=ds8b, train_loss_step=0.129, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.092287
+Epoch 33:  29%|██▊       | 2/7 [00:07<00:19,  0.26it/s, v_num=ds8b, train_loss_step=0.231, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.143756
+Epoch 33:  43%|████▎     | 3/7 [00:11<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.067, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095040
+Epoch 33:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.180, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.108285
+Epoch 33:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0433, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075477
+Epoch 33:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.0221, val_loss=0.222, train_loss_epoch=0.112]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.153000
+Epoch 33: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.8365, device='cuda:0')l_loss=0.222, train_loss_epoch=0.112]
+tensor(-0.7165, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(1.8585, device='cuda:0')
+tensor(-0.8725, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.0324, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.8477, device='cuda:0')
+tensor(-0.8422, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 65, 1s = 42
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 34:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.172, val_loss=0.212, train_loss_epoch=0.118]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099261
+Epoch 34:  14%|█▍        | 1/7 [00:04<00:24,  0.24it/s, v_num=ds8b, train_loss_step=0.0771, val_loss=0.212, train_loss_epoch=0.118]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.070273
+Epoch 34:  29%|██▊       | 2/7 [00:07<00:18,  0.26it/s, v_num=ds8b, train_loss_step=-0.00749, val_loss=0.212, train_loss_epoch=0.118]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074778
+Epoch 34:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0168, val_loss=0.212, train_loss_epoch=0.118]  SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077363
+Epoch 34:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0121, val_loss=0.212, train_loss_epoch=0.118]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.146634
+Epoch 34:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0315, val_loss=0.212, train_loss_epoch=0.118]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 2.413716
+Epoch 34:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.468, val_loss=0.212, train_loss_epoch=0.118] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.211379
+Epoch 34: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.9732, device='cuda:0')al_loss=0.212, train_loss_epoch=0.118]
+tensor(-0.6961, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.0027, device='cuda:0')
+tensor(-0.8472, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.0293, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.9767, device='cuda:0')
+tensor(-0.7963, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 69, 1s = 38
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+
+Epoch 35:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0749, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069991
+Epoch 35:  14%|█▍        | 1/7 [00:03<00:23,  0.26it/s, v_num=ds8b, train_loss_step=0.0811, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079461
+Epoch 35:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.0503, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.123602
+Epoch 35:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.0413, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.132458
+Epoch 35:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.00538, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073415
+Epoch 35:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0244, val_loss=0.192, train_loss_epoch=0.0972] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084734
+Epoch 35:  86%|████████▌ | 6/7 [00:21<00:03,  0.29it/s, v_num=ds8b, train_loss_step=0.0817, val_loss=0.192, train_loss_epoch=0.0972]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.127855
+Epoch 35: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(1.9771, device='cuda:0')al_loss=0.192, train_loss_epoch=0.0972]
+tensor(-0.6263, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.8296, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(1.9709, device='cuda:0')
+tensor(-0.9869, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(1.9769, device='cuda:0')
+tensor(-0.6851, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 72, 1s = 35
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Epoch 36:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0333, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.202875
+Epoch 36:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=0.0114, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.088463
+Epoch 36:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.0419, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073056
+Epoch 36:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.00196, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.435682
+Epoch 36:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.314, val_loss=0.200, train_loss_epoch=0.046]  SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.119577
+Epoch 36:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.110, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071300
+Epoch 36:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0152, val_loss=0.200, train_loss_epoch=0.046]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.100006
+Epoch 36: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.0307, val_loss=0.200, train_loss_epoch=0.046]
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+tensor(-0.6215, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.0117, device='cuda:0')
+tensor(-0.8377, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+tensor(-1.0222, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(1.9489, device='cuda:0')
+tensor(-0.6553, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.22it/s]
+==================================================02<00:00,  1.44it/s]
+Stage: VAL
+Predicted class distribution: 0s = 74, 1s = 33
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 37:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0307, val_loss=0.208, train_loss_epoch=0.0727]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073226
+Epoch 37:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=0.0488, val_loss=0.208, train_loss_epoch=0.0727]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102299
+Epoch 37:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.113, val_loss=0.208, train_loss_epoch=0.0727] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.158401
+Epoch 37:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=-0.0134, val_loss=0.208, train_loss_epoch=0.0727]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079310
+Epoch 37:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.011, val_loss=0.208, train_loss_epoch=0.0727] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104840
+Epoch 37:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0958, val_loss=0.208, train_loss_epoch=0.0727]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083089
+Epoch 37:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.022, val_loss=0.208, train_loss_epoch=0.0727]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.165172
+Epoch 37: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.0378, device='cuda:0')l_loss=0.208, train_loss_epoch=0.0727]
+tensor(-0.6672, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.8189, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+                                                                      tensor(2.0537, device='cuda:0')
+tensor(-1.0521, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+                                                                      tensor(2.0578, device='cuda:0')
+tensor(-0.6791, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 38:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.238, val_loss=0.206, train_loss_epoch=0.0552]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.109628
+Epoch 38:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.0116, val_loss=0.206, train_loss_epoch=0.0552]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.159402
+Epoch 38:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.0269, val_loss=0.206, train_loss_epoch=0.0552]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081740
+Epoch 38:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.0104, val_loss=0.206, train_loss_epoch=0.0552] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.092958
+Epoch 38:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.00123, val_loss=0.206, train_loss_epoch=0.0552]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.088753
+Epoch 38:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0322, val_loss=0.206, train_loss_epoch=0.0552] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101435
+Epoch 38:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0219, val_loss=0.206, train_loss_epoch=0.0552]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079103
+Epoch 38: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=-0.0208, val_loss=0.206, train_loss_epoch=0.0552]
+tensor(-0.7511, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.0846, device='cuda:0')
+tensor(-0.8117, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+                                                                      tensor(2.0331, device='cuda:0')
+tensor(-1.0860, device='cuda:0')███     | 2/4 [00:01<00:01,  1.22it/s]
+tensor(-0.7681, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 74, 1s = 33
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 39:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.0208, val_loss=0.205, train_loss_epoch=-0.00452]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.165976
+Epoch 39:  14%|█▍        | 1/7 [00:03<00:23,  0.26it/s, v_num=ds8b, train_loss_step=0.0428, val_loss=0.205, train_loss_epoch=-0.00452] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.071375
+Epoch 39:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.0978, val_loss=0.205, train_loss_epoch=-0.00452]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.281900
+Epoch 39:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=-0.00694, val_loss=0.205, train_loss_epoch=-0.00452]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.220820
+Epoch 39:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.036, val_loss=0.205, train_loss_epoch=-0.00452]   SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.065823
+Epoch 39:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0264, val_loss=0.205, train_loss_epoch=-0.00452]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087530
+Epoch 39:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0954, val_loss=0.205, train_loss_epoch=-0.00452]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.133090
+Epoch 39: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.0365, device='cuda:0')l_loss=0.205, train_loss_epoch=-0.00452]
+tensor(-0.8553, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.9269, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+                                                                      tensor(1.9277, device='cuda:0')
+tensor(-1.1273, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.0062, device='cuda:0')
+tensor(-0.9118, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 71, 1s = 36
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 40:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.188, val_loss=0.212, train_loss_epoch=-0.00365]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.286288
+Epoch 40:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=0.267, val_loss=0.212, train_loss_epoch=-0.00365]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084618
+Epoch 40:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.0671, val_loss=0.212, train_loss_epoch=-0.00365]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.124194
+Epoch 40:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=-0.0299, val_loss=0.212, train_loss_epoch=-0.00365]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094319
+Epoch 40:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0151, val_loss=0.212, train_loss_epoch=-0.00365] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086116
+Epoch 40:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.025, val_loss=0.212, train_loss_epoch=-0.00365] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081420
+Epoch 40:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.116, val_loss=0.212, train_loss_epoch=-0.00365]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073667
+Epoch 40: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.0205, val_loss=0.212, train_loss_epoch=-0.00365]
+tensor(-0.8341, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.1225, device='cuda:0')
+tensor(-0.8220, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+                                                                      tensor(2.0107, device='cuda:0')
+tensor(-1.0632, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+Validation DataLoader 0:  75%|███████▌  | 3/4 [00:02<00:00,  1.21it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+tensor(-0.8706, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 70, 1s = 37
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 41:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0205, val_loss=0.216, train_loss_epoch=0.0161]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082714
+Epoch 41:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.0986, val_loss=0.216, train_loss_epoch=0.0161]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087930
+Epoch 41:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.0284, val_loss=0.216, train_loss_epoch=0.0161] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.135690
+Epoch 41:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.112, val_loss=0.216, train_loss_epoch=0.0161] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073442
+Epoch 41:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.0628, val_loss=0.216, train_loss_epoch=0.0161]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.114431
+Epoch 41:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=0.0365, val_loss=0.216, train_loss_epoch=0.0161] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.611254
+Epoch 41:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.276, val_loss=0.216, train_loss_epoch=0.0161]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 41:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.276, val_loss=0.216, train_loss_epoch=0.0161] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.114033
+Epoch 41: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.2672, device='cuda:0')val_loss=0.216, train_loss_epoch=0.0161]
+tensor(-0.7932, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7555, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+                                                                      tensor(2.1515, device='cuda:0')
+tensor(-1.0349, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.2566, device='cuda:0')
+tensor(-0.8492, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.20it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 72, 1s = 35
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 42:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.0716, val_loss=0.220, train_loss_epoch=0.0368]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104413
+Epoch 42:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=0.182, val_loss=0.220, train_loss_epoch=0.0368]  SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069471
+Epoch 42:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.0617, val_loss=0.220, train_loss_epoch=0.0368]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.137744
+Epoch 42:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0669, val_loss=0.220, train_loss_epoch=0.0368] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104392
+Epoch 42:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.0324, val_loss=0.220, train_loss_epoch=0.0368]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.072595
+Epoch 42:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.064, val_loss=0.220, train_loss_epoch=0.0368] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.345361
+Epoch 42:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.0575, val_loss=0.220, train_loss_epoch=0.0368]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.561873
+Epoch 42: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=7.41e-5, val_loss=0.220, train_loss_epoch=0.0368]
+tensor(-0.7285, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.3664, device='cuda:0')
+tensor(-0.7466, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+tensor(-0.9874, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.4023, device='cuda:0')
+tensor(-0.8185, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 74, 1s = 33
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 43:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=7.41e-5, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086338
+Epoch 43:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.136, val_loss=0.220, train_loss_epoch=0.0223] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.088038
+Epoch 43:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.135, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101275
+Epoch 43:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0634, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099506
+Epoch 43:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.213, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099993
+Epoch 43:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0398, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.433021
+Epoch 43:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0484, val_loss=0.220, train_loss_epoch=0.0223]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096048
+Epoch 43: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.4660, device='cuda:0')al_loss=0.220, train_loss_epoch=0.0223]
+tensor(-0.6880, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7374, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+                                                                      tensor(2.3426, device='cuda:0')
+tensor(-0.9267, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.4642, device='cuda:0')
+tensor(-0.7784, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 44:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.105, val_loss=0.216, train_loss_epoch=-0.0869]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.085860
+Epoch 44:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.0407, val_loss=0.216, train_loss_epoch=-0.0869]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.410474
+Epoch 44:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.105, val_loss=0.216, train_loss_epoch=-0.0869]  SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.238233
+Epoch 44:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0796, val_loss=0.216, train_loss_epoch=-0.0869]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102075
+Epoch 44:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0388, val_loss=0.216, train_loss_epoch=-0.0869]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064923
+Epoch 44:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0811, val_loss=0.216, train_loss_epoch=-0.0869]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069552
+Epoch 44:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.091, val_loss=0.216, train_loss_epoch=-0.0869] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079800
+Epoch 44: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=-0.0935, val_loss=0.216, train_loss_epoch=-0.0869]
+tensor(-0.7007, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.4447, device='cuda:0')
+tensor(-0.7464, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+tensor(-0.8912, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.4475, device='cuda:0')
+tensor(-0.7568, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.20it/s]
+==================================================02<00:00,  1.42it/s]
+Stage: VAL
+Predicted class distribution: 0s = 70, 1s = 37
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 45:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.0935, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073812
+Epoch 45:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.0165, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074672
+Epoch 45:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.0569, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105522
+Epoch 45:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=-0.0879, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101719
+Epoch 45:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0435, val_loss=0.211, train_loss_epoch=-0.00768] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.181831
+Epoch 45:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0772, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.093358
+Epoch 45:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.0275, val_loss=0.211, train_loss_epoch=-0.00768]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073784
+Epoch 45: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.5639, device='cuda:0')al_loss=0.211, train_loss_epoch=-0.00768]
+tensor(-0.6886, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7257, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+                                                                      tensor(2.4320, device='cuda:0')
+tensor(-0.8756, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.5311, device='cuda:0')
+tensor(-0.7306, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 74, 1s = 33
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 46:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.118, val_loss=0.219, train_loss_epoch=-0.045]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+Epoch 46:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.118, val_loss=0.219, train_loss_epoch=-0.045]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102696
+Epoch 46:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=0.038, val_loss=0.219, train_loss_epoch=-0.045] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.122206
+Epoch 46:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.0296, val_loss=0.219, train_loss_epoch=-0.045]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095469
+Epoch 46:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=0.0369, val_loss=0.219, train_loss_epoch=-0.045]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.092974
+Epoch 46:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0439, val_loss=0.219, train_loss_epoch=-0.045]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080950
+Epoch 46:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0815, val_loss=0.219, train_loss_epoch=-0.045]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086137
+Epoch 46:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=0.0409, val_loss=0.219, train_loss_epoch=-0.045] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081435
+Epoch 46: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=-0.171, val_loss=0.219, train_loss_epoch=-0.045]
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+tensor(-0.6895, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.5811, device='cuda:0')
+tensor(-0.7309, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+tensor(-0.9266, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.5633, device='cuda:0')
+tensor(-0.7307, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 47:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.171, val_loss=0.239, train_loss_epoch=-0.000678]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.233182
+Epoch 47:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.194, val_loss=0.239, train_loss_epoch=-0.000678]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.468639
+Epoch 47:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.024, val_loss=0.239, train_loss_epoch=-0.000678] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.171218
+Epoch 47:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=0.0461, val_loss=0.239, train_loss_epoch=-0.000678]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081365
+Epoch 47:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.00686, val_loss=0.239, train_loss_epoch=-0.000678]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.162693
+Epoch 47:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0988, val_loss=0.239, train_loss_epoch=-0.000678] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080930
+Epoch 47:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.195, val_loss=0.239, train_loss_epoch=-0.000678] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.188943
+Epoch 47: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.5770, device='cuda:0')val_loss=0.239, train_loss_epoch=-0.000678]
+tensor(-0.6976, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7239, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+                                                                      tensor(2.4838, device='cuda:0')
+tensor(-0.9183, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.5599, device='cuda:0')
+tensor(-0.7107, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 76, 1s = 31
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 48:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=-0.0837, val_loss=0.237, train_loss_epoch=-0.072]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.066932
+Epoch 48:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.0974, val_loss=0.237, train_loss_epoch=-0.072]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.097809
+Epoch 48:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=-0.111, val_loss=0.237, train_loss_epoch=-0.072] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.066960
+Epoch 48:  43%|████▎     | 3/7 [00:10<00:14,  0.28it/s, v_num=ds8b, train_loss_step=-0.0902, val_loss=0.237, train_loss_epoch=-0.072]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073749
+Epoch 48:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=-0.0963, val_loss=0.237, train_loss_epoch=-0.072]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069698
+Epoch 48:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.153, val_loss=0.237, train_loss_epoch=-0.072] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079661
+Epoch 48:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.166, val_loss=0.237, train_loss_epoch=-0.072]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090966
+Epoch 48: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=ds8b, train_loss_step=0.0304, val_loss=0.237, train_loss_epoch=-0.072]
+tensor(-0.7337, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(2.6106, device='cuda:0')
+tensor(-0.7270, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.23it/s]
+tensor(-0.9474, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.5688, device='cuda:0')
+tensor(-0.7283, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.21it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 77, 1s = 30
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49:   0%|          | 0/7 [00:00<?, ?it/s, v_num=ds8b, train_loss_step=0.0304, val_loss=0.237, train_loss_epoch=-0.104]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.054005
+Epoch 49:  14%|█▍        | 1/7 [00:03<00:23,  0.25it/s, v_num=ds8b, train_loss_step=-0.197, val_loss=0.237, train_loss_epoch=-0.104]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.252431
+
+Epoch 49:  29%|██▊       | 2/7 [00:07<00:18,  0.27it/s, v_num=ds8b, train_loss_step=0.165, val_loss=0.237, train_loss_epoch=-0.104] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.055443
+Epoch 49:  43%|████▎     | 3/7 [00:10<00:14,  0.27it/s, v_num=ds8b, train_loss_step=-0.169, val_loss=0.237, train_loss_epoch=-0.104]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102070
+Epoch 49:  57%|█████▋    | 4/7 [00:14<00:10,  0.28it/s, v_num=ds8b, train_loss_step=0.0635, val_loss=0.237, train_loss_epoch=-0.104]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073802
+Epoch 49:  71%|███████▏  | 5/7 [00:17<00:07,  0.28it/s, v_num=ds8b, train_loss_step=-0.0283, val_loss=0.237, train_loss_epoch=-0.104]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094683
+Epoch 49:  86%|████████▌ | 6/7 [00:21<00:03,  0.28it/s, v_num=ds8b, train_loss_step=-0.123, val_loss=0.237, train_loss_epoch=-0.104] SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118062
+Epoch 49: 100%|██████████| 7/7 [00:23<00:00,  0.30it/s, v_num=tensor(2.5391, device='cuda:0')val_loss=0.237, train_loss_epoch=-0.104]
+tensor(-0.7561, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.7388, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.22it/s]
+                                                                      tensor(2.4542, device='cuda:0')
+tensor(-0.9514, device='cuda:0')███     | 2/4 [00:01<00:01,  1.21it/s]
+                                                                      tensor(2.5339, device='cuda:0')
+tensor(-0.7073, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.20it/s]
+==================================================02<00:00,  1.43it/s]
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 28
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 49: 100%|██████████| 7/7 [00:27<00:00,  0.26it/s, v_num=ds8b, train_loss_step=-0.0409, val_loss=0.257, train_loss_epoch=-0.0474]
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/best-lung-model-epoch=34-val_loss=0.19.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/best-lung-model-epoch=34-val_loss=0.19.ckpt
+Testing DataLoader 0: 100%|██████████| 3/3 [00:02<00:00,  1.46it/s]Saved test predictions and probabilities to test_results_fold_final.xlsx
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 50, 1s = 30
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+Testing DataLoader 0: 100%|██████████| 3/3 [00:02<00:00,  1.29it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.7722222805023193     │
+│     test_balanced_acc     │    0.6833332777023315     │
+│        test_cindex        │    0.7210007309913635     │
+│       test_f1_score       │    0.5199999809265137     │
+│         test_ibs          │    0.11137628555297852    │
+└───────────────────────────┴───────────────────────────┘

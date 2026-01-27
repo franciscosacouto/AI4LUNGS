@@ -1,0 +1,28 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+/nas-ctm01/homes/fmferreira/AI4LUNGS/ct_image_augmenter.py:100: UserWarning: Argument(s) 'max_holes, max_height, max_width' are not valid for transform CoarseDropout
+  A.CoarseDropout(max_holes=8, max_height=8, max_width=8, p=0.7)
+/nas-ctm01/homes/fmferreira/AI4LUNGS/ct_image_augmenter.py:114: UserWarning: Argument(s) 'mean' are not valid for transform GaussNoise
+  A.GaussNoise(std_range= (0.1, 0.15), mean = (0.0, 0.0), p=1.0), # Introduces too much noise
+/nas-ctm01/homes/fmferreira/AI4LUNGS/ct_image_augmenter.py:41: UserWarning: Argument(s) 'always_apply' are not valid for transform BasicTransform
+  super().__init__(always_apply=always_apply, p=p)
+/nas-ctm01/homes/fmferreira/AI4LUNGS/ct_image_augmenter.py:133: UserWarning: Argument(s) 'shift_limit' are not valid for transform OpticalDistortion
+  A.OpticalDistortion(distort_limit=0.2, shift_limit=0.0, p=0.7)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 252, in main
+    lightning_model = encoder_decoder_binary(classifier, binary_model, LEARNING_RATE, pos_weight, config.Binary_model,  freeze_encoder=config.Freeze_weights)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: encoder_decoder.__init__() got multiple values for argument 'freeze_encoder'
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

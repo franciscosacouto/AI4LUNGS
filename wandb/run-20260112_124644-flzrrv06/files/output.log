@@ -1,0 +1,744 @@
+
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 150 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+150 K     Trainable params
+360 M     Non-trainable params
+360 M     Total params
+1,443.146 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0262, device='cuda:0')
+tensor(-0.0282, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:10<00:10,  0.10it/s]tensor(0.0268, device='cuda:0')
+tensor(-0.0267, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:20<00:00,  0.10it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+[EPOCH 0] First Training Batch Info:
+ - Image List Len: 32
+ - Event Tensor Shape: torch.Size([32])
+ - Time Tensor Shape: torch.Size([32])
+event tensor:tensor([False, False,  True,  True,  True, False, False,  True,  True,  True,
+        False,  True,  True,  True, False, False, False, False,  True,  True,
+        False,  True, False,  True, False,  True,  True, False, False, False,
+         True, False], device='cuda:0')
+time tensor:tensor([0.7681, 0.9189, 0.4275, 0.4393, 0.5872, 0.9311, 0.7556, 0.4393, 0.1823,
+        0.5147, 0.7681, 0.0323, 0.2940, 0.4196, 0.8094, 0.2330, 0.7889, 0.9106,
+        0.4006, 0.1662, 0.8643, 0.1088, 0.8744, 0.4393, 0.8754, 0.2261, 0.5714,
+        0.9311, 0.6960, 0.8643, 0.1296, 0.8816], device='cuda:0')
+tensor(0.4968, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3461, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  14%|█▍        | 1/7 [00:10<01:03,  0.09it/s, v_num=rv06]tensor(0.3833, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2062, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  29%|██▊       | 2/7 [00:20<00:52,  0.10it/s, v_num=rv06]tensor(0.7663, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3610, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  43%|████▎     | 3/7 [00:30<00:41,  0.10it/s, v_num=rv06]tensor(0.7996, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3316, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  57%|█████▋    | 4/7 [00:41<00:31,  0.10it/s, v_num=rv06]tensor(0.6244, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5154, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  71%|███████▏  | 5/7 [00:52<00:20,  0.10it/s, v_num=rv06]tensor(0.6267, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3904, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0:  86%|████████▌ | 6/7 [00:58<00:09,  0.10it/s, v_num=rv06]tensor(0.5761, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2885, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 0: 100%|██████████| 7/7 [01:05<00:00,  0.11it/s, v_num=rv06]
+tensor(-0.0284, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0266, device='cuda:0')▌       | 1/4 [00:11<00:35,  0.08it/s]
+tensor(-0.0275, device='cuda:0')███     | 2/4 [00:22<00:22,  0.09it/s]
+tensor(-0.0268, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.713]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.713]tensor(0.6465, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5251, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  14%|█▍        | 1/7 [00:06<00:40,  0.15it/s, v_num=rv06, val_loss=0.713]tensor(0.3816, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3209, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  29%|██▊       | 2/7 [00:17<00:42,  0.12it/s, v_num=rv06, val_loss=0.713]tensor(0.4456, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2497, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  43%|████▎     | 3/7 [00:26<00:35,  0.11it/s, v_num=rv06, val_loss=0.713]tensor(0.5561, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5461, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  57%|█████▋    | 4/7 [00:37<00:27,  0.11it/s, v_num=rv06, val_loss=0.713]tensor(0.5709, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2386, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  71%|███████▏  | 5/7 [00:47<00:18,  0.11it/s, v_num=rv06, val_loss=0.713]tensor(0.4623, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3645, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1:  86%|████████▌ | 6/7 [00:57<00:09,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.6621, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4393, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 1: 100%|██████████| 7/7 [01:03<00:00,  0.11it/s, v_num=rv06, val_loss=0.713]
+tensor(-0.0287, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0267, device='cuda:0')▌       | 1/4 [00:10<00:31,  0.09it/s]
+tensor(-0.0285, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.0270, device='cuda:0')█████▌  | 3/4 [00:30<00:10,  0.10it/s]
+==================================================34<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.713]tensor(0.6758, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3768, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2:  29%|██▊       | 2/7 [00:21<00:53,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.4712, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2526, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2:  43%|████▎     | 3/7 [00:32<00:43,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.5263, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3559, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2:  57%|█████▋    | 4/7 [00:42<00:32,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.3815, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2749, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2:  71%|███████▏  | 5/7 [00:52<00:20,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.6296, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4670, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2:  86%|████████▌ | 6/7 [01:03<00:10,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.6260, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4802, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2: 100%|██████████| 7/7 [01:10<00:00,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.5562, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5103, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 2: 100%|██████████| 7/7 [01:10<00:00,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.5562, device='cuda:0', grad_fn=<MaxBackward1>)
+Validation DataLoader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+Validation DataLoader 0:  25%|██▌       | 1/4 [00:11<00:35,  0.09it/s].0301, device='cuda:0')62, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.0268, device='cuda:0')▌       | 1/4 [00:11<00:35,  0.09it/s].0301, device='cuda:0')62, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.0268, device='cuda:0')▌       | 1/4 [00:11<00:35,  0.09it/s].0301, device='cuda:0')62, device='cuda:0', grad_fn=<MaxBackward1>)
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!ice='cuda:0')ce='cuda:0', grad_fn=<MaxBackward1>)
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!ice='cuda:0')ce='cuda:0', grad_fn=<MaxBackward1>)
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.713]tensor(0.5732, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4583, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  14%|█▍        | 1/7 [00:12<01:12,  0.08it/s, v_num=rv06, val_loss=0.713]tensor(0.5847, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3296, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  29%|██▊       | 2/7 [00:23<00:58,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.7656, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2855, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  43%|████▎     | 3/7 [00:33<00:44,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.5140, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3523, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  57%|█████▋    | 4/7 [00:43<00:32,  0.09it/s, v_num=rv06, val_loss=0.713]tensor(0.5640, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3534, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  71%|███████▏  | 5/7 [00:52<00:20,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.5371, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4579, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3:  86%|████████▌ | 6/7 [01:02<00:10,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.6017, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4903, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 3: 100%|██████████| 7/7 [01:07<00:00,  0.10it/s, v_num=rv06, val_loss=0.713]
+tensor(-0.0290, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0270, device='cuda:0')▌       | 1/4 [00:08<00:26,  0.11it/s]
+tensor(-0.0333, device='cuda:0')███     | 2/4 [00:12<00:12,  0.16it/s]
+tensor(-0.0272, device='cuda:0')█████▌  | 3/4 [00:22<00:07,  0.13it/s]
+==================================================25<00:00,  0.16it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.713]tensor(0.6577, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2657, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  14%|█▍        | 1/7 [00:09<00:58,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.5403, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2686, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  29%|██▊       | 2/7 [00:20<00:50,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.6376, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3234, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  43%|████▎     | 3/7 [00:30<00:41,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.8326, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4196, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  57%|█████▋    | 4/7 [00:41<00:30,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.7204, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2970, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  71%|███████▏  | 5/7 [00:51<00:20,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.4377, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2994, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4:  86%|████████▌ | 6/7 [01:02<00:10,  0.10it/s, v_num=rv06, val_loss=0.713]tensor(0.4342, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2653, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 4: 100%|██████████| 7/7 [01:08<00:00,  0.10it/s, v_num=rv06, val_loss=0.713]
+tensor(-0.0308, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0266, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.0365, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.0283, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.10it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.712]tensor(0.4961, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2572, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  14%|█▍        | 1/7 [00:10<01:05,  0.09it/s, v_num=rv06, val_loss=0.712]tensor(0.5835, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2854, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  29%|██▊       | 2/7 [00:22<00:55,  0.09it/s, v_num=rv06, val_loss=0.712]tensor(0.8222, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5057, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  43%|████▎     | 3/7 [00:32<00:43,  0.09it/s, v_num=rv06, val_loss=0.712]tensor(0.7963, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5739, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  57%|█████▋    | 4/7 [00:41<00:31,  0.10it/s, v_num=rv06, val_loss=0.712]tensor(0.6853, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4759, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  71%|███████▏  | 5/7 [00:52<00:20,  0.10it/s, v_num=rv06, val_loss=0.712]tensor(0.5790, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6280, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5:  86%|████████▌ | 6/7 [01:02<00:10,  0.10it/s, v_num=rv06, val_loss=0.712]tensor(0.2716, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3296, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 5: 100%|██████████| 7/7 [01:07<00:00,  0.10it/s, v_num=rv06, val_loss=0.712]
+tensor(-0.0334, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0279, device='cuda:0')▌       | 1/4 [00:09<00:29,  0.10it/s]
+tensor(-0.0420, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.0283, device='cuda:0')█████▌  | 3/4 [00:29<00:09,  0.10it/s]
+==================================================33<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.711]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.711]tensor(0.5268, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3405, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  14%|█▍        | 1/7 [00:11<01:06,  0.09it/s, v_num=rv06, val_loss=0.711]tensor(0.4947, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3884, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  29%|██▊       | 2/7 [00:20<00:51,  0.10it/s, v_num=rv06, val_loss=0.711]tensor(0.7413, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2828, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  43%|████▎     | 3/7 [00:30<00:41,  0.10it/s, v_num=rv06, val_loss=0.711]tensor(0.5445, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4572, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  57%|█████▋    | 4/7 [00:37<00:28,  0.11it/s, v_num=rv06, val_loss=0.711]tensor(0.8663, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2224, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  71%|███████▏  | 5/7 [00:47<00:18,  0.11it/s, v_num=rv06, val_loss=0.711]tensor(0.7012, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3098, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6:  86%|████████▌ | 6/7 [00:57<00:09,  0.10it/s, v_num=rv06, val_loss=0.711]tensor(0.8295, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5325, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 6: 100%|██████████| 7/7 [01:04<00:00,  0.11it/s, v_num=rv06, val_loss=0.711]
+tensor(-0.0345, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0303, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.0474, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.0276, device='cuda:0')█████▌  | 3/4 [00:29<00:09,  0.10it/s]
+==================================================33<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 7:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.708]tensor(0.4893, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3427, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  14%|█▍        | 1/7 [00:09<00:59,  0.10it/s, v_num=rv06, val_loss=0.708]tensor(0.5535, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5135, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  29%|██▊       | 2/7 [00:20<00:50,  0.10it/s, v_num=rv06, val_loss=0.708]tensor(0.7002, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4235, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  43%|████▎     | 3/7 [00:30<00:40,  0.10it/s, v_num=rv06, val_loss=0.708]tensor(0.5977, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5059, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  57%|█████▋    | 4/7 [00:37<00:28,  0.11it/s, v_num=rv06, val_loss=0.708]tensor(0.5832, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3292, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  71%|███████▏  | 5/7 [00:47<00:18,  0.11it/s, v_num=rv06, val_loss=0.708]tensor(0.5173, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3290, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7:  86%|████████▌ | 6/7 [00:57<00:09,  0.10it/s, v_num=rv06, val_loss=0.708]tensor(0.6385, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2542, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 7: 100%|██████████| 7/7 [01:04<00:00,  0.11it/s, v_num=rv06, val_loss=0.708]
+tensor(-0.0377, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0312, device='cuda:0')▌       | 1/4 [00:10<00:31,  0.10it/s]
+tensor(-0.0520, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.0242, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 8:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.703]tensor(0.6325, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5216, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  14%|█▍        | 1/7 [00:09<00:59,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.6849, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3165, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  29%|██▊       | 2/7 [00:20<00:50,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.4513, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4057, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  43%|████▎     | 3/7 [00:30<00:40,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.4414, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2902, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  57%|█████▋    | 4/7 [00:40<00:30,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.4485, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3488, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  71%|███████▏  | 5/7 [00:50<00:20,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.7713, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4672, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8:  86%|████████▌ | 6/7 [01:02<00:10,  0.10it/s, v_num=rv06, val_loss=0.703]tensor(0.6001, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4968, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 8: 100%|██████████| 7/7 [01:09<00:00,  0.10it/s, v_num=rv06, val_loss=0.703]
+tensor(-0.0422, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0348, device='cuda:0')▌       | 1/4 [00:11<00:33,  0.09it/s]
+tensor(-0.0574, device='cuda:0')███     | 2/4 [00:22<00:22,  0.09it/s]
+tensor(-0.0560, device='cuda:0')█████▌  | 3/4 [00:33<00:11,  0.09it/s]
+==================================================37<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 9:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.698]tensor(0.4176, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4577, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  14%|█▍        | 1/7 [00:11<01:06,  0.09it/s, v_num=rv06, val_loss=0.698]tensor(0.6448, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2996, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  29%|██▊       | 2/7 [00:15<00:37,  0.13it/s, v_num=rv06, val_loss=0.698]tensor(0.4660, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5107, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  43%|████▎     | 3/7 [00:19<00:26,  0.15it/s, v_num=rv06, val_loss=0.698]tensor(0.5509, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3356, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  57%|█████▋    | 4/7 [00:30<00:22,  0.13it/s, v_num=rv06, val_loss=0.698]tensor(0.5379, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4030, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  71%|███████▏  | 5/7 [00:40<00:16,  0.12it/s, v_num=rv06, val_loss=0.698]tensor(1.0659, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3840, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9:  86%|████████▌ | 6/7 [00:51<00:08,  0.12it/s, v_num=rv06, val_loss=0.698]tensor(0.6304, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2766, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 9: 100%|██████████| 7/7 [00:58<00:00,  0.12it/s, v_num=rv06, val_loss=0.698]
+tensor(-0.0687, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0667, device='cuda:0')▌       | 1/4 [00:10<00:31,  0.09it/s]
+tensor(-0.0828, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.1011, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 10:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.692]tensor(0.4897, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3536, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  14%|█▍        | 1/7 [00:11<01:06,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(1.3435, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4799, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  29%|██▊       | 2/7 [00:21<00:53,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(0.5454, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2994, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  43%|████▎     | 3/7 [00:32<00:43,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(0.6627, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4054, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  57%|█████▋    | 4/7 [00:42<00:32,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(0.6801, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3049, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  71%|███████▏  | 5/7 [00:53<00:21,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(0.6103, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3556, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10:  86%|████████▌ | 6/7 [01:03<00:10,  0.09it/s, v_num=rv06, val_loss=0.692]tensor(0.4201, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3538, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 10: 100%|██████████| 7/7 [01:07<00:00,  0.10it/s, v_num=rv06, val_loss=0.692]
+tensor(-0.0981, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.0972, device='cuda:0')▌       | 1/4 [00:08<00:26,  0.12it/s]
+tensor(-0.1198, device='cuda:0')███     | 2/4 [00:19<00:19,  0.10it/s]
+tensor(-0.1483, device='cuda:0')█████▌  | 3/4 [00:29<00:09,  0.10it/s]
+==================================================32<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.681]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.681]tensor(0.6932, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5737, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  14%|█▍        | 1/7 [00:09<00:54,  0.11it/s, v_num=rv06, val_loss=0.681]tensor(0.7295, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5515, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  29%|██▊       | 2/7 [00:18<00:47,  0.11it/s, v_num=rv06, val_loss=0.681]tensor(0.8104, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3954, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  43%|████▎     | 3/7 [00:29<00:38,  0.10it/s, v_num=rv06, val_loss=0.681]tensor(0.5155, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4396, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  57%|█████▋    | 4/7 [00:40<00:30,  0.10it/s, v_num=rv06, val_loss=0.681]tensor(0.6829, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2787, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  71%|███████▏  | 5/7 [00:50<00:20,  0.10it/s, v_num=rv06, val_loss=0.681]tensor(0.6116, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4528, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11:  86%|████████▌ | 6/7 [01:01<00:10,  0.10it/s, v_num=rv06, val_loss=0.681]tensor(0.8670, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2312, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 11: 100%|██████████| 7/7 [01:08<00:00,  0.10it/s, v_num=rv06, val_loss=0.681]
+tensor(-0.1246, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1249, device='cuda:0')▌       | 1/4 [00:09<00:29,  0.10it/s]
+tensor(-0.1563, device='cuda:0')███     | 2/4 [00:18<00:18,  0.11it/s]
+tensor(-0.1930, device='cuda:0')█████▌  | 3/4 [00:29<00:09,  0.10it/s]
+==================================================33<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.665]tensor(0.7116, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2577, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  14%|█▍        | 1/7 [00:11<01:08,  0.09it/s, v_num=rv06, val_loss=0.665]tensor(0.6028, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2223, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  29%|██▊       | 2/7 [00:21<00:54,  0.09it/s, v_num=rv06, val_loss=0.665]tensor(0.6991, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3745, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  43%|████▎     | 3/7 [00:29<00:38,  0.10it/s, v_num=rv06, val_loss=0.665]tensor(0.8066, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2391, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  57%|█████▋    | 4/7 [00:37<00:28,  0.11it/s, v_num=rv06, val_loss=0.665]tensor(0.5530, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3993, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  71%|███████▏  | 5/7 [00:48<00:19,  0.10it/s, v_num=rv06, val_loss=0.665]tensor(0.9208, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3519, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12:  86%|████████▌ | 6/7 [00:58<00:09,  0.10it/s, v_num=rv06, val_loss=0.665]tensor(0.4365, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2778, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 12: 100%|██████████| 7/7 [01:06<00:00,  0.11it/s, v_num=rv06, val_loss=0.665]
+tensor(-0.1400, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1424, device='cuda:0')▌       | 1/4 [00:10<00:32,  0.09it/s]
+tensor(-0.1897, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.2098, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.10it/s]
+==================================================34<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 4, 1s = 103
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 13:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.647]tensor(0.7872, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.7189, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  14%|█▍        | 1/7 [00:09<00:57,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.4738, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3833, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  29%|██▊       | 2/7 [00:19<00:49,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.6789, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4581, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  43%|████▎     | 3/7 [00:30<00:40,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.6089, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3236, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  57%|█████▋    | 4/7 [00:40<00:30,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.6588, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3478, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  71%|███████▏  | 5/7 [00:51<00:20,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.7503, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2976, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13:  86%|████████▌ | 6/7 [01:01<00:10,  0.10it/s, v_num=rv06, val_loss=0.647]tensor(0.5924, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3597, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 13: 100%|██████████| 7/7 [01:08<00:00,  0.10it/s, v_num=rv06, val_loss=0.647]
+tensor(-0.1598, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1504, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.2165, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.2255, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 11, 1s = 96
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 14:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.629]tensor(1.0415, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4460, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  14%|█▍        | 1/7 [00:12<01:14,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(1.0302, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3425, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  29%|██▊       | 2/7 [00:24<01:00,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(0.9766, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6326, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  43%|████▎     | 3/7 [00:36<00:48,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(0.9217, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.2464, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  57%|█████▋    | 4/7 [00:48<00:36,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(0.7519, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3946, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  71%|███████▏  | 5/7 [01:00<00:24,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(0.8021, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3476, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14:  86%|████████▌ | 6/7 [01:12<00:12,  0.08it/s, v_num=rv06, val_loss=0.629]tensor(0.8189, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3591, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 14: 100%|██████████| 7/7 [01:19<00:00,  0.09it/s, v_num=rv06, val_loss=0.629]
+tensor(-0.1694, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1478, device='cuda:0')▌       | 1/4 [00:10<00:32,  0.09it/s]
+tensor(-0.2260, device='cuda:0')███     | 2/4 [00:22<00:22,  0.09it/s]
+tensor(-0.2306, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================36<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 15, 1s = 92
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 15:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.618]tensor(0.9256, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5925, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  14%|█▍        | 1/7 [00:08<00:51,  0.12it/s, v_num=rv06, val_loss=0.618]tensor(1.2079, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3961, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  29%|██▊       | 2/7 [00:19<00:49,  0.10it/s, v_num=rv06, val_loss=0.618]tensor(0.7546, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3992, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  43%|████▎     | 3/7 [00:31<00:41,  0.10it/s, v_num=rv06, val_loss=0.618]tensor(0.7608, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3839, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  57%|█████▋    | 4/7 [00:42<00:31,  0.09it/s, v_num=rv06, val_loss=0.618]tensor(0.6207, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5294, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  71%|███████▏  | 5/7 [00:53<00:21,  0.09it/s, v_num=rv06, val_loss=0.618]tensor(1.3082, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.8391, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15:  86%|████████▌ | 6/7 [01:02<00:10,  0.10it/s, v_num=rv06, val_loss=0.618]tensor(0.6937, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5725, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 15: 100%|██████████| 7/7 [01:08<00:00,  0.10it/s, v_num=rv06, val_loss=0.618]
+tensor(-0.1864, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1583, device='cuda:0')▌       | 1/4 [00:10<00:31,  0.09it/s]
+tensor(-0.2398, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.2436, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 16, 1s = 91
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.616]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.616]tensor(0.8341, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4970, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  14%|█▍        | 1/7 [00:07<00:46,  0.13it/s, v_num=rv06, val_loss=0.616]tensor(0.7433, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4401, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  29%|██▊       | 2/7 [00:18<00:46,  0.11it/s, v_num=rv06, val_loss=0.616]tensor(0.8632, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-1.0590, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  43%|████▎     | 3/7 [00:28<00:38,  0.10it/s, v_num=rv06, val_loss=0.616]tensor(1.0597, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5343, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  57%|█████▋    | 4/7 [00:38<00:29,  0.10it/s, v_num=rv06, val_loss=0.616]tensor(0.6195, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4369, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  71%|███████▏  | 5/7 [00:49<00:19,  0.10it/s, v_num=rv06, val_loss=0.616]tensor(0.8856, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6081, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16:  86%|████████▌ | 6/7 [01:00<00:10,  0.10it/s, v_num=rv06, val_loss=0.616]tensor(0.7309, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4344, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 16: 100%|██████████| 7/7 [01:07<00:00,  0.10it/s, v_num=rv06, val_loss=0.616]
+
+tensor(-0.2148, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.1898, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.2709, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.2693, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 17:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.614]tensor(0.7396, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6799, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  14%|█▍        | 1/7 [00:11<01:07,  0.09it/s, v_num=rv06, val_loss=0.614]tensor(0.6946, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.8806, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  29%|██▊       | 2/7 [00:21<00:53,  0.09it/s, v_num=rv06, val_loss=0.614]tensor(0.7444, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3073, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  43%|████▎     | 3/7 [00:31<00:42,  0.09it/s, v_num=rv06, val_loss=0.614]tensor(0.8669, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.7077, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  57%|█████▋    | 4/7 [00:42<00:31,  0.10it/s, v_num=rv06, val_loss=0.614]tensor(0.9067, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6228, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  71%|███████▏  | 5/7 [00:52<00:21,  0.09it/s, v_num=rv06, val_loss=0.614]tensor(0.5149, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4175, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17:  86%|████████▌ | 6/7 [01:03<00:10,  0.09it/s, v_num=rv06, val_loss=0.614]tensor(0.6452, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5757, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 17: 100%|██████████| 7/7 [01:07<00:00,  0.10it/s, v_num=rv06, val_loss=0.614]
+tensor(-0.2244, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.2084, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.2874, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.2760, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.10it/s]
+==================================================34<00:00,  0.12it/s]
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 18:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.616]tensor(0.6586, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.7542, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  14%|█▍        | 1/7 [00:09<00:59,  0.10it/s, v_num=rv06, val_loss=0.616]tensor(0.6981, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4066, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  29%|██▊       | 2/7 [00:21<00:52,  0.09it/s, v_num=rv06, val_loss=0.616]tensor(0.6285, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5070, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  43%|████▎     | 3/7 [00:32<00:43,  0.09it/s, v_num=rv06, val_loss=0.616]tensor(0.7602, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4819, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  57%|█████▋    | 4/7 [00:43<00:32,  0.09it/s, v_num=rv06, val_loss=0.616]tensor(0.6521, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5372, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  71%|███████▏  | 5/7 [00:53<00:21,  0.09it/s, v_num=rv06, val_loss=0.616]tensor(1.6842, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5505, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18:  86%|████████▌ | 6/7 [01:05<00:10,  0.09it/s, v_num=rv06, val_loss=0.616]tensor(0.9279, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4766, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 18: 100%|██████████| 7/7 [01:12<00:00,  0.10it/s, v_num=rv06, val_loss=0.616]
+tensor(-0.2337, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.2173, device='cuda:0')▌       | 1/4 [00:11<00:33,  0.09it/s]
+tensor(-0.2847, device='cuda:0')███     | 2/4 [00:21<00:21,  0.09it/s]
+tensor(-0.2709, device='cuda:0')█████▌  | 3/4 [00:32<00:10,  0.09it/s]
+==================================================35<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 21, 1s = 86
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 19:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.609]tensor(0.9101, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6190, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  14%|█▍        | 1/7 [00:10<01:02,  0.10it/s, v_num=rv06, val_loss=0.609]tensor(0.8462, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4304, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  29%|██▊       | 2/7 [00:21<00:53,  0.09it/s, v_num=rv06, val_loss=0.609]tensor(0.8324, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4732, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  43%|████▎     | 3/7 [00:31<00:42,  0.09it/s, v_num=rv06, val_loss=0.609]tensor(1.1610, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.8035, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  57%|█████▋    | 4/7 [00:43<00:32,  0.09it/s, v_num=rv06, val_loss=0.609]tensor(1.3198, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5140, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  71%|███████▏  | 5/7 [00:53<00:21,  0.09it/s, v_num=rv06, val_loss=0.609]tensor(0.6259, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4891, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19:  86%|████████▌ | 6/7 [01:03<00:10,  0.09it/s, v_num=rv06, val_loss=0.609]tensor(0.5972, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4907, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 19: 100%|██████████| 7/7 [01:11<00:00,  0.10it/s, v_num=rv06, val_loss=0.609]
+tensor(-0.2529, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.2503, device='cuda:0')▌       | 1/4 [00:10<00:30,  0.10it/s]
+tensor(-0.3024, device='cuda:0')███     | 2/4 [00:20<00:20,  0.10it/s]
+tensor(-0.2963, device='cuda:0')█████▌  | 3/4 [00:31<00:10,  0.10it/s]
+==================================================34<00:00,  0.11it/s]
+Stage: VAL
+Predicted class distribution: 0s = 21, 1s = 86
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 20:   0%|          | 0/7 [00:00<?, ?it/s, v_num=rv06, val_loss=0.612]tensor(0.7233, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4898, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20:  14%|█▍        | 1/7 [00:11<01:09,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(0.7217, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.6309, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20:  29%|██▊       | 2/7 [00:22<00:55,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(0.6931, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4708, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+
+Epoch 20:  43%|████▎     | 3/7 [00:32<00:43,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(1.0110, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.3853, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20:  57%|█████▋    | 4/7 [00:42<00:31,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(0.9518, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.8095, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20:  71%|███████▏  | 5/7 [00:53<00:21,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(0.9127, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.5532, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20:  86%|████████▌ | 6/7 [01:04<00:10,  0.09it/s, v_num=rv06, val_loss=0.612]tensor(0.5941, device='cuda:0', grad_fn=<MaxBackward1>)
+tensor(-0.4302, device='cuda:0', grad_fn=<MinBackward1>)
+WARNING: No gradients detected in backbone!
+Epoch 20: 100%|██████████| 7/7 [01:11<00:00,  0.10it/s, v_num=rv06, val_loss=0.612]

@@ -1,0 +1,539 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 283 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+283 K     Trainable params
+360 M     Non-trainable params
+360 M     Total params
+1,443.678 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0479, device='cuda:0')
+tensor(-0.3246, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:01<00:01,  0.91it/s]tensor(0.0440, device='cuda:0')
+tensor(-0.3034, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:01<00:00,  1.05it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  14%|█▍        | 1/7 [00:01<00:07,  0.85it/s, v_num=lfgp, train_loss_step=0.608]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  29%|██▊       | 2/7 [00:01<00:04,  1.00it/s, v_num=lfgp, train_loss_step=0.693]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  43%|████▎     | 3/7 [00:02<00:03,  1.07it/s, v_num=lfgp, train_loss_step=0.619]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  57%|█████▋    | 4/7 [00:03<00:02,  1.10it/s, v_num=lfgp, train_loss_step=0.573]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  71%|███████▏  | 5/7 [00:04<00:01,  1.12it/s, v_num=lfgp, train_loss_step=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  86%|████████▌ | 6/7 [00:05<00:00,  1.14it/s, v_num=lfgp, train_loss_step=0.624]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0: 100%|██████████| 7/7 [00:05<00:00,  1.20it/s, v_num=ltensor(0.0850, device='cuda:0')
+tensor(-0.2418, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.1066, device='cuda:0')
+tensor(-0.2374, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.26it/s]
+                                                                      tensor(0.1388, device='cuda:0')
+tensor(-0.2272, device='cuda:0')███     | 2/4 [00:01<00:01,  1.25it/s]
+                                                                      tensor(0.0924, device='cuda:0')
+tensor(-0.1582, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.24it/s]
+==================================================02<00:00,  1.47it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.480, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.567, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  29%|██▊       | 2/7 [00:02<00:05,  0.99it/s, v_num=lfgp, train_loss_step=0.541, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.721, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  57%|█████▋    | 4/7 [00:03<00:02,  1.09it/s, v_num=lfgp, train_loss_step=0.605, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  71%|███████▏  | 5/7 [00:04<00:01,  1.11it/s, v_num=lfgp, train_loss_step=0.657, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  86%|████████▌ | 6/7 [00:05<00:00,  1.13it/s, v_num=lfgp, train_loss_step=0.546, val_loss=0.731, train_loss_epoch=0.597]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1: 100%|██████████| 7/7 [00:05<00:00,  1.19it/s, v_num=ltensor(0.1305, device='cuda:0')_loss=0.731, train_loss_epoch=0.597]
+tensor(-0.2307, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.1301, device='cuda:0')
+tensor(-0.1978, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.25it/s]
+                                                                      tensor(0.1409, device='cuda:0')
+tensor(-0.2153, device='cuda:0')███     | 2/4 [00:01<00:01,  1.24it/s]
+                                                                      tensor(0.1153, device='cuda:0')
+tensor(-0.1353, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.46it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.527, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.682, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  29%|██▊       | 2/7 [00:02<00:05,  0.99it/s, v_num=lfgp, train_loss_step=0.705, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.598, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  57%|█████▋    | 4/7 [00:03<00:02,  1.09it/s, v_num=lfgp, train_loss_step=0.501, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  71%|███████▏  | 5/7 [00:04<00:01,  1.11it/s, v_num=lfgp, train_loss_step=0.655, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  86%|████████▌ | 6/7 [00:05<00:00,  1.13it/s, v_num=lfgp, train_loss_step=0.562, val_loss=0.716, train_loss_epoch=0.598]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2: 100%|██████████| 7/7 [00:05<00:00,  1.19it/s, v_num=ltensor(0.1739, device='cuda:0')_loss=0.716, train_loss_epoch=0.598]
+tensor(-0.2216, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.1522, device='cuda:0')
+tensor(-0.1985, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.1774, device='cuda:0')
+tensor(-0.2176, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.1462, device='cuda:0')
+tensor(-0.1431, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.46it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.642, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.625, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  29%|██▊       | 2/7 [00:02<00:05,  0.99it/s, v_num=lfgp, train_loss_step=0.611, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  43%|████▎     | 3/7 [00:02<00:03,  1.06it/s, v_num=lfgp, train_loss_step=0.567, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  57%|█████▋    | 4/7 [00:03<00:02,  1.09it/s, v_num=lfgp, train_loss_step=0.636, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  71%|███████▏  | 5/7 [00:04<00:01,  1.11it/s, v_num=lfgp, train_loss_step=0.594, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  86%|████████▌ | 6/7 [00:05<00:00,  1.13it/s, v_num=lfgp, train_loss_step=0.420, val_loss=0.703, train_loss_epoch=0.620]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3: 100%|██████████| 7/7 [00:05<00:00,  1.19it/s, v_num=ltensor(0.2108, device='cuda:0')_loss=0.703, train_loss_epoch=0.620]
+tensor(-0.2002, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+                                                                      tensor(0.1999, device='cuda:0')
+tensor(-0.1945, device='cuda:0')▌       | 1/4 [00:00<00:02,  1.24it/s]
+                                                                      tensor(0.2364, device='cuda:0')
+tensor(-0.2012, device='cuda:0')███     | 2/4 [00:01<00:01,  1.23it/s]
+                                                                      tensor(0.1893, device='cuda:0')
+tensor(-0.1457, device='cuda:0')█████▌  | 3/4 [00:02<00:00,  1.23it/s]
+==================================================02<00:00,  1.45it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.686, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  14%|█▍        | 1/7 [00:01<00:07,  0.85it/s, v_num=lfgp, train_loss_step=0.626, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  29%|██▊       | 2/7 [00:02<00:05,  1.00it/s, v_num=lfgp, train_loss_step=0.531, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  43%|████▎     | 3/7 [00:02<00:03,  1.06it/s, v_num=lfgp, train_loss_step=0.481, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  57%|█████▋    | 4/7 [00:03<00:02,  1.09it/s, v_num=lfgp, train_loss_step=0.631, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  71%|███████▏  | 5/7 [00:04<00:01,  1.11it/s, v_num=lfgp, train_loss_step=0.591, val_loss=0.691, train_loss_epoch=0.586]
+Epoch 4:  29%|██▊       | 2/7 [00:02<00:05,  1.00it/s, v_num=lfgp, train_loss_step=0.531, val_loss=0.691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  29%|██▊       | 2/7 [00:02<00:05,  1.00it/s, v_num=lfgp, tratensor(0.2695, device='cuda:0')691, train_loss_epoch=0.586]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.428, val_loss=0.681, train_loss_epoch=0.569]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 5:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.655, val_loss=0.681, train_loss_epoch=0.569]
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.428, val_loss=0.681, train_loss_epoch=0.569]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.428, val_loss=0.681, train_loss_epoch=0.569]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 5: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=ltensor(0.2991, device='cuda:0')_loss=0.681, train_loss_epoch=0.569] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+==================================================02<00:00,  1.22it/s].2991, device='cuda:0')_loss=0.681, train_loss_epoch=0.569] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+==================================================02<00:00,  1.22it/s].2991, device='cuda:0')_loss=0.681, train_loss_epoch=0.569] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+==================================================02<00:00,  1.22it/s].2991, device='cuda:0')_loss=0.681, train_loss_epoch=0.569] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 6:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.482, val_loss=0.673, train_loss_epoch=0.526]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Validation DataLoader 0:  50%|█████     | 2/4 [00:01<00:01,  1.22it/s]in_loss_step=0.482, val_loss=0.673, train_loss_epoch=0.526]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:01<00:01,  1.22it/s]in_loss_step=0.482, val_loss=0.673, train_loss_epoch=0.526]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.431, val_loss=0.668, train_loss_epoch=0.529]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.431, val_loss=0.668, train_loss_epoch=0.529]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.431, val_loss=0.668, train_loss_epoch=0.529]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      in_loss_step=0.431, val_loss=0.668, train_loss_epoch=0.529]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.2616, device='cuda:0')        | 0/4 [00:00<?, ?it/s]fgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.     | 0/4 [00:00<?, ?it/s]fgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.     | 0/4 [00:00<?, ?it/s]fgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.     | 0/4 [00:00<?, ?it/s]fgp, train_loss_step=0.499, val_loss=0.657, train_loss_epoch=0.497]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.617, val_loss=0.655, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.617, val_loss=0.655, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual Imbalance Ratio (0:1): 2.96:1<00:00,  1.11it/s, v_num=lfgp, tratensor(0.3669, device='cuda:0')655, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  57%|█████▋    | 4/7 [00:03<00:02,  1.08it/s, v_num=lfgp, train_loss_step=0.590, val_loss=0.651, train_loss_epoch=0.511]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  57%|█████▋    | 4/7 [00:03<00:02,  1.08it/s, v_num=lfgp, train_loss_step=0.590, val_loss=0.651, train_loss_epoch=0.511]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  57%|█████▋    | 4/7 [00:03<00:02,  1.08it/s, v_num=lfgp, train_loss_step=0.590, val_loss=0.651, train_loss_epoch=0.511]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  57%|█████▋    | 4/7 [00:03<00:02,  1.08it/s, v_num=lfgp, train_loss_step=0.590, val_loss=0.651, train_loss_epoch=0.511]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Predicted class distribution: 0s = 10, 1s = 971.08it/s, v_num=lfgp, trtensor(0.4851, device='cuda:0').651, train_loss_epoch=0.511]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  29%|██▊       | 2/7 [00:02<00:05,  0.98it/s, v_num=lfgp, train_loss_step=0.614, val_loss=0.645, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  29%|██▊       | 2/7 [00:02<00:05,  0.98it/s, v_num=lfgp, train_loss_step=0.614, val_loss=0.645, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  29%|██▊       | 2/7 [00:02<00:05,  0.98it/s, v_num=lfgp, train_loss_step=0.614, val_loss=0.645, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  29%|██▊       | 2/7 [00:02<00:05,  0.98it/s, v_num=lfgp, trtensor(0.4598, device='cuda:0').645, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.653, val_loss=0.628, train_loss_epoch=0.547]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.653, val_loss=0.628, train_loss_epoch=0.547]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=lfgp, train_loss_step=0.653, val_loss=0.628, train_loss_epoch=0.547]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 12: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(0.5480, device='cuda:0')l_loss=0.628, train_loss_epoch=0.547] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+==================================================02<00:00,  1.21it/s].5480, device='cuda:0')l_loss=0.628, train_loss_epoch=0.547] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+==================================================02<00:00,  1.21it/s].5480, device='cuda:0')l_loss=0.628, train_loss_epoch=0.547] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+==================================================02<00:00,  1.21it/s].5480, device='cuda:0')l_loss=0.628, train_loss_epoch=0.547] vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.radient.
+Epoch 13:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.538, val_loss=0.627, train_loss_epoch=0.484]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Validation DataLoader 0:  50%|█████     | 2/4 [00:01<00:01,  1.22it/s]ain_loss_step=0.538, val_loss=0.627, train_loss_epoch=0.484]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:01<00:01,  1.22it/s]ain_loss_step=0.538, val_loss=0.627, train_loss_epoch=0.484]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+✅ Model is predicting both classes.02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.476, val_loss=0.617, train_loss_epoch=0.537]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.491, val_loss=0.612, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.2653, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.491, val_loss=0.612, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.2653, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.491, val_loss=0.612, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.491, val_loss=0.612, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.491, val_loss=0.612, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.420, val_loss=0.621, train_loss_epoch=0.450]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.515, val_loss=0.621, train_loss_epoch=0.450]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.2972, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.515, val_loss=0.621, train_loss_epoch=0.450]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.515, val_loss=0.621, train_loss_epoch=0.450]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.388, val_loss=0.617, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.388, val_loss=0.617, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(0.6983, device='cuda:0')l_loss=0.617, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .6983, device='cuda:0')l_loss=0.617, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.479, val_loss=0.631, train_loss_epoch=0.491]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.479, val_loss=0.631, train_loss_epoch=0.491]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.471, val_loss=0.631, train_loss_epoch=0.491]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4250, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.471, val_loss=0.631, train_loss_epoch=0.491]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.10it/s, v_num=lfgp, train_loss_step=0.471, val_loss=0.631, train_loss_epoch=0.491]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.549, val_loss=0.630, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.549, val_loss=0.630, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.436, val_loss=0.630, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      ain_loss_step=0.436, val_loss=0.630, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.462, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.462, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.617, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4331, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.617, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4331, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.617, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.617, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.617, val_loss=0.618, train_loss_epoch=0.475]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.429, val_loss=0.619, train_loss_epoch=0.487]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.422, val_loss=0.619, train_loss_epoch=0.487]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4134, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.422, val_loss=0.619, train_loss_epoch=0.487]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.422, val_loss=0.619, train_loss_epoch=0.487]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.422, val_loss=0.619, train_loss_epoch=0.487]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.438, val_loss=0.605, train_loss_epoch=0.439]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(0.6358, device='cuda:0')l_loss=0.605, train_loss_epoch=0.439]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .6358, device='cuda:0')l_loss=0.605, train_loss_epoch=0.439]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.349, val_loss=0.604, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.349, val_loss=0.604, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.409, val_loss=0.604, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5627, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.409, val_loss=0.604, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.409, val_loss=0.604, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.562, val_loss=0.623, train_loss_epoch=0.382]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.562, val_loss=0.623, train_loss_epoch=0.382]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(0.7092, device='cuda:0')l_loss=0.623, train_loss_epoch=0.382]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .7092, device='cuda:0')l_loss=0.623, train_loss_epoch=0.382]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.401, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.401, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.601, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.6447, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.601, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.6447, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.601, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.601, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.601, val_loss=0.640, train_loss_epoch=0.479]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.641, val_loss=0.633, train_loss_epoch=0.502]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.440, val_loss=0.633, train_loss_epoch=0.502]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.3738, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.440, val_loss=0.633, train_loss_epoch=0.502]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.440, val_loss=0.633, train_loss_epoch=0.502]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.485, val_loss=0.590, train_loss_epoch=0.509]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.485, val_loss=0.590, train_loss_epoch=0.509]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(0.7799, device='cuda:0')l_loss=0.590, train_loss_epoch=0.509]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .7799, device='cuda:0')l_loss=0.590, train_loss_epoch=0.509]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.451, val_loss=0.576, train_loss_epoch=0.402]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.451, val_loss=0.576, train_loss_epoch=0.402]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  71%|███████▏  | 5/7 [00:04<00:01,  1.09it/s, v_num=lfgp, train_loss_step=0.466, val_loss=0.576, train_loss_epoch=0.402]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4234, device='cuda:0')00:04<00:01,  1.09it/s, v_num=lfgp, train_loss_step=0.466, val_loss=0.576, train_loss_epoch=0.402]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.09it/s, v_num=lfgp, train_loss_step=0.466, val_loss=0.576, train_loss_epoch=0.402]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.475, val_loss=0.574, train_loss_epoch=0.433]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.475, val_loss=0.574, train_loss_epoch=0.433]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.396, val_loss=0.574, train_loss_epoch=0.433]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      ain_loss_step=0.396, val_loss=0.574, train_loss_epoch=0.433]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.375, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.375, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.340, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4221, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.340, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4221, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.340, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.340, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.340, val_loss=0.574, train_loss_epoch=0.445]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.570, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.488, val_loss=0.570, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4767, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.488, val_loss=0.570, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.488, val_loss=0.570, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  43%|████▎     | 3/7 [00:02<00:03,  1.03it/s, v_num=lfgp, train_loss_step=0.376, val_loss=0.555, train_loss_epoch=0.396]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  43%|████▎     | 3/7 [00:02<00:03,  1.03it/s, v_num=lfgp, train_loss_step=0.376, val_loss=0.555, train_loss_epoch=0.396]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.0222, device='cuda:0')l_loss=0.555, train_loss_epoch=0.396]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .0222, device='cuda:0')l_loss=0.555, train_loss_epoch=0.396]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.550, train_loss_epoch=0.350]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.550, train_loss_epoch=0.350]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.550, train_loss_epoch=0.350]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5024, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.550, train_loss_epoch=0.350]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.10it/s, v_num=lfgp, train_loss_step=0.354, val_loss=0.550, train_loss_epoch=0.350]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.404, val_loss=0.551, train_loss_epoch=0.374]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.404, val_loss=0.551, train_loss_epoch=0.374]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.367, val_loss=0.551, train_loss_epoch=0.374]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      ain_loss_step=0.367, val_loss=0.551, train_loss_epoch=0.374]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.260, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.260, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.350, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4675, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.350, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4675, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.350, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.350, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.350, val_loss=0.546, train_loss_epoch=0.422]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.276, val_loss=0.540, train_loss_epoch=0.359]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.423, val_loss=0.540, train_loss_epoch=0.359]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5078, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.423, val_loss=0.540, train_loss_epoch=0.359]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.423, val_loss=0.540, train_loss_epoch=0.359]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.423, val_loss=0.540, train_loss_epoch=0.359]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.369, val_loss=0.535, train_loss_epoch=0.312]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.0111, device='cuda:0')l_loss=0.535, train_loss_epoch=0.312]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .0111, device='cuda:0')l_loss=0.535, train_loss_epoch=0.312]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.450, val_loss=0.539, train_loss_epoch=0.361]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.450, val_loss=0.539, train_loss_epoch=0.361]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.414, val_loss=0.539, train_loss_epoch=0.361]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5151, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.414, val_loss=0.539, train_loss_epoch=0.361]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.414, val_loss=0.539, train_loss_epoch=0.361]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  43%|████▎     | 3/7 [00:02<00:03,  1.03it/s, v_num=lfgp, train_loss_step=0.205, val_loss=0.531, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  43%|████▎     | 3/7 [00:02<00:03,  1.03it/s, v_num=lfgp, train_loss_step=0.205, val_loss=0.531, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.0338, device='cuda:0')l_loss=0.531, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .0338, device='cuda:0')l_loss=0.531, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.410, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.410, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.377, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5839, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.377, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5839, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.377, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.377, val_loss=0.530, train_loss_epoch=0.391]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.288, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.288, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.465, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5362, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.465, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.465, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.465, val_loss=0.535, train_loss_epoch=0.309]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  71%|███████▏  | 5/7 [00:04<00:01,  1.09it/s, v_num=lfgp, train_loss_step=0.302, val_loss=0.521, train_loss_epoch=0.397]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.1719, device='cuda:0')l_loss=0.521, train_loss_epoch=0.397]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .1719, device='cuda:0')l_loss=0.521, train_loss_epoch=0.397]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.418, val_loss=0.507, train_loss_epoch=0.354]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.418, val_loss=0.507, train_loss_epoch=0.354]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.312, val_loss=0.507, train_loss_epoch=0.354]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.3556, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.312, val_loss=0.507, train_loss_epoch=0.354]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.312, val_loss=0.507, train_loss_epoch=0.354]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.316, val_loss=0.506, train_loss_epoch=0.342]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.316, val_loss=0.506, train_loss_epoch=0.342]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.2634, device='cuda:0')l_loss=0.506, train_loss_epoch=0.342]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .2634, device='cuda:0')l_loss=0.506, train_loss_epoch=0.342]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 45:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.272, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 45:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.272, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 45:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.338, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4487, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.338, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4487, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.338, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 271.10it/s, v_num=lfgp, train_loss_step=0.338, val_loss=0.514, train_loss_epoch=0.324]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 46:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.526, train_loss_epoch=0.307]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 46:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.526, train_loss_epoch=0.307]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 46:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.177, val_loss=0.526, train_loss_epoch=0.307]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      ain_loss_step=0.177, val_loss=0.526, train_loss_epoch=0.307]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 47:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.175, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 47:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.175, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 47:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.218, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5062, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.218, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.218, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.218, val_loss=0.531, train_loss_epoch=0.308]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 48:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.400, val_loss=0.522, train_loss_epoch=0.213]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 48:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.522, train_loss_epoch=0.213]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5210, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.522, train_loss_epoch=0.213]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.522, train_loss_epoch=0.213]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.522, train_loss_epoch=0.213]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 49:  57%|█████▋    | 4/7 [00:03<00:02,  1.08it/s, v_num=lfgp, train_loss_step=0.300, val_loss=0.522, train_loss_epoch=0.321]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 49: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.3043, device='cuda:0')l_loss=0.522, train_loss_epoch=0.321]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .3043, device='cuda:0')l_loss=0.522, train_loss_epoch=0.321]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 50:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.382, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 50:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.382, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 50:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.320, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5240, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.320, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5240, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.320, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.320, val_loss=0.504, train_loss_epoch=0.327]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 51:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.117, val_loss=0.501, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 51:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.117, val_loss=0.501, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 51:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.433, val_loss=0.501, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      ain_loss_step=0.433, val_loss=0.501, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 52:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.245, val_loss=0.505, train_loss_epoch=0.276]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 52:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.245, val_loss=0.505, train_loss_epoch=0.276]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 52:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.171, val_loss=0.505, train_loss_epoch=0.276]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4967, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.171, val_loss=0.505, train_loss_epoch=0.276]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.171, val_loss=0.505, train_loss_epoch=0.276]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 53:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.209, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 53:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.209, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 53:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.592, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4988, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.592, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.592, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+==================================================it/s, v_num=lfgp, train_loss_step=0.592, val_loss=0.498, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 54:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.0826, val_loss=0.474, train_loss_epoch=0.307]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 54: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(1.4146, device='cuda:0')l_loss=0.474, train_loss_epoch=0.307]]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .4146, device='cuda:0')l_loss=0.474, train_loss_epoch=0.307]]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 55:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.130, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 55:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.130, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 55:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.252, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.5149, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.252, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.5149, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.252, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.252, val_loss=0.470, train_loss_epoch=0.262]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 56:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.511, val_loss=0.479, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 56:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.511, val_loss=0.479, train_loss_epoch=0.227]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 56: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(1.5249, device='cuda:0')al_loss=0.479, train_loss_epoch=0.227]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .5249, device='cuda:0')al_loss=0.479, train_loss_epoch=0.227]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 57:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.347, val_loss=0.484, train_loss_epoch=0.288] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 57:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.347, val_loss=0.484, train_loss_epoch=0.288] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 57:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.491, val_loss=0.484, train_loss_epoch=0.288] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.5400, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.491, val_loss=0.484, train_loss_epoch=0.288] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 271.10it/s, v_num=lfgp, train_loss_step=0.491, val_loss=0.484, train_loss_epoch=0.288] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 58:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.192, val_loss=0.500, train_loss_epoch=0.290] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 58:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.192, val_loss=0.500, train_loss_epoch=0.290]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 58:  86%|████████▌ | 6/7 [00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.280, val_loss=0.500, train_loss_epoch=0.290]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      ain_loss_step=0.280, val_loss=0.500, train_loss_epoch=0.290]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 59:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.219, val_loss=0.508, train_loss_epoch=0.269]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 59:  14%|█▍        | 1/7 [00:01<00:07,  0.84it/s, v_num=lfgp, train_loss_step=0.219, val_loss=0.508, train_loss_epoch=0.269]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 59:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.0986, val_loss=0.508, train_loss_epoch=0.269]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+tensor(-0.4984, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.0986, val_loss=0.508, train_loss_epoch=0.269]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.0986, val_loss=0.508, train_loss_epoch=0.269]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 60:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.0997, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 60:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.0997, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 60:  86%|████████▌ | 6/7 [00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.256, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.4532, device='cuda:0')00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.256, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.4532, device='cuda:0')00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.256, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+==================================================it/s, v_num=lfgp, train_loss_step=0.256, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+==================================================it/s, v_num=lfgp, train_loss_step=0.256, val_loss=0.506, train_loss_epoch=0.237]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 61:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.198, val_loss=0.492, train_loss_epoch=0.260]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 61: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(1.5315, device='cuda:0')l_loss=0.492, train_loss_epoch=0.260]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .5315, device='cuda:0')l_loss=0.492, train_loss_epoch=0.260]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 62:  14%|█▍        | 1/7 [00:01<00:07,  0.85it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.473, train_loss_epoch=0.358]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 62:  14%|█▍        | 1/7 [00:01<00:07,  0.85it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.473, train_loss_epoch=0.358]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 62:  86%|████████▌ | 6/7 [00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.277, val_loss=0.473, train_loss_epoch=0.358]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.5093, device='cuda:0')00:05<00:00,  1.12it/s, v_num=lfgp, train_loss_step=0.277, val_loss=0.473, train_loss_epoch=0.358]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 271.12it/s, v_num=lfgp, train_loss_step=0.277, val_loss=0.473, train_loss_epoch=0.358]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 63:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.288, val_loss=0.468, train_loss_epoch=0.290]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 63:  43%|████▎     | 3/7 [00:02<00:03,  1.05it/s, v_num=lfgp, train_loss_step=0.288, val_loss=0.468, train_loss_epoch=0.290]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 63: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(1.5946, device='cuda:0')l_loss=0.468, train_loss_epoch=0.290] ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .5946, device='cuda:0')l_loss=0.468, train_loss_epoch=0.290] ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 64:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.281, val_loss=0.468, train_loss_epoch=0.253]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 64:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.281, val_loss=0.468, train_loss_epoch=0.253]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 64:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.301, val_loss=0.468, train_loss_epoch=0.253]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.5815, device='cuda:0')00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.301, val_loss=0.468, train_loss_epoch=0.253]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 271.10it/s, v_num=lfgp, train_loss_step=0.301, val_loss=0.468, train_loss_epoch=0.253]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 65:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.171, val_loss=0.471, train_loss_epoch=0.270]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 65:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.171, val_loss=0.471, train_loss_epoch=0.270]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 65: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.6642, device='cuda:0')l_loss=0.471, train_loss_epoch=0.270]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .6642, device='cuda:0')l_loss=0.471, train_loss_epoch=0.270]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .6642, device='cuda:0')l_loss=0.471, train_loss_epoch=0.270]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 66:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.178, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 66:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.178, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 66:  71%|███████▏  | 5/7 [00:04<00:01,  1.09it/s, v_num=lfgp, train_loss_step=0.223, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.6417, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.223, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.223, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.223, val_loss=0.479, train_loss_epoch=0.218]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 67:  43%|████▎     | 3/7 [00:02<00:03,  1.03it/s, v_num=lfgp, train_loss_step=1.040, val_loss=0.477, train_loss_epoch=0.306]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 67:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.477, train_loss_epoch=0.306]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.6255, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.477, train_loss_epoch=0.306]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+==================================================it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.477, train_loss_epoch=0.306]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+==================================================it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.477, train_loss_epoch=0.306]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 68:  57%|█████▋    | 4/7 [00:03<00:02,  1.07it/s, v_num=lfgp, train_loss_step=0.122, val_loss=0.479, train_loss_epoch=0.291]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 68: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.8485, device='cuda:0')al_loss=0.479, train_loss_epoch=0.291]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .8485, device='cuda:0')al_loss=0.479, train_loss_epoch=0.291]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 69:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.116, val_loss=0.477, train_loss_epoch=0.152] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 69:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.116, val_loss=0.477, train_loss_epoch=0.152] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 69:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.101, val_loss=0.477, train_loss_epoch=0.152]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.6177, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.101, val_loss=0.477, train_loss_epoch=0.152]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.101, val_loss=0.477, train_loss_epoch=0.152]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 70:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.0368, val_loss=0.477, train_loss_epoch=0.211]ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 70:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.0368, val_loss=0.477, train_loss_epoch=0.211]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 70: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.7875, device='cuda:0')l_loss=0.477, train_loss_epoch=0.211]]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .7875, device='cuda:0')l_loss=0.477, train_loss_epoch=0.211]]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+                                                                      .7875, device='cuda:0')l_loss=0.477, train_loss_epoch=0.211]]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 71:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.0875, val_loss=0.483, train_loss_epoch=0.222]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 71:  14%|█▍        | 1/7 [00:01<00:07,  0.82it/s, v_num=lfgp, train_loss_step=0.0875, val_loss=0.483, train_loss_epoch=0.222]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 71:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.166, val_loss=0.483, train_loss_epoch=0.222]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.7238, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.166, val_loss=0.483, train_loss_epoch=0.222]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.166, val_loss=0.483, train_loss_epoch=0.222]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 72:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.294, val_loss=0.489, train_loss_epoch=0.251]  RNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 72:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.294, val_loss=0.489, train_loss_epoch=0.251]  WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 72:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.202, val_loss=0.489, train_loss_epoch=0.251]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+tensor(-0.7059, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.202, val_loss=0.489, train_loss_epoch=0.251]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+==================================================it/s, v_num=lfgp, train_loss_step=0.202, val_loss=0.489, train_loss_epoch=0.251]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+==================================================it/s, v_num=lfgp, train_loss_step=0.202, val_loss=0.489, train_loss_epoch=0.251]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+Epoch 73:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.355, val_loss=0.485, train_loss_epoch=0.204]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+Epoch 73: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.8757, device='cuda:0')l_loss=0.485, train_loss_epoch=0.204]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+                                                                      .8757, device='cuda:0')l_loss=0.485, train_loss_epoch=0.204]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+Epoch 74:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.248, val_loss=0.486, train_loss_epoch=0.217]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+Epoch 74:  14%|█▍        | 1/7 [00:01<00:07,  0.83it/s, v_num=lfgp, train_loss_step=0.248, val_loss=0.486, train_loss_epoch=0.217]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.t.
+Epoch 74:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.198, val_loss=0.486, train_loss_epoch=0.217] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+tensor(-0.6843, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.198, val_loss=0.486, train_loss_epoch=0.217] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Actual label distribution:    0s = 80, 1s = 271.11it/s, v_num=lfgp, train_loss_step=0.198, val_loss=0.486, train_loss_epoch=0.217] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 75:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.324, val_loss=0.489, train_loss_epoch=0.160] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 75:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.324, val_loss=0.489, train_loss_epoch=0.160] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 75: 100%|██████████| 7/7 [00:05<00:00,  1.18it/s, v_num=tensor(1.9020, device='cuda:0')l_loss=0.489, train_loss_epoch=0.160] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .9020, device='cuda:0')l_loss=0.489, train_loss_epoch=0.160] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+                                                                      .9020, device='cuda:0')l_loss=0.489, train_loss_epoch=0.160] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 76:  14%|█▍        | 1/7 [00:01<00:07,  0.81it/s, v_num=lfgp, train_loss_step=0.204, val_loss=0.494, train_loss_epoch=0.180]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 76:  14%|█▍        | 1/7 [00:01<00:07,  0.81it/s, v_num=lfgp, train_loss_step=0.204, val_loss=0.494, train_loss_epoch=0.180]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 76:  71%|███████▏  | 5/7 [00:04<00:01,  1.09it/s, v_num=lfgp, train_loss_step=0.194, val_loss=0.494, train_loss_epoch=0.180]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+tensor(-0.6319, device='cuda:0')        | 0/4 [00:00<?, ?it/s]lfgp, train_loss_step=0.194, val_loss=0.494, train_loss_epoch=0.180]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Actual label distribution:    0s = 80, 1s = 27[00:00<?, ?it/s]lfgp, train_loss_step=0.194, val_loss=0.494, train_loss_epoch=0.180]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 77:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.151, val_loss=0.484, train_loss_epoch=0.242] ARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 77:  43%|████▎     | 3/7 [00:02<00:03,  1.04it/s, v_num=lfgp, train_loss_step=0.151, val_loss=0.484, train_loss_epoch=0.242] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient..
+Epoch 77:  86%|████████▌ | 6/7 [00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.484, train_loss_epoch=0.242]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+tensor(-0.6164, device='cuda:0')00:05<00:00,  1.11it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.484, train_loss_epoch=0.242]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+==================================================it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.484, train_loss_epoch=0.242]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+==================================================it/s, v_num=lfgp, train_loss_step=0.274, val_loss=0.484, train_loss_epoch=0.242]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 78:  71%|███████▏  | 5/7 [00:04<00:01,  1.10it/s, v_num=lfgp, train_loss_step=0.458, val_loss=0.481, train_loss_epoch=0.163]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+Epoch 78: 100%|██████████| 7/7 [00:05<00:00,  1.17it/s, v_num=tensor(1.5906, device='cuda:0')l_loss=0.481, train_loss_epoch=0.163]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+                                                                      .5906, device='cuda:0')l_loss=0.481, train_loss_epoch=0.163]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+                                                                      .5906, device='cuda:0')l_loss=0.481, train_loss_epoch=0.163]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_decoder_approach.py --config-name config.yam ...
+Testing DataLoader 0:  67%|██████▋   | 2/3 [00:01<00:00,  1.22it/s]   .5906, device='cuda:0')l_loss=0.481, train_loss_epoch=0.163]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+==================================================00:00,  1.45it/s]Saved test predictions and probabilities to test_results_fold_final.xlsxvision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...
+==================================================00:00,  1.45it/s]Saved test predictions and probabilities to test_results_fold_final.xlsxvision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient...

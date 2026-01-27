@@ -3,7 +3,7 @@ from torchsurv.metrics.cindex import ConcordanceIndex
 import torch
 import pytorch_lightning as L
 import numpy as np
-from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores, BinaryAccuracy, Accuracy
+from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores, BinaryAccuracy, Accuracy, Recall, Precision
 from torchsurv.loss import cox, weibull
 from torchsurv.loss.cox import neg_partial_log_likelihood 
 from torchsurv.metrics.auc import Auc
@@ -15,15 +15,13 @@ import wandb
 import pandas as pd
 
 class encoder_decoder(L.LightningModule):
-    def __init__(self, encoder, survival_head, learning_rate, pos_weight):
+    def __init__(self, encoder, survival_head, learning_rate, pos_weight, freeze_encoder=True):
         super().__init__()
         self.survival_head = survival_head
         self._encoder_wrapper = encoder        
         self.vision_encoder = encoder.model.image_encoder
         self.learning_rate = learning_rate
-        self.vision_encoder.eval() 
-        for param in self.vision_encoder.parameters():
-            param.requires_grad = False
+        
      # Metrics
         self.cindex_metric = ConcordanceIndex()
         self.auroc_metric = Auc() 
@@ -51,57 +49,88 @@ class encoder_decoder(L.LightningModule):
         self.test_auroc = None
         self.test_f1_score = None
         self.test_balanced_accuracy = None
+        self.freeze_encoder = freeze_encoder
+        # Set the freeze state
+        if self.freeze_encoder:
+            for param in self.vision_encoder.parameters():
+                param.requires_grad = False
+        else:
+            self.vision_encoder.train()
+            for param in self.vision_encoder.parameters():
+                param.requires_grad = True
 
-    def encode_batch(self, base64_list):
-        embeddings = []
 
-        # MedImageInsight expects: encode(images=[base64_str, ...])
-        out = self._encoder_wrapper.encode(images=base64_list)
-        img_emb = out["image_embeddings"]  # numpy array or tensor
 
-        # convert each embedding to tensor
-        if isinstance(img_emb, np.ndarray):
-            img_emb = torch.tensor(img_emb)
+    # def encode_batch(self, base64_list):
+    #     embeddings = []
+
+    #     # MedImageInsight expects: encode(images=[base64_str, ...])
+    #     out = self._encoder_wrapper.encode(images=base64_list)
+    #     img_emb = out["image_embeddings"]  # numpy array or tensor
+
+    #     # convert each embedding to tensor
+    #     if isinstance(img_emb, np.ndarray):
+    #         img_emb = torch.tensor(img_emb)
             
-        img_emb = img_emb.to(self.device)
-        return img_emb.float()
+    #     img_emb = img_emb.to(self.device)
+    #     return img_emb.float()
+    def encode_batch(self, pixel_values):
+        img_emb = self.vision_encoder(pixel_values) 
+        return img_emb
 
     def forward(self, x):
-        embeddings = self.encode_batch(x)
-        log_hz = self.survival_head(embeddings)
-        return log_hz
-
         
+        # This creates the mathematical link for backpropagation
+        outputs = self.vision_encoder(x)
+        
+        # 2. Extract the embedding vector
+        # ViT models return an object; we want the pooled output (e.g., shape [Batch, 1024])
+        if hasattr(outputs, "pooler_output"):
+            img_emb = outputs.pooler_output
+        else:
+            # Fallback for different model versions
+            img_emb = outputs[0][:, 0, :] if isinstance(outputs, (list, tuple)) else outputs
+
+        # 3. Pass to your 150k parameter survival head
+        log_params = self.survival_head(img_emb)
+        
+        return log_params
+
+
     
     def training_step(self, batch, batch_idx):
+    # x is a Tensor from your new _get_data return
         x, event, time = batch
-        event = event.bool()
-        event = event.squeeze() # Ensure 1D
-        time = time.squeeze()          # Ensure 1D
-        log_params = self(x).squeeze()
-        if batch_idx == 0 and self.current_epoch == 0:
-            print(f"\n[EPOCH {self.current_epoch}] First Training Batch Info:")
-            print(f" - Image List Len: {len(x)}")
-            print(f" - Event Tensor Shape: {event.shape}")
-            print(f" - Time Tensor Shape: {time.shape}")
-            print(f'event tensor:{event}')
-            print(f'time tensor:{time}')
+        
+        # Ensure survival labels are 1D and correct type
+        event = event.squeeze().bool()
+        time = time.squeeze().float()
 
-        print(log_params.max())
-        print(log_params.min())
+        # The magic happens here: gradients flow through log_params back to vision_encoder
+        log_params = self(x).squeeze() 
 
+        # Calculate loss
         loss = weibull.neg_log_likelihood(log_params, event, time)
-        log_hz =weibull.log_hazard(log_params, time)
-        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
-        log_hz_t= weibull.log_hazard(log_params, new_time)        
-        self.log("train_loss", loss)
-        self.train_preds.append(log_params.detach().cpu())
-        self.train_events.append(event.detach().cpu())
-        self.train_time.append(time.detach().cpu())
-        self.train_log_hz_t.append(log_hz_t.detach().cpu())
+        
+        # Log metrics
+        self.log("train_loss", loss, on_epoch=True, prog_bar=True)
+        
+        # Verify gradients are working (only once)
+        if batch_idx == 0 and self.current_epoch == 0:
+            for name, param in self.vision_encoder.named_parameters():
+                if param.requires_grad:
+                    print(f"🔥 Successfully training: {name}")
+                    break # Just confirm one to be sure
 
-        # wandb.log({"train_loss": loss})
         return loss
+
+    def _check_gradient_flow(self):
+        """Helper to verify the 360M parameters are actually 'awake'"""
+        for name, param in self.named_parameters():
+            if "vision_encoder" in name and param.requires_grad:
+                print(f"✅ Gradient Path Verified: {name} is set to learn.")
+                return
+        print("❌ WARNING: Vision Encoder is still frozen or disconnected!")
     
     def validation_step(self, batch, batch_idx):
         x, event, time = batch
@@ -161,20 +190,15 @@ class encoder_decoder(L.LightningModule):
         self.stats_metric = self.stats_metric.cpu()
         new_time = torch.tensor(1825.0 / 2786.0).cpu()
         surv_prob = weibull.survival_function(preds, new_time)
-        hard_preds = (surv_prob < 0.65).int()
+        hard_preds = (surv_prob < 0.6).int()
         events_bool = events.squeeze().bool()
         self.print_inbalance(hard_preds, events_bool, stage_name=prefix.upper())
         log_hz = weibull.log_hazard(preds, time) 
         eval_times = torch.linspace(time.min(), time.max(), steps=10).cpu().unsqueeze(0)    
-        # Weibull survival function expects (params, time)
-        # Shape of surv should be (num_samples, num_time_points)
-        surv = weibull.survival_function(preds, time) 
 
-        # 3. Use the BrierScore Class
-        # Note: BrierScore() handles the IPCW (censoring weights) internally
+        surv = weibull.survival_function(preds, time) 
         bs_metric = BrierScore()
         
-        # surv: (N, 10), events_bool: (N,), time: (N,), eval_times: (10,)
         scores = bs_metric(surv, events_bool, time)
         
         # Calculate the Integrated Brier Score (IBS)
@@ -185,7 +209,10 @@ class encoder_decoder(L.LightningModule):
         f1_score = f1(hard_preds,events_bool)
         balanced_acc = Accuracy(task='multiclass', num_classes=2, average='macro')        
         acc = balanced_acc(hard_preds,events_bool)
-
+        rec= Recall(task='multiclass', num_classes=2, average='macro')
+        recall= rec(hard_preds,events_bool)
+        prec= Precision(task='multiclass', num_classes=2, average='macro')
+        precision = prec(hard_preds,events_bool)
         weibull_cindex = ConcordanceIndex()
         cindex= weibull_cindex(log_hz, events_bool, time)
         
@@ -195,6 +222,9 @@ class encoder_decoder(L.LightningModule):
             f'{prefix}_ibs': ibs_val,
             f'{prefix}_f1_score': f1_score,
             f'{prefix}_balanced_acc': acc,
+            f'{prefix}_recall': recall,
+            f'{prefix}_precision': precision,
+
          }, on_step=False, on_epoch=True)
         if return_metrics: 
             return {
@@ -203,6 +233,8 @@ class encoder_decoder(L.LightningModule):
             'ibs': ibs_val.item(),
             'f1_score': f1_score.item(),
             'balanced_acc': acc.item(), 
+            'recall': recall.item(),
+            'precision': precision.item(),
         }
 
     def plot_risk_distribution(self, preds, events, epoch):
@@ -236,6 +268,31 @@ class encoder_decoder(L.LightningModule):
         self._calculate_balanced_metrics(preds, events, time, 'val', log_hz_t)
         if self.current_epoch % 5 == 0:
             self.plot_risk_distribution(preds, events, self.current_epoch)
+        
+        eval_time = torch.tensor(1825.0 / 2786.0).cpu()
+
+        with torch.no_grad():
+            surv_probs = weibull.survival_function(preds, eval_time)
+        
+        # 4. Prepare data for Excel
+        # Convert to CPU/Numpy for Pandas compatibility
+        preds_np = preds.cpu().numpy()
+        events_np = events.cpu().numpy()
+        time_np = time.cpu().numpy()
+        surv_probs_np = surv_probs.squeeze().cpu().numpy()
+
+        # 5. Create DataFrame
+        df = pd.DataFrame({
+            'Actual_Time': time_np,
+            'Actual_Event': events_np,
+            'Surv_Prob_5y': surv_probs_np
+        })
+        
+        # 6. Save to Excel
+        # We use a unique name to avoid overwriting files in Cross-Validation
+        filename = f"validation_results_fold_{getattr(self, 'fold_id', 'final')}.xlsx"
+        df.to_excel(filename, index=False)
+        print(f"Saved test predictions and probabilities to {filename}")        # Calculate metrics for the test set
         # Clear lists for the next epoch
         self.val_preds.clear()
         self.val_events.clear()
@@ -277,12 +334,13 @@ class encoder_decoder(L.LightningModule):
         time = torch.cat(self.test_time)
         log_hz_t= torch.cat(self.test_log_hz_t)
 
-        eval_time = torch.tensor([1825.0 / 2786.0]).to(preds.device)
+        eval_time = torch.tensor(1825.0 / 2786.0).cpu()
+
         
         # 3. Calculate Survival Probability S(t | x)
         # Shape will be (num_samples, 1)
         with torch.no_grad():
-            surv_probs = weibull.survival_function(preds, eval_time.unsqueeze(0))
+            surv_probs = weibull.survival_function(preds, eval_time)
         
         # 4. Prepare data for Excel
         # Convert to CPU/Numpy for Pandas compatibility
@@ -315,21 +373,46 @@ class encoder_decoder(L.LightningModule):
         self.test_events.clear()
         self.test_log_hz_t.clear()
 
-    def configure_optimizers(self):
-        # Unfreeze the encoder parameters for fine-tuning
-        for param in self.vision_encoder.parameters():
-            param.requires_grad = True
 
-        encoder_lr = self.learning_rate / 10.0 
-        
-        param_groups = [
-            {'params': self.survival_head.parameters(), 'lr': self.learning_rate},
-            {'params': self.vision_encoder.parameters(), 'lr': encoder_lr},
-        ]
-        
-        optimizer = torch.optim.Adam(
-            param_groups, 
-            weight_decay=1e-5 
-        )
-        return optimizer
-   
+    def on_after_backward(self):
+    # Check the exact parameter you just found
+        for name, param in self.named_parameters():
+            if "vision_encoder.blocks.2.1" in name:
+                if param.grad is not None:
+                    grad_norm = param.grad.norm().item()
+                    if grad_norm > 1e-9: # If it's not zero, it's learning!
+                        print(f"SUCCESS: {name} is Updating! Grad Norm: {grad_norm:.6f}")
+                else:
+                    print(f"WARNING: {name} has NO gradient.")
+                break
+
+    def configure_optimizers(self):
+            # 1. Collect only parameters that have requires_grad = True
+            trainable_params = list(filter(lambda p: p.requires_grad, self.parameters()))
+            
+            if self.freeze_encoder== True:
+                for param in self.vision_encoder.parameters():
+                    param.requires_grad = False
+            else:
+                for param in self.vision_encoder.parameters():
+                    param.requires_grad = True
+
+            
+            # 2. If we are unfreezing, we might want a lower LR for the backbone (Fine-tuning)
+            if not self.freeze_encoder:
+                # Separate the head and the encoder for different learning rates
+                param_groups = [
+                    {'params': self.survival_head.parameters(), 'lr': self.learning_rate},
+                    {'params': self.vision_encoder.parameters(), 'lr': self.learning_rate / 10}
+                ]
+            else:
+                # Only the head is training
+                param_groups = list(filter(lambda p: p.requires_grad, self.parameters()))
+
+
+            optimizer = torch.optim.Adam(
+                param_groups, 
+                lr=self.learning_rate,
+                weight_decay=1e-5 
+            )
+            return optimizer

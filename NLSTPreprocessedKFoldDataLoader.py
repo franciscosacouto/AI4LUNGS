@@ -528,10 +528,21 @@ class NLSTPreprocessedDataLoader(Dataset):
                 dataset_name="NLSTPreprocessed"
             )
         
-        # image = self.image_transformer(image)
-        # data = dict(image=image)
-        base64_image_str = array_to_base64(image)
-        return base64_image_str
+        image_tensor = torch.from_numpy(image).float()
+
+        if self.config.dimension == 2:
+            # Shape: (H, W) -> (1, H, W) -> (3, H, W)
+            if image_tensor.ndim == 2:
+                image_tensor = image_tensor.unsqueeze(0).repeat(3, 1, 1)
+        
+        elif self.config.dimension == 2.5 or self.config.dimension == 3:
+            # If your FM expects 3 channels but you have 9 slices, 
+            # you may need to project them or select 3. 
+            # For now, let's ensure it has a channel dim:
+            if image_tensor.ndim == 3:
+                image_tensor = image_tensor.unsqueeze(0) # (1, D, H, W)
+
+        return image_tensor
     
     def _get_time(self, data_index):
         # Retrieve the row from the main metadata dataframe

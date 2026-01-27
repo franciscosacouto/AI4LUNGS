@@ -1,0 +1,942 @@
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 283 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+283 K     Trainable params
+360 M     Non-trainable params
+360 M     Total params
+1,443.678 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0612)
+tensor(-0.3178)
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [01:25<01:25,  0.01it/s]tensor(0.0144)
+tensor(-0.2884)
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [02:51<00:00,  0.01it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s] WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  14%|█▍        | 1/7 [01:27<08:45,  0.01it/s, v_num=vf13, train_loss_step=0.583]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  29%|██▊       | 2/7 [02:54<07:15,  0.01it/s, v_num=vf13, train_loss_step=0.682]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  43%|████▎     | 3/7 [04:20<05:47,  0.01it/s, v_num=vf13, train_loss_step=0.577]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  57%|█████▋    | 4/7 [05:46<04:19,  0.01it/s, v_num=vf13, train_loss_step=0.574]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  71%|███████▏  | 5/7 [07:13<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0:  86%|████████▌ | 6/7 [08:39<01:26,  0.01it/s, v_num=vf13, train_loss_step=0.648]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 0: 100%|██████████| 7/7 [09:38<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.447]
+tensor(-0.2567)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2078)Loader 0:  25%|██▌       | 1/4 [01:24<04:14,  0.01it/s]
+tensor(-0.2253)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.2107)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.447, val_loss=0.728, train_loss_epoch=0.594]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 1:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.447, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.574, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  29%|██▊       | 2/7 [02:54<07:15,  0.01it/s, v_num=vf13, train_loss_step=0.637, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  43%|████▎     | 3/7 [04:20<05:47,  0.01it/s, v_num=vf13, train_loss_step=0.706, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  57%|█████▋    | 4/7 [05:48<04:21,  0.01it/s, v_num=vf13, train_loss_step=0.584, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  71%|███████▏  | 5/7 [07:14<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.518, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1:  86%|████████▌ | 6/7 [08:41<01:26,  0.01it/s, v_num=vf13, train_loss_step=0.629, val_loss=0.728, train_loss_epoch=0.594]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 1: 100%|██████████| 7/7 [09:40<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.577, val_loss=0.728, train_loss_epoch=0.594]
+tensor(-0.2362)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1809)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2180)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.1555)Loader 0:  75%|███████▌  | 3/4 [04:15<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 2:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.577, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  14%|█▍        | 1/7 [01:28<08:53,  0.01it/s, v_num=vf13, train_loss_step=0.541, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  29%|██▊       | 2/7 [02:55<07:18,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.673, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  57%|█████▋    | 4/7 [05:49<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.682, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  71%|███████▏  | 5/7 [07:17<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.520, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2:  86%|████████▌ | 6/7 [08:43<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.532, val_loss=0.715, train_loss_epoch=0.605]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 2: 100%|██████████| 7/7 [09:42<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.612, val_loss=0.715, train_loss_epoch=0.605]
+tensor(-0.2262)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1785)Loader 0:  25%|██▌       | 1/4 [01:25<04:15,  0.01it/s]
+tensor(-0.2189)Loader 0:  50%|█████     | 2/4 [02:48<02:48,  0.01it/s]
+tensor(-0.1340)Loader 0:  75%|███████▌  | 3/4 [04:13<01:24,  0.01it/s]
+==================================================45<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 3:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.612, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  14%|█▍        | 1/7 [01:28<08:50,  0.01it/s, v_num=vf13, train_loss_step=0.504, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  29%|██▊       | 2/7 [02:54<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.556, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.545, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  57%|█████▋    | 4/7 [05:48<04:21,  0.01it/s, v_num=vf13, train_loss_step=0.561, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  71%|███████▏  | 5/7 [07:17<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.562, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.553, val_loss=0.708, train_loss_epoch=0.578]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 3: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.544, val_loss=0.708, train_loss_epoch=0.578]
+tensor(-0.1929)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1672)Loader 0:  25%|██▌       | 1/4 [01:24<04:12,  0.01it/s]
+tensor(-0.2260)Loader 0:  50%|█████     | 2/4 [02:49<02:49,  0.01it/s]
+tensor(-0.1488)Loader 0:  75%|███████▌  | 3/4 [04:15<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 4:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.544, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.636, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  29%|██▊       | 2/7 [02:53<07:14,  0.01it/s, v_num=vf13, train_loss_step=0.532, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  43%|████▎     | 3/7 [04:20<05:47,  0.01it/s, v_num=vf13, train_loss_step=0.533, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  57%|█████▋    | 4/7 [05:47<04:20,  0.01it/s, v_num=vf13, train_loss_step=0.592, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  71%|███████▏  | 5/7 [07:13<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.408, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4:  86%|████████▌ | 6/7 [08:41<01:26,  0.01it/s, v_num=vf13, train_loss_step=0.604, val_loss=0.700, train_loss_epoch=0.546]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 4: 100%|██████████| 7/7 [09:41<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.480, val_loss=0.700, train_loss_epoch=0.546]
+tensor(-0.1676)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1535)Loader 0:  25%|██▌       | 1/4 [01:26<04:18,  0.01it/s]
+tensor(-0.2288)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.1623)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 5:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.480, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.584, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  29%|██▊       | 2/7 [02:54<07:15,  0.01it/s, v_num=vf13, train_loss_step=0.537, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  43%|████▎     | 3/7 [04:21<05:48,  0.01it/s, v_num=vf13, train_loss_step=0.623, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  57%|█████▋    | 4/7 [05:47<04:20,  0.01it/s, v_num=vf13, train_loss_step=0.626, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  71%|███████▏  | 5/7 [07:14<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.519, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5:  86%|████████▌ | 6/7 [08:42<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.690, train_loss_epoch=0.544]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 5: 100%|██████████| 7/7 [09:42<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.674, val_loss=0.690, train_loss_epoch=0.544]
+tensor(-0.1842)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1934)Loader 0:  25%|██▌       | 1/4 [01:25<04:15,  0.01it/s]
+tensor(-0.2418)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.1855)Loader 0:  75%|███████▌  | 3/4 [04:15<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.674, val_loss=0.677, train_loss_epoch=0.576]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 6:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.674, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  14%|█▍        | 1/7 [01:28<08:48,  0.01it/s, v_num=vf13, train_loss_step=0.450, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  29%|██▊       | 2/7 [02:55<07:19,  0.01it/s, v_num=vf13, train_loss_step=0.533, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  43%|████▎     | 3/7 [04:23<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.516, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  57%|█████▋    | 4/7 [05:49<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.479, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  71%|███████▏  | 5/7 [07:16<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.596, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6:  86%|████████▌ | 6/7 [08:43<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.415, val_loss=0.677, train_loss_epoch=0.576]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 6: 100%|██████████| 7/7 [09:42<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.471, val_loss=0.677, train_loss_epoch=0.576]
+tensor(-0.1795)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2040)Loader 0:  25%|██▌       | 1/4 [01:24<04:14,  0.01it/s]
+tensor(-0.2187)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.1719)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Epoch 7:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.471, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  14%|█▍        | 1/7 [01:27<08:47,  0.01it/s, v_num=vf13, train_loss_step=0.549, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  29%|██▊       | 2/7 [02:55<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.506, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  43%|████▎     | 3/7 [04:22<05:49,  0.01it/s, v_num=vf13, train_loss_step=0.584, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  57%|█████▋    | 4/7 [05:49<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.544, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  71%|███████▏  | 5/7 [07:17<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.511, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.536, val_loss=0.668, train_loss_epoch=0.496]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 7: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.590, val_loss=0.668, train_loss_epoch=0.496]
+tensor(-0.1711)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2000)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.2195)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.1686)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 2, 1s = 105
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 8:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.590, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  14%|█▍        | 1/7 [01:28<08:52,  0.01it/s, v_num=vf13, train_loss_step=0.563, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.533, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.463, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.526, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  71%|███████▏  | 5/7 [07:16<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.536, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.554, val_loss=0.659, train_loss_epoch=0.543]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 8: 100%|██████████| 7/7 [09:43<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.649, val_loss=0.659, train_loss_epoch=0.543]
+tensor(-0.1772)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2024)Loader 0:  25%|██▌       | 1/4 [01:25<04:15,  0.01it/s]
+tensor(-0.2039)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.1541)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 6, 1s = 101
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 9:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.649, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  14%|█▍        | 1/7 [01:28<08:52,  0.01it/s, v_num=vf13, train_loss_step=0.472, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  29%|██▊       | 2/7 [02:56<07:21,  0.01it/s, v_num=vf13, train_loss_step=0.486, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  43%|████▎     | 3/7 [04:23<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.454, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.389, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.480, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.460, val_loss=0.648, train_loss_epoch=0.541]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 9: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.557, val_loss=0.648, train_loss_epoch=0.541]
+tensor(-0.1585)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1799)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.1865)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.1648)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 8, 1s = 99
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 10:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.557, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  14%|█▍        | 1/7 [01:28<08:50,  0.01it/s, v_num=vf13, train_loss_step=0.651, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  29%|██▊       | 2/7 [02:56<07:21,  0.01it/s, v_num=vf13, train_loss_step=0.567, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  43%|████▎     | 3/7 [04:24<05:52,  0.01it/s, v_num=vf13, train_loss_step=0.588, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  57%|█████▋    | 4/7 [05:52<04:24,  0.01it/s, v_num=vf13, train_loss_step=0.551, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  71%|███████▏  | 5/7 [07:19<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.369, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10:  86%|████████▌ | 6/7 [08:47<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.529, val_loss=0.640, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 10: 100%|██████████| 7/7 [09:46<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.415, val_loss=0.640, train_loss_epoch=0.467]
+tensor(-0.1536)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.1927)Loader 0:  25%|██▌       | 1/4 [01:26<04:18,  0.01it/s]
+tensor(-0.1948)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.1951)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 10, 1s = 97
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.415, val_loss=0.638, train_loss_epoch=0.530]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 11:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.415, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  14%|█▍        | 1/7 [01:29<08:54,  0.01it/s, v_num=vf13, train_loss_step=0.513, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  29%|██▊       | 2/7 [02:54<07:15,  0.01it/s, v_num=vf13, train_loss_step=0.531, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  43%|████▎     | 3/7 [04:20<05:47,  0.01it/s, v_num=vf13, train_loss_step=0.487, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  57%|█████▋    | 4/7 [05:47<04:20,  0.01it/s, v_num=vf13, train_loss_step=0.522, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  71%|███████▏  | 5/7 [07:15<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.583, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11:  86%|████████▌ | 6/7 [08:42<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.532, val_loss=0.638, train_loss_epoch=0.530]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 11: 100%|██████████| 7/7 [09:41<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.598, val_loss=0.638, train_loss_epoch=0.530]
+tensor(-0.1691)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2271)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.2088)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.2159)Loader 0:  75%|███████▌  | 3/4 [04:15<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 11, 1s = 96
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 12:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.598, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  14%|█▍        | 1/7 [01:28<08:49,  0.01it/s, v_num=vf13, train_loss_step=0.539, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.545, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  43%|████▎     | 3/7 [04:24<05:52,  0.01it/s, v_num=vf13, train_loss_step=0.546, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.455, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.523, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.476, val_loss=0.639, train_loss_epoch=0.535]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 12: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.440, val_loss=0.639, train_loss_epoch=0.535]
+tensor(-0.2303)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2806)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.2131)Loader 0:  50%|█████     | 2/4 [02:47<02:47,  0.01it/s]
+tensor(-0.2628)Loader 0:  75%|███████▌  | 3/4 [04:13<01:24,  0.01it/s]
+==================================================44<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 12, 1s = 95
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 13:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.440, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.464, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  29%|██▊       | 2/7 [02:54<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.517, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  43%|████▎     | 3/7 [04:21<05:48,  0.01it/s, v_num=vf13, train_loss_step=0.508, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  57%|█████▋    | 4/7 [05:47<04:20,  0.01it/s, v_num=vf13, train_loss_step=0.544, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  71%|███████▏  | 5/7 [07:15<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.355, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13:  86%|████████▌ | 6/7 [08:43<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.510, val_loss=0.642, train_loss_epoch=0.507]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 13: 100%|██████████| 7/7 [09:42<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.600, val_loss=0.642, train_loss_epoch=0.507]
+tensor(-0.2856)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3807)Loader 0:  25%|██▌       | 1/4 [01:26<04:18,  0.01it/s]
+tensor(-0.2703)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3120)Loader 0:  75%|███████▌  | 3/4 [04:19<01:26,  0.01it/s]
+==================================================50<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 13, 1s = 94
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 14:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.600, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  14%|█▍        | 1/7 [01:29<08:54,  0.01it/s, v_num=vf13, train_loss_step=0.449, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  29%|██▊       | 2/7 [02:55<07:18,  0.01it/s, v_num=vf13, train_loss_step=0.526, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.536, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  57%|█████▋    | 4/7 [05:50<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.465, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  71%|███████▏  | 5/7 [07:17<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.457, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.390, val_loss=0.646, train_loss_epoch=0.494]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 14: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.430, val_loss=0.646, train_loss_epoch=0.494]
+
+tensor(-0.3503)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4633)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.3478)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.3658)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 17, 1s = 90
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 15:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.430, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  14%|█▍        | 1/7 [01:28<08:51,  0.01it/s, v_num=vf13, train_loss_step=0.553, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.554, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.467, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  57%|█████▋    | 4/7 [05:50<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.439, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  71%|███████▏  | 5/7 [07:17<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.417, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.468, val_loss=0.654, train_loss_epoch=0.466]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 15: 100%|██████████| 7/7 [09:43<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.422, val_loss=0.654, train_loss_epoch=0.466]
+tensor(-0.3788)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4973)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.3910)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.4081)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 17, 1s = 90
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.422, val_loss=0.664, train_loss_epoch=0.477]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 16:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.422, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  14%|█▍        | 1/7 [01:28<08:53,  0.01it/s, v_num=vf13, train_loss_step=0.478, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  29%|██▊       | 2/7 [02:56<07:22,  0.01it/s, v_num=vf13, train_loss_step=0.424, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  43%|████▎     | 3/7 [04:24<05:53,  0.01it/s, v_num=vf13, train_loss_step=0.411, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  57%|█████▋    | 4/7 [05:50<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.501, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.442, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.513, val_loss=0.664, train_loss_epoch=0.477]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 16: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.533, val_loss=0.664, train_loss_epoch=0.477]
+tensor(-0.4185)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.5157)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.4155)Loader 0:  50%|█████     | 2/4 [02:54<02:54,  0.01it/s]
+tensor(-0.4523)Loader 0:  75%|███████▌  | 3/4 [04:20<01:26,  0.01it/s]
+==================================================52<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 17:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.533, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  14%|█▍        | 1/7 [01:28<08:49,  0.01it/s, v_num=vf13, train_loss_step=0.406, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  29%|██▊       | 2/7 [02:54<07:16,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  43%|████▎     | 3/7 [04:22<05:49,  0.01it/s, v_num=vf13, train_loss_step=0.509, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  57%|█████▋    | 4/7 [05:49<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.496, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.448, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.424, val_loss=0.672, train_loss_epoch=0.469]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 17: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.433, val_loss=0.672, train_loss_epoch=0.469]
+tensor(-0.4687)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.5284)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.4298)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.4786)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 22, 1s = 85
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 18:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.433, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  14%|█▍        | 1/7 [01:33<09:19,  0.01it/s, v_num=vf13, train_loss_step=0.358, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  29%|██▊       | 2/7 [02:59<07:29,  0.01it/s, v_num=vf13, train_loss_step=0.667, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  43%|████▎     | 3/7 [04:27<05:56,  0.01it/s, v_num=vf13, train_loss_step=0.529, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  57%|█████▋    | 4/7 [05:55<04:26,  0.01it/s, v_num=vf13, train_loss_step=0.247, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  71%|███████▏  | 5/7 [07:23<02:57,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18:  86%|████████▌ | 6/7 [08:49<01:28,  0.01it/s, v_num=vf13, train_loss_step=0.523, val_loss=0.669, train_loss_epoch=0.461]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 18: 100%|██████████| 7/7 [09:48<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.439, val_loss=0.669, train_loss_epoch=0.461]
+tensor(-0.5189)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4867)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.4566)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.5224)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 24, 1s = 83
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 19:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.439, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  14%|█▍        | 1/7 [01:28<08:49,  0.01it/s, v_num=vf13, train_loss_step=0.377, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  29%|██▊       | 2/7 [02:54<07:16,  0.01it/s, v_num=vf13, train_loss_step=0.497, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.443, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.605, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  71%|███████▏  | 5/7 [07:19<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.351, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.564, val_loss=0.668, train_loss_epoch=0.467]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 19: 100%|██████████| 7/7 [09:46<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.330, val_loss=0.668, train_loss_epoch=0.467]
+tensor(-0.4859)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4784)Loader 0:  25%|██▌       | 1/4 [01:27<04:21,  0.01it/s]
+tensor(-0.4000)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.4613)Loader 0:  75%|███████▌  | 3/4 [04:19<01:26,  0.01it/s]
+==================================================51<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 30, 1s = 77
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 20:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.330, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  14%|█▍        | 1/7 [01:28<08:49,  0.01it/s, v_num=vf13, train_loss_step=0.365, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.543, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.390, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  57%|█████▋    | 4/7 [05:50<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.482, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  71%|███████▏  | 5/7 [07:16<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.447, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.378, val_loss=0.645, train_loss_epoch=0.459]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 20: 100%|██████████| 7/7 [09:43<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.392, val_loss=0.645, train_loss_epoch=0.459]
+tensor(-0.4324)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4446)Loader 0:  25%|██▌       | 1/4 [01:26<04:18,  0.01it/s]
+tensor(-0.3263)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.3947)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 31, 1s = 76
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 21:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.392, val_loss=0.626, train_loss_epoch=0.430]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 21:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.392, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  14%|█▍        | 1/7 [01:28<08:53,  0.01it/s, v_num=vf13, train_loss_step=0.382, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  29%|██▊       | 2/7 [02:55<07:18,  0.01it/s, v_num=vf13, train_loss_step=0.460, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  43%|████▎     | 3/7 [04:22<05:49,  0.01it/s, v_num=vf13, train_loss_step=0.483, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.445, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  71%|███████▏  | 5/7 [07:22<02:56,  0.01it/s, v_num=vf13, train_loss_step=0.386, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21:  86%|████████▌ | 6/7 [08:50<01:28,  0.01it/s, v_num=vf13, train_loss_step=0.344, val_loss=0.626, train_loss_epoch=0.430]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 21: 100%|██████████| 7/7 [09:50<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.427, val_loss=0.626, train_loss_epoch=0.430]
+tensor(-0.3484)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4920)Loader 0:  25%|██▌       | 1/4 [01:26<04:18,  0.01it/s]
+tensor(-0.3019)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.3295)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 36, 1s = 71
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 22:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.427, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  14%|█▍        | 1/7 [01:29<08:58,  0.01it/s, v_num=vf13, train_loss_step=0.226, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  29%|██▊       | 2/7 [02:58<07:25,  0.01it/s, v_num=vf13, train_loss_step=0.402, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  43%|████▎     | 3/7 [04:26<05:54,  0.01it/s, v_num=vf13, train_loss_step=0.432, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  57%|█████▋    | 4/7 [05:54<04:25,  0.01it/s, v_num=vf13, train_loss_step=0.568, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  71%|███████▏  | 5/7 [07:21<02:56,  0.01it/s, v_num=vf13, train_loss_step=0.426, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22:  86%|████████▌ | 6/7 [08:49<01:28,  0.01it/s, v_num=vf13, train_loss_step=0.415, val_loss=0.611, train_loss_epoch=0.418]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 22: 100%|██████████| 7/7 [09:49<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.556, val_loss=0.611, train_loss_epoch=0.418]
+
+tensor(-0.3401)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4895)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2945)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.3208)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 37, 1s = 70
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 23:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.556, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  14%|█▍        | 1/7 [01:28<08:50,  0.01it/s, v_num=vf13, train_loss_step=0.394, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  29%|██▊       | 2/7 [02:56<07:22,  0.01it/s, v_num=vf13, train_loss_step=0.389, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  43%|████▎     | 3/7 [04:25<05:54,  0.01it/s, v_num=vf13, train_loss_step=0.628, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  57%|█████▋    | 4/7 [05:53<04:24,  0.01it/s, v_num=vf13, train_loss_step=0.315, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  71%|███████▏  | 5/7 [07:20<02:56,  0.01it/s, v_num=vf13, train_loss_step=0.431, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.478, val_loss=0.603, train_loss_epoch=0.426]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 23: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.447, val_loss=0.603, train_loss_epoch=0.426]
+tensor(-0.2980)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4209)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2572)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3148)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================50<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 39, 1s = 68
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 24:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.447, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  14%|█▍        | 1/7 [01:28<08:49,  0.01it/s, v_num=vf13, train_loss_step=0.355, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.606, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.404, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.439, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  71%|███████▏  | 5/7 [07:17<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.416, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.422, val_loss=0.582, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 24: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.453, val_loss=0.582, train_loss_epoch=0.440]
+tensor(-0.2630)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3803)Loader 0:  25%|██▌       | 1/4 [01:26<04:19,  0.01it/s]
+tensor(-0.2179)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.2908)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 42, 1s = 65
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 25:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.453, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  14%|█▍        | 1/7 [01:27<08:47,  0.01it/s, v_num=vf13, train_loss_step=0.311, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  29%|██▊       | 2/7 [02:55<07:18,  0.01it/s, v_num=vf13, train_loss_step=0.468, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.499, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.393, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  71%|███████▏  | 5/7 [07:19<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.400, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.390, val_loss=0.572, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 25: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.510, val_loss=0.572, train_loss_epoch=0.442]
+
+tensor(-0.2649)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3937)Loader 0:  25%|██▌       | 1/4 [01:26<04:19,  0.01it/s]
+tensor(-0.2356)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3226)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================50<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 41, 1s = 66
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 26:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.510, val_loss=0.575, train_loss_epoch=0.420]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 26:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.510, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  14%|█▍        | 1/7 [01:29<08:55,  0.01it/s, v_num=vf13, train_loss_step=0.520, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  29%|██▊       | 2/7 [02:55<07:19,  0.01it/s, v_num=vf13, train_loss_step=0.488, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.351, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  57%|█████▋    | 4/7 [05:50<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.421, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  71%|███████▏  | 5/7 [07:17<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.428, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.411, val_loss=0.575, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 26: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.490, val_loss=0.575, train_loss_epoch=0.420]
+tensor(-0.2918)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4251)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2124)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.3399)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================50<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 41, 1s = 66
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 27:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.490, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  14%|█▍        | 1/7 [01:27<08:47,  0.01it/s, v_num=vf13, train_loss_step=0.628, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  29%|██▊       | 2/7 [02:55<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.353, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.401, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.338, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  71%|███████▏  | 5/7 [07:17<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.360, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.494, val_loss=0.574, train_loss_epoch=0.442]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 27: 100%|██████████| 7/7 [09:43<00:00,  0.01it/s, v_num=vf13, train_loss_step=4.490, val_loss=0.574, train_loss_epoch=0.442]
+tensor(-0.2907)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4545)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2302)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3436)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 43, 1s = 64
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 28:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=4.490, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  14%|█▍        | 1/7 [01:29<08:55,  0.01it/s, v_num=vf13, train_loss_step=0.529, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  29%|██▊       | 2/7 [02:56<07:20,  0.01it/s, v_num=vf13, train_loss_step=0.527, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.352, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  57%|█████▋    | 4/7 [05:50<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.570, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  71%|███████▏  | 5/7 [07:17<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.410, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.458, val_loss=0.579, train_loss_epoch=0.830]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 28: 100%|██████████| 7/7 [09:44<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.430, val_loss=0.579, train_loss_epoch=0.830]
+tensor(-0.1930)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4947)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.2831)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.3270)Loader 0:  75%|███████▌  | 3/4 [04:15<01:25,  0.01it/s]
+==================================================46<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 44, 1s = 63
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 29:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.430, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  14%|█▍        | 1/7 [01:29<08:55,  0.01it/s, v_num=vf13, train_loss_step=0.600, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  29%|██▊       | 2/7 [02:57<07:23,  0.01it/s, v_num=vf13, train_loss_step=0.386, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  43%|████▎     | 3/7 [04:24<05:52,  0.01it/s, v_num=vf13, train_loss_step=0.237, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.335, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.698, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29:  86%|████████▌ | 6/7 [08:44<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.316, val_loss=0.570, train_loss_epoch=0.470]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 29: 100%|██████████| 7/7 [09:43<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.576, val_loss=0.570, train_loss_epoch=0.470]
+tensor(-0.1518)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3245)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2502)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.2643)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 45, 1s = 62
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 30:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.576, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  14%|█▍        | 1/7 [01:28<08:50,  0.01it/s, v_num=vf13, train_loss_step=0.371, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  29%|██▊       | 2/7 [02:54<07:16,  0.01it/s, v_num=vf13, train_loss_step=0.329, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  43%|████▎     | 3/7 [04:21<05:48,  0.01it/s, v_num=vf13, train_loss_step=0.434, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  57%|█████▋    | 4/7 [05:47<04:20,  0.01it/s, v_num=vf13, train_loss_step=0.601, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  71%|███████▏  | 5/7 [07:14<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.332, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30:  86%|████████▌ | 6/7 [08:41<01:26,  0.01it/s, v_num=vf13, train_loss_step=0.382, val_loss=0.548, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 30: 100%|██████████| 7/7 [09:40<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.454, val_loss=0.548, train_loss_epoch=0.443]
+tensor(-0.1712)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2697)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.2543)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.2504)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================48<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 44, 1s = 63
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 31:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.454, val_loss=0.550, train_loss_epoch=0.413]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+
+Epoch 31:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.454, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  14%|█▍        | 1/7 [01:29<08:54,  0.01it/s, v_num=vf13, train_loss_step=0.421, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  29%|██▊       | 2/7 [02:55<07:19,  0.01it/s, v_num=vf13, train_loss_step=0.467, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  43%|████▎     | 3/7 [04:24<05:52,  0.01it/s, v_num=vf13, train_loss_step=0.454, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  57%|█████▋    | 4/7 [05:52<04:24,  0.01it/s, v_num=vf13, train_loss_step=0.425, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  71%|███████▏  | 5/7 [07:19<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.424, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31:  86%|████████▌ | 6/7 [08:46<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.420, val_loss=0.550, train_loss_epoch=0.413]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 31: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.516, val_loss=0.550, train_loss_epoch=0.413]
+tensor(-0.1872)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2729)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.2695)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.2432)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 41, 1s = 66
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 32:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.516, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  14%|█▍        | 1/7 [01:27<08:45,  0.01it/s, v_num=vf13, train_loss_step=0.279, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  29%|██▊       | 2/7 [02:55<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.311, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  43%|████▎     | 3/7 [04:22<05:50,  0.01it/s, v_num=vf13, train_loss_step=0.394, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  57%|█████▋    | 4/7 [05:49<04:22,  0.01it/s, v_num=vf13, train_loss_step=0.393, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  71%|███████▏  | 5/7 [07:17<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.390, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32:  86%|████████▌ | 6/7 [08:43<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.479, val_loss=0.556, train_loss_epoch=0.443]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 32: 100%|██████████| 7/7 [09:41<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.532, val_loss=0.556, train_loss_epoch=0.443]
+tensor(-0.2216)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2796)Loader 0:  25%|██▌       | 1/4 [01:26<04:19,  0.01it/s]
+tensor(-0.3170)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.2665)Loader 0:  75%|███████▌  | 3/4 [04:16<01:25,  0.01it/s]
+==================================================47<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 40, 1s = 67
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 33:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.532, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  14%|█▍        | 1/7 [01:27<08:43,  0.01it/s, v_num=vf13, train_loss_step=0.461, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  29%|██▊       | 2/7 [02:55<07:17,  0.01it/s, v_num=vf13, train_loss_step=0.455, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  43%|████▎     | 3/7 [04:22<05:49,  0.01it/s, v_num=vf13, train_loss_step=0.488, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.411, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  71%|███████▏  | 5/7 [07:18<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.198, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33:  86%|████████▌ | 6/7 [08:45<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.468, val_loss=0.563, train_loss_epoch=0.390]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 33: 100%|██████████| 7/7 [09:45<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.278, val_loss=0.563, train_loss_epoch=0.390]
+tensor(-0.2307)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2912)Loader 0:  25%|██▌       | 1/4 [01:24<04:14,  0.01it/s]
+tensor(-0.3167)Loader 0:  50%|█████     | 2/4 [02:50<02:50,  0.01it/s]
+tensor(-0.2609)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 45, 1s = 62
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 34:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.278, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  14%|█▍        | 1/7 [01:27<08:47,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  29%|██▊       | 2/7 [02:54<07:15,  0.01it/s, v_num=vf13, train_loss_step=0.429, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  43%|████▎     | 3/7 [04:21<05:48,  0.01it/s, v_num=vf13, train_loss_step=0.489, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  57%|█████▋    | 4/7 [05:48<04:21,  0.01it/s, v_num=vf13, train_loss_step=0.457, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  71%|███████▏  | 5/7 [07:15<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.418, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34:  86%|████████▌ | 6/7 [08:42<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.432, val_loss=0.556, train_loss_epoch=0.400]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 34: 100%|██████████| 7/7 [09:41<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.310, val_loss=0.556, train_loss_epoch=0.400]
+tensor(-0.2426)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3076)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.3263)Loader 0:  50%|█████     | 2/4 [02:51<02:51,  0.01it/s]
+tensor(-0.2572)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 46, 1s = 61
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 35:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.310, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.452, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  29%|██▊       | 2/7 [02:53<07:14,  0.01it/s, v_num=vf13, train_loss_step=0.500, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  43%|████▎     | 3/7 [04:21<05:48,  0.01it/s, v_num=vf13, train_loss_step=0.412, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  57%|█████▋    | 4/7 [05:48<04:21,  0.01it/s, v_num=vf13, train_loss_step=0.348, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  71%|███████▏  | 5/7 [07:15<02:54,  0.01it/s, v_num=vf13, train_loss_step=0.389, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35:  86%|████████▌ | 6/7 [08:42<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.333, val_loss=0.554, train_loss_epoch=0.440]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 35: 100%|██████████| 7/7 [09:42<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.490, val_loss=0.554, train_loss_epoch=0.440]
+tensor(-0.2749)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3356)Loader 0:  25%|██▌       | 1/4 [01:25<04:16,  0.01it/s]
+tensor(-0.3674)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.2769)Loader 0:  75%|███████▌  | 3/4 [04:17<01:25,  0.01it/s]
+==================================================49<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 48, 1s = 59
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 36:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.490, val_loss=0.553, train_loss_epoch=0.414]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 36:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.490, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  14%|█▍        | 1/7 [01:28<08:51,  0.01it/s, v_num=vf13, train_loss_step=0.462, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  29%|██▊       | 2/7 [02:56<07:21,  0.01it/s, v_num=vf13, train_loss_step=0.297, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  43%|████▎     | 3/7 [04:23<05:51,  0.01it/s, v_num=vf13, train_loss_step=0.436, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  57%|█████▋    | 4/7 [05:51<04:23,  0.01it/s, v_num=vf13, train_loss_step=0.403, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  71%|███████▏  | 5/7 [07:19<02:55,  0.01it/s, v_num=vf13, train_loss_step=0.554, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36:  86%|████████▌ | 6/7 [08:47<01:27,  0.01it/s, v_num=vf13, train_loss_step=0.356, val_loss=0.553, train_loss_epoch=0.414]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 36: 100%|██████████| 7/7 [09:46<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.443, val_loss=0.553, train_loss_epoch=0.414]
+
+tensor(-0.3178)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3261)Loader 0:  25%|██▌       | 1/4 [01:25<04:17,  0.01it/s]
+tensor(-0.3850)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3046)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================50<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 47, 1s = 60
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 37:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.443, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  14%|█▍        | 1/7 [01:27<08:44,  0.01it/s, v_num=vf13, train_loss_step=0.441, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  29%|██▊       | 2/7 [02:53<07:14,  0.01it/s, v_num=vf13, train_loss_step=0.358, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  43%|████▎     | 3/7 [04:20<05:47,  0.01it/s, v_num=vf13, train_loss_step=0.360, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  57%|█████▋    | 4/7 [05:48<04:21,  0.01it/s, v_num=vf13, train_loss_step=0.457, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  71%|███████▏  | 5/7 [07:14<02:53,  0.01it/s, v_num=vf13, train_loss_step=0.492, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37:  86%|████████▌ | 6/7 [08:41<01:26,  0.01it/s, v_num=vf13, train_loss_step=1.430, val_loss=0.557, train_loss_epoch=0.420]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 37: 100%|██████████| 7/7 [09:41<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.445, val_loss=0.557, train_loss_epoch=0.420]
+tensor(-0.3795)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2669)Loader 0:  25%|██▌       | 1/4 [01:27<04:21,  0.01it/s]
+tensor(-0.4029)Loader 0:  50%|█████     | 2/4 [02:52<02:52,  0.01it/s]
+tensor(-0.3447)Loader 0:  75%|███████▌  | 3/4 [04:18<01:26,  0.01it/s]
+==================================================51<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 46, 1s = 61
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 38:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.445, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  14%|█▍        | 1/7 [01:28<08:53,  0.01it/s, v_num=vf13, train_loss_step=0.343, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  29%|██▊       | 2/7 [02:57<07:22,  0.01it/s, v_num=vf13, train_loss_step=0.374, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  43%|████▎     | 3/7 [04:25<05:54,  0.01it/s, v_num=vf13, train_loss_step=0.410, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  57%|█████▋    | 4/7 [05:55<04:26,  0.01it/s, v_num=vf13, train_loss_step=0.373, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  71%|███████▏  | 5/7 [07:25<02:58,  0.01it/s, v_num=vf13, train_loss_step=0.636, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38:  86%|████████▌ | 6/7 [08:54<01:29,  0.01it/s, v_num=vf13, train_loss_step=0.306, val_loss=0.560, train_loss_epoch=0.575]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 38: 100%|██████████| 7/7 [09:56<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.181, val_loss=0.560, train_loss_epoch=0.575]
+tensor(-0.3911)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2075)Loader 0:  25%|██▌       | 1/4 [01:27<04:23,  0.01it/s]
+tensor(-0.3872)Loader 0:  50%|█████     | 2/4 [02:55<02:55,  0.01it/s]
+tensor(-0.3481)Loader 0:  75%|███████▌  | 3/4 [04:23<01:27,  0.01it/s]
+==================================================56<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 49, 1s = 58
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 39:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.181, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  14%|█▍        | 1/7 [01:29<08:58,  0.01it/s, v_num=vf13, train_loss_step=0.355, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  29%|██▊       | 2/7 [02:58<07:26,  0.01it/s, v_num=vf13, train_loss_step=0.316, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  43%|████▎     | 3/7 [04:28<05:57,  0.01it/s, v_num=vf13, train_loss_step=0.439, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  57%|█████▋    | 4/7 [05:58<04:28,  0.01it/s, v_num=vf13, train_loss_step=0.277, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  71%|███████▏  | 5/7 [07:27<02:59,  0.01it/s, v_num=vf13, train_loss_step=0.487, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39:  86%|████████▌ | 6/7 [08:58<01:29,  0.01it/s, v_num=vf13, train_loss_step=0.285, val_loss=0.559, train_loss_epoch=0.385]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 39: 100%|██████████| 7/7 [09:59<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.398, val_loss=0.559, train_loss_epoch=0.385]
+tensor(-0.3966)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.2771)Loader 0:  25%|██▌       | 1/4 [01:28<04:25,  0.01it/s]
+tensor(-0.3703)Loader 0:  50%|█████     | 2/4 [02:55<02:55,  0.01it/s]
+tensor(-0.3822)Loader 0:  75%|███████▌  | 3/4 [04:22<01:27,  0.01it/s]
+==================================================56<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 48, 1s = 59
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 40:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.398, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  14%|█▍        | 1/7 [01:31<09:10,  0.01it/s, v_num=vf13, train_loss_step=0.318, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  29%|██▊       | 2/7 [03:02<07:35,  0.01it/s, v_num=vf13, train_loss_step=0.393, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  43%|████▎     | 3/7 [04:32<06:03,  0.01it/s, v_num=vf13, train_loss_step=0.366, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  57%|█████▋    | 4/7 [06:01<04:31,  0.01it/s, v_num=vf13, train_loss_step=0.399, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  71%|███████▏  | 5/7 [07:31<03:00,  0.01it/s, v_num=vf13, train_loss_step=0.296, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40:  86%|████████▌ | 6/7 [09:00<01:30,  0.01it/s, v_num=vf13, train_loss_step=0.402, val_loss=0.564, train_loss_epoch=0.364]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 40: 100%|██████████| 7/7 [10:02<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.206, val_loss=0.564, train_loss_epoch=0.364]
+tensor(-0.3763)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3133)Loader 0:  25%|██▌       | 1/4 [01:27<04:22,  0.01it/s]
+tensor(-0.3454)Loader 0:  50%|█████     | 2/4 [02:55<02:55,  0.01it/s]
+tensor(-0.3950)Loader 0:  75%|███████▌  | 3/4 [04:21<01:27,  0.01it/s]
+==================================================55<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 45, 1s = 62
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 41:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.206, val_loss=0.568, train_loss_epoch=0.347]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 41:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.206, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  14%|█▍        | 1/7 [01:31<09:06,  0.01it/s, v_num=vf13, train_loss_step=0.279, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  29%|██▊       | 2/7 [03:01<07:32,  0.01it/s, v_num=vf13, train_loss_step=0.310, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  43%|████▎     | 3/7 [04:30<06:00,  0.01it/s, v_num=vf13, train_loss_step=0.373, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  57%|█████▋    | 4/7 [06:00<04:30,  0.01it/s, v_num=vf13, train_loss_step=0.575, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  71%|███████▏  | 5/7 [07:30<03:00,  0.01it/s, v_num=vf13, train_loss_step=0.555, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41:  86%|████████▌ | 6/7 [09:01<01:30,  0.01it/s, v_num=vf13, train_loss_step=0.249, val_loss=0.568, train_loss_epoch=0.347]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 41: 100%|██████████| 7/7 [10:03<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.381, val_loss=0.568, train_loss_epoch=0.347]
+tensor(-0.4042)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.3893)Loader 0:  25%|██▌       | 1/4 [01:27<04:22,  0.01it/s]
+tensor(-0.3407)Loader 0:  50%|█████     | 2/4 [02:54<02:54,  0.01it/s]
+tensor(-0.4394)Loader 0:  75%|███████▌  | 3/4 [04:21<01:27,  0.01it/s]
+==================================================54<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 43, 1s = 64
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 42:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.381, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  14%|█▍        | 1/7 [01:30<09:02,  0.01it/s, v_num=vf13, train_loss_step=0.436, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  29%|██▊       | 2/7 [02:59<07:29,  0.01it/s, v_num=vf13, train_loss_step=0.481, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  43%|████▎     | 3/7 [04:29<05:59,  0.01it/s, v_num=vf13, train_loss_step=0.331, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  57%|█████▋    | 4/7 [05:58<04:29,  0.01it/s, v_num=vf13, train_loss_step=0.446, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  71%|███████▏  | 5/7 [07:29<02:59,  0.01it/s, v_num=vf13, train_loss_step=0.436, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42:  86%|████████▌ | 6/7 [08:59<01:29,  0.01it/s, v_num=vf13, train_loss_step=0.452, val_loss=0.573, train_loss_epoch=0.389]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 42: 100%|██████████| 7/7 [10:02<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.443, val_loss=0.573, train_loss_epoch=0.389]
+tensor(-0.4598)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4116)Loader 0:  25%|██▌       | 1/4 [01:28<04:25,  0.01it/s]
+tensor(-0.3779)Loader 0:  50%|█████     | 2/4 [02:57<02:57,  0.01it/s]
+tensor(-0.4452)Loader 0:  75%|███████▌  | 3/4 [04:26<01:28,  0.01it/s]
+==================================================00<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 44, 1s = 63
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 43:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.443, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  14%|█▍        | 1/7 [01:32<09:12,  0.01it/s, v_num=vf13, train_loss_step=0.350, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  29%|██▊       | 2/7 [03:02<07:36,  0.01it/s, v_num=vf13, train_loss_step=0.313, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  43%|████▎     | 3/7 [04:32<06:03,  0.01it/s, v_num=vf13, train_loss_step=0.486, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  57%|█████▋    | 4/7 [06:02<04:32,  0.01it/s, v_num=vf13, train_loss_step=0.365, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  71%|███████▏  | 5/7 [07:31<03:00,  0.01it/s, v_num=vf13, train_loss_step=0.297, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43:  86%|████████▌ | 6/7 [09:00<01:30,  0.01it/s, v_num=vf13, train_loss_step=0.418, val_loss=0.579, train_loss_epoch=0.432]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 43: 100%|██████████| 7/7 [10:02<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.323, val_loss=0.579, train_loss_epoch=0.432]
+tensor(-0.4780)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+tensor(-0.4258)Loader 0:  25%|██▌       | 1/4 [01:28<04:26,  0.01it/s]
+tensor(-0.4048)Loader 0:  50%|█████     | 2/4 [02:56<02:56,  0.01it/s]
+tensor(-0.4720)Loader 0:  75%|███████▌  | 3/4 [04:24<01:28,  0.01it/s]
+==================================================57<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 45, 1s = 62
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 44:   0%|          | 0/7 [00:00<?, ?it/s, v_num=vf13, train_loss_step=0.323, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  14%|█▍        | 1/7 [01:30<09:05,  0.01it/s, v_num=vf13, train_loss_step=0.458, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  29%|██▊       | 2/7 [03:00<07:31,  0.01it/s, v_num=vf13, train_loss_step=0.174, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  43%|████▎     | 3/7 [04:29<05:59,  0.01it/s, v_num=vf13, train_loss_step=0.296, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  57%|█████▋    | 4/7 [06:00<04:30,  0.01it/s, v_num=vf13, train_loss_step=0.258, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  71%|███████▏  | 5/7 [07:30<03:00,  0.01it/s, v_num=vf13, train_loss_step=0.446, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44:  86%|████████▌ | 6/7 [08:58<01:29,  0.01it/s, v_num=vf13, train_loss_step=0.353, val_loss=0.582, train_loss_epoch=0.366]WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+Epoch 44: 100%|██████████| 7/7 [09:58<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.242, val_loss=0.582, train_loss_epoch=0.366]
+tensor(-0.4960)Loader 0:   0%|          | 0/4 [00:00<?, ?it/s]
+
+tensor(-0.3817)Loader 0:  25%|██▌       | 1/4 [01:27<04:22,  0.01it/s]
+tensor(-0.4230)Loader 0:  50%|█████     | 2/4 [02:58<02:58,  0.01it/s]
+tensor(-0.4887)Loader 0:  75%|███████▌  | 3/4 [04:26<01:28,  0.01it/s]
+==================================================58<00:00,  0.01it/s]
+Stage: VAL
+Predicted class distribution: 0s = 47, 1s = 60
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+Epoch 44: 100%|██████████| 7/7 [14:58<00:00,  0.01it/s, v_num=vf13, train_loss_step=0.242, val_loss=0.576, train_loss_epoch=0.322]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:191: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_decoder_approach.py --config-name config_mas ...
+
+
+Testing DataLoader 0: 100%|██████████| 3/3 [03:46<00:00,  0.01it/s]Saved test predictions and probabilities to test_results_fold_final.xlsx
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 43, 1s = 37
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+Testing DataLoader 0: 100%|██████████| 3/3 [03:47<00:00,  0.01it/s]

@@ -16,11 +16,11 @@ BATCH_SIZE_CPU: 32
 BATCH_SIZE_GPU: 32
 EPOCHS: 100
 LEARNING_RATE: 1e-4
-
+Freeze_weights: False
 
 Threshold_metrics: 0.65
-model_name: threshold_0.65
-project: test_weibull
+model_name: Freezed_Encoder_checkpointing
+project: checkpoint_test 
 seed_value: 22
 early_stopping:
   monitor: 'val_loss'
@@ -34,7 +34,7 @@ early_stopping:
 
 
 test_fraction_of_entire_dataset: 0.2
-weighted_random_sampler: True
+weighted_random_sampler: False
 
 dimension: 2
 

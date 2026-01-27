@@ -1,0 +1,133 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:639: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name           | Type             | Params
+----------------------------------------------------
+0 | survival_head  | Sequential       | 283 K
+1 | vision_encoder | DaViT            | 360 M
+2 | f1score        | BinaryF1Score    | 0
+3 | stats_metric   | BinaryStatScores | 0
+----------------------------------------------------
+360 M     Trainable params
+0         Non-trainable params
+360 M     Total params
+1,443.678 Total estimated model params size (MB)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]tensor(0.0803, device='cuda:0')
+tensor(-0.3208, device='cuda:0')
+Sanity Checking DataLoader 0:  50%|█████     | 1/2 [00:01<00:01,  0.59it/s]tensor(0.0894, device='cuda:0')
+tensor(-0.2750, device='cuda:0')
+Sanity Checking DataLoader 0: 100%|██████████| 2/2 [00:03<00:00,  0.62it/s]
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:293: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Saved test predictions and probabilities to validation_results_fold_final.xlsx
+
+Epoch 0:   0%|          | 0/7 [00:00<?, ?it/s] 🔥 Successfully training: convs.0.proj.weight
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.029842
+Epoch 0:  14%|█▍        | 1/7 [00:07<00:42,  0.14it/s, v_num=lqq6, train_loss_step=0.610]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.049927
+Epoch 0:  29%|██▊       | 2/7 [00:13<00:33,  0.15it/s, v_num=lqq6, train_loss_step=0.669]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.039291
+Epoch 0:  43%|████▎     | 3/7 [00:20<00:26,  0.15it/s, v_num=lqq6, train_loss_step=0.599]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.039226
+Epoch 0:  57%|█████▋    | 4/7 [00:26<00:19,  0.15it/s, v_num=lqq6, train_loss_step=0.614]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.029552
+Epoch 0:  71%|███████▏  | 5/7 [00:33<00:13,  0.15it/s, v_num=lqq6, train_loss_step=0.511]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.037294
+Epoch 0:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=lqq6, train_loss_step=0.585]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+Epoch 0:  86%|████████▌ | 6/7 [00:39<00:06,  0.15it/s, v_num=lqq6, train_loss_step=0.585]SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057409
+Epoch 0: 100%|██████████| 7/7 [00:43<00:00,  0.16it/s, v_num=lqq6, train_loss_step=0.464]
+tensor(-0.2627, device='cuda:0')        | 0/4 [00:00<?, ?it/s]
+tensor(-0.2389, device='cuda:0')▌       | 1/4 [00:01<00:04,  0.65it/s]
+                                                                      tensor(0.1625, device='cuda:0')
+tensor(-0.2691, device='cuda:0')███     | 2/4 [00:03<00:03,  0.64it/s]
+tensor(-0.2590, device='cuda:0')█████▌  | 3/4 [00:04<00:01,  0.64it/s]
+==================================================05<00:00,  0.76it/s]
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Saved test predictions and probabilities to validation_results_fold_final.xlsx
+Epoch 0: 100%|██████████| 7/7 [00:49<00:00,  0.14it/s, v_num=lqq6, train_loss_step=0.464, val_loss=0.731, train_loss_epoch=0.585]
+`Trainer.fit` stopped: `max_epochs=1` reached.
+
+Epoch 0: 100%|██████████| 7/7 [01:16<00:00,  0.09it/s, v_num=lqq6, train_loss_step=0.464, val_loss=0.731, train_loss_epoch=0.585]
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestwhole_slice_unfreezed_e-5-epoch=00-val_loss=0.73.ckpt
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+
+Testing DataLoader 0: 100%|██████████| 3/3 [00:03<00:00,  0.78it/s]Saved test predictions and probabilities to test_results_fold_final.xlsx
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 0, 1s = 80
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+Testing DataLoader 0: 100%|██████████| 3/3 [00:04<00:00,  0.74it/s]
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.4592592418193817     │
+│     test_balanced_acc     │            0.5            │
+│        test_cindex        │    0.5428354740142822     │
+│       test_f1_score       │    0.4000000059604645     │
+│         test_ibs          │    0.14657466113567352    │
+│      test_precision       │           0.125           │
+│        test_recall        │            0.5            │
+└───────────────────────────┴───────────────────────────┘
+Generating Risk Attribution Map for Fold 1...
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_utils/batching.py:45: UserWarning: Internal batch size cannot be less than the number of input examples. Defaulting to internal batch size of 5 equal to the number of examples.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 290, in main
+    run_gradient_explanation(best_lightning_model, dataloader_test, fold_id)
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/explain.py", line 44, in run_gradient_explanation
+    attributions = nt.attribute(input_tensor, nt_samples=5, nt_type='smoothgrad_sq', stdevs=0.02, internal_batch_size=1)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/log/__init__.py", line 42, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_core/noise_tunnel.py", line 365, in attribute
+    ) = compute_partial_attribution(inputs_with_noise, kwargs_copy)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_core/noise_tunnel.py", line 253, in compute_partial_attribution
+    attributions = attr_func.__wrapped__(  # type: ignore
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_core/integrated_gradients.py", line 274, in attribute
+    attributions = _batch_attribution(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_utils/batching.py", line 78, in _batch_attribution
+    current_attr = attr_method._attribute(
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/attr/_core/integrated_gradients.py", line 351, in _attribute
+    grads = self.gradient_func(
+            ^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/_utils/gradient.py", line 112, in compute_gradients
+    outputs = _run_forward(forward_fn, inputs, target_ind, additional_forward_args)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/captum/_utils/common.py", line 531, in _run_forward
+    output = forward_func(
+             ^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/explain.py", line 38, in forward_risk
+    return weibull.log_hazard(log_params, current_eval_time)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchsurv/loss/weibull.py", line 128, in log_hazard
+    time = time.unsqueeze(0).expand(len(time), len(time))  # expand across rows
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: expand(torch.cuda.FloatTensor{[1, 5, 1]}, size=[5, 5]): the number of sizes provided (2) must be greater or equal to the number of dimensions in the tensor (3)
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
