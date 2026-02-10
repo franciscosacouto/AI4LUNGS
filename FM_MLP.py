@@ -13,6 +13,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import wandb
 import pandas as pd
+from lifelines.utils import concordance_index
+
+
 
 class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate, pos_weight, freeze_encoder=True):
@@ -134,12 +137,15 @@ class encoder_decoder(L.LightningModule):
     
     def validation_step(self, batch, batch_idx):
         x, event, time = batch
+        print(f'shape x{x.shape}')
         event = event.bool()
         x, event, time = batch
         event = event.squeeze() # Ensure 1D
         time = time.squeeze()          # Ensure 1D
         
         log_params = self(x).squeeze()
+        print(f'shape x{log_params.shape}')
+
         print(log_params.max())
         print(log_params.min())
         loss = weibull.neg_log_likelihood(log_params, event, time, reduction='mean')
@@ -183,39 +189,63 @@ class encoder_decoder(L.LightningModule):
     def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, time: torch.Tensor, prefix: str,  log_hz_t: torch.Tensor, return_metrics=False):
         # Calculate True Positives (TP), False Negatives (FN), etc.
         # 1. Move everything to CPU
-        preds = preds.cpu()
-        events = events.cpu()
-        time = time.cpu()
-        log_hz_t = log_hz_t.cpu()
-        self.stats_metric = self.stats_metric.cpu()
-        new_time = torch.tensor(1825.0 / 2786.0).cpu()
-        surv_prob = weibull.survival_function(preds, new_time)
-        hard_preds = (surv_prob < 0.6).int()
-        events_bool = events.squeeze().bool()
-        self.print_inbalance(hard_preds, events_bool, stage_name=prefix.upper())
-        log_hz = weibull.log_hazard(preds, time) 
-        eval_times = torch.linspace(time.min(), time.max(), steps=10).cpu().unsqueeze(0)    
+        # Ensure preds is [N, 2] for Weibull
+        preds, events, time, log_hz_t= preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
 
+        print(f'shape PREDS: {preds.shape}')
+        print(f'shape time: {time.shape}')
+        # Now log_hz will have the same length as time (N)
+        log_hz = weibull.log_hazard(preds, time)
+        preds, events, time, log_hz_t= preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
+        self.stats_metric = self.stats_metric.cpu()
+        time_5y = torch.tensor(1825.0 / 2786.0).cpu()
+        print(f'shape log_hz: {log_hz.shape}')
+        print(f'shape log_hz_t: {log_hz_t.shape}')
+
+        surv_prob_t = weibull.survival_function(preds, time_5y)
         surv = weibull.survival_function(preds, time) 
-        bs_metric = BrierScore()
-        
-        scores = bs_metric(surv, events_bool, time)
+
+        hard_preds = (surv_prob_t < 0.6).int()
+
+        events = events.squeeze().bool()
+        self.print_inbalance(hard_preds, events, stage_name=prefix.upper())
         
         # Calculate the Integrated Brier Score (IBS)
+        bs_metric = BrierScore()
+        scores = bs_metric(surv, events, time)
         ibs_val = bs_metric.integral()
         weibull_auc = Auc() # Torchsurv objects also need to be on same device
-        auroc_val = weibull_auc(log_hz_t, events_bool, time, new_time=new_time)
+        auroc_val = weibull_auc(log_hz_t, events, time, new_time=time_5y)
         f1 = BinaryF1Score()
-        f1_score = f1(hard_preds,events_bool)
-        balanced_acc = Accuracy(task='multiclass', num_classes=2, average='macro')        
-        acc = balanced_acc(hard_preds,events_bool)
-        rec= Recall(task='multiclass', num_classes=2, average='macro')
-        recall= rec(hard_preds,events_bool)
-        prec= Precision(task='multiclass', num_classes=2, average='macro')
-        precision = prec(hard_preds,events_bool)
-        weibull_cindex = ConcordanceIndex()
-        cindex= weibull_cindex(log_hz, events_bool, time)
+        f1_score = f1(hard_preds,events)
         
+        balanced_acc = Accuracy(task='multiclass', num_classes=2, average='macro')        
+        acc = balanced_acc(hard_preds,events)
+
+        rec= Recall(task='multiclass', num_classes=2, average='macro')
+        recall= rec(hard_preds,events)
+
+        prec= Precision(task='multiclass', num_classes=2, average='macro')
+        precision = prec(hard_preds,events)
+
+        weibull_cindex = ConcordanceIndex()
+        cindex= weibull_cindex(log_hz, events, time)
+        # 1. Convert to numpy and immediately flatten to 1D
+        log_hz= torch.diagonal(log_hz)
+        # We detach() and cpu() first to ensure we are off the graph and on the right device
+        time_np = time.detach().cpu().numpy().ravel()
+        log_hz_np = log_hz_t.detach().cpu().numpy().ravel()
+        events_np = events.detach().cpu().numpy().ravel()
+
+        # 2. Check shapes for peace of mind (optional debugging)
+        print(f"DEBUG SHAPES: time={time_np.shape}, log_hz={log_hz_np.shape}, events={events_np.shape}")
+
+        # 3. Calculate lifelines c-index
+        # REMEMBER: Use -log_hz_np because lifelines expects: higher score = longer life
+        cindex_life = concordance_index(time_np, -log_hz_np, events_np)
+        print(f'Cindex TorchSurv: {cindex}')
+        print(f'Cindex Lifelines: {cindex_life}')
+
         self.log_dict({
             f'{prefix}_auroc': auroc_val,
             f'{prefix}_cindex': cindex,
@@ -261,9 +291,14 @@ class encoder_decoder(L.LightningModule):
 
 
     def on_validation_epoch_end(self):
-        preds = torch.cat(self.val_preds)
+        # Use dim=0 to stack [32, 2] + [32, 2] into [64, 2]
+        preds = torch.cat(self.val_preds) 
+        
+        # Ensure time and events are flat 1D vectors
         events = torch.cat(self.val_events)
         time = torch.cat(self.val_time)
+        
+        # This must also be [N, 1] or [N] depending on your log_hazard call
         log_hz_t = torch.cat(self.val_log_hz_t)
         self._calculate_balanced_metrics(preds, events, time, 'val', log_hz_t)
         if self.current_epoch % 5 == 0:
@@ -290,8 +325,8 @@ class encoder_decoder(L.LightningModule):
         
         # 6. Save to Excel
         # We use a unique name to avoid overwriting files in Cross-Validation
-        filename = f"validation_results_fold_{getattr(self, 'fold_id', 'final')}.xlsx"
-        df.to_excel(filename, index=False)
+        filename = f"validation_results_fold_{getattr(self, 'fold_id', 'final')}.csv"
+        df.to_csv(filename, index=False, mode= 'a')
         print(f"Saved test predictions and probabilities to {filename}")        # Calculate metrics for the test set
         # Clear lists for the next epoch
         self.val_preds.clear()
@@ -340,7 +375,7 @@ class encoder_decoder(L.LightningModule):
         # 3. Calculate Survival Probability S(t | x)
         # Shape will be (num_samples, 1)
         with torch.no_grad():
-            surv_probs = weibull.survival_function(preds, eval_time)
+            surv_probs = weibull.survival_function(preds, time = eval_time)
         
         # 4. Prepare data for Excel
         # Convert to CPU/Numpy for Pandas compatibility

@@ -38,7 +38,7 @@ def patch_shuffle(img, patch_size=2):
 
 class PatchShuffleTransform(A.ImageOnlyTransform):
     def __init__(self, patch_size=16, always_apply=False, p=1.0):
-        super().__init__(always_apply=always_apply, p=p)
+        super().__init__( p=p)
         self.patch_size = patch_size
 
     def apply(self, img, **params):
@@ -87,17 +87,15 @@ class CTImageAugmenter:
         self.basic_geometric = [
             A.HorizontalFlip(p=1.0),
             A.VerticalFlip(p=1.0),
-            A.ShiftScaleRotate( # values tested on NLST dataset
-                shift_limit=0.05,
-                scale_limit=0.1,
-                rotate_limit=15,
-                p=1.0
-            ),
+            A.Affine(translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}, 
+            scale=(0.9, 1.1), 
+            rotate=(-15, 15), 
+            p=0.5),
             A.Affine(shear=(-5, 5), p=1.0)
         ]
 
         self.basic_occlusion = [
-            A.CoarseDropout(max_holes=8, max_height=8, max_width=8, p=0.7)
+            A.CoarseDropout(num_holes_range=(1, 8), hole_height_range=(1, 8), hole_width_range=(1, 8), p=0.7)
         ]
 
         self.basic_intensity_ops = [
@@ -111,7 +109,7 @@ class CTImageAugmenter:
         ]
 
         self.basic_noise = [
-            A.GaussNoise(std_range= (0.1, 0.15), mean = (0.0, 0.0), p=1.0), # Introduces too much noise
+            A.GaussNoise(std_range=(0.1, 0.15), p=1.0), # Introduces too much noise
             #A.ISONoise(p=0.7),
             A.SaltAndPepper(amount= (0.005, 0.005), p=0.7),
         ]
@@ -130,7 +128,7 @@ class CTImageAugmenter:
                 sigma=20.0,
                 p=0.7
             ),
-            A.OpticalDistortion(distort_limit=0.2, shift_limit=0.0, p=0.7)
+            A.OpticalDistortion(distort_limit=0.2, p=0.7)
         ]
 
 
@@ -206,12 +204,10 @@ class CTImageAugmenter3D:
         self.basic_geometric = [
             A.HorizontalFlip(p=1.0),
             A.VerticalFlip(p=1.0),
-            A.ShiftScaleRotate( # values tested on NLST dataset
-                shift_limit=0.05,
-                scale_limit=0.1,
-                rotate_limit=15,
-                p=1.0
-            ),
+            A.Affine(translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}, 
+            scale=(0.9, 1.1), 
+            rotate=(-15, 15), 
+            p=0.5),
             A.Affine(shear=(-5, 5), p=1.0)
         ]
 

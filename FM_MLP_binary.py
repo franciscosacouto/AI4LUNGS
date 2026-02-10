@@ -7,7 +7,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import wandb
 import pandas as pd
-import lifelines
 from lifelines.utils import concordance_index
 
 class encoder_decoder(L.LightningModule):
@@ -150,7 +149,7 @@ class encoder_decoder(L.LightningModule):
         events_bool=events.bool()
         self.print_inbalance(preds, events_bool, stage_name=prefix.upper())
         time= time.cpu()
-        cindex=concordance_index(time, events_bool, preds)
+        cindex=concordance_index(time, -preds, events_bool)
 
         auroc = BinaryAUROC()
         auroc_val = auroc(preds,events_bool)

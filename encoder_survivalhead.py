@@ -24,12 +24,13 @@ from FM_MLP import encoder_decoder as encoder_decoder
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
 from FM_MLP_binary import encoder_decoder as encoder_decoder_binary
+from RadioDino_MLP import encoder_decoder as radiodino_decoder
 
+import timm
 
 
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 from medimageinsightmodel import MedImageInsight
-
 # os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 
 classifier = MedImageInsight(
@@ -39,6 +40,7 @@ classifier = MedImageInsight(
     language_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/language_model/language_model.pth"
 )
 
+radioDino = timm.create_model("hf_hub:Snarcy/RadioDino-s16", pretrained=True)
 
 def load_data(cancer_path, rootdir):
     # Load cancer metadata
@@ -119,6 +121,29 @@ def save_results_to_excel(file_path, new_row):
 @hydra.main(version_base=None, config_path="Configs/", config_name="config_ws")
 def main(config):
 
+    EPOCHS = config.EPOCHS
+    LEARNING_RATE = config.LEARNING_RATE
+
+    SEED = config.SEED
+    random.seed(SEED)
+    np.random.seed(SEED)
+    torch.manual_seed(SEED)
+    torch.cuda.manual_seed_all(SEED)
+    torch.use_deterministic_algorithms(True)
+
+    ENCODER_MAP = {
+        'MedImageInsights': classifier,
+        'RadioDino': radioDino
+    }
+
+    # Mapping logic for which LightningModule wrapper to use
+    # Key: (is_binary, encoder_name)
+    MODULE_MAP = {
+        (True, 'MedImageInsights'): encoder_decoder_binary,
+        (False, 'MedImageInsights'): encoder_decoder,
+        (True, 'RadioDino'): radiodino_decoder,
+        (False, 'RadioDino'): radiodino_decoder, # Use same for both if logic allows
+    }
     if any([torch.cuda.is_available(), torch.backends.mps.is_available()]):
         print("CUDA-enabled GPU/TPU is available.")
         BATCH_SIZE = config.BATCH_SIZE_GPU # batch size for training
@@ -126,29 +151,21 @@ def main(config):
         print("No CUDA-enabled GPU found, using CPU.")
         BATCH_SIZE = config.BATCH_SIZE_CPU  # batch size for training
 
-    EPOCHS = config.EPOCHS
-    LEARNING_RATE = config.LEARNING_RATE
+    encoder_obj = ENCODER_MAP[config.Encoder]
+    if config.Encoder == 'MedImageInsights':
+        encoder_obj.load_model()
 
-    SEED = config.SEED
-    test_size = config.test_size
-    random.seed(SEED)
-    np.random.seed(SEED)
-    torch.manual_seed(SEED)
-    torch.cuda.manual_seed_all(SEED)
-    torch.use_deterministic_algorithms(True)
+
     
 
-    classifier.load_model()
+
     rootdir = config.directories.rootdir
 
-    # Adapt your merged_data_df to be lung_metadataframe with required columns
     lung_metadataframe = load_data(config.directories.cancer_path, rootdir)
     print(lung_metadataframe.columns) # <-- Run this line to check column names!
     lung_metadataframe = lung_metadataframe.rename(columns={'file_path': 'path', '5y': 'label', 'sct_slice_final_mapped': 'sct_slice_num'})
-    # Ensure 'label' is an integer for StratifiedKFold
     lung_metadataframe['label'] = lung_metadataframe['label'].astype(int)
 
-    # 1. Show every column (don't hide columns in the middle)
     pd.set_option('display.max_columns', None)
 
     # 2. Show the full string content (don't truncate long file paths)
@@ -177,12 +194,20 @@ def main(config):
 
     x_sample, event_sample, time_sample = next(iter(dataloaders['train'][0])) 
     
-    # Initialize temp model
-    if config.Binary_model:
-        temp_model = encoder_decoder_binary(classifier, torch.nn.Identity(), LEARNING_RATE, pos_weight, freeze_encoder=True)
-    else:
-        temp_model = encoder_decoder(classifier, torch.nn.Identity(), LEARNING_RATE, pos_weight, freeze_encoder=True)
+    encoder_obj = ENCODER_MAP.get(config.Encoder)
+    module_class = MODULE_MAP.get((config.Binary_model, config.Encoder))
 
+    if not encoder_obj or not module_class:
+        raise ValueError(f"Unsupported combination: {config.Encoder} & Binary={config.Binary_model}")
+
+    # Initialize temp model
+    temp_model = module_class(
+        encoder_obj, 
+        torch.nn.Identity(), 
+        LEARNING_RATE, 
+        pos_weight, 
+        freeze_encoder=True
+    )
 
     
     # Move model to GPU (this is what caused the mismatch)
@@ -207,8 +232,9 @@ def main(config):
             dataloader_val = dataloaders['validation'][fold_id]
             dataloader_test = dataloaders['test'][fold_id]
             
-            # 2. Reset Cox Model (CRITICAL: Re-initialize weights for each fold)
-            weibull_model = torch.nn.Sequential(
+            # 1. Determine the output head architecture
+            out_features = 1 if config.Binary_model else 2
+            head_architecture = torch.nn.Sequential(
                 torch.nn.BatchNorm1d(num_features),
                 torch.nn.Linear(num_features, 128),
                 torch.nn.ReLU(),
@@ -216,19 +242,10 @@ def main(config):
                 torch.nn.Linear(128, 128),
                 torch.nn.ReLU(),
                 torch.nn.Dropout(p=0.5),
-                torch.nn.Linear(128, 2),
+                torch.nn.Linear(128, out_features),
             )
-            binary_model = torch.nn.Sequential(
-                torch.nn.BatchNorm1d(num_features),
-                torch.nn.Linear(num_features, 128),
-                torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.5),
-                torch.nn.Linear(128, 128),
-                torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.5),
-                torch.nn.Linear(128, 1),
-            )
-            
+
+
             early_stop_callback = L.callbacks.EarlyStopping(
             monitor=config.early_stopping.monitor, 
             patience=config.early_stopping.patience,   
@@ -247,12 +264,14 @@ def main(config):
         )
             trainer_callbacks = [early_stop_callback]
 
-            # 3. Initialize Lightning Model
-            if config.Binary_model:
-                lightning_model = encoder_decoder_binary(classifier, binary_model, LEARNING_RATE, pos_weight,  freeze_encoder=config.Freeze_weights)
-            else:
-                lightning_model = encoder_decoder(classifier, weibull_model, LEARNING_RATE, pos_weight,  freeze_encoder= config.Freeze_weights)
-
+                        # 2. Instantiate the Lightning model using the registry lookup from earlier
+            lightning_model = module_class(
+                encoder_obj, 
+                head_architecture, 
+                LEARNING_RATE, 
+                pos_weight, 
+                freeze_encoder=config.Freeze_weights
+            )
 
 
             trainable = sum(p.numel() for p in lightning_model.parameters() if p.requires_grad)
@@ -297,8 +316,8 @@ def main(config):
     std_bal_acc = np.std([r.get('test_balanced_acc', 0) for r in all_fold_results])
     avg_cindex = np.mean([r.get('test_cindex',0) for r in all_fold_results])
     std_cindex = np.std([r.get('test_cindex', 0) for r in all_fold_results])
-    # avg_ibs = np.mean([r.get('test_ibs',0) for r in all_fold_results])
-    # std_ibs = np.std([r.get('test_ibs', 0) for r in all_fold_results])
+    avg_ibs = np.mean([r.get('test_ibs',0) for r in all_fold_results])
+    std_ibs = np.std([r.get('test_ibs', 0) for r in all_fold_results])
     avg_recall = np.mean([r.get('test_recall', 0) for r in all_fold_results])
     std_recall = np.std([r.get('test_recall', 0) for r in all_fold_results])
     avg_precision = np.mean([r.get('test_precision', 0) for r in all_fold_results])
@@ -317,8 +336,8 @@ def main(config):
         "Std_Test_AUROC": std_auroc,
         "Avg_Test_CIndex": avg_cindex,
         "Std_Test_CIndex": std_cindex,
-        # "Avg_Test_IBrier_Score": avg_ibs,
-        # "Std_Test_IBS": std_ibs,
+        "Avg_Test_IBrier_Score": avg_ibs,
+        "Std_Test_IBS": std_ibs,
         "Avg_Test_balanced_acc": avg_bal_acc,
         "Std_Test_bal_acc": std_bal_acc,
         "Avg_Test_f1_score":avg_f1,

@@ -13,7 +13,11 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
 
 
-# Run the Python script using the Hydra command-line override
-# The 'train.py' script uses @hydra.main to handle the configuration.
-# We are overriding the default config with the provided file name.
-python encoder_survivalhead.py -m hydra/config_name=config_lung,config_masked
+# Define your configs in an array
+CONFIGS=("config_lung_med.yaml" "config_masked_med.yaml" "config_ws_med.yaml" )
+
+for CFG in "${CONFIGS[@]}"; do
+    echo "Starting job with config: $CFG"
+    # Note: we use --config-name to tell Hydra which file to load from the search path
+    python encoder_survivalhead.py --config-name "$CFG"
+done

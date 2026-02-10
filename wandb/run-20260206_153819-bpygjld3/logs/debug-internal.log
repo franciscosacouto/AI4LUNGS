@@ -1,0 +1,886 @@
+2026-02-06 15:38:19,987 INFO    StreamThr :1033195 [internal.py:wandb_internal():86] W&B internal server running at pid: 1033195, started at: 2026-02-06 15:38:19.986332
+2026-02-06 15:38:19,988 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status
+2026-02-06 15:38:19,989 INFO    WriterThread:1033195 [datastore.py:open_for_write():85] open: ./wandb/run-20260206_153819-bpygjld3/run-bpygjld3.wandb
+2026-02-06 15:38:19,990 DEBUG   SenderThread:1033195 [sender.py:send():375] send: header
+2026-02-06 15:38:19,990 DEBUG   SenderThread:1033195 [sender.py:send():375] send: run
+2026-02-06 15:38:19,993 INFO    SenderThread:1033195 [sender.py:_maybe_setup_resume():761] checking resume status for None/test_encoder/bpygjld3
+2026-02-06 15:38:21,015 INFO    SenderThread:1033195 [dir_watcher.py:__init__():219] watching files in: ./wandb/run-20260206_153819-bpygjld3/files
+2026-02-06 15:38:21,015 INFO    SenderThread:1033195 [sender.py:_start_run_threads():1124] run started: bpygjld3 with start time 1770392299.220727
+2026-02-06 15:38:21,015 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:21,016 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:21,018 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: check_version
+2026-02-06 15:38:21,018 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: check_version
+2026-02-06 15:38:21,087 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: run_start
+2026-02-06 15:38:21,087 DEBUG   HandlerThread:1033195 [system_info.py:__init__():31] System info init
+2026-02-06 15:38:21,087 DEBUG   HandlerThread:1033195 [system_info.py:__init__():46] System info init done
+2026-02-06 15:38:21,087 INFO    HandlerThread:1033195 [system_monitor.py:start():181] Starting system monitor
+2026-02-06 15:38:21,088 INFO    SystemMonitor:1033195 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2026-02-06 15:38:21,088 INFO    HandlerThread:1033195 [system_monitor.py:probe():201] Collecting system info
+2026-02-06 15:38:21,089 INFO    SystemMonitor:1033195 [interfaces.py:start():190] Started cpu monitoring
+2026-02-06 15:38:21,089 INFO    SystemMonitor:1033195 [interfaces.py:start():190] Started disk monitoring
+2026-02-06 15:38:21,089 INFO    SystemMonitor:1033195 [interfaces.py:start():190] Started gpu monitoring
+2026-02-06 15:38:21,090 INFO    SystemMonitor:1033195 [interfaces.py:start():190] Started memory monitoring
+2026-02-06 15:38:21,090 INFO    SystemMonitor:1033195 [interfaces.py:start():190] Started network monitoring
+2026-02-06 15:38:21,093 DEBUG   HandlerThread:1033195 [system_info.py:probe():195] Probing system
+2026-02-06 15:38:21,095 DEBUG   HandlerThread:1033195 [system_info.py:_probe_git():180] Probing git
+2026-02-06 15:38:21,111 DEBUG   HandlerThread:1033195 [system_info.py:_probe_git():188] Probing git done
+2026-02-06 15:38:21,111 DEBUG   HandlerThread:1033195 [system_info.py:probe():240] Probing system done
+2026-02-06 15:38:21,111 DEBUG   HandlerThread:1033195 [system_monitor.py:probe():210] {'os': 'Linux-6.8.0-94-generic-x86_64-with-glibc2.39', 'python': '3.11.14', 'heartbeatAt': '2026-02-06T15:38:21.093920', 'startedAt': '2026-02-06T15:38:19.212482', 'docker': None, 'cuda': None, 'args': ('--config-name', 'config_lung_radio.yaml'), 'state': 'running', 'program': '/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py', 'codePath': 'encoder_survivalhead.py', 'git': {'remote': 'git@github.com:franciscosacouto/AI4LUNGS.git', 'commit': '713006152d429ab457881a3bae06350688f54ff0'}, 'email': None, 'root': '/nas-ctm01/homes/fmferreira/AI4LUNGS', 'host': '01.ctm-deep-09', 'username': 'fmferreira', 'executable': '/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/bin/python', 'cpu_count': 14, 'cpu_count_logical': 14, 'cpu_freq': {'current': 2449.9759999999997, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}, {'current': 2449.976, 'min': 0.0, 'max': 0.0}], 'disk': {'total': 775.1532325744629, 'used': 21.112857818603516}, 'gpu': 'NVIDIA A100 80GB PCIe', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA A100 80GB PCIe', 'memory_total': 85899345920}], 'memory': {'total': 110.04368209838867}}
+2026-02-06 15:38:21,111 INFO    HandlerThread:1033195 [system_monitor.py:probe():211] Finished collecting system info
+2026-02-06 15:38:21,111 INFO    HandlerThread:1033195 [system_monitor.py:probe():214] Publishing system info
+2026-02-06 15:38:21,111 DEBUG   HandlerThread:1033195 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2026-02-06 15:38:21,112 DEBUG   HandlerThread:1033195 [system_info.py:_save_pip():67] Saving pip packages done
+2026-02-06 15:38:21,112 DEBUG   HandlerThread:1033195 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2026-02-06 15:38:22,017 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/requirements.txt
+2026-02-06 15:38:22,017 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/conda-environment.yaml
+2026-02-06 15:38:22,017 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:23,331 DEBUG   HandlerThread:1033195 [system_info.py:_save_conda():86] Saving conda packages done
+2026-02-06 15:38:23,332 INFO    HandlerThread:1033195 [system_monitor.py:probe():216] Finished publishing system info
+2026-02-06 15:38:23,333 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:23,333 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2026-02-06 15:38:23,340 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: stop_status
+2026-02-06 15:38:23,340 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: stop_status
+2026-02-06 15:38:23,717 DEBUG   SenderThread:1033195 [sender.py:send():375] send: telemetry
+2026-02-06 15:38:23,717 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,717 DEBUG   SenderThread:1033195 [sender.py:send():375] send: telemetry
+2026-02-06 15:38:23,717 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,717 WARNING SenderThread:1033195 [sender.py:send_metric():1329] Seen metric with glob (shouldn't happen)
+2026-02-06 15:38:23,973 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:23,973 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png with policy now
+2026-02-06 15:38:23,973 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:23,974 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:23,976 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:24,021 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/conda-environment.yaml
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/wandb-metadata.json
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media
+2026-02-06 15:38:24,022 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:24,097 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/b9kb65yx-wandb-metadata.json
+2026-02-06 15:38:24,743 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/q8gbo5rp-media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png
+2026-02-06 15:38:25,122 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:25,123 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:25,123 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png with policy now
+2026-02-06 15:38:25,123 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:25,123 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:25,124 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:25,126 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:25,128 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,129 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:25,130 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:25,131 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:25,520 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:25,521 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,521 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:25,521 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:25,523 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:25,562 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/9ayxxy4k-media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png
+2026-02-06 15:38:25,957 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/hrs0qc3p-media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png
+2026-02-06 15:38:25,975 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:25,976 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:38:25,976 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:25,976 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:25,977 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:26,028 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:26,028 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:26,028 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png
+2026-02-06 15:38:26,028 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:26,581 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:26,581 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:26,581 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:26,582 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:26,752 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/1mdqr46g-media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png
+2026-02-06 15:38:27,030 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:27,048 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:27,049 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:27,049 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:27,050 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:27,591 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:27,592 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:27,592 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:27,593 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:28,032 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:28,032 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:28,103 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:28,104 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:28,104 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:28,105 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:28,538 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:28,539 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:28,539 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:28,541 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:29,034 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:29,602 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:29,602 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:29,602 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:29,604 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:30,027 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:30,028 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:30,028 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:30,030 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:30,035 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:30,035 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:30,439 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:30,440 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:30,440 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:30,441 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:30,442 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:31,037 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:31,083 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:31,084 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:31,084 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:31,085 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:31,532 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:31,533 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:31,533 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:31,534 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:32,038 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:32,038 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:32,050 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:32,051 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:32,051 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:32,052 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:32,720 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:32,720 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:32,720 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_16_a72b0c56d505413a0d52.png with policy now
+2026-02-06 15:38:32,720 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:32,720 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:32,722 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:32,724 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:32,725 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:32,725 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:32,726 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:33,090 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:33,090 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_16_a72b0c56d505413a0d52.png
+2026-02-06 15:38:33,090 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:33,159 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:33,159 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:33,159 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:33,161 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:33,415 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/f3kuay0t-media/images/risk_distribution_16_a72b0c56d505413a0d52.png
+2026-02-06 15:38:34,092 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:34,092 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:34,215 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:34,215 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:34,215 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:34,216 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:34,260 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/m53a1zle-media/images/risk_distribution_16_a72b0c56d505413a0d52.png
+2026-02-06 15:38:34,644 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:34,645 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:34,645 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:34,646 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:35,047 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:35,047 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:35,047 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:35,049 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:35,093 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:35,574 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:35,723 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:35,723 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:35,723 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:35,725 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:36,096 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:36,096 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:36,148 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:36,148 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:36,149 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:36,150 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:36,639 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:36,640 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:36,640 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:36,642 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:37,097 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:37,220 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:37,221 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:37,221 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:37,223 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:37,653 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:37,653 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:37,654 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:37,655 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:38,099 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:38,099 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:38,219 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:38,219 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:38,220 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:38,221 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:38,386 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: stop_status
+2026-02-06 15:38:38,386 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: stop_status
+2026-02-06 15:38:38,707 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:38,708 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:38,708 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:38,710 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:39,101 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:39,127 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:39,127 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:39,127 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:39,129 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:40,102 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:40,102 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:40,366 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:40,366 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_30_6767b72ba4e0a713e866.png with policy now
+2026-02-06 15:38:40,366 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:40,367 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:40,367 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:40,369 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:40,371 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:40,371 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:40,372 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:40,372 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:40,789 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:40,790 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:40,790 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:40,790 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:40,792 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:41,070 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/ig3yyyre-media/images/risk_distribution_30_6767b72ba4e0a713e866.png
+2026-02-06 15:38:41,104 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:41,104 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_30_6767b72ba4e0a713e866.png
+2026-02-06 15:38:41,104 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:41,238 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:41,239 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:41,239 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:41,240 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:41,829 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:41,829 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:41,829 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:41,831 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:41,916 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/c1dnri09-media/images/risk_distribution_30_6767b72ba4e0a713e866.png
+2026-02-06 15:38:42,105 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:42,105 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:42,311 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:42,311 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:42,312 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:42,314 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:42,867 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:42,867 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:42,868 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:42,870 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:43,108 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:43,363 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:43,364 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:43,364 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:43,365 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:43,783 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:43,783 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:43,783 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:43,785 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:44,108 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:44,109 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:44,870 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:44,870 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:44,870 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:44,871 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:45,110 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:45,302 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:45,302 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:45,302 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:45,304 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:45,709 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:45,710 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:45,710 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:45,712 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:46,113 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:46,113 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:46,217 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:46,350 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:46,351 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:46,351 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:46,352 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:46,810 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:46,811 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:46,811 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:46,812 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:47,114 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:47,329 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:47,330 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:47,330 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:47,332 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:48,020 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:48,020 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:48,020 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_45_73ccdc348573e77b4d71.png with policy now
+2026-02-06 15:38:48,021 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:48,021 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:48,023 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:48,025 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:48,025 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:48,025 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:48,027 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:48,116 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:48,116 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:48,116 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_45_73ccdc348573e77b4d71.png
+2026-02-06 15:38:48,117 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:48,458 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:48,459 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:48,459 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:48,461 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:48,732 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/spfr4z8p-media/images/risk_distribution_45_73ccdc348573e77b4d71.png
+2026-02-06 15:38:49,117 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:49,471 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/kgvvryax-media/images/risk_distribution_45_73ccdc348573e77b4d71.png
+2026-02-06 15:38:49,506 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:49,506 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:49,507 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:49,508 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:49,510 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:49,510 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:49,510 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:49,511 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:49,887 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:49,888 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:49,888 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:49,890 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:50,125 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:50,125 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:50,561 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:50,562 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:50,562 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:50,563 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:51,006 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:51,007 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:51,007 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:51,008 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:51,128 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:51,492 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:51,493 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:51,495 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:51,765 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:51,766 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:52,045 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:52,046 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:52,046 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:52,047 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:52,130 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/config.yaml
+2026-02-06 15:38:52,130 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:52,130 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:52,483 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:52,484 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:52,484 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:52,486 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:53,059 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:53,060 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:53,060 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:53,061 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:53,131 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:53,360 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: stop_status
+2026-02-06 15:38:53,361 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: stop_status
+2026-02-06 15:38:53,541 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:53,657 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:53,657 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:53,659 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:54,032 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:54,032 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:54,033 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:54,034 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:54,132 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:54,132 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:55,246 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:38:55,246 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png with policy now
+2026-02-06 15:38:55,246 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:55,247 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:55,247 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:55,248 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:55,250 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:55,250 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:55,251 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:55,252 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:55,253 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:55,253 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:55,253 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:55,255 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:55,712 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:55,713 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:55,714 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:55,715 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:56,073 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/uw2g7zav-media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png
+2026-02-06 15:38:56,136 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:56,137 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:56,137 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png
+2026-02-06 15:38:56,137 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:38:56,317 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:56,317 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:56,317 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:56,319 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:56,759 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:56,760 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:56,760 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:56,762 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:56,856 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/tm26538j-media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png
+2026-02-06 15:38:57,138 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:57,339 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:57,341 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:57,341 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:57,341 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:38:57,343 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:57,856 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:57,857 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:57,857 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:57,858 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:58,140 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:38:58,140 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:58,300 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:58,301 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:58,301 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:58,303 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:59,141 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:38:59,336 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:59,336 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:59,336 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:59,338 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:59,338 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:59,339 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:59,339 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:59,340 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:38:59,761 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:38:59,761 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:38:59,762 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:38:59,763 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:00,143 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:00,143 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:00,404 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:00,405 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:00,405 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:00,406 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:00,408 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:00,408 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:00,409 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:00,409 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:00,927 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:00,928 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:00,928 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:00,930 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:01,144 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:01,618 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:01,618 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:39:01,618 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_74_d793b3ec96885f4796a8.png with policy now
+2026-02-06 15:39:01,619 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:01,619 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:01,620 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:01,622 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:01,623 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:01,623 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:01,624 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:02,054 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:02,054 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:02,055 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:02,056 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:02,146 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:02,146 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:02,146 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_74_d793b3ec96885f4796a8.png
+2026-02-06 15:39:02,146 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:39:02,442 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/6k0n2xx0-media/images/risk_distribution_74_d793b3ec96885f4796a8.png
+2026-02-06 15:39:02,971 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:39:03,122 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:03,123 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:03,123 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:03,124 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:03,147 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:03,169 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/om3vm5uy-media/images/risk_distribution_74_d793b3ec96885f4796a8.png
+2026-02-06 15:39:03,566 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:03,566 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:03,566 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:03,568 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:03,963 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:03,963 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:03,964 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:03,965 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:04,150 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:04,150 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:04,681 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:04,681 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:04,682 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:04,683 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:04,685 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:04,685 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:04,685 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:04,686 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:05,152 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:05,201 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:05,202 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:05,202 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:05,204 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:05,770 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:05,771 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:05,771 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:05,772 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:05,774 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:05,775 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:05,775 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:05,776 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:06,153 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:06,153 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:06,361 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:06,361 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:06,362 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:06,363 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:06,831 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:06,831 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:06,832 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:06,833 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:06,835 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:06,835 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:06,835 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:06,836 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:07,154 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:08,034 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:08,034 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:39:08,035 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_88_e8f408626161c1bd5d72.png with policy now
+2026-02-06 15:39:08,035 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:08,035 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:08,035 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:39:08,036 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:08,040 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:08,040 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:08,040 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:08,041 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:08,043 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:08,044 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:08,044 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:08,045 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:08,156 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:08,156 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:08,156 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_88_e8f408626161c1bd5d72.png
+2026-02-06 15:39:08,156 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:39:08,361 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: stop_status
+2026-02-06 15:39:08,361 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: stop_status
+2026-02-06 15:39:08,493 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:08,693 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:08,693 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:08,694 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:08,781 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/bdzoz891-media/images/risk_distribution_88_e8f408626161c1bd5d72.png
+2026-02-06 15:39:09,078 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:09,078 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:09,078 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:09,079 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:09,081 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:09,081 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:09,082 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:09,082 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:09,164 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:09,569 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/owbos356-media/images/risk_distribution_88_e8f408626161c1bd5d72.png
+2026-02-06 15:39:09,615 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:09,615 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:09,615 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:09,617 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:10,118 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:10,118 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:10,119 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:10,120 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:10,122 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:10,123 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:10,123 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:10,124 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:10,165 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:10,165 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:11,171 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:11,171 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:11,171 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:11,173 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:11,175 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:11,175 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:11,175 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:11,176 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:11,594 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:11,594 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:11,595 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:11,596 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:12,168 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:12,168 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:12,207 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:12,207 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:12,208 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:12,209 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:12,211 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:12,211 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:12,211 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:12,212 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:12,723 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:12,724 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:12,724 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:12,726 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:13,110 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:39:13,170 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:13,400 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:13,401 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:39:13,401 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_103_d53691243657e783bcd6.png with policy now
+2026-02-06 15:39:13,401 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:13,401 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:13,403 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:13,406 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:13,406 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:13,407 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:13,408 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:13,409 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:13,409 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:13,409 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:13,410 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:14,172 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:14,172 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:14,172 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_103_d53691243657e783bcd6.png
+2026-02-06 15:39:14,172 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:39:14,466 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:14,466 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:14,467 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:14,468 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:14,469 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:14,470 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:14,470 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:14,471 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:14,713 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/9cuuaoy9-media/images/risk_distribution_103_d53691243657e783bcd6.png
+2026-02-06 15:39:14,845 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:14,846 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:14,846 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:14,847 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:15,173 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:15,449 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/lae4fzex-media/images/risk_distribution_103_d53691243657e783bcd6.png
+2026-02-06 15:39:15,545 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:15,546 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:15,546 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:15,547 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:15,550 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:15,550 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:15,550 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:15,551 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:16,024 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:16,025 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:16,025 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:16,027 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:16,175 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:16,175 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:16,566 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:16,566 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:16,566 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:16,568 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:16,569 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:16,570 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:16,570 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:16,571 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:17,137 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:17,138 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:17,138 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:17,140 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:17,179 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:17,593 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:17,594 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:17,594 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:17,595 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:17,598 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:17,598 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:17,598 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:17,599 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:18,181 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:18,181 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:18,496 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:39:18,794 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:18,794 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:39:18,794 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_117_a9e2383562b43c565a6d.png with policy now
+2026-02-06 15:39:18,795 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:18,795 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:18,796 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:18,798 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:18,799 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:18,799 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:18,800 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:18,802 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:18,802 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:18,802 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:18,803 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:19,183 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:19,183 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_117_a9e2383562b43c565a6d.png
+2026-02-06 15:39:19,183 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:39:19,245 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:19,246 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:19,246 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:19,248 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:19,511 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/r0llivxe-media/images/risk_distribution_117_a9e2383562b43c565a6d.png
+2026-02-06 15:39:19,845 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:19,846 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:19,846 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:19,847 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:19,849 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:19,850 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:19,850 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:19,865 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:20,184 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:20,184 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:20,331 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/m49yofus-media/images/risk_distribution_117_a9e2383562b43c565a6d.png
+2026-02-06 15:39:20,838 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:20,839 DEBUG   SenderThread:1033195 [sender.py:send():375] send: files
+2026-02-06 15:39:20,839 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: partial_history
+2026-02-06 15:39:20,839 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png with policy now
+2026-02-06 15:39:20,841 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:20,841 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:20,842 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:20,842 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: metric
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send():375] send: history
+2026-02-06 15:39:20,843 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: summary_record
+2026-02-06 15:39:20,851 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:21,090 DEBUG   SystemMonitor:1033195 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2026-02-06 15:39:21,091 DEBUG   SenderThread:1033195 [sender.py:send():375] send: stats
+2026-02-06 15:39:21,120 DEBUG   SenderThread:1033195 [sender.py:send():375] send: telemetry
+2026-02-06 15:39:21,121 DEBUG   SenderThread:1033195 [sender.py:send():375] send: exit
+2026-02-06 15:39:21,121 INFO    SenderThread:1033195 [sender.py:send_exit():598] handling exit code: 0
+2026-02-06 15:39:21,121 INFO    SenderThread:1033195 [sender.py:send_exit():600] handling runtime: 60
+2026-02-06 15:39:21,123 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:21,123 INFO    SenderThread:1033195 [sender.py:send_exit():606] send defer
+2026-02-06 15:39:21,123 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,124 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 0
+2026-02-06 15:39:21,124 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,124 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 0
+2026-02-06 15:39:21,124 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 1
+2026-02-06 15:39:21,124 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,124 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 1
+2026-02-06 15:39:21,125 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,125 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 1
+2026-02-06 15:39:21,125 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 2
+2026-02-06 15:39:21,125 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,125 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 2
+2026-02-06 15:39:21,125 INFO    HandlerThread:1033195 [system_monitor.py:finish():190] Stopping system monitor
+2026-02-06 15:39:21,125 DEBUG   SystemMonitor:1033195 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2026-02-06 15:39:21,125 DEBUG   SystemMonitor:1033195 [system_monitor.py:_start():170] Publishing last batch of metrics
+2026-02-06 15:39:21,127 INFO    HandlerThread:1033195 [interfaces.py:finish():202] Joined cpu monitor
+2026-02-06 15:39:21,127 INFO    HandlerThread:1033195 [interfaces.py:finish():202] Joined disk monitor
+2026-02-06 15:39:21,134 INFO    HandlerThread:1033195 [interfaces.py:finish():202] Joined gpu monitor
+2026-02-06 15:39:21,134 INFO    HandlerThread:1033195 [interfaces.py:finish():202] Joined memory monitor
+2026-02-06 15:39:21,134 INFO    HandlerThread:1033195 [interfaces.py:finish():202] Joined network monitor
+2026-02-06 15:39:21,134 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,134 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 2
+2026-02-06 15:39:21,134 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 3
+2026-02-06 15:39:21,134 DEBUG   SenderThread:1033195 [sender.py:send():375] send: stats
+2026-02-06 15:39:21,135 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,135 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 3
+2026-02-06 15:39:21,135 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,135 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 3
+2026-02-06 15:39:21,135 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 4
+2026-02-06 15:39:21,135 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,135 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 4
+2026-02-06 15:39:21,135 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,135 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 4
+2026-02-06 15:39:21,135 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 5
+2026-02-06 15:39:21,135 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,135 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 5
+2026-02-06 15:39:21,135 DEBUG   SenderThread:1033195 [sender.py:send():375] send: summary
+2026-02-06 15:39:21,137 INFO    SenderThread:1033195 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2026-02-06 15:39:21,137 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,137 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 5
+2026-02-06 15:39:21,137 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 6
+2026-02-06 15:39:21,137 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,137 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 6
+2026-02-06 15:39:21,138 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,138 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 6
+2026-02-06 15:39:21,140 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: status_report
+2026-02-06 15:39:21,186 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:21,186 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_created():278] file/dir created: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png
+2026-02-06 15:39:21,186 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/media/images
+2026-02-06 15:39:21,406 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 7
+2026-02-06 15:39:21,406 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:21,406 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 7
+2026-02-06 15:39:21,407 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:21,407 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 7
+2026-02-06 15:39:21,584 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/dj4ojski-media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png
+2026-02-06 15:39:22,122 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: poll_exit
+2026-02-06 15:39:22,188 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/config.yaml
+2026-02-06 15:39:22,188 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:22,381 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file /tmp/tmpooj80k1kwandb/ibtutvv9-media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png
+2026-02-06 15:39:23,799 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 8
+2026-02-06 15:39:23,799 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: poll_exit
+2026-02-06 15:39:23,799 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:23,800 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 8
+2026-02-06 15:39:23,800 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:23,800 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 8
+2026-02-06 15:39:23,810 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 9
+2026-02-06 15:39:23,810 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:23,810 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 9
+2026-02-06 15:39:23,810 DEBUG   SenderThread:1033195 [sender.py:send():375] send: artifact
+2026-02-06 15:39:24,191 INFO    Thread-24 :1033195 [dir_watcher.py:_on_file_modified():295] file/dir modified: ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:25,061 INFO    SenderThread:1033195 [sender.py:send_artifact():1474] sent artifact job-git_github.com_franciscosacouto_AI4LUNGS.git_encoder_survivalhead.py - {'id': 'QXJ0aWZhY3Q6MjQ0MTEzNzc1Ng==', 'digest': 'c23780e36a77ba85ed4f94cd588c517d', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-git_github.com_franciscosacouto_AI4LUNGS.git_encoder_survivalhead.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-git_github.com_franciscosacouto_AI4LUNGS.git_encoder_survivalhead.py', 'alias': 'v0'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjg2NTM3Mzc4Nw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MjQ0MTY3ODE2NA==', 'versionIndex': 1}}, 'version': 'v0'}
+2026-02-06 15:39:25,061 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:25,061 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 9
+2026-02-06 15:39:25,061 INFO    SenderThread:1033195 [dir_watcher.py:finish():365] shutting down directory watcher
+2026-02-06 15:39:25,194 INFO    SenderThread:1033195 [dir_watcher.py:finish():395] scan: ./wandb/run-20260206_153819-bpygjld3/files
+2026-02-06 15:39:25,194 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/config.yaml config.yaml
+2026-02-06 15:39:25,194 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json wandb-summary.json
+2026-02-06 15:39:25,194 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/requirements.txt requirements.txt
+2026-02-06 15:39:25,195 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/conda-environment.yaml conda-environment.yaml
+2026-02-06 15:39:25,199 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/wandb-metadata.json wandb-metadata.json
+2026-02-06 15:39:25,199 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/output.log output.log
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png media/images/risk_distribution_0_0bbd080f6a73ab0124fb.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png media/images/risk_distribution_1_a4a54cbb2a1cb0c7b10b.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_16_a72b0c56d505413a0d52.png media/images/risk_distribution_16_a72b0c56d505413a0d52.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_30_6767b72ba4e0a713e866.png media/images/risk_distribution_30_6767b72ba4e0a713e866.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_45_73ccdc348573e77b4d71.png media/images/risk_distribution_45_73ccdc348573e77b4d71.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png media/images/risk_distribution_59_3004f0e7d21dabe72fe4.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_74_d793b3ec96885f4796a8.png media/images/risk_distribution_74_d793b3ec96885f4796a8.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_88_e8f408626161c1bd5d72.png media/images/risk_distribution_88_e8f408626161c1bd5d72.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_103_d53691243657e783bcd6.png media/images/risk_distribution_103_d53691243657e783bcd6.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_117_a9e2383562b43c565a6d.png media/images/risk_distribution_117_a9e2383562b43c565a6d.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [dir_watcher.py:finish():409] scan save: ./wandb/run-20260206_153819-bpygjld3/files/media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png media/images/risk_distribution_123_5625eedf12ad54bf6a8e.png
+2026-02-06 15:39:25,203 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 10
+2026-02-06 15:39:25,204 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:25,204 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 10
+2026-02-06 15:39:25,204 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:25,204 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 10
+2026-02-06 15:39:25,204 INFO    SenderThread:1033195 [file_pusher.py:finish():167] shutting down file pusher
+2026-02-06 15:39:25,789 INFO    wandb-upload_1:1033195 [upload_job.py:push():137] Uploaded file ./wandb/run-20260206_153819-bpygjld3/files/config.yaml
+2026-02-06 15:39:25,809 INFO    wandb-upload_2:1033195 [upload_job.py:push():137] Uploaded file ./wandb/run-20260206_153819-bpygjld3/files/requirements.txt
+2026-02-06 15:39:26,045 INFO    wandb-upload_3:1033195 [upload_job.py:push():137] Uploaded file ./wandb/run-20260206_153819-bpygjld3/files/conda-environment.yaml
+2026-02-06 15:39:26,061 INFO    wandb-upload_0:1033195 [upload_job.py:push():137] Uploaded file ./wandb/run-20260206_153819-bpygjld3/files/wandb-summary.json
+2026-02-06 15:39:26,215 INFO    wandb-upload_4:1033195 [upload_job.py:push():137] Uploaded file ./wandb/run-20260206_153819-bpygjld3/files/output.log
+2026-02-06 15:39:26,415 INFO    Thread-23 (_thread_body):1033195 [sender.py:transition_state():626] send defer: 11
+2026-02-06 15:39:26,415 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:26,416 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 11
+2026-02-06 15:39:26,416 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:26,416 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 11
+2026-02-06 15:39:26,416 INFO    SenderThread:1033195 [file_pusher.py:join():172] waiting for file pusher
+2026-02-06 15:39:26,416 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 12
+2026-02-06 15:39:26,416 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:26,416 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 12
+2026-02-06 15:39:26,416 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:26,417 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 12
+2026-02-06 15:39:27,123 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: keepalive
+2026-02-06 15:39:27,190 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 13
+2026-02-06 15:39:27,191 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:27,191 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 13
+2026-02-06 15:39:27,191 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:27,191 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 13
+2026-02-06 15:39:27,191 INFO    SenderThread:1033195 [sender.py:transition_state():626] send defer: 14
+2026-02-06 15:39:27,191 DEBUG   SenderThread:1033195 [sender.py:send():375] send: final
+2026-02-06 15:39:27,191 DEBUG   SenderThread:1033195 [sender.py:send():375] send: footer
+2026-02-06 15:39:27,191 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: defer
+2026-02-06 15:39:27,191 INFO    HandlerThread:1033195 [handler.py:handle_request_defer():170] handle defer: 14
+2026-02-06 15:39:27,191 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: defer
+2026-02-06 15:39:27,191 INFO    SenderThread:1033195 [sender.py:send_request_defer():622] handle sender defer: 14
+2026-02-06 15:39:27,192 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: poll_exit
+2026-02-06 15:39:27,192 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: server_info
+2026-02-06 15:39:27,193 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: get_summary
+2026-02-06 15:39:27,193 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: sampled_history
+2026-02-06 15:39:27,194 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: poll_exit
+2026-02-06 15:39:27,194 DEBUG   SenderThread:1033195 [sender.py:send_request():402] send_request: server_info
+2026-02-06 15:39:27,370 DEBUG   HandlerThread:1033195 [handler.py:handle_request():144] handle_request: shutdown
+2026-02-06 15:39:27,370 INFO    HandlerThread:1033195 [handler.py:finish():845] shutting down handler
+2026-02-06 15:39:28,193 INFO    WriterThread:1033195 [datastore.py:close():298] close: ./wandb/run-20260206_153819-bpygjld3/run-bpygjld3.wandb
+2026-02-06 15:39:28,369 INFO    SenderThread:1033195 [sender.py:finish():1550] shutting down sender
+2026-02-06 15:39:28,369 INFO    SenderThread:1033195 [file_pusher.py:finish():167] shutting down file pusher
+2026-02-06 15:39:28,369 INFO    SenderThread:1033195 [file_pusher.py:join():172] waiting for file pusher

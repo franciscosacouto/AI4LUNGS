@@ -569,8 +569,8 @@ class NLSTPreprocessedDataLoader(Dataset):
                 )
             )
 
-            # if self.config.resize:
-            #     slice_image = numpy.resize(slice_image, (224, 224))
+            if self.config.resize:
+                slice_image = numpy.resize(slice_image, (224, 224))
             
 
             return slice_image
