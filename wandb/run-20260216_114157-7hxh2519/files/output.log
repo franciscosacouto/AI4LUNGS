@@ -1,0 +1,1349 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name             ┃ Type              ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head    │ Sequential        │ 66.8 K │ train │     0 │
+│ 1 │ _encoder_wrapper │ VisionTransformer │ 21.7 M │ eval  │     0 │
+│ 2 │ f1score          │ BinaryF1Score     │      0 │ train │     0 │
+│ 3 │ stats_metric     │ BinaryStatScores  │      0 │ train │     0 │
+└───┴──────────────────┴───────────────────┴────────┴───────┴───────┘
+Trainable params: 66.8 K
+Non-trainable params: 21.7 M
+Total params: 21.7 M
+Total estimated model params size (MB): 86
+Modules in train mode: 11
+Modules in eval mode: 276
+Total FLOPs: 0
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.0356, device='cuda:0')
+tensor(-0.0840, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.0467, device='cuda:0')
+tensor(-0.0579, device='cuda:0')
+shape PREDS: torch.Size([64, 2])
+shape time: torch.Size([64])
+shape log_hz: torch.Size([64, 64])
+shape log_hz_t: torch.Size([64])
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 276 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(64,), log_hz=(64,), events=(64,)
+Cindex TorchSurv: 0.5891583561897278
+Cindex Lifelines: 0.5706134094151213
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.0783, device='cuda:0')
+tensor(-0.0915, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.0809, device='cuda:0')
+tensor(-0.0402, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.0723, device='cuda:0')
+tensor(-0.0661, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.0531, device='cuda:0')
+tensor(-0.0356, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5871180891990662
+Cindex Lifelines: 0.5289017341040463
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.1404, device='cuda:0')
+tensor(-0.0658, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.1461, device='cuda:0')
+tensor(-0.0516, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.1404, device='cuda:0')
+tensor(-0.0607, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.1404, device='cuda:0')
+tensor(-0.0291, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5765895843505859
+Cindex Lifelines: 0.5111478117258464
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.2555, device='cuda:0')
+tensor(-0.0566, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.2555, device='cuda:0')
+tensor(-0.0639, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.2555, device='cuda:0')
+tensor(-0.0612, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.2555, device='cuda:0')
+tensor(-0.0161, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 12, 1s = 95
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5732865333557129
+Cindex Lifelines: 0.5406688687035508
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.3870, device='cuda:0')
+tensor(-0.0554, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.3870, device='cuda:0')
+tensor(-0.0514, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.3870, device='cuda:0')
+tensor(-0.0713, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.3870, device='cuda:0')
+tensor(-0.0089, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 17, 1s = 90
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5670933127403259
+Cindex Lifelines: 0.5472749793559042
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.4792, device='cuda:0')
+tensor(-0.0563, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.4792, device='cuda:0')
+tensor(-0.0305, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.4792, device='cuda:0')
+tensor(-0.0608, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.4792, device='cuda:0')
+tensor(-0.0014, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5565648078918457
+Cindex Lifelines: 0.5458298926507019
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6082, device='cuda:0')
+tensor(-0.0471, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6082, device='cuda:0')
+tensor(-0.0368, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6082, device='cuda:0')
+tensor(-0.0559, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6082, device='cuda:0')
+tensor(-0.0009, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5553261637687683
+Cindex Lifelines: 0.5398431048720066
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6667, device='cuda:0')
+tensor(-0.0465, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6667, device='cuda:0')
+tensor(-0.0357, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6667, device='cuda:0')
+tensor(-0.0469, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6667, device='cuda:0')
+tensor(-0.0042, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 20, 1s = 87
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5456234812736511
+Cindex Lifelines: 0.5311725846407928
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7147, device='cuda:0')
+tensor(-0.0444, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7147, device='cuda:0')
+tensor(-0.0379, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7147, device='cuda:0')
+tensor(-0.0441, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7147, device='cuda:0')
+tensor(-0.0085, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 20, 1s = 87
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5425268411636353
+Cindex Lifelines: 0.523121387283237
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7236, device='cuda:0')
+tensor(-0.0471, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7236, device='cuda:0')
+tensor(-0.0372, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7236, device='cuda:0')
+tensor(-0.0388, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7236, device='cuda:0')
+tensor(-0.0131, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 18, 1s = 89
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5326176881790161
+Cindex Lifelines: 0.5247729149463254
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7675, device='cuda:0')
+tensor(-0.0406, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7675, device='cuda:0')
+tensor(-0.0407, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7675, device='cuda:0')
+tensor(-0.0328, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7675, device='cuda:0')
+tensor(-0.0151, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 20, 1s = 87
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5361271500587463
+Cindex Lifelines: 0.5307597027250206
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7642, device='cuda:0')
+tensor(-0.0447, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7642, device='cuda:0')
+tensor(-0.0439, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7642, device='cuda:0')
+tensor(-0.0255, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7642, device='cuda:0')
+tensor(-0.0228, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 19, 1s = 88
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5445912480354309
+Cindex Lifelines: 0.5425268373245252
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7639, device='cuda:0')
+tensor(-0.0562, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7639, device='cuda:0')
+tensor(-0.0424, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7639, device='cuda:0')
+tensor(-0.0274, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7639, device='cuda:0')
+tensor(-0.0248, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 20, 1s = 87
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5427332520484924
+Cindex Lifelines: 0.5447976878612717
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7820, device='cuda:0')
+tensor(-0.0588, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7820, device='cuda:0')
+tensor(-0.0358, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7820, device='cuda:0')
+tensor(-0.0290, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7820, device='cuda:0')
+tensor(-0.0145, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 21, 1s = 86
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.551197350025177
+Cindex Lifelines: 0.5470685383980182
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7801, device='cuda:0')
+tensor(-0.0504, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7801, device='cuda:0')
+tensor(-0.0290, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7801, device='cuda:0')
+tensor(-0.0277, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7801, device='cuda:0')
+tensor(-0.0074, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 23, 1s = 84
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.55450040102005
+Cindex Lifelines: 0.5481007431874484
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6878, device='cuda:0')
+tensor(-0.0692, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6878, device='cuda:0')
+tensor(-0.0219, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6878, device='cuda:0')
+tensor(-0.0257, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6878, device='cuda:0')
+tensor(-0.0219, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 23, 1s = 84
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5530553460121155
+Cindex Lifelines: 0.5406688687035508
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6886, device='cuda:0')
+tensor(-0.0743, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6886, device='cuda:0')
+tensor(-0.0743, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6886, device='cuda:0')
+tensor(-0.0743, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6886, device='cuda:0')
+tensor(-0.0743, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 33, 1s = 74
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5503715872764587
+Cindex Lifelines: 0.5421139554087531
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6612, device='cuda:0')
+tensor(-0.0751, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6612, device='cuda:0')
+tensor(-0.0663, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6612, device='cuda:0')
+tensor(-0.0663, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6612, device='cuda:0')
+tensor(-0.0663, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 27, 1s = 80
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5447976589202881
+Cindex Lifelines: 0.536952931461602
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7242, device='cuda:0')
+tensor(-0.0739, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7242, device='cuda:0')
+tensor(-0.0606, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7242, device='cuda:0')
+tensor(-0.0606, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7242, device='cuda:0')
+tensor(-0.0606, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 31, 1s = 76
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5419074892997742
+Cindex Lifelines: 0.5355078447563997
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7397, device='cuda:0')
+tensor(-0.0922, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7397, device='cuda:0')
+tensor(-0.0437, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7397, device='cuda:0')
+tensor(-0.0437, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7397, device='cuda:0')
+tensor(-0.0437, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 38, 1s = 69
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5458298921585083
+Cindex Lifelines: 0.5313790255986788
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7036, device='cuda:0')
+tensor(-0.1098, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7036, device='cuda:0')
+tensor(-0.0558, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7036, device='cuda:0')
+tensor(-0.0552, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7036, device='cuda:0')
+tensor(-0.0226, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 34, 1s = 73
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5495458245277405
+Cindex Lifelines: 0.5218827415359207
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6981, device='cuda:0')
+tensor(-0.1244, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6981, device='cuda:0')
+tensor(-0.0636, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.6981, device='cuda:0')
+tensor(-0.0664, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.6981, device='cuda:0')
+tensor(-0.0323, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 34, 1s = 73
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.544384777545929
+Cindex Lifelines: 0.5173410404624278
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7637, device='cuda:0')
+tensor(-0.1360, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7637, device='cuda:0')
+tensor(-0.0766, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.7637, device='cuda:0')
+tensor(-0.0790, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.7637, device='cuda:0')
+tensor(-0.0404, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 36, 1s = 71
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.541701078414917
+Cindex Lifelines: 0.5181668042939719
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8308, device='cuda:0')
+tensor(-0.1496, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8308, device='cuda:0')
+tensor(-0.0922, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8308, device='cuda:0')
+tensor(-0.0902, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.8308, device='cuda:0')
+tensor(-0.0534, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 39, 1s = 68
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5501651763916016
+Cindex Lifelines: 0.5258051197357556
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8896, device='cuda:0')
+tensor(-0.1535, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8896, device='cuda:0')
+tensor(-0.1002, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.8896, device='cuda:0')
+tensor(-0.0914, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.8896, device='cuda:0')
+tensor(-0.0558, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 39, 1s = 68
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5474814176559448
+Cindex Lifelines: 0.5272502064409579
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9251, device='cuda:0')
+tensor(-0.1505, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9251, device='cuda:0')
+tensor(-0.1016, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9251, device='cuda:0')
+tensor(-0.0850, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9251, device='cuda:0')
+tensor(-0.0432, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 38, 1s = 69
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5495458245277405
+Cindex Lifelines: 0.5350949628406276
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9945, device='cuda:0')
+tensor(-0.1394, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9945, device='cuda:0')
+tensor(-0.0946, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9945, device='cuda:0')
+tensor(-0.0811, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9945, device='cuda:0')
+tensor(-0.0377, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 43, 1s = 64
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5483071804046631
+Cindex Lifelines: 0.5355078447563997
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0126, device='cuda:0')
+tensor(-0.1401, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0126, device='cuda:0')
+tensor(-0.1095, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0126, device='cuda:0')
+tensor(-0.0920, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.0126, device='cuda:0')
+tensor(-0.0453, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 42, 1s = 65
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.547894299030304
+Cindex Lifelines: 0.5381915772089183
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9692, device='cuda:0')
+tensor(-0.1440, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9692, device='cuda:0')
+tensor(-0.1341, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9692, device='cuda:0')
+tensor(-0.1143, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9692, device='cuda:0')
+tensor(-0.0611, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 38, 1s = 69
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5497522950172424
+Cindex Lifelines: 0.5425268373245252
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9278, device='cuda:0')
+tensor(-0.1505, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9278, device='cuda:0')
+tensor(-0.1499, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9278, device='cuda:0')
+tensor(-0.1274, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9278, device='cuda:0')
+tensor(-0.0732, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 29, 1s = 78
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5412881970405579
+Cindex Lifelines: 0.5309661436829067
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9676, device='cuda:0')
+tensor(-0.1667, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9676, device='cuda:0')
+tensor(-0.1719, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9676, device='cuda:0')
+tensor(-0.1522, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9676, device='cuda:0')
+tensor(-0.0929, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 28, 1s = 79
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.55450040102005
+Cindex Lifelines: 0.5363336085879439
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9358, device='cuda:0')
+tensor(-0.1786, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9358, device='cuda:0')
+tensor(-0.1914, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9358, device='cuda:0')
+tensor(-0.1638, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9358, device='cuda:0')
+tensor(-0.1003, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 25, 1s = 82
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5499587059020996
+Cindex Lifelines: 0.5247729149463254
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9829, device='cuda:0')
+tensor(-0.1937, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9829, device='cuda:0')
+tensor(-0.2067, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9829, device='cuda:0')
+tensor(-0.1777, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9829, device='cuda:0')
+tensor(-0.1149, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 23, 1s = 84
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5594549775123596
+Cindex Lifelines: 0.532204789430223
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0049, device='cuda:0')
+tensor(-0.1961, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0049, device='cuda:0')
+tensor(-0.2142, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0049, device='cuda:0')
+tensor(-0.1851, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.0049, device='cuda:0')
+tensor(-0.1235, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 26, 1s = 81
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5501651763916016
+Cindex Lifelines: 0.5266308835672997
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9898, device='cuda:0')
+tensor(-0.2044, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9898, device='cuda:0')
+tensor(-0.2256, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(0.9898, device='cuda:0')
+tensor(-0.1934, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(0.9898, device='cuda:0')
+tensor(-0.1362, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 27, 1s = 80
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5439718961715698
+Cindex Lifelines: 0.5218827415359207
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0487, device='cuda:0')
+tensor(-0.2351, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0487, device='cuda:0')
+tensor(-0.2480, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.0487, device='cuda:0')
+tensor(-0.2156, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.0487, device='cuda:0')
+tensor(-0.1629, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 31, 1s = 76
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5425268411636353
+Cindex Lifelines: 0.5247729149463254
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1230, device='cuda:0')
+tensor(-0.2586, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1230, device='cuda:0')
+tensor(-0.2605, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1230, device='cuda:0')
+tensor(-0.2290, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1230, device='cuda:0')
+tensor(-0.1785, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 32, 1s = 75
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.547894299030304
+Cindex Lifelines: 0.5284888521882741
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1015, device='cuda:0')
+tensor(-0.2622, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1015, device='cuda:0')
+tensor(-0.2522, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1015, device='cuda:0')
+tensor(-0.2246, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1015, device='cuda:0')
+tensor(-0.1624, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 30, 1s = 77
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5437654852867126
+Cindex Lifelines: 0.523121387283237
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1667, device='cuda:0')
+tensor(-0.2617, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1667, device='cuda:0')
+tensor(-0.2354, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1667, device='cuda:0')
+tensor(-0.2178, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1667, device='cuda:0')
+tensor(-0.1513, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 33, 1s = 74
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5408753156661987
+Cindex Lifelines: 0.5272502064409579
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1321, device='cuda:0')
+tensor(-0.2594, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1321, device='cuda:0')
+tensor(-0.2197, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1321, device='cuda:0')
+tensor(-0.2143, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1321, device='cuda:0')
+tensor(-0.1421, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 34, 1s = 73
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5359207391738892
+Cindex Lifelines: 0.5222956234516928
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1960, device='cuda:0')
+tensor(-0.2602, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1960, device='cuda:0')
+tensor(-0.2143, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1960, device='cuda:0')
+tensor(-0.2135, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1960, device='cuda:0')
+tensor(-0.1415, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 37, 1s = 70
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5326176881790161
+Cindex Lifelines: 0.5202312138728323
+Saved test predictions and probabilities to validation_results_fold_final.csv
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1912, device='cuda:0')
+tensor(-0.2454, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1912, device='cuda:0')
+tensor(-0.1966, device='cuda:0')
+shape xtorch.Size([32, 3, 224, 224])
+shape xtorch.Size([32, 2])
+tensor(1.1912, device='cuda:0')
+tensor(-0.2287, device='cuda:0')
+shape xtorch.Size([11, 3, 224, 224])
+shape xtorch.Size([11, 2])
+tensor(1.1912, device='cuda:0')
+tensor(-0.1306, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 35, 1s = 72
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5353013873100281
+Cindex Lifelines: 0.5216763005780347
+Saved test predictions and probabilities to validation_results_fold_final.csv
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestlung_radio_frozen-epoch=25-val_loss=0.62.ckpt
+Epoch 40/99 ━━━━━━━━━━━━━━━━━ 7/7 0:00:00 • 0:00:00 32.96it/s v_num: 2519
+                                                              train_loss_step:
+                                                              0.356 val_loss:
+                                                              0.647
+                                                              train_loss_epoch:
+                                                              0.496
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestlung_radio_frozen-epoch=25-val_loss=0.62.ckpt
+Saved test predictions and probabilities to test_results_fold_final.xlsx
+shape PREDS: torch.Size([80, 2])
+shape time: torch.Size([80])
+shape log_hz: torch.Size([80, 80])
+shape log_hz_t: torch.Size([80])
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 35, 1s = 45
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(80,), log_hz=(80,), events=(80,)
+Cindex TorchSurv: 0.5056861042976379
+Cindex Lifelines: 0.4723275208491281
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.4680556058883667     │
+│     test_balanced_acc     │    0.49166667461395264    │
+│        test_cindex        │    0.5056861042976379     │
+│       test_f1_score       │    0.3384615480899811     │
+│         test_ibs          │    0.12741701304912567    │
+│      test_precision       │    0.49365079402923584    │
+│        test_recall        │    0.49166667461395264    │
+└───────────────────────────┴───────────────────────────┘
+Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3/3 0:00:00 • 0:00:00 43.01it/s
