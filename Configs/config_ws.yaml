@@ -2,6 +2,8 @@ directories:
   rootdir_lung: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
   rootdir_ws: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
   rootdir: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
+  rootdir_text: /nas-ctm01/homes/fmferreira/AI4LUNGS/text_data_new.csv
+  rootdir_tab: /nas-ctm01/homes/fmferreira/AI4LUNGS/NLST_preclinical_final_processed_normalized.csv
   image_df_path: /nas-ctm01/homes/fmferreira/AI4LUNGS/lung_file_paths.csv
   cancer_path: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/cancer_info_final_mapped.csv
 data:
@@ -16,13 +18,13 @@ BATCH_SIZE_CPU: 32
 BATCH_SIZE_GPU: 32
 EPOCHS: 100
 LEARNING_RATE: 1e-4
-Freeze_weights: True
+Freeze_weights: False
 
 Binary_model: False
 
 Threshold_metrics: 0.6
-model_name: ws
-project: test_encoder
+model_name: Image_ws
+project: Text
 seed_value: 22
 early_stopping:
   monitor: 'val_loss'
@@ -32,17 +34,21 @@ early_stopping:
 
 
 
-Encoder: RadioDino
+Encoder: MedImageInsights
+image: True
+text: False
+tabular: False
+stage_type: preclinical
 
 
 test_fraction_of_entire_dataset: 0.2
-weighted_random_sampler: False
+weighted_random_sampler: True
 
 dimension: 2
 
 visualize_imgur: False
 
-roi: ws
+roi: ws  # ws, lung, masked
 
 
 
@@ -74,6 +80,6 @@ torch_dataloader_kwargs:
   batch_size: 32
   num_workers: 8
 validation_fraction_of_train_set: 0.1
-resize: True # True, False
+resize: False # True, False
 resample: False
 resample_z: False

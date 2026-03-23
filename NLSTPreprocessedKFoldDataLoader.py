@@ -17,6 +17,7 @@ import base64
 import io
 from PIL import Image
 from ct_image_augmenter import CTImageAugmenter, CTImageAugmenter3D
+import numpy as np
 
 from visualizationuploader import VisualizationUploader
 
@@ -36,14 +37,14 @@ class NLSTPreprocessedKFoldDataLoader:
         self.data_splits = None
         self.load_data_name = None
         self.torch_generator = None
-
         self.dataloaders = defaultdict(list)
         self.dataloaders_by_subset = defaultdict(list)
         self.data_names_by_subset = defaultdict(list)
         self.data_splits = defaultdict(lambda: defaultdict(list))
         self.load_data_name = load_data_name
         self.torch_generator = torch.Generator()
-
+        csv_path = self.config.directories.rootdir_tab
+        self.features_df = pandas.read_csv(csv_path)
         self.lung_metadataframe = lung_metadataframe
 
         self.torch_generator.manual_seed(self.config.seed_value)
@@ -78,7 +79,8 @@ class NLSTPreprocessedKFoldDataLoader:
                 labels=labels,
                 load_data_name=self.load_data_name,
                 subset_type=subset_type,
-                lung_metadataframe=self.lung_metadataframe
+                lung_metadataframe=self.lung_metadataframe,
+                features_df=self.features_df 
             )
 
             if subset_type == "train":
@@ -118,7 +120,8 @@ class NLSTPreprocessedKFoldDataLoader:
                 labels=labels,
                 load_data_name=self.load_data_name,
                 subset_type=subset_type,
-                lung_metadataframe=self.lung_metadataframe
+                lung_metadataframe=self.lung_metadataframe,
+                features_df=self.features_df
             ),
             generator=self.torch_generator,
             shuffle=True if subset_type == "train" else False,
@@ -315,15 +318,21 @@ class NLSTPreprocessedDataLoader(Dataset):
             labels,
             load_data_name,
             subset_type,
-            lung_metadataframe
+            lung_metadataframe,
+            features_df
     ):
         self.config = config
         self.load_data_name = load_data_name
         self.subset_type = subset_type
         self.lung_metadataframe = lung_metadataframe
         self.augmented_to_original_data_ratio = config.data_augmentation.augmented_to_original_data_ratio
+        self.use_image = getattr(config, 'image', False)
+        self.use_text = getattr(config, 'text', False)
+        self.use_tabular = getattr(config, 'tabular', False)
+        self.features_df = features_df
         self.apply_data_augmentations = config.data_augmentation.apply
 
+        self.text_column = config.stage_type
         if 'roi' in config:
             if self.config.roi in ['lung', 'masked']:
                 self.roi = config.roi
@@ -381,32 +390,67 @@ class NLSTPreprocessedDataLoader(Dataset):
 
     def __len__(self):
         return len(self.file_names)
+    
+
+    def _get_tabular_data(self, data_index):
+    # 1. Get the PID for the current sample
+        dataframe_row = self.lung_metadataframe.loc[
+            self.lung_metadataframe['path'] == self.file_names[data_index]
+        ]
+        current_pid = dataframe_row['pid'].values[0]
+
+        # 2. Grab the features for this PID from the stage-specific table
+        # We assume the stage-specific CSV has 'pid' and then only features
+        features_row = self.features_df.loc[self.features_df['pid'] == current_pid]
+        
+        # 3. Drop 'pid' and convert everything else to a tensor
+        # No more worry about fup_days or study_yr!
+        tabular_features = features_row.drop(columns=['pid'])
+        tabular_features = features_row.drop(columns = ['rndgroup_1','rndgroup_2'])
+        
+        final_array = tabular_features.values[0].astype(np.float32)
+        return torch.from_numpy(final_array)
+    
+
+    def _get_clinical_text(self, data_index):
+        """Retrieves the raw sentence from the metadata."""
+        dataframe_row = self.lung_metadataframe.loc[
+            self.lung_metadataframe['path'] == self.file_names[data_index]
+        ]
+        # Return the sentence as a string
+        return str(dataframe_row[self.text_column].values[0])
 
     def __getitem__(self, data_index):
         try:
-            data = self._get_data(data_index)
+            # We use a dictionary to make the model inputs interchangeable
+            inputs = {}
+
+            if self.use_image:
+                        inputs['image'] = self._get_data(data_index)
+            
+            # --- Text Branch ---
+            if self.use_text:
+                inputs['text'] = self._get_clinical_text(data_index)
+
+            # --- Tabular Branch ---
+            if self.use_tabular:
+                inputs['tabular'] = self._get_tabular_data(data_index)
+
             label = self._get_label(data_index) 
-            time = self._get_time(data_index) # survival label
+            time = self._get_time(data_index)
+            # Standard output structure
+            output = [inputs, label, time]
 
-            # If multitask: also get stage label
             if getattr(self.config, "use_stage_label", False):
-                stage_label = self._get_stage_label(data_index)
-                if not self.load_data_name:
-                    return data, label,time, stage_label
-                else:
-                    return self.file_names[data_index], data, label,time, stage_label
+                output.append(self._get_stage_label(data_index))
             elif getattr(self.config, "use_stagebin_label", False):
-                stage_bin_label = self._get_stage_label(data_index, stage='binary_stage')
-                if not self.load_data_name:
-                    return data, label, time, stage_bin_label
-                else:
-                    return self.file_names[data_index], data, label, time, stage_bin_label
-            else:
-                if not self.load_data_name:
-                    return data, label, time
-                else:
-                    return self.file_names[data_index], data, label, time
+                output.append(self._get_stage_label(data_index, stage='binary_stage'))
 
+            if self.load_data_name:
+                output.insert(0, self.file_names[data_index])
+
+            return tuple(output)
+        
         except Exception as e:
             print(f"[ERROR] Error in __getitem__ at index {data_index}: {e}")
             print(f"File path: {self.file_names[data_index]}")

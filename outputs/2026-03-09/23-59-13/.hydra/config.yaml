@@ -1,0 +1,67 @@
+directories:
+  rootdir_lung: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
+  rootdir_ws: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
+  rootdir: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
+  rootdir_text: /nas-ctm01/homes/fmferreira/AI4LUNGS/text_data_new.csv
+  image_df_path: /nas-ctm01/homes/fmferreira/AI4LUNGS/lung_file_paths.csv
+  cancer_path: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/cancer_info_final_mapped.csv
+data:
+  columns:
+    pid: pid
+    file_path: file_path
+SEED: 22
+test_size: 0.2
+BATCH_SIZE_CPU: 32
+BATCH_SIZE_GPU: 32
+EPOCHS: 100
+LEARNING_RATE: 0.0001
+Freeze_weights: false
+Binary_model: false
+Threshold_metrics: 0.6
+model_name: preclinical
+project: test_encoder
+seed_value: 22
+early_stopping:
+  monitor: val_loss
+  patience: 15
+  verbose: false
+  mode: min
+Encoder: MedImageInsights
+modality: text
+text_type: preclinical
+test_fraction_of_entire_dataset: 0.2
+weighted_random_sampler: true
+dimension: 2
+visualize_imgur: false
+roi: ws
+dataset_name: NLST
+data_preprocessing_protocol_number: 4
+data_type: whole_slice
+data_augmentation:
+  apply: true
+  augmented_to_original_data_ratio: 2
+  parameters:
+    number_of_augmentations: 3
+    random_rotation_degrees: 10
+    random_translation_fraction: 0.1
+    random_brightness_intensity_factor: 0.3
+    random_contrast_intensity_factor: 0.3
+    random_gaussian_blur:
+      kernel_size:
+      - 3
+      - 3
+      sigma:
+      - 0.1
+      - 1.0
+    random_gaussian_noise_variance: 0.001
+    random_elastic_alpha: 10.0
+    random_elastic_sigma: 5.0
+image_numpy_arrays_dir_path: ${...experiment_execution.paths.preprocessed_data_dir_path}/protocol_${..data_preprocessing_protocol_number}/${..metadataframe.data_type}_numpy_arrays
+number_of_k_folds: 3
+torch_dataloader_kwargs:
+  batch_size: 32
+  num_workers: 8
+validation_fraction_of_train_set: 0.1
+resize: false
+resample: false
+resample_z: false

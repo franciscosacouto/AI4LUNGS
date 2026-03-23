@@ -1,0 +1,1600 @@
+┏━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name           ┃ Type             ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head  │ Sequential       │  150 K │ train │     0 │
+│ 1 │ vision_encoder │ DaViT            │  360 M │ train │     0 │
+│ 2 │ text_encoder   │ Transformer      │  252 M │ eval  │     0 │
+│ 3 │ f1score        │ BinaryF1Score    │      0 │ train │     0 │
+│ 4 │ stats_metric   │ BinaryStatScores │      0 │ train │     0 │
+└───┴────────────────┴──────────────────┴────────┴───────┴───────┘
+Trainable params: 613 M
+Non-trainable params: 0
+Total params: 613 M
+Total estimated model params size (MB): 2.5 K
+Modules in train mode: 537
+Modules in eval mode: 164
+Total FLOPs: 0
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(-0.0044, device='cuda:0')
+tensor(-0.1599, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(-0.0066, device='cuda:0')
+tensor(-0.1590, device='cuda:0')
+shape PREDS: torch.Size([64, 2])
+shape time: torch.Size([64])
+shape log_hz: torch.Size([64, 64])
+shape log_hz_t: torch.Size([64])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 48, 1s = 16
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(64,), log_hz=(64,), events=(64,)
+Cindex TorchSurv: 0.8758541941642761
+Cindex Lifelines: 0.9214123006833713
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [36, 33, 33, 25, 33, 44, 33, 35, 24, 42, 26, 30, 37, 26, 37, 26, 44, 42, 42, 26, 33, 26, 36, 37, 37, 38, 37, 33, 26, 26, 37, 33]
+DEBUG: Max allowed length: 77
+🔥 Successfully training: convs.0.proj.weight
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 29 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 43, 33, 26, 33, 44, 30, 33, 37, 37, 32, 37, 28, 37, 39, 25, 35, 32, 26, 33, 33, 26, 33, 35, 32, 24, 28, 39, 33, 43, 37, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 26 mm. Patient has heart disease. '
+DEBUG: Token lengths in batch: [25, 31, 35, 41, 30, 38, 26, 20, 37, 38, 37, 26, 35, 30, 31, 26, 30, 20, 43, 33, 33, 30, 33, 31, 26, 31, 26, 43, 33, 32, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of  mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [31, 20, 42, 37, 26, 26, 33, 37, 20, 37, 33, 32, 31, 39, 37, 30, 24, 31, 25, 26, 24, 26, 32, 33, 32, 33, 32, 24, 42, 31, 37, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 33, 43, 33, 37, 37, 29, 37, 33, 30, 33, 31, 33, 32, 26, 33, 24, 30, 25, 26, 30, 33, 33, 36, 37, 30, 20, 33, 43, 39, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 26, 26, 39, 40, 33, 24, 33, 20, 30, 42, 32, 35, 33, 43, 37, 26, 37, 24, 35, 33, 42, 42, 36, 27, 20, 24, 43, 20, 37, 26, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Patient has a lesion size of 14 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 26, 37, 33, 33, 37, 33, 24, 33, 26, 37, 26, 28, 26, 20, 33, 30, 31, 37, 30, 44]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0062, device='cuda:0')
+tensor(-0.0949, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0032, device='cuda:0')
+tensor(-0.0954, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0042, device='cuda:0')
+tensor(-0.0924, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.0052, device='cuda:0')
+tensor(-0.0911, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.8667883276939392
+Cindex Lifelines: 0.8467153284671532
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Patient has a lesion size of 16 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has heart disease. '
+DEBUG: Token lengths in batch: [44, 24, 42, 26, 33, 26, 38, 33, 33, 32, 26, 35, 30, 37, 32, 26, 33, 31, 33, 46, 37, 26, 37, 27, 24, 37, 26, 30, 37, 33, 37, 24]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of  mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [24, 32, 24, 20, 35, 26, 33, 44, 30, 35, 24, 26, 31, 26, 33, 38, 26, 37, 37, 33, 43, 37, 38, 37, 33, 31, 30, 32, 26, 37, 40, 38]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 37, 37, 33, 36, 26, 26, 20, 20, 34, 30, 26, 38, 43, 37, 24, 38, 36, 32, 31, 26, 33, 35, 37, 38, 37, 32, 33, 20, 37, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of  mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [24, 26, 33, 39, 33, 32, 35, 35, 32, 41, 33, 35, 37, 25, 26, 26, 27, 26, 26, 33, 37, 24, 33, 33, 37, 32, 43, 31, 36, 37, 32, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 17 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 37, 24, 34, 40, 37, 30, 39, 35, 37, 33, 37, 28, 23, 28, 26, 43, 31, 33, 28, 33, 37, 27, 30, 26, 33, 26, 25, 44, 26, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 37, 37, 26, 34, 39, 33, 33, 35, 30, 35, 26, 35, 24, 39, 32, 33, 25, 32, 33, 31, 35, 27, 37, 30, 24, 24, 35, 26, 38, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [46, 27, 37, 42, 33, 29, 39, 35, 26, 33, 38, 37, 30, 26, 33, 43, 37, 32, 31, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0144, device='cuda:0')
+tensor(-0.0788, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0104, device='cuda:0')
+tensor(-0.0820, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0102, device='cuda:0')
+tensor(-0.0721, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.0109, device='cuda:0')
+tensor(-0.0558, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.8671938180923462
+Cindex Lifelines: 0.8613138686131386
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Patient has a lesion size of 11 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 37, 28, 37, 35, 33, 30, 30, 29, 37, 37, 30, 24, 30, 26, 33, 34, 33, 35, 33, 42, 37, 28, 33, 37, 29, 32, 33, 26, 29, 37, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 60 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 37, 31, 30, 29, 26, 33, 31, 33, 20, 37, 25, 35, 37, 33, 26, 33, 37, 24, 31, 24, 24, 26, 26, 32, 27, 30, 33, 20, 20, 24, 31]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 24 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 37, 26, 34, 38, 43, 25, 37, 43, 32, 30, 32, 39, 42, 28, 35, 26, 33, 37, 37, 33, 30, 42, 33, 33, 26, 20, 37, 37, 37, 43, 31]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [34, 25, 24, 39, 33, 26, 33, 37, 20, 37, 38, 42, 26, 33, 30, 35, 28, 43, 32, 30, 33, 37, 37, 37, 33, 33, 35, 37, 24, 33, 38, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 37, 26, 36, 24, 26, 24, 46, 44, 33, 36, 33, 19, 20, 31, 33, 33, 26, 30, 25, 26, 28, 30, 38, 31, 37, 42, 34, 30, 43, 38]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 25 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 32, 36, 33, 33, 37, 33, 35, 32, 25, 37, 37, 33, 37, 24, 42, 29, 35, 26, 26, 35, 39, 38, 38, 26, 33, 32, 32, 37, 33, 37, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 50 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 26, 38, 32, 26, 35, 37, 26, 30, 23, 38, 20, 29, 26, 37, 33, 31, 33, 26, 31, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0124, device='cuda:0')
+tensor(-0.1069, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0147, device='cuda:0')
+tensor(-0.1107, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0155, device='cuda:0')
+tensor(-0.1063, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.0201, device='cuda:0')
+tensor(-0.0686, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.8221816420555115
+Cindex Lifelines: 0.8260340632603407
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 10 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 43, 43, 37, 26, 33, 36, 40, 37, 33, 26, 32, 32, 33, 24, 37, 33, 30, 26, 37, 33, 30, 33, 37, 37, 33, 31, 27, 37, 27, 24, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 37, 37, 37, 30, 25, 39, 34, 33, 32, 38, 42, 37, 33, 33, 31, 27, 43, 39, 31, 26, 20, 35, 42, 30, 26, 26, 33, 20, 26, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 11 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 30, 33, 42, 24, 31, 26, 31, 37, 32, 24, 27, 26, 38, 25, 33, 26, 37, 33, 30, 33, 26, 32, 33, 30, 37, 33, 40, 35, 39, 38, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 11 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 37, 37, 37, 33, 30, 33, 31, 33, 32, 37, 38, 42, 42, 30, 43, 37, 29, 31, 33, 26, 43, 26, 33, 38, 38, 33, 37, 33, 33, 24]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 26, 28, 26, 43, 37, 27, 30, 30, 42, 32, 31, 33, 20, 32, 44, 26, 44, 35, 31, 37, 37, 33, 20, 32, 33, 33, 43, 35, 33, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 37, 25, 29, 37, 32, 35, 37, 20, 34, 33, 33, 29, 42, 42, 37, 26, 25, 35, 37, 33, 33, 35, 26, 32, 26, 33, 33, 30, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 31, 33, 37, 26, 31, 26, 26, 34, 39, 31, 29, 26, 20, 31, 24, 26, 28, 33, 26, 36]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0163, device='cuda:0')
+tensor(-0.1168, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0240, device='cuda:0')
+tensor(-0.1164, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.0320, device='cuda:0')
+tensor(-0.1065, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.0453, device='cuda:0')
+tensor(-0.0930, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7804136276245117
+Cindex Lifelines: 0.7982562854825629
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 18 mm. Patient smokes cigar. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [36, 24, 33, 30, 31, 27, 33, 32, 20, 26, 37, 37, 39, 20, 34, 30, 33, 33, 30, 31, 23, 42, 26, 35, 37, 26, 35, 33, 31, 37, 33, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 24, 33, 30, 39, 32, 33, 43, 37, 34, 25, 24, 30, 37, 33, 33, 27, 33, 33, 32, 35, 24, 33, 26, 37, 24, 27, 33, 32, 37, 33, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 35, 26, 31, 32, 32, 37, 33, 20, 37, 39, 26, 31, 31, 33, 20, 33, 33, 33, 33, 33, 30, 32, 26, 29, 30, 30, 32, 39, 34, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 30, 30, 32, 30, 38, 33, 35, 30, 33, 39, 33, 24, 31, 37, 37, 31, 38, 39, 26, 31, 29, 26, 37, 33, 26, 33, 43, 32, 33, 26, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 38 mm. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [32, 37, 26, 34, 30, 33, 37, 33, 42, 19, 32, 26, 37, 35, 38, 37, 37, 43, 33, 35, 30, 37, 32, 26, 33, 37, 34, 26, 24, 26, 43, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [39, 46, 32, 33, 30, 43, 26, 40, 37, 25, 38, 39, 32, 33, 37, 26, 44, 37, 33, 33, 26, 30, 26, 20, 37, 26, 26, 37, 33, 39, 30, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 26, 37, 26, 33, 35, 29, 39, 32, 33, 37, 33, 31, 33, 37, 24, 26, 32, 33, 33, 41]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.1344, device='cuda:0')
+tensor(-0.1305, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.1596, device='cuda:0')
+tensor(-0.1233, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.1744, device='cuda:0')
+tensor(-0.1181, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.2090, device='cuda:0')
+tensor(-0.0392, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 1, 1s = 106
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7761557102203369
+Cindex Lifelines: 0.7871046228710462
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 26, 33, 33, 26, 42, 33, 32, 37, 46, 35, 26, 33, 24, 32, 31, 26, 30, 26, 33, 31, 28, 35, 36, 26, 43, 26, 33, 30, 33, 26, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 31, 37, 43, 30, 32, 38, 24, 33, 37, 37, 37, 38, 33, 30, 26, 30, 24, 37, 26, 26, 28, 25, 32, 37, 19, 35, 33, 33, 42, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Patient has a lesion size of 22 mm. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [24, 24, 43, 39, 30, 39, 35, 37, 32, 30, 30, 33, 31, 32, 35, 43, 35, 38, 24, 37, 42, 35, 37, 33, 42, 32, 26, 37, 30, 20, 42, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Patient has a lesion size of 14 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 38, 33, 37, 33, 24, 30, 37, 29, 33, 30, 33, 42, 25, 42, 37, 35, 33, 33, 42, 33, 29, 31, 33, 33, 37, 33, 30, 32, 26, 37, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 9 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [25, 34, 33, 33, 20, 29, 26, 26, 30, 20, 26, 30, 27, 30, 26, 33, 20, 26, 20, 33, 37, 33, 29, 37, 37, 30, 44, 35, 37, 20, 42, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 33, 33, 30, 43, 39, 37, 20, 30, 34, 39, 20, 33, 33, 31, 33, 37, 26, 33, 20, 35, 33, 20, 42, 33, 26, 37, 33, 29, 31, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 32, 38, 42, 24, 43, 32, 32, 33, 37, 20, 37, 43, 32, 32, 20, 33, 35, 26, 38, 38]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.3097, device='cuda:0')
+tensor(-0.1672, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.3516, device='cuda:0')
+tensor(-0.1806, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.3177, device='cuda:0')
+tensor(-0.1372, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.4042, device='cuda:0')
+tensor(-0.0403, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 19, 1s = 88
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7364152669906616
+Cindex Lifelines: 0.754257907542579
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 32 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 26, 33, 33, 37, 20, 42, 26, 26, 20, 24, 33, 37, 25, 38, 37, 33, 31, 24, 20, 37, 26, 25, 37, 33, 25, 30, 26, 37, 35, 33, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 33, 37, 20, 33, 30, 31, 38, 31, 33, 31, 30, 33, 24, 32, 30, 33, 20, 35, 39, 32, 32, 33, 31, 44, 26, 33, 37, 32, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 43, 33, 20, 46, 33, 37, 20, 33, 33, 35, 42, 37, 25, 37, 33, 39, 33, 35, 43, 20, 33, 30, 30, 24, 20, 42, 31, 38, 24, 31, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Patient has a lesion size of 14 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 31, 32, 40, 20, 25, 33, 38, 33, 24, 33, 30, 33, 20, 26, 33, 38, 26, 30, 31, 20, 24, 33, 32, 30, 32, 24, 29, 40, 26, 31, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of 11 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 30, 30, 37, 33, 31, 33, 33, 26, 43, 19, 31, 42, 24, 37, 34, 20, 24, 31, 28, 42, 37, 26, 33, 37, 33, 33, 20, 34, 26, 38, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 29, 29, 36, 26, 39, 24, 27, 33, 30, 33, 42, 37, 46, 24, 31, 37, 33, 34, 42, 30, 37, 38, 32, 26, 33, 27, 37, 30, 37, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 7 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [23, 39, 29, 20, 33, 37, 20, 34, 23, 30, 31, 30, 32, 26, 37, 24, 37, 26, 31, 39, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.6119, device='cuda:0')
+tensor(-0.1712, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.5745, device='cuda:0')
+tensor(-0.2067, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(0.5393, device='cuda:0')
+tensor(-0.1470, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(0.6960, device='cuda:0')
+tensor(-0.0540, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 36, 1s = 71
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7469586133956909
+Cindex Lifelines: 0.7475669099756691
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Patient has a lesion size of 17 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 31, 33, 37, 35, 37, 30, 24, 37, 38, 24, 26, 29, 34, 33, 33, 26, 24, 33, 33, 33, 42, 33, 33, 44, 33, 33, 31, 30, 29, 42, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 43 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 25, 26, 33, 33, 31, 20, 26, 32, 26, 24, 44, 26, 31, 39, 33, 31, 34, 26, 31, 33, 26, 33, 25, 20, 26, 38, 35, 42, 20, 42, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of 13 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 33, 32, 33, 33, 37, 31, 33, 30, 37, 26, 30, 25, 26, 26, 26, 42, 20, 38, 37, 33, 24, 26, 33, 20, 40, 43, 33, 32, 33, 38, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 42, 33, 37, 43, 34, 33, 28, 40, 26, 33, 42, 37, 33, 33, 20, 31, 26, 32, 33, 37, 33, 37, 42, 31, 44, 32, 20, 35, 19, 32, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 7 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [29, 38, 29, 26, 31, 30, 37, 37, 38, 29, 26, 29, 31, 35, 33, 29, 33, 44, 39, 24, 20, 26, 46, 43, 20, 19, 37, 24, 31, 35, 43, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [42, 37, 37, 26, 29, 33, 31, 29, 37, 26, 31, 32, 33, 31, 44, 32, 39, 40, 33, 33, 33, 24, 35, 26, 35, 30, 20, 33, 20, 37, 33, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 31 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 25, 26, 36, 25, 33, 26, 32, 30, 39, 30, 37, 34, 36, 26, 26, 33, 33, 26, 37, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.1399, device='cuda:0')
+tensor(-0.2490, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.1110, device='cuda:0')
+tensor(-0.2238, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.1224, device='cuda:0')
+tensor(-0.2222, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(1.2450, device='cuda:0')
+tensor(0.0413, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 66, 1s = 41
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.742497980594635
+Cindex Lifelines: 0.7461476074614761
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 35, 35, 37, 26, 37, 37, 26, 37, 32, 44, 26, 20, 30, 30, 33, 37, 33, 30, 30, 44, 35, 35, 30, 27, 33, 37, 37, 33, 24, 35, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Patient has a lesion size of 22 mm. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [24, 43, 42, 33, 29, 25, 25, 26, 33, 33, 26, 37, 27, 39, 29, 26, 30, 34, 33, 37, 24, 24, 26, 37, 28, 38, 35, 33, 33, 37, 37, 24]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 37, 33, 42, 30, 33, 20, 26, 24, 27, 31, 30, 43, 37, 37, 44, 26, 33, 37, 30, 33, 38, 37, 26, 42, 33, 33, 24, 26, 20, 24, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 25 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 30, 42, 37, 24, 25, 29, 27, 32, 39, 32, 27, 37, 43, 37, 33, 31, 26, 33, 30, 30, 37, 38, 33, 37, 33, 37, 25, 42, 33, 33, 29]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 49 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 37, 37, 33, 32, 37, 39, 38, 33, 38, 20, 37, 31, 43, 37, 24, 30, 31, 27, 19, 20, 33, 24, 37, 26, 43, 24, 20, 38, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 13 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 30, 33, 35, 20, 37, 26, 39, 24, 33, 33, 30, 37, 27, 24, 26, 43, 27, 29, 43, 35, 35, 38, 33, 37, 31, 37, 31, 39, 27, 37, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 23 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 38, 26, 29, 37, 33, 35, 43, 26, 32, 37, 36, 33, 33, 33, 33, 30, 33, 30, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.8930, device='cuda:0')
+tensor(-0.4233, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.8614, device='cuda:0')
+tensor(-0.3537, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(1.9295, device='cuda:0')
+tensor(-0.4511, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(2.0046, device='cuda:0')
+tensor(0.0674, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 81, 1s = 26
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7550689578056335
+Cindex Lifelines: 0.7558799675587997
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 7 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [29, 33, 33, 42, 37, 34, 37, 31, 26, 27, 39, 33, 37, 44, 20, 32, 27, 37, 26, 33, 42, 32, 27, 33, 30, 34, 30, 33, 24, 30, 38, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 29 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [43, 30, 30, 24, 37, 27, 36, 32, 33, 33, 33, 30, 37, 42, 33, 42, 40, 44, 37, 33, 37, 37, 27, 26, 33, 33, 36, 26, 33, 24, 33, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 19, 36, 33, 27, 37, 39, 30, 38, 33, 26, 26, 37, 31, 33, 26, 33, 28, 31, 31, 26, 26, 37, 33, 31, 44, 35, 33, 30, 37, 26, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 9 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 34, 33, 35, 37, 33, 37, 34, 34, 32, 35, 36, 33, 37, 35, 33, 35, 37, 37, 33, 31, 33, 26, 32, 26, 37, 34, 26, 33, 33, 26, 27]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 34 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 24, 33, 33, 43, 37, 26, 37, 33, 26, 37, 24, 37, 32, 33, 37, 36, 27, 20, 33, 26, 31, 38, 33, 26, 27, 42, 26, 37, 25, 24, 28]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 32, 33, 33, 20, 37, 25, 33, 42, 26, 26, 29, 36, 33, 29, 33, 42, 31, 40, 37, 20, 26, 20, 20, 37, 30, 20, 37, 33, 33, 33, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 43 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 37, 37, 37, 26, 30, 26, 42, 44, 44, 33, 33, 39, 37, 37, 26, 37, 26, 35, 26, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.3753, device='cuda:0')
+tensor(-0.6913, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.1754, device='cuda:0')
+tensor(-0.6484, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.3491, device='cuda:0')
+tensor(-0.5292, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(2.5653, device='cuda:0')
+tensor(-0.4406, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 66, 1s = 41
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.772506058216095
+Cindex Lifelines: 0.7793998377939984
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 17 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 42, 26, 42, 39, 31, 35, 32, 37, 26, 33, 33, 36, 33, 33, 26, 35, 31, 37, 28, 30, 20, 37, 26, 33, 25, 30, 20, 26, 32, 42, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 26, 33, 33, 20, 33, 42, 33, 26, 33, 20, 33, 26, 25, 33, 24, 33, 42, 41, 24, 35, 43, 29, 39, 20, 32, 36, 43, 44, 38, 20, 29]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 16 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 37, 37, 33, 39, 31, 25, 37, 32, 33, 37, 24, 26, 39, 35, 31, 33, 26, 31, 24, 30, 37, 37, 37, 25, 39, 26, 20, 33, 32, 37, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 40 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 33, 46, 30, 26, 30, 33, 37, 25, 26, 33, 30, 20, 32, 27, 31, 27, 26, 33, 20, 35, 42, 31, 27, 25, 31, 33, 33, 38, 43, 31]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 74 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 26, 32, 38, 30, 43, 32, 31, 33, 33, 37, 24, 29, 37, 26, 28, 39, 37, 42, 37, 31, 26, 38, 25, 39, 28, 37, 29, 24, 37, 20, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 90 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. '
+DEBUG: Token lengths in batch: [42, 20, 33, 31, 29, 37, 33, 30, 30, 37, 35, 24, 42, 33, 33, 37, 38, 33, 33, 39, 39, 20, 32, 30, 30, 33, 37, 26, 29, 30, 25, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 38 mm. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [32, 43, 37, 26, 32, 42, 33, 37, 20, 39, 28, 42, 33, 43, 26, 43, 42, 33, 39, 35, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.9726, device='cuda:0')
+tensor(-0.5154, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.1394, device='cuda:0')
+tensor(-0.5748, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.2585, device='cuda:0')
+tensor(-0.4372, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.4537, device='cuda:0')
+tensor(-0.2057, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 65, 1s = 42
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7473641633987427
+Cindex Lifelines: 0.7570965125709651
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Patient has a lesion size of 16 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has heart disease. '
+DEBUG: Token lengths in batch: [44, 26, 43, 42, 33, 31, 35, 24, 26, 37, 31, 32, 43, 26, 36, 37, 32, 37, 35, 26, 23, 33, 33, 33, 33, 37, 37, 30, 33, 40, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 72 years old, Patient has a lesion size of 45 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 20, 34, 30, 27, 26, 37, 37, 43, 33, 37, 33, 33, 26, 32, 30, 26, 31, 30, 37, 33, 43, 36, 35, 29, 26, 25, 33, 26, 33, 38]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 15 mm. Patient smokes cigar. Patient lives with a smoker. Patient has heart disease. '
+DEBUG: Token lengths in batch: [35, 32, 33, 37, 24, 37, 33, 44, 26, 37, 26, 26, 31, 35, 33, 30, 33, 37, 32, 33, 42, 20, 37, 34, 39, 40, 37, 42, 30, 26, 37, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 20, 33, 32, 26, 24, 42, 43, 30, 30, 42, 26, 30, 37, 32, 32, 40, 29, 20, 37, 39, 35, 34, 38, 43, 30, 37, 26, 42, 43, 38, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 33, 25, 36, 33, 43, 36, 30, 35, 30, 37, 43, 26, 32, 38, 42, 32, 33, 37, 26, 32, 42, 31, 44, 31, 20, 26, 37, 42, 24, 31, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 28 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 20, 20, 20, 33, 37, 31, 31, 30, 33, 25, 44, 37, 33, 37, 42, 26, 26, 33, 39, 37, 43, 33, 33, 33, 38, 33, 40, 33, 37, 25, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 34, 32, 32, 20, 31, 30, 30, 20, 33, 26, 36, 30, 26, 30, 43, 32, 38, 37, 30, 31]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.7197, device='cuda:0')
+tensor(-0.5582, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.8263, device='cuda:0')
+tensor(-0.6841, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.8403, device='cuda:0')
+tensor(-0.5159, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.9776, device='cuda:0')
+tensor(-0.2971, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 69, 1s = 38
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6962692737579346
+Cindex Lifelines: 0.6901865369018654
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. '
+DEBUG: Token lengths in batch: [38, 28, 24, 24, 37, 37, 27, 37, 26, 33, 29, 44, 33, 33, 43, 38, 37, 32, 24, 33, 19, 33, 26, 33, 20, 33, 30, 37, 37, 26, 37, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 33, 37, 27, 25, 29, 37, 31, 25, 30, 35, 37, 26, 26, 20, 31, 33, 38, 30, 24, 33, 20, 33, 26, 30, 31, 20, 37, 32, 39, 26, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 8 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [29, 33, 35, 37, 33, 20, 31, 33, 32, 39, 24, 32, 37, 37, 30, 37, 26, 26, 37, 43, 38, 42, 40, 37, 27, 20, 24, 37, 43, 26, 38, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 11 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 37, 33, 26, 44, 35, 32, 20, 26, 36, 33, 31, 20, 31, 24, 42, 31, 38, 32, 30, 33, 33, 20, 32, 33, 33, 39, 35, 26, 36, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 24, 37, 29, 33, 24, 31, 43, 37, 37, 30, 39, 31, 37, 26, 26, 28, 36, 33, 37, 33, 31, 43, 20, 37, 26, 27, 42, 44, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 20, 37, 39, 25, 39, 39, 37, 38, 20, 30, 26, 33, 37, 38, 33, 37, 26, 37, 37, 26, 33, 26, 26, 37, 33, 24, 31, 31, 37, 33, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 40, 33, 32, 34, 37, 46, 36, 42, 26, 42, 39, 31, 35, 25, 24, 26, 31, 33, 42, 36]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6812, device='cuda:0')
+tensor(-0.4589, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6847, device='cuda:0')
+tensor(-0.6307, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6635, device='cuda:0')
+tensor(-0.4579, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.7451, device='cuda:0')
+tensor(0.2823, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 89, 1s = 18
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7491889595985413
+Cindex Lifelines: 0.7392538523925385
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 20 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 27, 38, 30, 32, 37, 33, 37, 26, 37, 37, 43, 33, 35, 30, 38, 33, 37, 26, 30, 27, 33, 35, 24, 33, 33, 32, 33, 29, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 42, 33, 37, 37, 33, 33, 20, 32, 37, 26, 39, 31, 33, 43, 33, 20, 26, 26, 26, 33, 30, 26, 30, 38, 26, 24, 26, 33, 41, 33, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [46, 33, 33, 38, 26, 38, 24, 19, 26, 37, 33, 31, 20, 24, 20, 26, 33, 25, 42, 33, 24, 27, 30, 37, 25, 26, 35, 37, 33, 37, 26, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 31, 32, 25, 26, 24, 30, 26, 43, 26, 27, 37, 40, 26, 33, 33, 42, 37, 43, 33, 34, 37, 37, 20, 33, 20, 33, 20, 33, 32, 24, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 50 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 24, 32, 33, 24, 36, 37, 26, 33, 30, 30, 32, 33, 33, 32, 35, 37, 31, 29, 42, 34, 33, 33, 30, 33, 26, 37, 33, 33, 32, 32, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 17 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 38, 33, 30, 31, 25, 33, 33, 32, 46, 24, 33, 30, 30, 37, 32, 39, 27, 24, 25, 33, 37, 20, 35, 32, 33, 37, 32, 42, 30, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 33, 33, 29, 30, 31, 38, 32, 30, 26, 33, 37, 37, 24, 46, 37, 20, 37, 33, 20, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.6373, device='cuda:0')
+tensor(-0.5809, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.7948, device='cuda:0')
+tensor(-0.7533, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.6692, device='cuda:0')
+tensor(-0.4641, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(2.8595, device='cuda:0')
+tensor(-0.1640, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 79, 1s = 28
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.709448516368866
+Cindex Lifelines: 0.6976885644768857
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 90 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. '
+DEBUG: Token lengths in batch: [42, 24, 36, 20, 43, 26, 37, 33, 24, 20, 37, 37, 26, 20, 42, 37, 37, 44, 28, 43, 38, 37, 33, 31, 30, 43, 33, 42, 38, 37, 37, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 6 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 20, 33, 26, 19, 37, 30, 37, 29, 33, 20, 30, 33, 33, 33, 33, 33, 29, 33, 43, 43, 33, 26, 33, 33, 38, 30, 24, 33, 39, 37, 40]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 32, 37, 24, 42, 37, 30, 28, 42, 33, 20, 26, 33, 26, 31, 43, 24, 46, 33, 26, 30, 35, 26, 37, 33, 37, 33, 37, 33, 30, 37, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Patient has a lesion size of 35 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 24, 33, 37, 32, 31, 26, 26, 33, 26, 35, 33, 37, 38, 33, 42, 24, 32, 33, 43, 31, 26, 30, 26, 33, 33, 41, 33, 35, 32, 30, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 28 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 30, 24, 24, 31, 30, 32, 26, 37, 39, 26, 39, 34, 31, 20, 44, 30, 33, 37, 37, 26, 26, 28, 35, 43, 37, 38, 33, 33, 33, 30, 44]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 6 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [25, 20, 31, 33, 36, 30, 35, 33, 26, 33, 42, 26, 33, 27, 37, 26, 26, 38, 30, 37, 30, 31, 33, 30, 42, 26, 37, 31, 33, 30, 27, 41]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 15 mm. '
+DEBUG: Token lengths in batch: [20, 37, 42, 20, 32, 42, 26, 37, 37, 33, 33, 27, 44, 42, 33, 33, 33, 26, 25, 29, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.3475, device='cuda:0')
+tensor(-0.6379, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.4988, device='cuda:0')
+tensor(-0.9272, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.1506, device='cuda:0')
+tensor(-0.8924, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(2.7439, device='cuda:0')
+tensor(0.0582, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 70, 1s = 37
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6790348887443542
+Cindex Lifelines: 0.6782238442822385
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Patient has a lesion size of 11 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 33, 37, 38, 31, 30, 33, 26, 42, 37, 33, 37, 30, 37, 38, 24, 33, 30, 37, 25, 33, 37, 43, 33, 33, 25, 30, 32, 37, 35, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 49 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 26, 30, 31, 30, 34, 33, 26, 35, 33, 37, 31, 43, 33, 33, 37, 24, 33, 24, 28, 26, 30, 37, 44, 26, 38, 26, 26, 29, 32, 33, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 26, 27, 19, 26, 31, 24, 37, 33, 33, 20, 33, 33, 26, 24, 20, 37, 32, 25, 33, 43, 35, 38, 26, 33, 26, 33, 33, 33, 29, 34]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 24 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 35, 20, 37, 30, 26, 37, 33, 33, 30, 35, 33, 43, 32, 40, 33, 26, 37, 31, 33, 33, 31, 26, 37, 37, 37, 37, 26, 26, 26, 30, 27]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 28 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 31, 33, 32, 33, 38, 19, 25, 35, 30, 35, 20, 20, 37, 33, 43, 24, 33, 32, 37, 33, 30, 34, 33, 37, 30, 24, 33, 26, 31, 33, 29]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 23 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 20, 43, 36, 24, 31, 37, 43, 31, 37, 26, 30, 33, 35, 42, 26, 26, 30, 29, 24, 38, 33, 34, 32, 35, 33, 33, 30, 37, 38, 44, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 30, 33, 37, 26, 24, 35, 37, 39, 37, 33, 35, 39, 36, 26, 32, 30, 36, 40, 30, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.9793, device='cuda:0')
+tensor(-0.7981, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.0094, device='cuda:0')
+tensor(-0.8642, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(2.7512, device='cuda:0')
+tensor(-0.7439, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.1402, device='cuda:0')
+tensor(0.7281, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 25
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7287104725837708
+Cindex Lifelines: 0.7254663422546634
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 32 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 33, 27, 33, 28, 20, 35, 26, 24, 30, 37, 35, 26, 20, 33, 36, 37, 30, 30, 34, 28, 37, 30, 42, 33, 30, 25, 42, 37, 30, 34, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. '
+DEBUG: Token lengths in batch: [37, 39, 35, 39, 26, 34, 43, 25, 33, 20, 33, 37, 26, 20, 37, 40, 33, 33, 20, 37, 31, 42, 25, 35, 30, 37, 37, 44, 37, 32, 35, 28]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 25 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [42, 28, 33, 20, 24, 26, 26, 33, 33, 30, 38, 30, 33, 37, 37, 33, 30, 33, 28, 31, 26, 39, 26, 31, 20, 26, 25, 35, 20, 30, 33, 39]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 14 mm. Patient lives with a smoker. Patient worked in welding environment. Patient has heart disease. '
+DEBUG: Token lengths in batch: [37, 38, 26, 43, 37, 26, 26, 27, 26, 35, 42, 26, 20, 37, 43, 32, 39, 33, 20, 33, 29, 39, 37, 42, 36, 34, 40, 35, 33, 26, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 38 mm. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [32, 44, 44, 25, 42, 32, 30, 33, 38, 37, 30, 20, 26, 27, 37, 25, 37, 42, 26, 29, 30, 37, 33, 30, 26, 37, 26, 26, 32, 33, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 15 mm. Patient smokes cigar. Patient has heart disease. '
+DEBUG: Token lengths in batch: [29, 35, 33, 37, 33, 26, 20, 43, 38, 27, 28, 26, 42, 35, 27, 25, 37, 25, 43, 31, 33, 33, 30, 38, 35, 38, 33, 30, 28, 35, 33, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 40 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 33, 26, 37, 20, 37, 31, 24, 31, 44, 24, 33, 33, 35, 32, 33, 33, 31, 26, 26, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.4845, device='cuda:0')
+tensor(-0.9218, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.2535, device='cuda:0')
+tensor(-1.0250, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.1801, device='cuda:0')
+tensor(-0.8488, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.4961, device='cuda:0')
+tensor(-0.6956, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 54, 1s = 53
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.746147632598877
+Cindex Lifelines: 0.7408759124087592
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of 17 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 27, 46, 37, 42, 24, 27, 39, 29, 30, 33, 43, 40, 27, 37, 31, 20, 37, 29, 31, 33, 38, 33, 33, 25, 37, 32, 24, 42, 19, 26, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 33, 33, 30, 35, 31, 33, 30, 42, 35, 37, 32, 33, 43, 26, 37, 38, 33, 38, 37, 39, 32, 37, 20, 34, 20, 37, 37, 20, 43, 38, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 34 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 33, 33, 37, 33, 24, 33, 29, 29, 26, 33, 31, 20, 37, 29, 37, 33, 33, 43, 37, 20, 26, 36, 37, 38, 33, 32, 30, 34, 30, 37, 25]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of 11 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 24, 27, 31, 31, 30, 24, 32, 35, 33, 25, 35, 37, 43, 32, 37, 32, 33, 37, 33, 26, 27, 24, 43, 33, 20, 30, 37, 33, 37, 37, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 31 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 35, 35, 35, 26, 33, 33, 43, 37, 34, 31, 33, 37, 30, 33, 38, 32, 19, 36, 26, 28, 26, 26, 35, 24, 20, 30, 37, 37, 26, 31, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 25, 32, 37, 33, 42, 34, 38, 24, 24, 33, 24, 33, 33, 26, 33, 37, 20, 26, 25, 33, 26, 31, 20, 30, 33, 37, 33, 43, 43, 37, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 29 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [43, 26, 33, 32, 37, 40, 26, 37, 33, 37, 32, 33, 33, 37, 30, 31, 36, 38, 46, 37, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.1072, device='cuda:0')
+tensor(-0.8637, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.8963, device='cuda:0')
+tensor(-0.7857, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.7390, device='cuda:0')
+tensor(-0.7214, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(4.0498, device='cuda:0')
+tensor(-0.4824, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.75
+Cindex Lifelines: 0.7497972424979724
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 45 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 26, 33, 26, 43, 37, 33, 37, 20, 36, 46, 42, 33, 37, 26, 42, 33, 33, 33, 37, 43, 33, 29, 26, 33, 33, 40, 23, 26, 29, 39, 32]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of 24 mm. Patient smokes cigar. '
+DEBUG: Token lengths in batch: [24, 33, 37, 37, 24, 37, 26, 27, 24, 30, 26, 26, 30, 36, 38, 37, 33, 29, 29, 37, 37, 33, 32, 30, 30, 30, 37, 30, 33, 26, 33, 43]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Patient has a lesion size of 14 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 37, 35, 37, 35, 26, 33, 37, 36, 20, 30, 35, 32, 29, 37, 28, 33, 24, 43, 26, 33, 37, 33, 43, 26, 30, 42, 30, 32, 33, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 37, 37, 35, 39, 44, 33, 39, 35, 26, 42, 30, 20, 33, 24, 26, 33, 38, 30, 24, 33, 40, 20, 20, 38, 26, 26, 33, 30, 37, 42, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Patient has a lesion size of 20 mm. Patient smokes cigar. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [34, 30, 23, 33, 33, 38, 35, 29, 38, 37, 33, 37, 42, 39, 26, 43, 26, 33, 42, 30, 25, 37, 26, 37, 43, 24, 33, 26, 30, 37, 33, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [42, 37, 38, 33, 31, 30, 32, 33, 39, 20, 26, 24, 32, 30, 24, 33, 30, 26, 26, 33, 30, 32, 42, 24, 42, 37, 31, 35, 29, 37, 27, 35]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 33, 24, 37, 37, 42, 20, 26, 31, 37, 33, 38, 37, 30, 32, 37, 37, 25, 26, 26, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.5571, device='cuda:0')
+tensor(-1.0674, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.4469, device='cuda:0')
+tensor(-1.1397, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.3249, device='cuda:0')
+tensor(-1.0177, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.6341, device='cuda:0')
+tensor(-0.3417, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 71, 1s = 36
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7615571618080139
+Cindex Lifelines: 0.7700729927007299
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 31 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 36, 33, 33, 30, 33, 33, 25, 31, 30, 31, 37, 20, 33, 33, 29, 33, 37, 37, 28, 37, 37, 20, 35, 20, 32, 30, 26, 30, 37, 26, 38]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 25 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 31, 36, 37, 33, 33, 31, 29, 33, 37, 43, 33, 35, 26, 37, 42, 33, 35, 26, 26, 39, 26, 39, 27, 33, 32, 37, 30, 33, 31, 35, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 25 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 26, 24, 31, 33, 24, 36, 26, 20, 37, 42, 30, 39, 37, 35, 30, 26, 37, 33, 32, 30, 37, 37, 30, 37, 24, 39, 31, 33, 33, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Patient has a lesion size of 24 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 33, 33, 37, 29, 32, 37, 33, 26, 30, 44, 26, 32, 43, 35, 24, 33, 37, 33, 27, 31, 44, 42, 34, 26, 20, 37, 26, 33, 26, 26, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [32, 33, 20, 31, 32, 37, 42, 37, 26, 20, 36, 26, 37, 27, 35, 42, 24, 42, 39, 26, 31, 33, 35, 46, 20, 33, 31, 33, 34, 37, 26, 39]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 40 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 20, 26, 33, 26, 26, 37, 37, 43, 29, 26, 33, 38, 35, 26, 31, 30, 27, 37, 30, 30, 37, 27, 31, 20, 39, 42, 32, 37, 33, 30, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 29 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [43, 37, 37, 33, 37, 30, 33, 33, 26, 38, 33, 31, 37, 33, 26, 38, 42, 32, 37, 38, 24]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6522, device='cuda:0')
+tensor(-1.2088, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6331, device='cuda:0')
+tensor(-1.1661, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.5498, device='cuda:0')
+tensor(-1.0220, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.8160, device='cuda:0')
+tensor(-0.4806, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 69, 1s = 38
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.757096529006958
+Cindex Lifelines: 0.7599351175993512
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 72 years old, Patient has a lesion size of 10 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 42, 43, 20, 30, 26, 42, 38, 26, 36, 29, 32, 37, 33, 31, 37, 33, 20, 38, 30, 25, 43, 39, 26, 25, 30, 34, 35, 24, 26, 31, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 17 mm. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [30, 42, 35, 19, 26, 27, 34, 34, 20, 30, 31, 33, 33, 26, 37, 34, 33, 35, 37, 20, 33, 26, 37, 32, 37, 26, 31, 26, 32, 29, 39, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Patient has a lesion size of 74 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 26, 38, 24, 26, 25, 37, 24, 42, 33, 37, 26, 35, 33, 19, 33, 33, 33, 32, 31, 31, 35, 37, 39, 33, 33, 33, 30, 26, 32, 30, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 24 mm. Patient smokes ciggaretes. '
+DEBUG: Token lengths in batch: [27, 32, 33, 26, 25, 38, 33, 33, 32, 37, 20, 29, 43, 31, 36, 37, 30, 43, 26, 29, 25, 37, 42, 24, 26, 37, 37, 37, 26, 35, 32, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 33, 33, 33, 20, 33, 37, 36, 43, 37, 32, 31, 29, 33, 38, 37, 32, 30, 38, 44, 20, 35, 32, 31, 37, 35, 33, 33, 37, 24, 26, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 33, 33, 37, 25, 33, 24, 33, 37, 31, 24, 30, 37, 26, 29, 37, 24, 32, 33, 33, 33, 37, 42, 33, 42, 24, 26, 33, 33, 26, 37, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of  mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [28, 33, 26, 37, 30, 35, 39, 43, 38, 32, 41, 33, 26, 30, 30, 30, 20, 37, 26, 24, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.1544, device='cuda:0')
+tensor(-1.1101, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.6108, device='cuda:0')
+tensor(-1.0650, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(3.3757, device='cuda:0')
+tensor(-1.0327, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(3.7501, device='cuda:0')
+tensor(-0.4365, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6828872561454773
+Cindex Lifelines: 0.6853203568532036
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Patient has a lesion size of 16 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has heart disease. '
+DEBUG: Token lengths in batch: [44, 33, 44, 31, 26, 42, 24, 27, 37, 26, 30, 29, 20, 33, 42, 33, 33, 33, 33, 37, 31, 43, 28, 37, 37, 39, 33, 33, 26, 43, 30, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Patient has a lesion size of 43 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 27, 24, 26, 33, 35, 24, 35, 37, 37, 20, 37, 33, 28, 32, 26, 24, 37, 33, 42, 30, 25, 37, 42, 33, 30, 24, 33, 26, 33, 39, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Patient has a lesion size of 38 mm. Patient lives with a smoker. Patient worked in welding environment. '
+DEBUG: Token lengths in batch: [32, 32, 32, 37, 30, 30, 37, 33, 25, 33, 30, 32, 37, 32, 33, 35, 33, 24, 33, 30, 38, 33, 35, 28, 37, 37, 42, 40, 24, 24, 27, 43]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 24, 42, 37, 37, 26, 33, 37, 30, 33, 37, 35, 44, 37, 30, 35, 20, 33, 33, 31, 37, 33, 26, 26, 30, 33, 32, 37, 35, 24, 33, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Patient has a lesion size of  mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [24, 27, 25, 31, 27, 26, 31, 33, 25, 37, 25, 33, 33, 33, 37, 33, 26, 24, 33, 33, 31, 33, 25, 35, 36, 35, 30, 37, 33, 37, 30, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 33, 27, 33, 31, 24, 33, 28, 26, 33, 33, 28, 30, 25, 33, 44, 37, 38, 33, 31, 33, 26, 43, 33, 43, 32, 33, 27, 32, 42, 39, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 30, 31, 31, 34, 26, 33, 39, 42, 37, 43, 33, 43, 36, 26, 37, 40, 31, 26, 32, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.0903, device='cuda:0')
+tensor(-0.8137, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.3945, device='cuda:0')
+tensor(-0.8833, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.2529, device='cuda:0')
+tensor(-0.6338, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(4.5591, device='cuda:0')
+tensor(-0.2480, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 76, 1s = 31
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7108678221702576
+Cindex Lifelines: 0.7226277372262774
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 15 mm. '
+DEBUG: Token lengths in batch: [20, 24, 37, 33, 34, 26, 33, 46, 32, 35, 36, 37, 31, 33, 25, 40, 26, 33, 31, 24, 41, 40, 35, 33, 27, 30, 37, 37, 30, 34, 33, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 34 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 26, 29, 33, 20, 33, 24, 33, 20, 27, 37, 32, 31, 37, 38, 33, 33, 26, 31, 20, 40, 24, 30, 32, 31, 33, 33, 26, 33, 35, 35, 40]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Patient has a lesion size of 35 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 31, 43, 30, 37, 20, 31, 35, 33, 37, 37, 33, 33, 30, 31, 37, 33, 31, 26, 30, 32, 33, 28, 41, 43, 33, 38, 42, 32, 32, 30, 20]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 52 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [42, 37, 42, 24, 26, 35, 43, 33, 33, 27, 26, 33, 33, 27, 25, 30, 30, 32, 30, 37, 33, 38, 36, 33, 32, 33, 27, 33, 29, 33, 36, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 15 mm. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [26, 37, 32, 31, 26, 37, 33, 32, 26, 33, 37, 33, 33, 26, 33, 32, 26, 37, 33, 31, 33, 32, 33, 26, 29, 20, 31, 39, 25, 37, 30, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [37, 37, 24, 33, 33, 33, 37, 31, 39, 37, 37, 33, 43, 20, 27, 30, 32, 33, 30, 37, 33, 35, 37, 43, 24, 33, 31, 27, 25, 38, 44, 31]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 32, 37, 38, 35, 42, 33, 26, 44, 26, 24, 30, 20, 29, 20, 35, 26, 20, 30, 26, 30]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.0994, device='cuda:0')
+tensor(-0.7580, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.0846, device='cuda:0')
+tensor(-0.8682, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.2634, device='cuda:0')
+tensor(-0.7697, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(4.3165, device='cuda:0')
+tensor(-0.3280, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 66, 1s = 41
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7262773513793945
+Cindex Lifelines: 0.7266828872668288
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [33, 37, 38, 33, 33, 37, 26, 33, 26, 35, 30, 33, 26, 33, 37, 30, 37, 26, 37, 30, 33, 33, 37, 20, 33, 30, 26, 37, 43, 26, 33, 37]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [37, 26, 42, 31, 33, 29, 37, 29, 35, 36, 33, 24, 33, 26, 27, 30, 32, 26, 37, 32, 32, 33, 35, 29, 37, 20, 32, 28, 37, 26, 20, 27]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [35, 24, 26, 31, 37, 26, 33, 26, 35, 32, 26, 32, 43, 25, 30, 27, 37, 39, 30, 24, 33, 27, 34, 35, 37, 32, 37, 37, 43, 33, 20, 33]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Patient has a lesion size of  mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [28, 26, 35, 33, 31, 33, 40, 32, 20, 42, 37, 24, 30, 37, 31, 39, 37, 39, 30, 42, 33, 31, 35, 33, 30, 37, 37, 43, 26, 30, 33, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient worked in welding environment. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [43, 24, 44, 37, 25, 20, 42, 37, 37, 24, 20, 20, 44, 37, 39, 35, 26, 36, 32, 37, 32, 26, 33, 30, 37, 39, 37, 33, 33, 31, 32, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has heart disease. Patient has pneumonia. '
+DEBUG: Token lengths in batch: [42, 37, 36, 38, 37, 29, 35, 20, 26, 27, 33, 31, 35, 24, 33, 33, 24, 20, 33, 30, 37, 37, 24, 43, 37, 33, 43, 25, 26, 32, 37, 26]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Patient has a lesion size of 19 mm. Patient smokes cigar. Patient lives with a smoker. '
+DEBUG: Token lengths in batch: [30, 37, 30, 30, 33, 37, 27, 24, 25, 34, 27, 33, 30, 31, 32, 37, 20, 37, 37, 33, 42]
+DEBUG: Max allowed length: 77
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+DEBUG: Token lengths in batch: [33, 30, 38, 29, 37, 20, 38, 26, 33, 33, 31, 36, 31, 32, 25, 33, 37, 30, 25, 33, 32, 30, 33, 26, 37, 26, 20, 33, 35, 26, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.5094, device='cuda:0')
+tensor(-0.8143, device='cuda:0')
+DEBUG: Token lengths in batch: [29, 26, 26, 36, 26, 38, 39, 41, 26, 26, 33, 36, 37, 36, 20, 37, 33, 31, 37, 37, 33, 44, 19, 30, 33, 31, 41, 33, 20, 33, 33, 26]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.1503, device='cuda:0')
+tensor(-0.8877, device='cuda:0')
+DEBUG: Token lengths in batch: [37, 29, 33, 38, 33, 41, 47, 33, 30, 38, 31, 37, 37, 33, 33, 26, 30, 33, 31, 33, 48, 26, 26, 20, 33, 30, 39, 30, 39, 32, 39, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([32, 2])
+tensor(4.4926, device='cuda:0')
+tensor(-0.8874, device='cuda:0')
+DEBUG: Token lengths in batch: [33, 38, 26, 33, 26, 27, 33, 33, 33, 26, 33]
+DEBUG: Max allowed length: 77
+shape xtorch.Size([11, 2])
+tensor(4.5637, device='cuda:0')
+tensor(-0.4388, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 62, 1s = 45
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.757096529006958
+Cindex Lifelines: 0.7388483373884833
+Saved test predictions and probabilities to validation_results_fold_final.csv
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/besttop_10_preclinical-epoch=08-val_loss=0.45.ckpt
+Epoch 23/99 ━━━━━━━━━━━━━━━━━━ 7/7 0:00:02 • 0:00:00 4.17it/s v_num: ygst
+                                                              train_loss_step:
+                                                              -0.003 val_loss:
+                                                              1.141
+                                                              train_loss_epoch:
+                                                              0.107
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/besttop_10_preclinical-epoch=08-val_loss=0.45.ckpt
+DEBUG: Token lengths in batch: [35, 33, 38, 37, 26, 44, 37, 29, 37, 37, 27, 36, 30, 26, 30, 35, 33, 26, 30, 32, 27, 26, 30, 33, 34, 25, 26, 33, 26, 38, 33, 31]
+DEBUG: Max allowed length: 77
+DEBUG: Token lengths in batch: [20, 30, 33, 36, 38, 31, 26, 26, 30, 42, 37, 26, 37, 26, 24, 26, 37, 37, 46, 32, 33, 39, 38, 31, 31, 33, 28, 37, 20, 31, 32, 33]
+DEBUG: Max allowed length: 77
+DEBUG: Token lengths in batch: [33, 27, 26, 34, 41, 37, 33, 20, 33, 33, 38, 33, 26, 39, 37, 33]
+DEBUG: Max allowed length: 77
+Saved test predictions and probabilities to test_results_fold_final.xlsx
+shape PREDS: torch.Size([80, 2])
+shape time: torch.Size([80])
+shape log_hz: torch.Size([80, 80])
+shape log_hz_t: torch.Size([80])
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 54, 1s = 26
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(80,), log_hz=(80,), events=(80,)
+Cindex TorchSurv: 0.683093249797821
+Cindex Lifelines: 0.6823351023502654
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.6861110925674438     │
+│     test_balanced_acc     │    0.6166666746139526     │
+│        test_cindex        │     0.683093249797821     │
+│       test_f1_score       │    0.43478259444236755    │
+│         test_ibs          │    0.11504111438989639    │
+│      test_precision       │    0.5997151136398315     │
+│        test_recall        │    0.6166666746139526     │
+└───────────────────────────┴───────────────────────────┘
+Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3/3 0:00:00 • 0:00:00 15.79it/s

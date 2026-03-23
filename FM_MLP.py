@@ -18,12 +18,14 @@ from lifelines.utils import concordance_index
 
 
 class encoder_decoder(L.LightningModule):
-    def __init__(self, encoder, survival_head, learning_rate, pos_weight, freeze_encoder=True):
+    def __init__(self, encoder, survival_head, learning_rate, pos_weight, config, freeze_encoder=True):
         super().__init__()
         self.survival_head = survival_head
         self._encoder_wrapper = encoder        
         self.vision_encoder = encoder.model.image_encoder
+        self.text_encoder = encoder.model.lang_encoder
         self.learning_rate = learning_rate
+        self.config = config 
         
      # Metrics
         self.cindex_metric = ConcordanceIndex()
@@ -33,10 +35,6 @@ class encoder_decoder(L.LightningModule):
 
 
         self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
-        # Define the binary classification loss function
-        # BCEWithLogitsLoss is numerically stable for logits (unbounded outputs)
-        # self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight = pos_weight)
-
         self.test_preds = []
         self.test_events = []
         self.test_time= []
@@ -57,60 +55,150 @@ class encoder_decoder(L.LightningModule):
         if self.freeze_encoder:
             for param in self.vision_encoder.parameters():
                 param.requires_grad = False
+            for param in self.text_encoder.parameters():
+                param.requires_grad = False
         else:
             self.vision_encoder.train()
             for param in self.vision_encoder.parameters():
                 param.requires_grad = True
+            for param in self.text_encoder.parameters():
+                param.requires_grad = True
 
 
+    def encode_batch(self, inputs):
+        """
+        Encodes a batch into a fused feature vector.
+        'inputs' is the dictionary: {'image': tensor, 'text': [strings]}
+        """
+        # Simply call forward up to the point of fusion
+        # If your forward method is already set up to return log_params,
+        # you can split the logic so encode_batch returns the features.
+        
+        features = []
+        modality = self.config.modality.lower()
 
-    # def encode_batch(self, base64_list):
-    #     embeddings = []
+        # 1. Image features
+        if 'image' in inputs and getattr(self.config, 'image', False):
+            v_out = self.vision_encoder(inputs['image'])
+            img_emb = v_out.pooler_output if hasattr(v_out, "pooler_output") else v_out
+            features.append(img_emb)
 
-    #     # MedImageInsight expects: encode(images=[base64_str, ...])
-    #     out = self._encoder_wrapper.encode(images=base64_list)
-    #     img_emb = out["image_embeddings"]  # numpy array or tensor
-
-    #     # convert each embedding to tensor
-    #     if isinstance(img_emb, np.ndarray):
-    #         img_emb = torch.tensor(img_emb)
+        # 2. Text features
+        if 'text' in inputs and getattr(self.config, 'text', False):
+            tokenized = self._encoder_wrapper.tokenize(
+                inputs['text'], 
+                padding='max_length', 
+                max_length=self._encoder_wrapper.max_length, 
+                truncation=True, 
+                return_tensors='pt'
+            )
+            input_ids = tokenized['input_ids'].to(self.device)
+            attention_mask = tokenized['attention_mask'].to(self.device)
             
-    #     img_emb = img_emb.to(self.device)
-    #     return img_emb.float()
-    def encode_batch(self, pixel_values):
-        img_emb = self.vision_encoder(pixel_values) 
-        return img_emb
+            t_out_dict = self.text_encoder(input_ids, attention_mask=attention_mask)
+            text_emb = t_out_dict['last_hidden_state'][:, 0, :] 
+            features.append(text_emb)
 
-    def forward(self, x):
-        
-        # This creates the mathematical link for backpropagation
-        outputs = self.vision_encoder(x)
-        
-        # 2. Extract the embedding vector
-        # ViT models return an object; we want the pooled output (e.g., shape [Batch, 1024])
-        if hasattr(outputs, "pooler_output"):
-            img_emb = outputs.pooler_output
-        else:
-            # Fallback for different model versions
-            img_emb = outputs[0][:, 0, :] if isinstance(outputs, (list, tuple)) else outputs
+        # 3. Fuse
+        if len(features) > 1:
+            return torch.cat(features, dim=1)
+        return features[0]
 
-        # 3. Pass to your 150k parameter survival head
-        log_params = self.survival_head(img_emb)
+    def forward(self, inputs):
+
+        # inputs is the dictionary from the Dataloader: {'image': tensor, 'text': "sentence"}
+        img_emb = None
+        text_emb = None
+        features = []
+
+        # --- 1. Process Vision if present ---
+        if 'image' in inputs and getattr(self.config, 'image', False):
+            x = inputs['image']
+            vision_outputs = self.vision_encoder(x)
+            
+            if hasattr(vision_outputs, "pooler_output"):
+                img_emb = vision_outputs.pooler_output
+            else:
+                img_emb = vision_outputs[0][:, 0, :] if isinstance(vision_outputs, (list, tuple)) else vision_outputs
+            features.append(img_emb)
+
+        if 'text' in inputs and getattr(self.config, 'text', False):
+            sentences = inputs['text']
+            max_len = 77
+            content_per_chunk = max_len - 2 
+            
+            # Access the tokenizer from the internal model
+            # Try a few common paths for the MedImageInsight wrapper
+            tokenizer = getattr(self._encoder_wrapper, 'tokenizer', None)
+            if tokenizer is None:
+                tokenizer = getattr(self._encoder_wrapper.model, 'tokenizer', None)
+            
+            if tokenizer is None:
+                raise AttributeError("Could not find tokenizer in _encoder_wrapper or _encoder_wrapper.model")
+
+            # 1. Tokenize everything to raw IDs without special tokens
+            tokenized_output = tokenizer(
+                sentences, 
+                truncation=False, 
+                add_special_tokens=False
+            )
+            full_encodings = tokenized_output['input_ids']
+            
+            batch_embeddings = []
+            
+            # Extract special token IDs
+            sot = tokenizer.bos_token_id if tokenizer.bos_token_id is not None else 49406
+            eot = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else 49407
+            pad = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
+
+            for ids in full_encodings:
+                # 2. Break the list of IDs into chunks
+                chunks = [ids[i : i + content_per_chunk] for i in range(0, len(ids), content_per_chunk)]
+                if not chunks: chunks = [[]]
+                
+                chunk_outputs = []
+                for c in chunks:
+                    # 3. Manually reconstruct: [SOT] + content + [EOT]
+                    full_chunk = [sot] + c + [eot]
+                    
+                    # Ensure exactly 77 tokens
+                    full_chunk += [pad] * (max_len - len(full_chunk))
+                    
+                    # 4. Prepare tensors
+                    chunk_tensor = torch.tensor([full_chunk], device=self.device)
+                    mask = (chunk_tensor != pad).long()
+                    
+                    # 5. Forward through the LangEncoder
+                    t_out = self.text_encoder(chunk_tensor, attention_mask=mask)
+                    # Extract last hidden state
+                    chunk_outputs.append(t_out['last_hidden_state'])
+                
+                # Combine chunks: (1, NumChunks * 77, Hidden)
+                combined_sentence = torch.cat(chunk_outputs, dim=1)
+                
+                # Mean pool the sequence to get (1, Hidden)
+                batch_embeddings.append(combined_sentence.mean(dim=1))
+
+            # Stack into (Batch, Hidden)
+            text_emb = torch.cat(batch_embeddings, dim=0)
+            features.append(text_emb)
+        # --- 3. Fusion & Survival Head ---
+        combined_features = torch.cat(features, dim=1) if len(features) > 1 else features[0]
+        log_params = self.survival_head(combined_features)
         
         return log_params
-
 
     
     def training_step(self, batch, batch_idx):
     # x is a Tensor from your new _get_data return
-        x, event, time = batch
+        inputs, event, time = batch
         
         # Ensure survival labels are 1D and correct type
         event = event.squeeze().bool()
         time = time.squeeze().float()
 
         # The magic happens here: gradients flow through log_params back to vision_encoder
-        log_params = self(x).squeeze() 
+        log_params = self(inputs).squeeze() 
 
         # Calculate loss
         loss = weibull.neg_log_likelihood(log_params, event, time)
@@ -136,14 +224,11 @@ class encoder_decoder(L.LightningModule):
         print("❌ WARNING: Vision Encoder is still frozen or disconnected!")
     
     def validation_step(self, batch, batch_idx):
-        x, event, time = batch
-        print(f'shape x{x.shape}')
-        event = event.bool()
-        x, event, time = batch
+        inputs, event, time = batch
         event = event.squeeze() # Ensure 1D
         time = time.squeeze()          # Ensure 1D
         
-        log_params = self(x).squeeze()
+        log_params = self(inputs).squeeze()
         print(f'shape x{log_params.shape}')
 
         print(log_params.max())
@@ -335,10 +420,10 @@ class encoder_decoder(L.LightningModule):
         self.val_log_hz_t.clear()
 
     def test_step(self, batch, batch_idx):
-        x, event, time = batch
+        inputs, event, time = batch
         event=event.squeeze()
         time= time.squeeze()
-        preds = self(x).squeeze()
+        preds = self(inputs).squeeze()
 
         new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
 
@@ -422,32 +507,59 @@ class encoder_decoder(L.LightningModule):
                 break
 
     def configure_optimizers(self):
-            # 1. Collect only parameters that have requires_grad = True
-            trainable_params = list(filter(lambda p: p.requires_grad, self.parameters()))
-            
-            if self.freeze_encoder== True:
+        # Determine modality from config
+        param_groups = []
+        use_image = getattr(self.config, 'image', False)
+        use_text = getattr(self.config, 'text', False)
+        # 1. ALWAYS include the Survival Head (Primary LR)
+        for param in self.survival_head.parameters():
+            param.requires_grad = True
+        param_groups.append({'params': self.survival_head.parameters(), 'lr': self.learning_rate})
+
+        # 2. Vision Encoder Logic
+        if self.vision_encoder is not None and use_image is not None:
+            if self.freeze_encoder:
                 for param in self.vision_encoder.parameters():
                     param.requires_grad = False
             else:
                 for param in self.vision_encoder.parameters():
                     param.requires_grad = True
+                # Use a lower LR for the backbone (Fine-tuning)
+                param_groups.append({
+                    'params': self.vision_encoder.parameters(), 
+                    'lr': self.learning_rate / 10
+                })
 
-            
-            # 2. If we are unfreezing, we might want a lower LR for the backbone (Fine-tuning)
-            if not self.freeze_encoder:
-                # Separate the head and the encoder for different learning rates
-                param_groups = [
-                    {'params': self.survival_head.parameters(), 'lr': self.learning_rate},
-                    {'params': self.vision_encoder.parameters(), 'lr': self.learning_rate / 10}
-                ]
+        # 3. Text Encoder Logic
+        if self.text_encoder is not None and use_text is not None:
+            # Usually, text encoders are kept frozen unless you have a lot of data
+            # We'll follow the same logic as the vision encoder
+            if self.freeze_encoder:
+                for param in self.text_encoder.parameters():
+                    param.requires_grad = False
             else:
-                # Only the head is training
-                param_groups = list(filter(lambda p: p.requires_grad, self.parameters()))
+                for param in self.text_encoder.parameters():
+                    param.requires_grad = True
+                param_groups.append({
+                    'params': self.text_encoder.parameters(), 
+                    'lr': self.learning_rate / 10
+                })
 
+        # 4. Final Safety Filter
+        # In case freeze_encoder was True, we filter out all frozen params 
+        # to ensure the optimizer doesn't try to track them.
+        trainable_param_groups = []
+        for group in param_groups:
+            trainable_params = [p for p in group['params'] if p.requires_grad]
+            if trainable_params:
+                trainable_param_groups.append({
+                    'params': trainable_params, 
+                    'lr': group['lr']
+                })
 
-            optimizer = torch.optim.Adam(
-                param_groups, 
-                lr=self.learning_rate,
-                weight_decay=1e-5 
-            )
-            return optimizer
+        optimizer = torch.optim.Adam(
+            trainable_param_groups, 
+            lr=self.learning_rate,
+            weight_decay=1e-5 
+        )
+        return optimizer

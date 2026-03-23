@@ -1,0 +1,609 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchmetrics/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws.yaml ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/wandb/apis/public.py:3106: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec). Use `wandb login --relogin` to force relogin
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260309_235925-rupjegrq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run preclinical_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/rupjegrq
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestpreclinical-epoch=07-val_loss=0.66.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestpreclinical-epoch=07-val_loss=0.66.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.327 MB of 0.327 MB uploaded (0.000 MB deduped)wandb: \ 0.327 MB of 0.469 MB uploaded (0.000 MB deduped)wandb: | 0.327 MB of 0.469 MB uploaded (0.000 MB deduped)wandb: / 0.469 MB of 0.469 MB uploaded (0.000 MB deduped)wandb: - 0.469 MB of 0.469 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▁▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     train_loss_step ▅▆▆▁▅▁▁▄▃▂▅▂▂█▁▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇████
+wandb:           val_auroc ▄▅▅▇█▆▃▃▂▂▁▁▁▁▂▃▅▆▆▇▇▇█
+wandb:    val_balanced_acc ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb:          val_cindex ▇▇▇██▆▄▃▂▂▂▁▁▁▂▃▄▅▅▆▆▆▆
+wandb:        val_f1_score ▆▆▆▆▆▆▅▄▂▂▁▂▃▃▃▅▄▅▇▅▇█▄
+wandb:             val_ibs ▆▆▇▇▄▆▅▁▁▂▃▄▅▇███▇▇▇▇█▇
+wandb:            val_loss ▂▂▂▂▂▂▂▁▁▁▁▂▂▃▄▅▅▅▆▆▇█▇
+wandb:       val_precision ▁▁▁▁▁▁▁▇▇▇▇▇▇▇▇█▇██████
+wandb:          val_recall ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb: 
+wandb: Run summary:
+wandb:               epoch 23
+wandb:          test_auroc 0.6537
+wandb:   test_balanced_acc 0.625
+wandb:         test_cindex 0.69447
+wandb:       test_f1_score 0.46753
+wandb:            test_ibs 0.12562
+wandb:      test_precision 0.61442
+wandb:         test_recall 0.625
+wandb:    train_loss_epoch 0.46067
+wandb:     train_loss_step 0.40537
+wandb: trainer/global_step 161
+wandb:           val_auroc 0.58859
+wandb:    val_balanced_acc 0.55926
+wandb:          val_cindex 0.53799
+wandb:        val_f1_score 0.38356
+wandb:             val_ibs 0.14433
+wandb:            val_loss 0.94229
+wandb:       val_precision 0.54562
+wandb:          val_recall 0.55926
+wandb: 
+wandb: 🚀 View run preclinical_Fold_1 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/rupjegrq
+wandb: Synced 6 W&B file(s), 7 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260309_235925-rupjegrq/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws.yaml ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_000154-im0969s9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run preclinical_Fold_2
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/im0969s9
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestpreclinical-epoch=13-val_loss=0.52.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestpreclinical-epoch=13-val_loss=0.52.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.350 MB of 0.350 MB uploaded (0.000 MB deduped)wandb: \ 0.350 MB of 0.523 MB uploaded (0.000 MB deduped)wandb: | 0.352 MB of 0.523 MB uploaded (0.000 MB deduped)wandb: / 0.352 MB of 0.523 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch █▇▇▆▇▅▅▅▄▆▆▆▅▅▄▄▄▃▃▃▃▃▃▂▃▃▂▂▁
+wandb:     train_loss_step ▇▅▆▅▅▄█▄▅▄▃▃▃▂▃▂▂▃▁▂
+wandb: trainer/global_step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ▄▇▇█▆▅▆▆▅▅▄▃▄▅▄▄▅▅▅▅▅▄▄▅▁▁▂▃▂
+wandb:    val_balanced_acc ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb:          val_cindex ▂▆▇█▇▆▇▇▇▇▄▄▆▇▆▆▆▅▅▅▆▄▅▆▁▁▃▄▃
+wandb:        val_f1_score ▄▄▄▄▄▄▄▆█▆▄▅▆▆▃▆▆▆▆▆▄▃▅▆▃▄▅▆▁
+wandb:             val_ibs ▆▆▅▅▅▄▂▁▃▅█▅▄▁▂▂▂▂▂▂▃▄▃▃▄▄▅▅▅
+wandb:            val_loss ▂▂▂▂▂▂▁▁▂▂▃▂▂▁▄█▅▂▂▄▅▄▃▃▂▂▄▅▇
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇▇▇▇▇▇█▇▇▇▇▇▇▇▇▆▆▇▇▆
+wandb:          val_recall ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 29
+wandb:          test_auroc 0.70741
+wandb:   test_balanced_acc 0.68333
+wandb:         test_cindex 0.69674
+wandb:       test_f1_score 0.52
+wandb:            test_ibs 0.11118
+wandb:      test_precision 0.64667
+wandb:         test_recall 0.68333
+wandb:    train_loss_epoch -0.09462
+wandb:     train_loss_step -0.03334
+wandb: trainer/global_step 203
+wandb:           val_auroc 0.63107
+wandb:    val_balanced_acc 0.54144
+wandb:          val_cindex 0.63869
+wandb:        val_f1_score 0.33333
+wandb:             val_ibs 0.14914
+wandb:            val_loss 1.55941
+wandb:       val_precision 0.53665
+wandb:          val_recall 0.54144
+wandb: 
+wandb: 🚀 View run preclinical_Fold_2 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/im0969s9
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_000154-im0969s9/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws.yaml ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: | Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_000959-3m472tcd
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run preclinical_Fold_3
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/3m472tcd
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestpreclinical-epoch=21-val_loss=0.43.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestpreclinical-epoch=21-val_loss=0.43.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇██
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁
+wandb:     train_loss_step ▅▅▄▇▆▅█▆▄▄▃▄▅▃▂▂▃▂▃▂▂▂▁▄▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ██▆▃▃▃▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▆▁▁▁▁
+wandb:    val_balanced_acc ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb:          val_cindex ██▅▃▂▃▃▄▄▄▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▁▁▁▁
+wandb:        val_f1_score ▂▂▂▂▂▂▃▃▄▅▇▇▇▇▇▆▆▆▆▆▆▇▇▇▆▆▆▇▇▇██▇▃▁▂▂
+wandb:             val_ibs ▇▇▇▇▇▇▇▆▆▅▄▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▆▅▅
+wandb:            val_loss ▄▄▄▄▄▄▄▄▄▃▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▅▃▃
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇████▇▇▇▇▇▇▇█▇▇▇▇▇▇████▇▆▆▇▆
+wandb:          val_recall ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 37
+wandb:          test_auroc 0.74444
+wandb:   test_balanced_acc 0.675
+wandb:         test_cindex 0.72176
+wandb:       test_f1_score 0.5098
+wandb:            test_ibs 0.11029
+wandb:      test_precision 0.63825
+wandb:         test_recall 0.675
+wandb:    train_loss_epoch 0.55937
+wandb:     train_loss_step 0.38004
+wandb: trainer/global_step 259
+wandb:           val_auroc 0.60291
+wandb:    val_balanced_acc 0.5875
+wandb:          val_cindex 0.62705
+wandb:        val_f1_score 0.4
+wandb:             val_ibs 0.1226
+wandb:            val_loss 0.5405
+wandb:       val_precision 0.56965
+wandb:          val_recall 0.5875
+wandb: 
+wandb: 🚀 View run preclinical_Fold_3 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/3m472tcd
+wandb: Synced 6 W&B file(s), 10 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_000959-3m472tcd/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchmetrics/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_ad.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/wandb/apis/public.py:3106: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_002037-17awcozm
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run afterdiagnosis_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/17awcozm
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestafterdiagnosis-epoch=07-val_loss=0.66.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestafterdiagnosis-epoch=07-val_loss=0.66.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.327 MB of 0.327 MB uploaded (0.000 MB deduped)wandb: \ 0.327 MB of 0.511 MB uploaded (0.000 MB deduped)wandb: | 0.327 MB of 0.511 MB uploaded (0.000 MB deduped)wandb: / 0.511 MB of 0.511 MB uploaded (0.000 MB deduped)wandb: - 0.511 MB of 0.511 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▁▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     train_loss_step ▅▆▆▁▅▁▁▄▃▂▅▂▂█▁▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇████
+wandb:           val_auroc ▄▅▅▇█▆▃▃▂▂▁▁▁▁▂▃▅▆▆▇▇▇█
+wandb:    val_balanced_acc ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb:          val_cindex ▇▇▇██▆▄▃▂▂▂▁▁▁▂▃▄▅▅▆▆▆▆
+wandb:        val_f1_score ▆▆▆▆▆▆▅▄▂▂▁▂▃▃▃▅▄▅▇▅▇█▄
+wandb:             val_ibs ▆▆▇▇▄▆▅▁▁▂▃▄▅▇███▇▇▇▇█▇
+wandb:            val_loss ▂▂▂▂▂▂▂▁▁▁▁▂▂▃▄▅▅▅▆▆▇█▇
+wandb:       val_precision ▁▁▁▁▁▁▁▇▇▇▇▇▇▇▇█▇██████
+wandb:          val_recall ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb: 
+wandb: Run summary:
+wandb:               epoch 23
+wandb:          test_auroc 0.6537
+wandb:   test_balanced_acc 0.625
+wandb:         test_cindex 0.69447
+wandb:       test_f1_score 0.46753
+wandb:            test_ibs 0.12562
+wandb:      test_precision 0.61442
+wandb:         test_recall 0.625
+wandb:    train_loss_epoch 0.46067
+wandb:     train_loss_step 0.40537
+wandb: trainer/global_step 161
+wandb:           val_auroc 0.58859
+wandb:    val_balanced_acc 0.55926
+wandb:          val_cindex 0.53799
+wandb:        val_f1_score 0.38356
+wandb:             val_ibs 0.14433
+wandb:            val_loss 0.94229
+wandb:       val_precision 0.54562
+wandb:          val_recall 0.55926
+wandb: 
+wandb: 🚀 View run afterdiagnosis_Fold_1 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/17awcozm
+wandb: Synced 6 W&B file(s), 7 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_002037-17awcozm/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_ad.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_002349-qqsi8z61
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run afterdiagnosis_Fold_2
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/qqsi8z61
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestafterdiagnosis-epoch=13-val_loss=0.52.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestafterdiagnosis-epoch=13-val_loss=0.52.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch █▇▇▆▇▅▅▅▄▆▆▆▅▅▄▄▄▃▃▃▃▃▃▂▃▃▂▂▁
+wandb:     train_loss_step ▇▅▆▅▅▄█▄▅▄▃▃▃▂▃▂▂▃▁▂
+wandb: trainer/global_step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ▄▇▇█▆▅▆▆▅▅▄▃▄▅▄▄▅▅▅▅▅▄▄▅▁▁▂▃▂
+wandb:    val_balanced_acc ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb:          val_cindex ▂▆▇█▇▆▇▇▇▇▄▄▆▇▆▆▆▅▅▅▆▄▅▆▁▁▃▄▃
+wandb:        val_f1_score ▄▄▄▄▄▄▄▆█▆▄▅▆▆▃▆▆▆▆▆▄▃▅▆▃▄▅▆▁
+wandb:             val_ibs ▆▆▅▅▅▄▂▁▃▅█▅▄▁▂▂▂▂▂▂▃▄▃▃▄▄▅▅▅
+wandb:            val_loss ▂▂▂▂▂▂▁▁▂▂▃▂▂▁▄█▅▂▂▄▅▄▃▃▂▂▄▅▇
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇▇▇▇▇▇█▇▇▇▇▇▇▇▇▆▆▇▇▆
+wandb:          val_recall ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 29
+wandb:          test_auroc 0.70741
+wandb:   test_balanced_acc 0.68333
+wandb:         test_cindex 0.69674
+wandb:       test_f1_score 0.52
+wandb:            test_ibs 0.11118
+wandb:      test_precision 0.64667
+wandb:         test_recall 0.68333
+wandb:    train_loss_epoch -0.09462
+wandb:     train_loss_step -0.03334
+wandb: trainer/global_step 203
+wandb:           val_auroc 0.63107
+wandb:    val_balanced_acc 0.54144
+wandb:          val_cindex 0.63869
+wandb:        val_f1_score 0.33333
+wandb:             val_ibs 0.14914
+wandb:            val_loss 1.55941
+wandb:       val_precision 0.53665
+wandb:          val_recall 0.54144
+wandb: 
+wandb: 🚀 View run afterdiagnosis_Fold_2 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/qqsi8z61
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_002349-qqsi8z61/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_ad.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_003033-v02trtri
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run afterdiagnosis_Fold_3
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/v02trtri
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestafterdiagnosis-epoch=21-val_loss=0.43.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestafterdiagnosis-epoch=21-val_loss=0.43.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: \ 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: | 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: / 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: - 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: \ 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: | 0.428 MB of 0.428 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇██
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁
+wandb:     train_loss_step ▅▅▄▇▆▅█▆▄▄▃▄▅▃▂▂▃▂▃▂▂▂▁▄▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ██▆▃▃▃▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▆▁▁▁▁
+wandb:    val_balanced_acc ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb:          val_cindex ██▅▃▂▃▃▄▄▄▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▁▁▁▁
+wandb:        val_f1_score ▂▂▂▂▂▂▃▃▄▅▇▇▇▇▇▆▆▆▆▆▆▇▇▇▆▆▆▇▇▇██▇▃▁▂▂
+wandb:             val_ibs ▇▇▇▇▇▇▇▆▆▅▄▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▆▅▅
+wandb:            val_loss ▄▄▄▄▄▄▄▄▄▃▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▅▃▃
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇████▇▇▇▇▇▇▇█▇▇▇▇▇▇████▇▆▆▇▆
+wandb:          val_recall ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 37
+wandb:          test_auroc 0.74444
+wandb:   test_balanced_acc 0.675
+wandb:         test_cindex 0.72176
+wandb:       test_f1_score 0.5098
+wandb:            test_ibs 0.11029
+wandb:      test_precision 0.63825
+wandb:         test_recall 0.675
+wandb:    train_loss_epoch 0.55937
+wandb:     train_loss_step 0.38004
+wandb: trainer/global_step 259
+wandb:           val_auroc 0.60291
+wandb:    val_balanced_acc 0.5875
+wandb:          val_cindex 0.62705
+wandb:        val_f1_score 0.4
+wandb:             val_ibs 0.1226
+wandb:            val_loss 0.5405
+wandb:       val_precision 0.56965
+wandb:          val_recall 0.5875
+wandb: 
+wandb: 🚀 View run afterdiagnosis_Fold_3 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/v02trtri
+wandb: Synced 6 W&B file(s), 10 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_003033-v02trtri/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torchmetrics/utilities/imports.py:22: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import DistributionNotFound, get_distribution
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_fi.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/wandb/apis/public.py:3106: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_004320-lwrz3fsp
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run full_information_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/lwrz3fsp
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestfull_information-epoch=07-val_loss=0.66.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestfull_information-epoch=07-val_loss=0.66.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.327 MB of 0.327 MB uploaded (0.000 MB deduped)wandb: \ 0.327 MB of 0.547 MB uploaded (0.000 MB deduped)wandb: | 0.327 MB of 0.547 MB uploaded (0.000 MB deduped)wandb: / 0.547 MB of 0.547 MB uploaded (0.000 MB deduped)wandb: - 0.547 MB of 0.547 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▁▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     train_loss_step ▅▆▆▁▅▁▁▄▃▂▅▂▂█▁▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇████
+wandb:           val_auroc ▄▅▅▇█▆▃▃▂▂▁▁▁▁▂▃▅▆▆▇▇▇█
+wandb:    val_balanced_acc ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb:          val_cindex ▇▇▇██▆▄▃▂▂▂▁▁▁▂▃▄▅▅▆▆▆▆
+wandb:        val_f1_score ▆▆▆▆▆▆▅▄▂▂▁▂▃▃▃▅▄▅▇▅▇█▄
+wandb:             val_ibs ▆▆▇▇▄▆▅▁▁▂▃▄▅▇███▇▇▇▇█▇
+wandb:            val_loss ▂▂▂▂▂▂▂▁▁▁▁▂▂▃▄▅▅▅▆▆▇█▇
+wandb:       val_precision ▁▁▁▁▁▁▁▇▇▇▇▇▇▇▇█▇██████
+wandb:          val_recall ▂▂▂▂▂▂▁▃▃▃▂▃▄▄▅▆▅▆▇▆██▆
+wandb: 
+wandb: Run summary:
+wandb:               epoch 23
+wandb:          test_auroc 0.6537
+wandb:   test_balanced_acc 0.625
+wandb:         test_cindex 0.69447
+wandb:       test_f1_score 0.46753
+wandb:            test_ibs 0.12562
+wandb:      test_precision 0.61442
+wandb:         test_recall 0.625
+wandb:    train_loss_epoch 0.46067
+wandb:     train_loss_step 0.40537
+wandb: trainer/global_step 161
+wandb:           val_auroc 0.58859
+wandb:    val_balanced_acc 0.55926
+wandb:          val_cindex 0.53799
+wandb:        val_f1_score 0.38356
+wandb:             val_ibs 0.14433
+wandb:            val_loss 0.94229
+wandb:       val_precision 0.54562
+wandb:          val_recall 0.55926
+wandb: 
+wandb: 🚀 View run full_information_Fold_1 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/lwrz3fsp
+wandb: Synced 6 W&B file(s), 7 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_004320-lwrz3fsp/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_fi.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_004549-bs1dh9hi
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run full_information_Fold_2
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/bs1dh9hi
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestfull_information-epoch=13-val_loss=0.52.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestfull_information-epoch=13-val_loss=0.52.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.350 MB of 0.350 MB uploaded (0.000 MB deduped)wandb: \ 0.350 MB of 0.621 MB uploaded (0.000 MB deduped)wandb: | 0.350 MB of 0.621 MB uploaded (0.000 MB deduped)wandb: / 0.621 MB of 0.621 MB uploaded (0.000 MB deduped)wandb: - 0.621 MB of 0.621 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch █▇▇▆▇▅▅▅▄▆▆▆▅▅▄▄▄▃▃▃▃▃▃▂▃▃▂▂▁
+wandb:     train_loss_step ▇▅▆▅▅▄█▄▅▄▃▃▃▂▃▂▂▃▁▂
+wandb: trainer/global_step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ▄▇▇█▆▅▆▆▅▅▄▃▄▅▄▄▅▅▅▅▅▄▄▅▁▁▂▃▂
+wandb:    val_balanced_acc ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb:          val_cindex ▂▆▇█▇▆▇▇▇▇▄▄▆▇▆▆▆▅▅▅▆▄▅▆▁▁▃▄▃
+wandb:        val_f1_score ▄▄▄▄▄▄▄▆█▆▄▅▆▆▃▆▆▆▆▆▄▃▅▆▃▄▅▆▁
+wandb:             val_ibs ▆▆▅▅▅▄▂▁▃▅█▅▄▁▂▂▂▂▂▂▃▄▃▃▄▄▅▅▅
+wandb:            val_loss ▂▂▂▂▂▂▁▁▂▂▃▂▂▁▄█▅▂▂▄▅▄▃▃▂▂▄▅▇
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇▇▇▇▇▇█▇▇▇▇▇▇▇▇▆▆▇▇▆
+wandb:          val_recall ▁▁▁▁▁▂▅▆█▆▂▄▅▆▅▇▆▆▆▆▅▄▅▆▃▄▅▆▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 29
+wandb:          test_auroc 0.70741
+wandb:   test_balanced_acc 0.68333
+wandb:         test_cindex 0.69674
+wandb:       test_f1_score 0.52
+wandb:            test_ibs 0.11118
+wandb:      test_precision 0.64667
+wandb:         test_recall 0.68333
+wandb:    train_loss_epoch -0.09462
+wandb:     train_loss_step -0.03334
+wandb: trainer/global_step 203
+wandb:           val_auroc 0.63107
+wandb:    val_balanced_acc 0.54144
+wandb:          val_cindex 0.63869
+wandb:        val_f1_score 0.33333
+wandb:             val_ibs 0.14914
+wandb:            val_loss 1.55941
+wandb:       val_precision 0.53665
+wandb:          val_recall 0.54144
+wandb: 
+wandb: 🚀 View run full_information_Fold_2 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/bs1dh9hi
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_004549-bs1dh9hi/logs
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_fi.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+wandb: - Waiting for wandb.init()...wandb: \ Waiting for wandb.init()...wandb: wandb version 0.25.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in ./wandb/run-20260310_005150-297ls2xo
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run full_information_Fold_3
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/297ls2xo
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestfull_information-epoch=21-val_loss=0.43.ckpt
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/bestfull_information-epoch=21-val_loss=0.43.ckpt
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:               epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇██
+wandb:          test_auroc ▁
+wandb:   test_balanced_acc ▁
+wandb:         test_cindex ▁
+wandb:       test_f1_score ▁
+wandb:            test_ibs ▁
+wandb:      test_precision ▁
+wandb:         test_recall ▁
+wandb:    train_loss_epoch ▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁
+wandb:     train_loss_step ▅▅▄▇▆▅█▆▄▄▃▄▅▃▂▂▃▂▃▂▂▂▁▄▄
+wandb: trainer/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇████
+wandb:           val_auroc ██▆▃▃▃▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▆▁▁▁▁
+wandb:    val_balanced_acc ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb:          val_cindex ██▅▃▂▃▃▄▄▄▄▄▄▄▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▆▆▁▁▁▁
+wandb:        val_f1_score ▂▂▂▂▂▂▃▃▄▅▇▇▇▇▇▆▆▆▆▆▆▇▇▇▆▆▆▇▇▇██▇▃▁▂▂
+wandb:             val_ibs ▇▇▇▇▇▇▇▆▆▅▄▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▆▅▅
+wandb:            val_loss ▄▄▄▄▄▄▄▄▄▃▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▅▃▃
+wandb:       val_precision ▁▁▁▁▁▇▇▇▇▇████▇▇▇▇▇▇▇█▇▇▇▇▇▇████▇▆▆▇▆
+wandb:          val_recall ▁▁▁▁▁▁▂▂▄▆████▇▇▇▇▆▇▇▇▇▇▇▇▇▇▇▇██▇▄▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:               epoch 37
+wandb:          test_auroc 0.74444
+wandb:   test_balanced_acc 0.675
+wandb:         test_cindex 0.72176
+wandb:       test_f1_score 0.5098
+wandb:            test_ibs 0.11029
+wandb:      test_precision 0.63825
+wandb:         test_recall 0.675
+wandb:    train_loss_epoch 0.55937
+wandb:     train_loss_step 0.38004
+wandb: trainer/global_step 259
+wandb:           val_auroc 0.60291
+wandb:    val_balanced_acc 0.5875
+wandb:          val_cindex 0.62705
+wandb:        val_f1_score 0.4
+wandb:             val_ibs 0.1226
+wandb:            val_loss 0.5405
+wandb:       val_precision 0.56965
+wandb:          val_recall 0.5875
+wandb: 
+wandb: 🚀 View run full_information_Fold_3 at: https://wandb.ai/franciscosacouto-inesc-tec/test_encoder/runs/297ls2xo
+wandb: Synced 6 W&B file(s), 10 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260310_005150-297ls2xo/logs

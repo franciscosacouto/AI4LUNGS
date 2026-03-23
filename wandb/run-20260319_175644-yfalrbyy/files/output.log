@@ -1,0 +1,3479 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+┏━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name           ┃ Type             ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head  │ Sequential       │ 46.9 K │ train │     0 │
+│ 1 │ vision_encoder │ DaViT            │  360 M │ train │     0 │
+│ 2 │ text_encoder   │ Transformer      │  252 M │ eval  │     0 │
+│ 3 │ f1score        │ BinaryF1Score    │      0 │ train │     0 │
+│ 4 │ stats_metric   │ BinaryStatScores │      0 │ train │     0 │
+└───┴────────────────┴──────────────────┴────────┴───────┴───────┘
+Trainable params: 612 M
+Non-trainable params: 0
+Total params: 612 M
+Total estimated model params size (MB): 2.5 K
+Modules in train mode: 537
+Modules in eval mode: 164
+Total FLOPs: 0
+shape xtorch.Size([32, 2])
+tensor(2462.9521, device='cuda:0')
+tensor(412.3151, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2446.1689, device='cuda:0')
+tensor(421.0219, device='cuda:0')
+shape PREDS: torch.Size([64, 2])
+shape time: torch.Size([64])
+shape log_hz: torch.Size([64, 64])
+shape log_hz_t: torch.Size([64])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 64, 1s = 0
+Actual label distribution:    0s = 52, 1s = 12
+Actual Imbalance Ratio (0:1): 4.33:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(64,), log_hz=(64,), events=(64,)
+Cindex TorchSurv: 0.5
+Cindex Lifelines: 0.5
+Saved test predictions and probabilities to validation_results_fold_final.csv
+🔥 Successfully training: convs.0.proj.weight
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7481, device='cuda:0')
+tensor(0.6437, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7483, device='cuda:0')
+tensor(0.6447, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7436, device='cuda:0')
+tensor(0.6421, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7489, device='cuda:0')
+tensor(0.6378, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.3501896262168884
+Cindex Lifelines: 0.3581963758954909
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7553, device='cuda:0')
+tensor(0.6308, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7571, device='cuda:0')
+tensor(0.6381, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7341, device='cuda:0')
+tensor(0.6394, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7496, device='cuda:0')
+tensor(0.6223, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.4016013443470001
+Cindex Lifelines: 0.42056468605141173
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7607, device='cuda:0')
+tensor(0.6160, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7657, device='cuda:0')
+tensor(0.6249, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7333, device='cuda:0')
+tensor(0.6252, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7482, device='cuda:0')
+tensor(0.6099, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.4403708279132843
+Cindex Lifelines: 0.4466919511167299
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7638, device='cuda:0')
+tensor(0.6016, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7728, device='cuda:0')
+tensor(0.6015, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7376, device='cuda:0')
+tensor(0.6090, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7461, device='cuda:0')
+tensor(0.5976, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.4677623212337494
+Cindex Lifelines: 0.47914032869785084
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7632, device='cuda:0')
+tensor(0.5812, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7753, device='cuda:0')
+tensor(0.5815, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7360, device='cuda:0')
+tensor(0.5808, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7339, device='cuda:0')
+tensor(0.5763, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.5305520296096802
+Cindex Lifelines: 0.5284450063211125
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7585, device='cuda:0')
+tensor(0.5627, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7732, device='cuda:0')
+tensor(0.5588, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7357, device='cuda:0')
+tensor(0.5580, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7285, device='cuda:0')
+tensor(0.5449, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6169405579566956
+Cindex Lifelines: 0.6042983565107459
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7527, device='cuda:0')
+tensor(0.5460, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7686, device='cuda:0')
+tensor(0.5271, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7311, device='cuda:0')
+tensor(0.5266, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7187, device='cuda:0')
+tensor(0.5204, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6679309010505676
+Cindex Lifelines: 0.6502317741255794
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7475, device='cuda:0')
+tensor(0.5166, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7459, device='cuda:0')
+tensor(0.4645, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7309, device='cuda:0')
+tensor(0.4543, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7105, device='cuda:0')
+tensor(0.4938, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6860514283180237
+Cindex Lifelines: 0.6788874841972187
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7408, device='cuda:0')
+tensor(0.4235, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7629, device='cuda:0')
+tensor(0.3835, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7144, device='cuda:0')
+tensor(0.3491, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7045, device='cuda:0')
+tensor(0.4382, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6852086186408997
+Cindex Lifelines: 0.683944374209861
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7355, device='cuda:0')
+tensor(0.3109, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7718, device='cuda:0')
+tensor(0.2743, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7036, device='cuda:0')
+tensor(0.2240, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6940, device='cuda:0')
+tensor(0.4158, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7041719555854797
+Cindex Lifelines: 0.7184997892962495
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7264, device='cuda:0')
+tensor(0.1874, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7673, device='cuda:0')
+tensor(0.1602, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6948, device='cuda:0')
+tensor(0.1065, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6884, device='cuda:0')
+tensor(0.3994, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 106, 1s = 0
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+⚠️ Model is predicting only class 0 (majority class). It is ignoring the minority class!
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6826801300048828
+Cindex Lifelines: 0.7003792667509482
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7201, device='cuda:0')
+tensor(0.0845, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7146, device='cuda:0')
+tensor(0.0690, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6839, device='cuda:0')
+tensor(0.0325, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6846, device='cuda:0')
+tensor(0.4309, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 103, 1s = 3
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.6940581798553467
+Cindex Lifelines: 0.7100716392751791
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7128, device='cuda:0')
+tensor(0.0218, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6939, device='cuda:0')
+tensor(0.0188, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6783, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6768, device='cuda:0')
+tensor(0.3988, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 100, 1s = 6
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7083860039710999
+Cindex Lifelines: 0.7197640117994101
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6994, device='cuda:0')
+tensor(0.0036, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7050, device='cuda:0')
+tensor(0.0031, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6807, device='cuda:0')
+tensor(0.0006, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6692, device='cuda:0')
+tensor(0.3819, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 100, 1s = 6
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7176569700241089
+Cindex Lifelines: 0.7328276443320692
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6979, device='cuda:0')
+tensor(0.0005, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6937, device='cuda:0')
+tensor(0.0004, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6542, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6640, device='cuda:0')
+tensor(0.3118, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 100, 1s = 6
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.739570140838623
+Cindex Lifelines: 0.7551622418879056
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6979, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6899, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6425, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6545, device='cuda:0')
+tensor(0.3200, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 100, 1s = 6
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7265065312385559
+Cindex Lifelines: 0.7463126843657817
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6857, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6807, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6301, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6488, device='cuda:0')
+tensor(0.3539, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.738305926322937
+Cindex Lifelines: 0.7610619469026548
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6761, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6739, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6252, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6436, device='cuda:0')
+tensor(0.3575, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.730720579624176
+Cindex Lifelines: 0.7505267593763169
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6668, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6704, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6155, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6334, device='cuda:0')
+tensor(0.3095, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.738727331161499
+Cindex Lifelines: 0.7551622418879056
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6617, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6652, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6106, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6239, device='cuda:0')
+tensor(0.3040, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7505267858505249
+Cindex Lifelines: 0.7593763168984408
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6513, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6626, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6082, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6227, device='cuda:0')
+tensor(0.2602, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7399915456771851
+Cindex Lifelines: 0.7534766118836915
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6439, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6574, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6017, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6137, device='cuda:0')
+tensor(0.2723, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7412558197975159
+Cindex Lifelines: 0.7530552043826381
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6310, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6545, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5951, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6037, device='cuda:0')
+tensor(0.2663, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.762326180934906
+Cindex Lifelines: 0.7682258744205647
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6247, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6462, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5928, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6047, device='cuda:0')
+tensor(0.2201, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7576906681060791
+Cindex Lifelines: 0.7631689844079225
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6236, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6470, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5887, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6082, device='cuda:0')
+tensor(0.2138, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 98, 1s = 8
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7494732141494751
+Cindex Lifelines: 0.7572692793931732
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6104, device='cuda:0')
+tensor(0.0001, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6363, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5827, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6014, device='cuda:0')
+tensor(0.1543, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 98, 1s = 8
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7564264535903931
+Cindex Lifelines: 0.764433206911083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6077, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6283, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5786, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5970, device='cuda:0')
+tensor(0.0913, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 97, 1s = 9
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7576906681060791
+Cindex Lifelines: 0.7682258744205647
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6058, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6275, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5784, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5949, device='cuda:0')
+tensor(0.1586, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7656974196434021
+Cindex Lifelines: 0.7701222081753055
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6004, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6231, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5706, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5883, device='cuda:0')
+tensor(0.2045, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7678044438362122
+Cindex Lifelines: 0.7751790981879477
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6025, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6215, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5638, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5899, device='cuda:0')
+tensor(0.1904, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 99, 1s = 7
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7576906681060791
+Cindex Lifelines: 0.7701222081753055
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.5971, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6184, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5564, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5846, device='cuda:0')
+tensor(0.1721, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 97, 1s = 9
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.753055214881897
+Cindex Lifelines: 0.764433206911083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6031, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6121, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5563, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5892, device='cuda:0')
+tensor(0.1666, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 98, 1s = 8
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.753476619720459
+Cindex Lifelines: 0.7635903919089759
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6006, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6137, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5542, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5876, device='cuda:0')
+tensor(0.1232, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 98, 1s = 8
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7686472535133362
+Cindex Lifelines: 0.7808680994521703
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6085, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6187, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5535, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5915, device='cuda:0')
+tensor(0.0745, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 97, 1s = 9
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7821323275566101
+Cindex Lifelines: 0.7905604719764012
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6053, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6150, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5588, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5847, device='cuda:0')
+tensor(0.1115, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 97, 1s = 9
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7770754098892212
+Cindex Lifelines: 0.787189211967973
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6048, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6091, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5521, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5845, device='cuda:0')
+tensor(0.1744, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 97, 1s = 9
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7821323275566101
+Cindex Lifelines: 0.7888748419721872
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6003, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6072, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5509, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5809, device='cuda:0')
+tensor(0.1316, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 95, 1s = 11
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.770332932472229
+Cindex Lifelines: 0.7804466919511167
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6011, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6027, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5480, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5793, device='cuda:0')
+tensor(0.1181, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 96, 1s = 10
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7842393517494202
+Cindex Lifelines: 0.7939317319848294
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6043, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6026, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5477, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5818, device='cuda:0')
+tensor(0.0743, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 95, 1s = 11
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7728613615036011
+Cindex Lifelines: 0.7791824694479562
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.5934, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6059, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5440, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5664, device='cuda:0')
+tensor(0.1512, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 93, 1s = 13
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7859249711036682
+Cindex Lifelines: 0.7935103244837758
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6044, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6086, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5519, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5785, device='cuda:0')
+tensor(0.1437, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 92, 1s = 14
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7589548826217651
+Cindex Lifelines: 0.764433206911083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6121, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6118, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5547, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5891, device='cuda:0')
+tensor(0.1269, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 92, 1s = 14
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.76316899061203
+Cindex Lifelines: 0.7724399494310998
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6119, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6104, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5542, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5850, device='cuda:0')
+tensor(0.1185, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 87, 1s = 19
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7589548826217651
+Cindex Lifelines: 0.764433206911083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6249, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6131, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5509, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5938, device='cuda:0')
+tensor(0.0839, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 18
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7665402293205261
+Cindex Lifelines: 0.7715971344289928
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6260, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6210, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5603, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5964, device='cuda:0')
+tensor(0.0372, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 18
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7652760148048401
+Cindex Lifelines: 0.7711757269279393
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6308, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6192, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5656, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6011, device='cuda:0')
+tensor(0.0951, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 18
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.778339684009552
+Cindex Lifelines: 0.7850821744627055
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6328, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6158, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5654, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6030, device='cuda:0')
+tensor(0.1155, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 18
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7914032936096191
+Cindex Lifelines: 0.798567214496418
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6292, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6153, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5536, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.5966, device='cuda:0')
+tensor(0.1028, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7930889129638672
+Cindex Lifelines: 0.7968815844922039
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6423, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6223, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5595, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6129, device='cuda:0')
+tensor(0.0991, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 87, 1s = 19
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7825537323951721
+Cindex Lifelines: 0.7867678044669195
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6441, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6223, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5639, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6181, device='cuda:0')
+tensor(0.0935, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 87, 1s = 19
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7753897905349731
+Cindex Lifelines: 0.7833965444584914
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6493, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6282, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5716, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6215, device='cuda:0')
+tensor(0.0888, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 87, 1s = 19
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7753897905349731
+Cindex Lifelines: 0.7825537294563844
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6512, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6324, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5730, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6218, device='cuda:0')
+tensor(0.0811, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7686472535133362
+Cindex Lifelines: 0.7741255794353139
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6604, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6351, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5867, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6292, device='cuda:0')
+tensor(0.0758, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.771175742149353
+Cindex Lifelines: 0.7791824694479562
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6631, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6346, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5868, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6337, device='cuda:0')
+tensor(0.0755, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 86, 1s = 20
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7753897905349731
+Cindex Lifelines: 0.7859249894648125
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6709, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6566, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.5989, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6406, device='cuda:0')
+tensor(0.0725, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7766540050506592
+Cindex Lifelines: 0.7846607669616519
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6735, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6641, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6009, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6421, device='cuda:0')
+tensor(0.0759, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 87, 1s = 19
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7833965420722961
+Cindex Lifelines: 0.7918246944795617
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6817, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6752, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6149, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6477, device='cuda:0')
+tensor(0.0790, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 86, 1s = 20
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7804467082023621
+Cindex Lifelines: 0.7905604719764012
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6889, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6771, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6181, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6538, device='cuda:0')
+tensor(0.0660, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.778761088848114
+Cindex Lifelines: 0.7821323219553308
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6904, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6786, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6141, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6554, device='cuda:0')
+tensor(0.0575, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.778339684009552
+Cindex Lifelines: 0.7876106194690266
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.6953, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6876, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6149, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6600, device='cuda:0')
+tensor(0.0536, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 86, 1s = 20
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7779182195663452
+Cindex Lifelines: 0.7850821744627055
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7003, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6857, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6151, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6643, device='cuda:0')
+tensor(0.0517, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 86, 1s = 20
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7829751372337341
+Cindex Lifelines: 0.7964601769911505
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7070, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6824, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6196, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6668, device='cuda:0')
+tensor(0.0469, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7867677807807922
+Cindex Lifelines: 0.799410029498525
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7112, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6875, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6220, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6699, device='cuda:0')
+tensor(0.0378, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7800253033638
+Cindex Lifelines: 0.7939317319848294
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7209, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6937, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6293, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6735, device='cuda:0')
+tensor(0.0374, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7833965420722961
+Cindex Lifelines: 0.799410029498525
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7303, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7049, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6348, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6797, device='cuda:0')
+tensor(0.0344, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7859249711036682
+Cindex Lifelines: 0.7973029919932575
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7383, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7124, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6477, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6852, device='cuda:0')
+tensor(0.0360, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7838179469108582
+Cindex Lifelines: 0.7956173619890434
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7483, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7227, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6877, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6936, device='cuda:0')
+tensor(0.0387, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7812895178794861
+Cindex Lifelines: 0.7981458069953645
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7537, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7283, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6888, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.6985, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7909818887710571
+Cindex Lifelines: 0.8040455120101138
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7668, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7365, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6768, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7043, device='cuda:0')
+tensor(0.0343, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7909818887710571
+Cindex Lifelines: 0.8040455120101138
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7658, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7282, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6972, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7039, device='cuda:0')
+tensor(0.0257, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7943531274795532
+Cindex Lifelines: 0.8036241045090603
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7768, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7395, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6771, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7105, device='cuda:0')
+tensor(0.0271, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7951959371566772
+Cindex Lifelines: 0.8023598820058997
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.7913, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7488, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.6981, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7178, device='cuda:0')
+tensor(0.0269, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 24
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7935103178024292
+Cindex Lifelines: 0.8010956595027392
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8091, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7664, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7195, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7280, device='cuda:0')
+tensor(0.0315, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.778761088848114
+Cindex Lifelines: 0.7909818794774547
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8161, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7724, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7260, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7289, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.779182493686676
+Cindex Lifelines: 0.7855035819637589
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8272, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7731, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7433, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7376, device='cuda:0')
+tensor(0.0231, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7876105904579163
+Cindex Lifelines: 0.7968815844922039
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8406, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7836, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7613, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7426, device='cuda:0')
+tensor(0.0241, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7867677807807922
+Cindex Lifelines: 0.7943531394858828
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8517, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7902, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7654, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7492, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7817109227180481
+Cindex Lifelines: 0.7876106194690266
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8667, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7980, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7870, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7664, device='cuda:0')
+tensor(0.0179, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7892962694168091
+Cindex Lifelines: 0.7947745469869364
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.8825, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8082, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7740, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.7756, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.788032054901123
+Cindex Lifelines: 0.78803202697008
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9018, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8270, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8043, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.8010, device='cuda:0')
+tensor(0.0163, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7829751372337341
+Cindex Lifelines: 0.7876106194690266
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9139, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8384, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8349, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.8173, device='cuda:0')
+tensor(0.0167, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7850821614265442
+Cindex Lifelines: 0.7922461019806153
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9295, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8492, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8601, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.8387, device='cuda:0')
+tensor(0.0155, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7833965420722961
+Cindex Lifelines: 0.7914032869785083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9404, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8581, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8916, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.8726, device='cuda:0')
+tensor(0.0137, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7842393517494202
+Cindex Lifelines: 0.7884534344711336
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9521, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9615, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9063, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.8874, device='cuda:0')
+tensor(0.0150, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7884534597396851
+Cindex Lifelines: 0.7930889169827223
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9871, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9186, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9355, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.9171, device='cuda:0')
+tensor(0.0157, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7808681130409241
+Cindex Lifelines: 0.7888748419721872
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(0.9893, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8944, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9308, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.9104, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 85, 1s = 21
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7779182195663452
+Cindex Lifelines: 0.7833965444584914
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.0166, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9629, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9866, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.9767, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7821323275566101
+Cindex Lifelines: 0.787189211967973
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.0310, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9538, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0165, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.0006, device='cuda:0')
+tensor(0.0122, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7867677807807922
+Cindex Lifelines: 0.7838179519595448
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.0525, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0560, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0001, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.9677, device='cuda:0')
+tensor(0.0118, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 24
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7829751372337341
+Cindex Lifelines: 0.7867678044669195
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.0805, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9408, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0151, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(0.9773, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7888748645782471
+Cindex Lifelines: 0.787189211967973
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.1039, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9548, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0298, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.0104, device='cuda:0')
+tensor(0.0082, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 24
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7947745323181152
+Cindex Lifelines: 0.7890855457227138
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.1337, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0766, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0607, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.0190, device='cuda:0')
+tensor(0.0083, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 24
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7892962694168091
+Cindex Lifelines: 0.7886641382216604
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.1511, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9968, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0976, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.0766, device='cuda:0')
+tensor(0.0078, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7892962694168091
+Cindex Lifelines: 0.7970922882427307
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.1780, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0986, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.1239, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.0891, device='cuda:0')
+tensor(0.0086, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7918246984481812
+Cindex Lifelines: 0.7873999157184998
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.1937, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0819, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.1440, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.1216, device='cuda:0')
+tensor(0.0081, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7914032936096191
+Cindex Lifelines: 0.7888748419721872
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.2452, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0616, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.1884, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.1441, device='cuda:0')
+tensor(0.0083, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7867677807807922
+Cindex Lifelines: 0.7901390644753477
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.2904, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0780, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.2139, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.1648, device='cuda:0')
+tensor(0.0063, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 24
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7884534597396851
+Cindex Lifelines: 0.7842393594605984
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.3209, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.1253, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.3238, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.3011, device='cuda:0')
+tensor(0.0079, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 22
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7909818887710571
+Cindex Lifelines: 0.7876106194690266
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+shape xtorch.Size([32, 2])
+tensor(1.3458, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.1353, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.2605, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.2082, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7859249711036682
+Cindex Lifelines: 0.7783396544458492
+Saved test predictions and probabilities to validation_results_fold_final.csv
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+WARNING: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight has NO gradient.
+`Trainer.fit` stopped: `max_epochs=100` reached.
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/besttab_full_information-epoch=92-val_loss=0.39.ckpt
+shape xtorch.Size([32, 2])
+tensor(1.3764, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.6793, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.3667, device='cuda:0')
+tensor(1.0000e-04, device='cuda:0')
+shape xtorch.Size([10, 2])
+tensor(1.3459, device='cuda:0')
+tensor(0.0076, device='cuda:0')
+shape PREDS: torch.Size([106, 2])
+shape time: torch.Size([106])
+shape log_hz: torch.Size([106, 106])
+shape log_hz_t: torch.Size([106])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 23
+Actual label distribution:    0s = 80, 1s = 26
+Actual Imbalance Ratio (0:1): 3.08:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(106,), log_hz=(106,), events=(106,)
+Cindex TorchSurv: 0.7895069718360901
+Cindex Lifelines: 0.7888748419721872
+Saved test predictions and probabilities to validation_results_fold_final.csv
+Epoch 99/99 ━━━━━━━━━━━━━━━━━ 7/7 0:00:00 • 0:00:00 176.23it/s v_num: rbyy
+                                                               train_loss_step:
+                                                               0.263 val_loss:
+                                                               0.398
+                                                               train_loss_epoch:
+                                                               0.264
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_02/besttab_full_information-epoch=92-val_loss=0.39.ckpt
+Saved test predictions and probabilities to test_results_fold_final.xlsx
+shape PREDS: torch.Size([80, 2])
+shape time: torch.Size([80])
+shape log_hz: torch.Size([80, 80])
+shape log_hz_t: torch.Size([80])
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 53, 1s = 27
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(80,), log_hz=(80,), events=(80,)
+Cindex TorchSurv: 0.8028809428215027
+Cindex Lifelines: 0.8290371493555724
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │           0.875           │
+│     test_balanced_acc     │    0.8083333373069763     │
+│        test_cindex        │    0.8028809428215027     │
+│       test_f1_score       │    0.6808510422706604     │
+│         test_ibs          │    0.08186191320419312    │
+│      test_precision       │    0.7585604190826416     │
+│        test_recall        │    0.8083333373069763     │
+└───────────────────────────┴───────────────────────────┘
+Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3/3 0:00:00 • 0:00:00 472.78it/s

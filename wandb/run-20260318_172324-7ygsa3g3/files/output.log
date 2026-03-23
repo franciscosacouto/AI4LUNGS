@@ -1,0 +1,854 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+┏━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name           ┃ Type             ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head  │ Sequential       │  313 K │ train │     0 │
+│ 1 │ vision_encoder │ DaViT            │  360 M │ train │     0 │
+│ 2 │ text_encoder   │ Transformer      │  252 M │ eval  │     0 │
+│ 3 │ f1score        │ BinaryF1Score    │      0 │ train │     0 │
+│ 4 │ stats_metric   │ BinaryStatScores │      0 │ train │     0 │
+└───┴────────────────┴──────────────────┴────────┴───────┴───────┘
+Trainable params: 613 M
+Non-trainable params: 0
+Total params: 613 M
+Total estimated model params size (MB): 2.5 K
+Modules in train mode: 537
+Modules in eval mode: 164
+Total FLOPs: 0
+shape xtorch.Size([32, 2])
+tensor(0.1244, device='cuda:0')
+tensor(-0.1175, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1876, device='cuda:0')
+tensor(-0.0886, device='cuda:0')
+shape PREDS: torch.Size([64, 2])
+shape time: torch.Size([64])
+shape log_hz: torch.Size([64, 64])
+shape log_hz_t: torch.Size([64])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 51, 1s = 13
+Actual Imbalance Ratio (0:1): 3.92:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(64,), log_hz=(64,), events=(64,)
+Cindex TorchSurv: 0.39800286293029785
+Cindex Lifelines: 0.44079885877318115
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Saved test predictions and probabilities to validation_results_fold_final.csv
+🔥 Successfully training: convs.0.proj.weight
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.060240
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.047580
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046104
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.039733
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.037417
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.040420
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.038469
+shape xtorch.Size([32, 2])
+tensor(0.1386, device='cuda:0')
+tensor(-0.1076, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1414, device='cuda:0')
+tensor(-0.1171, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1504, device='cuda:0')
+tensor(-0.1202, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.1223, device='cuda:0')
+tensor(-0.0762, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 107
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5103220343589783
+Cindex Lifelines: 0.4512799339388935
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.034344
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.052470
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.042986
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.037016
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.036832
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.041061
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.039509
+shape xtorch.Size([32, 2])
+tensor(0.2171, device='cuda:0')
+tensor(-0.1163, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1861, device='cuda:0')
+tensor(-0.1399, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1842, device='cuda:0')
+tensor(-0.1174, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.2128, device='cuda:0')
+tensor(-0.0967, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 3, 1s = 104
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6230388283729553
+Cindex Lifelines: 0.5966143682906688
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.043717
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.034335
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.053708
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046134
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.045247
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.048757
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.049987
+shape xtorch.Size([32, 2])
+tensor(0.2963, device='cuda:0')
+tensor(-0.1836, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.2211, device='cuda:0')
+tensor(-0.1429, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.2732, device='cuda:0')
+tensor(-0.2049, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.3338, device='cuda:0')
+tensor(-0.1167, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 11, 1s = 96
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6552435755729675
+Cindex Lifelines: 0.6424442609413707
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.044255
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.050685
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.049367
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.054040
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057440
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.050679
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057738
+shape xtorch.Size([32, 2])
+tensor(0.4918, device='cuda:0')
+tensor(-0.3476, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.3708, device='cuda:0')
+tensor(-0.2385, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.3831, device='cuda:0')
+tensor(-0.3433, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.3592, device='cuda:0')
+tensor(-0.2506, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 25, 1s = 82
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.615606963634491
+Cindex Lifelines: 0.6044591246903386
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.072155
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.049653
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.055939
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057440
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056910
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.044005
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081117
+shape xtorch.Size([32, 2])
+tensor(0.7689, device='cuda:0')
+tensor(-0.3982, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7404, device='cuda:0')
+tensor(-0.2538, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.7641, device='cuda:0')
+tensor(-0.3769, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.6703, device='cuda:0')
+tensor(-0.2234, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 67, 1s = 40
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.615606963634491
+Cindex Lifelines: 0.6180842279108175
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057098
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073586
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.270311
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.050245
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061010
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.050734
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.048226
+shape xtorch.Size([32, 2])
+tensor(1.1324, device='cuda:0')
+tensor(-0.7105, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.0403, device='cuda:0')
+tensor(-0.3427, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.9998, device='cuda:0')
+tensor(-0.6489, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.0140, device='cuda:0')
+tensor(-0.4792, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 66, 1s = 41
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.628406286239624
+Cindex Lifelines: 0.630057803468208
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079019
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.060474
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073891
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081192
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.214595
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056636
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091192
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+shape xtorch.Size([32, 2])
+tensor(1.8274, device='cuda:0')
+tensor(-0.7040, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.7524, device='cuda:0')
+tensor(-0.1765, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.7354, device='cuda:0')
+tensor(-0.7347, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.6303, device='cuda:0')
+tensor(-0.3839, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 93, 1s = 14
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6449215412139893
+Cindex Lifelines: 0.6461601981833196
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076033
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.107010
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 3.075633
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.054667
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095119
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.058165
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.112932
+shape xtorch.Size([32, 2])
+tensor(1.5228, device='cuda:0')
+tensor(-0.6901, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.6654, device='cuda:0')
+tensor(-0.6396, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.6165, device='cuda:0')
+tensor(-0.3930, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.3413, device='cuda:0')
+tensor(-0.4410, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 67, 1s = 40
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5784475803375244
+Cindex Lifelines: 0.5681255161023947
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099285
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.112094
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.067330
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.183781
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.160284
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.126104
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.185127
+shape xtorch.Size([32, 2])
+tensor(1.7714, device='cuda:0')
+tensor(-0.7069, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.8982, device='cuda:0')
+tensor(-0.6700, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9202, device='cuda:0')
+tensor(-0.3402, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.4572, device='cuda:0')
+tensor(-0.5687, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 67, 1s = 40
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5689513087272644
+Cindex Lifelines: 0.5532617671345995
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.126568
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.170439
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.141038
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080123
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.121512
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.127354
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101853
+shape xtorch.Size([32, 2])
+tensor(2.5302, device='cuda:0')
+tensor(-0.4216, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.4173, device='cuda:0')
+tensor(-0.1700, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.3558, device='cuda:0')
+tensor(-0.1567, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.0536, device='cuda:0')
+tensor(-0.0900, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 19
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6337737441062927
+Cindex Lifelines: 0.6255161023947151
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 72.551598
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.093784
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075111
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083162
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078813
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.109305
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.112694
+shape xtorch.Size([32, 2])
+tensor(2.1189, device='cuda:0')
+tensor(-0.5851, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9090, device='cuda:0')
+tensor(-0.2810, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.6459, device='cuda:0')
+tensor(-0.4424, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.6089, device='cuda:0')
+tensor(-0.5236, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 73, 1s = 34
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6234517097473145
+Cindex Lifelines: 0.630057803468208
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084305
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.065332
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.159120
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.170938
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.098541
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.258693
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.090609
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+shape xtorch.Size([32, 2])
+tensor(1.8443, device='cuda:0')
+tensor(-0.6200, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9108, device='cuda:0')
+tensor(-0.4452, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.3046, device='cuda:0')
+tensor(-0.5149, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.4826, device='cuda:0')
+tensor(-0.4559, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 71, 1s = 36
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6065235137939453
+Cindex Lifelines: 0.6151940545004129
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.211313
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.110716
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.146945
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.186598
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089141
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.138812
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.185689
+shape xtorch.Size([32, 2])
+tensor(1.8583, device='cuda:0')
+tensor(-0.6184, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9821, device='cuda:0')
+tensor(-0.3227, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.3568, device='cuda:0')
+tensor(-0.5181, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.5082, device='cuda:0')
+tensor(-0.4413, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5891824960708618
+Cindex Lifelines: 0.5937241948802643
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.177510
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.116936
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.277119
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.142810
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.290972
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087825
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.154851
+shape xtorch.Size([32, 2])
+tensor(2.0533, device='cuda:0')
+tensor(-0.6111, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.0356, device='cuda:0')
+tensor(-0.2293, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.5310, device='cuda:0')
+tensor(-0.5306, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.6557, device='cuda:0')
+tensor(-0.4119, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 27
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5780346989631653
+Cindex Lifelines: 0.5838150289017341
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.117211
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.146583
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073291
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.146759
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.138277
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105963
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102074
+shape xtorch.Size([32, 2])
+tensor(2.3555, device='cuda:0')
+tensor(-0.6429, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.1299, device='cuda:0')
+tensor(-0.1966, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9403, device='cuda:0')
+tensor(-0.4997, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.9068, device='cuda:0')
+tensor(-0.3966, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 83, 1s = 24
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5862923264503479
+Cindex Lifelines: 0.5842279108175062
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089157
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.111505
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079407
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.110210
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.111881
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081475
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.125530
+shape xtorch.Size([32, 2])
+tensor(2.6171, device='cuda:0')
+tensor(-0.7545, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.3027, device='cuda:0')
+tensor(-0.3297, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.3256, device='cuda:0')
+tensor(-0.5141, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.0766, device='cuda:0')
+tensor(-0.4445, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 25
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5846408009529114
+Cindex Lifelines: 0.5838150289017341
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091911
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.181686
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.103367
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.107220
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.138232
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.121032
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.374879
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+shape xtorch.Size([32, 2])
+tensor(3.2251, device='cuda:0')
+tensor(-0.8272, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.4839, device='cuda:0')
+tensor(-0.3938, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.6967, device='cuda:0')
+tensor(-0.5522, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.2401, device='cuda:0')
+tensor(-0.4701, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 80, 1s = 27
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.5982658863067627
+Cindex Lifelines: 0.5908340214698596
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.318780
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.107054
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.120283
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.095869
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.124232
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.115090
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082162
+shape xtorch.Size([32, 2])
+tensor(3.7658, device='cuda:0')
+tensor(-0.8251, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.6930, device='cuda:0')
+tensor(-0.4470, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.0395, device='cuda:0')
+tensor(-0.4388, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.4662, device='cuda:0')
+tensor(-0.3786, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 88, 1s = 19
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6069363951683044
+Cindex Lifelines: 0.606523534269199
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.093859
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.080913
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.121021
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105233
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.128995
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.078927
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.142924
+shape xtorch.Size([32, 2])
+tensor(4.2233, device='cuda:0')
+tensor(-0.9676, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.8414, device='cuda:0')
+tensor(-0.5558, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.3125, device='cuda:0')
+tensor(-0.4414, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.6022, device='cuda:0')
+tensor(-0.3878, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 90, 1s = 17
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6073492765426636
+Cindex Lifelines: 0.6094137076796037
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.167949
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.295490
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.248212
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.880848
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.113844
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.189074
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.072208
+shape xtorch.Size([32, 2])
+tensor(4.4564, device='cuda:0')
+tensor(-1.0520, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.9566, device='cuda:0')
+tensor(-0.6325, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.5074, device='cuda:0')
+tensor(-0.4027, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.6117, device='cuda:0')
+tensor(-0.3354, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 91, 1s = 16
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6102394461631775
+Cindex Lifelines: 0.6056977704376548
+Saved test predictions and probabilities to validation_results_fold_final.csv
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.413304
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082111
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104489
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104346
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091647
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 3.369316
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101557
+shape xtorch.Size([32, 2])
+tensor(4.5197, device='cuda:0')
+tensor(-1.1653, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.7106, device='cuda:0')
+tensor(-0.5557, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.4901, device='cuda:0')
+tensor(-0.5093, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.4030, device='cuda:0')
+tensor(-0.4468, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 84, 1s = 23
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6271676421165466
+Cindex Lifelines: 0.6143682906688687
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.127599
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.118245
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.170018
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104487
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.115330
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 5.941263
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.121852
+shape xtorch.Size([32, 2])
+tensor(4.4900, device='cuda:0')
+tensor(-1.2026, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.3308, device='cuda:0')
+tensor(-0.6210, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.4083, device='cuda:0')
+tensor(-0.6737, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.1467, device='cuda:0')
+tensor(-0.7318, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6321222186088562
+Cindex Lifelines: 0.6118909991742362
+Saved test predictions and probabilities to validation_results_fold_final.csv
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestmulti_tab_full_information-epoch=06-val_loss=0.53.ckpt
+Epoch 21/99 ━━━━━━━━━━━━━━━━━━ 7/7 0:00:44 • 0:00:00 0.17it/s v_num: a3g3
+                                                              train_loss_step:
+                                                              -0.100 val_loss:
+                                                              1.449
+                                                              train_loss_epoch:
+                                                              0.289
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00/bestmulti_tab_full_information-epoch=06-val_loss=0.53.ckpt
+Saved test predictions and probabilities to test_results_fold_final.xlsx
+shape PREDS: torch.Size([80, 2])
+shape time: torch.Size([80])
+shape log_hz: torch.Size([80, 80])
+shape log_hz_t: torch.Size([80])
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 68, 1s = 12
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(80,), log_hz=(80,), events=(80,)
+Cindex TorchSurv: 0.6952236294746399
+Cindex Lifelines: 0.7035633055344959
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.7453703284263611     │
+│     test_balanced_acc     │    0.5666666626930237     │
+│        test_cindex        │    0.6952236294746399     │
+│       test_f1_score       │          0.3125           │
+│         test_ibs          │    0.12337453663349152    │
+│      test_precision       │    0.5980392098426819     │
+│        test_recall        │    0.5666666626930237     │
+└───────────────────────────┴───────────────────────────┘
+Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3/3 0:00:03 • 0:00:00 0.85it/s

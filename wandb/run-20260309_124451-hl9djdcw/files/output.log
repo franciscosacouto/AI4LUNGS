@@ -1,0 +1,880 @@
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+┏━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name           ┃ Type             ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head  │ Sequential       │  416 K │ train │     0 │
+│ 1 │ vision_encoder │ DaViT            │  360 M │ train │     0 │
+│ 2 │ text_encoder   │ Transformer      │  252 M │ eval  │     0 │
+│ 3 │ f1score        │ BinaryF1Score    │      0 │ train │     0 │
+│ 4 │ stats_metric   │ BinaryStatScores │      0 │ train │     0 │
+└───┴────────────────┴──────────────────┴────────┴───────┴───────┘
+Trainable params: 613 M
+Non-trainable params: 0
+Total params: 613 M
+Total estimated model params size (MB): 2.5 K
+Modules in train mode: 537
+Modules in eval mode: 164
+Total FLOPs: 0
+shape xtorch.Size([32, 2])
+tensor(0.1243, device='cuda:0')
+tensor(-0.1313, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.1270, device='cuda:0')
+tensor(-0.1163, device='cuda:0')
+shape PREDS: torch.Size([64, 2])
+shape time: torch.Size([64])
+shape log_hz: torch.Size([64, 64])
+shape log_hz_t: torch.Size([64])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 0, 1s = 64
+Actual label distribution:    0s = 48, 1s = 16
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+⚠️ Model is predicting only class 1 (minority class). It is ignoring the majority class!
+DEBUG SHAPES: time=(64,), log_hz=(64,), events=(64,)
+Cindex TorchSurv: 0.4931662976741791
+Cindex Lifelines: 0.5341685649202733
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:317: The number of training batches (7) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py:534: Found 164 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Associate degree or some college. Male. Patient measures 68 inches. White. Patient weights 115 pounds. Patient has a history of 88 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has heart disease. brother have lung cancer. Patient has a BMI of 17.48. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+🔥 Successfully training: convs.0.proj.weight
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.047458
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, High school graduate/GED. Male. Patient measures 70 inches. White. Patient weights 154 pounds. Patient has a history of 36.8 pack years,  smokes 16 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in flour environment. Patient worked in steel milling environment. Patient worked in welding environment. Patient has a BMI of 22.09. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.039078
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, High school graduate/GED. Female. Patient measures 62 inches. White. Patient weights 205 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 25 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right lower lobe. Patient has diabetes. Patient has heart disease. Patient has Hypertension. Patient has a BMI of 37.49. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. MissingMain tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.035239
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, 8th grade or less. Male. Patient measures 64 inches. White. Patient weights 153 pounds. Patient has a history of 40 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 29 mm. Patient smokes ciggaretes. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. father have lung cancer. Patient has a BMI of 26.26. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.034641
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Associate degree or some college. Male. Patient measures 68 inches. White. Patient weights 115 pounds. Patient has a history of 88 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has heart disease. brother have lung cancer. Patient has a BMI of 17.48. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.031742
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Associate degree or some college. Male. Patient measures 67 inches. White. Patient weights 152 pounds. Patient has a history of 84 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of  mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has the main cancer located in the right main stem bronchus. Patient has the main cancer located in the right upper lobe. father and sister have lung cancer. Patient has a BMI of 23.8. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lung. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.033067
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Associate degree or some college. Male. Patient measures 72 inches. White. Patient weights 225 pounds. Patient has a history of 39 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 39 years. Patient has a lesion size of 34 mm. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has emphysema. Patient has a BMI of 30.51. Lung cancer grade of 0.75. Occult Carcinoma. Has 1 confirmed cancers. Invasive. zero metastasisMissingmedium tumor was found. VALGCSG stage of 0.0. Large Cell Carcinom type of cancer. Large Cell Carcinoma type of morphology. Location: Upper lobe. '
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.051297
+shape xtorch.Size([32, 2])
+tensor(0.2610, device='cuda:0')
+tensor(-0.1630, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.2180, device='cuda:0')
+tensor(-0.1355, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.2269, device='cuda:0')
+tensor(-0.1617, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.1356, device='cuda:0')
+tensor(-0.0931, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 3, 1s = 104
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6885644793510437
+Cindex Lifelines: 0.6492295214922952
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Graduate School. Female. Patient measures 58 inches. White. Patient weights 110 pounds. Patient has a history of 67.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has pneumonia. Patient has a BMI of 22.99. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisMissingMain tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046502
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 178 pounds. Patient has a history of 90 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 60 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in painting environment. mother have lung cancer. Patient has a BMI of 24.82. Lung cancer grade of 1.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.5. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069453
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 178 pounds. Patient has a history of 49.5 pack years,  smokes 22 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has heart disease. Patient has pneumonia. Patient has a BMI of 24.82. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.033966
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 240 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of  mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has diabetes. Patient has a BMI of 33.47. Lung cancer grade of 1.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisMissingMain tumor cannot be measuredVALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076860
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Post high school training (non-college). Female. Patient measures 62 inches. White. Patient weights 147 pounds. Patient has a history of 47 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 12 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has diabetes. Patient has heart disease. Patient has pneumonia. Patient diagnosed with cervical cancer. Patient has a BMI of 26.88. Lung cancer grade of 0.0. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.043264
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, 8th grade or less. Male. Patient measures 70 inches. White. Patient weights 193 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in painting environment. Patient worked in welding environment. Patient has Hypertension. Patient has a BMI of 27.69. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.040614
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Bachelors Degree. Female. Patient measures 68 inches. White. Patient weights 150 pounds. Patient has a history of 61.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 41 years. Patient has a lesion size of 7 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has a BMI of 22.8. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Upper lobe. '
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.054823
+shape xtorch.Size([32, 2])
+tensor(0.4997, device='cuda:0')
+tensor(-0.1947, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.4528, device='cuda:0')
+tensor(-0.1957, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.4235, device='cuda:0')
+tensor(-0.1578, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.2523, device='cuda:0')
+tensor(-0.1308, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 34, 1s = 73
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7335766553878784
+Cindex Lifelines: 0.7145174371451744
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, High school graduate/GED. Male. Patient measures 67 inches. White. Patient weights 160 pounds. Patient has a history of 44.2 pack years,  smokes 17 cigarettes a day. Patient smoked for a total of 52 years. Patient has a lesion size of 65 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient has diabetes. brother have lung cancer. Patient has a BMI of 25.06. Lung cancer grade of 0.75. Stage IIB. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium-large tumor was found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Overlapping lesion of lung. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.060525
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, 8th grade or less. Male. Patient measures 71 inches. White. Patient weights 210 pounds. Patient has a history of 147 pack years,  smokes 60 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 48 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in asbestos environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient worked in welding environment. Patient has diabetes. Patient has Stroke history. Patient has a BMI of 29.29. Lung cancer grade of 0.0. Stage IB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046384
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Associate degree or some college. Male. Patient measures 72 inches. White. Patient weights 193 pounds. Patient has a history of 42.5 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 34 years. Patient has a lesion size of 15 mm. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in fire fighting environment. Patient has adult asthma. Patient has emphysema. Patient has Hypertension. Patient has a BMI of 26.17. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.041445
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, High school graduate/GED. Female. Patient measures 63 inches. White. Patient weights 152 pounds. Patient has a history of 50 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 26.92. Lung cancer grade of 1.0. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. MissingMain tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.099622
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Female. Patient measures 65 inches. White. Patient weights 243 pounds. Patient has a history of 61.25 pack years,  smokes 35 cigarettes a day. Patient smoked for a total of 35 years. Patient has a lesion size of 18 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 40.43. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.064343
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Post high school training (non-college). Female. Patient measures 63 inches. White. Patient weights 133 pounds. Patient has a history of 45 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 17 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in baking environment. father have lung cancer. Patient has a BMI of 23.56. Lung cancer grade of 0.75. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.061044
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Post high school training (non-college). Male. Patient measures 74 inches. White. Patient weights 240 pounds. Patient has a history of 84 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 18 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in hard rock mining environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient worked in welding environment. Patient has Hypertension. Patient has Stroke history. Patient has a BMI of 30.81. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.105447
+shape xtorch.Size([32, 2])
+tensor(0.9380, device='cuda:0')
+tensor(-0.2600, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8569, device='cuda:0')
+tensor(-0.3055, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(0.8545, device='cuda:0')
+tensor(-0.2073, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(0.7685, device='cuda:0')
+tensor(-0.2452, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 61, 1s = 46
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7193835973739624
+Cindex Lifelines: 0.7177615571776156
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Female. Patient measures 69 inches. White. Patient weights 159 pounds. Patient has a history of 76 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 38 years. Patient has a lesion size of 25 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has COPD. brother and mother have lung cancer. Patient has a BMI of 23.48. Lung cancer grade of 0.5. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. Cancer in nearby limph nodes cannot be measured. Tumor has tissueVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.044554
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, High school graduate/GED. Male. Patient measures 72 inches. White. Patient weights 190 pounds. Patient has a history of 90 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 16 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. child have lung cancer. Patient has a BMI of 25.77. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Cancer in nearby limph nodes cannot be measured. Main tumor cannot be found. VALGCSG stage of 0.0. Acinar cell carcinoma type of cancer. Acinar cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.098469
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, High school graduate/GED. Female. Patient measures 64 inches. White. Patient weights 140 pounds. Patient has a history of 57 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 57 years. Patient has a lesion size of 35 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has chronic bronchitis. Patient has diabetes. brother and father have lung cancer. Patient has a BMI of 24.03. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.041055
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, High school graduate/GED. Male. Patient measures 67 inches. White. Patient weights 167 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of  mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has the main cancer located in the left upper lobe. Patient worked in chemical environment. Patient worked in farm environment. Patient worked in fire fighting environment. Patient has diabetes. Patient has Hypertension. brother and sister have lung cancer. Patient has a BMI of 26.15. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. Cancer as not spread to other parts of the body. Cancer in nearby limph nodes cannot be measured. Missing tumorVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.051820
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Bachelors Degree. Male. Patient measures 72 inches. White. Patient weights 168 pounds. Patient has a history of 96 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 18 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has adult asthma. Patient has chronic bronchitis. Patient has COPD. Patient has emphysema. Patient has a BMI of 22.78. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056041
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, 9th-11th grade. Male. Patient measures 72 inches. White. Patient weights 195 pounds. Patient has a history of 34 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 34 years. Patient has a lesion size of 13 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 26.44. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.112754
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Post high school training (non-college). Male. Patient measures 73 inches. White. Patient weights 220 pounds. Patient has a history of 107.5 pack years,  smokes 50 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 45 mm. Patient smokes cigar. Patient smokes pipe. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in chemical environment. Patient worked in farm environment. Patient worked in painting environment. mother have lung cancer. Patient has a BMI of 29.02. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. Cancer has spread to other parts of the body. Lymph nodes contain cancer. medium tumor was found. VALGCSG stage of 0.0. Adenosquamous carcinoma type of cancer. Adenosquamous carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.052647
+shape xtorch.Size([32, 2])
+tensor(1.4977, device='cuda:0')
+tensor(-0.3863, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.4550, device='cuda:0')
+tensor(-0.4275, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.2948, device='cuda:0')
+tensor(-0.3169, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.2524, device='cuda:0')
+tensor(-0.3254, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 69, 1s = 38
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7230332493782043
+Cindex Lifelines: 0.7193836171938361
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, High school graduate/GED. Male. Patient measures 70 inches. White. Patient weights 154 pounds. Patient has a history of 36.8 pack years,  smokes 16 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in flour environment. Patient worked in steel milling environment. Patient worked in welding environment. Patient has a BMI of 22.09. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.102198
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Associate degree or some college. Female. Patient measures 66 inches. White. Patient weights 160 pounds. Patient has a history of 30 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 30 years. Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 25.82. Lung cancer grade of 0.5. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094841
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 190 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has a BMI of 28.06. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094788
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 178 pounds. Patient has a history of 90 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 60 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in painting environment. mother have lung cancer. Patient has a BMI of 24.82. Lung cancer grade of 1.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.5. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.132319
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, 9th-11th grade. Female. Patient measures 63 inches. White. Patient weights 140 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of  mm. Patient lives with a smoker. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient diagnosed with breast cancer. Patient has a BMI of 24.8. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.552138
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 198 pounds. Patient has a history of 46 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 17 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has a BMI of 28.41. Lung cancer grade of 0.25. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.083614
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Associate degree or some college. Female. Patient measures 66 inches. White. Patient weights 181 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right upper lobe. Patient has Stroke history. father have lung cancer. Patient has a BMI of 29.21. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.075111
+shape xtorch.Size([32, 2])
+tensor(1.8567, device='cuda:0')
+tensor(-0.5222, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.6211, device='cuda:0')
+tensor(-0.5069, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.5834, device='cuda:0')
+tensor(-0.4144, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.6206, device='cuda:0')
+tensor(-0.4412, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 61, 1s = 46
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7299270033836365
+Cindex Lifelines: 0.7250608272506083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Post high school training (non-college). Male. Patient measures 67 inches. White. Patient weights 145 pounds. Patient has a history of 55 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 74 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in painting environment. Patient has emphysema. Patient has a BMI of 22.71. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.166472
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, 8th grade or less. Male. Patient measures 70 inches. White. Patient weights 193 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in painting environment. Patient worked in welding environment. Patient has Hypertension. Patient has a BMI of 27.69. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.043650
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 178 pounds. Patient has a history of 102 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 19 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient has the main cancer located in the left lower lobe. Patient has Hypertension. Patient diagnosed with bladder cancer. sister have lung cancer. Patient has a BMI of 26.28. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.5. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.101342
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 240 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of  mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has diabetes. Patient has a BMI of 33.47. Lung cancer grade of 1.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisMissingMain tumor cannot be measuredVALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081001
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 72 years old, Associate degree or some college. Female. Patient measures 62 inches. White. Patient weights 120 pounds. Patient has a history of 81 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 54 years. Patient has a lesion size of 22 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has COPD. Patient has Hypertension. brother have lung cancer. Patient has a BMI of 21.95. Lung cancer grade of 0.5. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.151956
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 240 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of  mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has diabetes. Patient has a BMI of 33.47. Lung cancer grade of 1.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisMissingMain tumor cannot be measuredVALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.110398
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Bachelors Degree. Male. Patient measures 72 inches. White. Patient weights 199 pounds. Patient has a history of 57 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 57 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient has emphysema. Patient has heart disease. Patient has Hypertension. mother have lung cancer. Patient has a BMI of 26.99. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.073759
+shape xtorch.Size([32, 2])
+tensor(2.1910, device='cuda:0')
+tensor(-0.4453, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9114, device='cuda:0')
+tensor(-0.4869, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.8137, device='cuda:0')
+tensor(-0.3571, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.0426, device='cuda:0')
+tensor(-0.4190, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 51, 1s = 56
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.698702335357666
+Cindex Lifelines: 0.6804541768045418
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, 8th grade or less. Female. Patient measures 60 inches. White. Patient weights 101 pounds. Patient has a history of 55 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 55 years. Patient has a lesion size of 25 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has adult asthma. Patient has chronic bronchitis. Patient has emphysema. Patient has heart disease. Patient has pneumonia. Patient has a BMI of 19.72. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056221
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, Graduate School. Male. Patient measures 73 inches. White. Patient weights 205 pounds. Patient has a history of 90 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 52 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right lower lobe. Patient has chronic bronchitis. Patient has COPD. Patient has heart disease. Patient has pneumonia. Patient has a BMI of 27.04. Lung cancer grade of 0.5. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium-large tumor was found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062471
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, High school graduate/GED. Male. Patient measures 75 inches. White. Patient weights 200 pounds. Patient has a history of 84 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 56 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 25.0. Lung cancer grade of 0.75. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.053871
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Associate degree or some college. Male. Patient measures 72 inches. White. Patient weights 193 pounds. Patient has a history of 42.5 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 34 years. Patient has a lesion size of 15 mm. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in fire fighting environment. Patient has adult asthma. Patient has emphysema. Patient has Hypertension. Patient has a BMI of 26.17. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.113206
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Bachelors Degree. Male. Patient measures 66 inches. White. Patient weights 143 pounds. Patient has a history of 47 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 90 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has heart disease. Patient has Hypertension. brother have lung cancer. Patient has a BMI of 23.08. Lung cancer grade of 0.5. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.161191
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Bachelors Degree. Female. Patient measures 62 inches. White. Patient weights 108 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 24 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. sister have lung cancer. Patient has a BMI of 19.75. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.087793
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, Post high school training (non-college). Male. Patient measures 66 inches. White. Patient weights 165 pounds. Patient has a history of 70 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 35 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in asbestos environment. Patient has emphysema. Patient has pneumonia. Patient has a BMI of 26.63. Lung cancer grade of 0.75. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.043555
+shape xtorch.Size([32, 2])
+tensor(2.5650, device='cuda:0')
+tensor(-0.5043, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.4480, device='cuda:0')
+tensor(-0.3910, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.5271, device='cuda:0')
+tensor(-0.3681, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.4851, device='cuda:0')
+tensor(-0.5383, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 71, 1s = 36
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7141119241714478
+Cindex Lifelines: 0.7043795620437956
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, High school graduate/GED. Male. Patient measures 72 inches. White. Patient weights 190 pounds. Patient has a history of 90 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 16 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. child have lung cancer. Patient has a BMI of 25.77. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Cancer in nearby limph nodes cannot be measured. Main tumor cannot be found. VALGCSG stage of 0.0. Acinar cell carcinoma type of cancer. Acinar cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046882
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Bachelors Degree. Female. Patient measures 62 inches. White. Patient weights 125 pounds. Patient has a history of 46 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 14 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has chronic bronchitis. Patient has pneumonia. Patient diagnosed with cervical cancer. Patient diagnosed with oral cancer. brother have lung cancer. Patient has a BMI of 22.86. Lung cancer grade of 0.5. Stage IIIA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. big tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.248213
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 178 pounds. Patient has a history of 56 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 56 years. Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. Patient has pneumonia. father have lung cancer. Patient has a BMI of 25.54. Lung cancer grade of 0.5. Stage IIB. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.048695
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, 9th-11th grade. Female. Patient measures 63 inches. White. Patient weights 140 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of  mm. Patient lives with a smoker. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient diagnosed with breast cancer. Patient has a BMI of 24.8. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082144
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Post high school training (non-college). Female. Patient measures 63 inches. White. Patient weights 154 pounds. Patient has a history of 74 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 37 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has COPD. Patient has emphysema. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 27.28. Lung cancer grade of 0.5. Occult Carcinoma. Has 1 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.094549
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Post high school training (non-college). Male. Patient measures 76 inches. White. Patient weights 285 pounds. Patient has a history of 42 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has Hypertension. father have lung cancer. Patient has a BMI of 34.69. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Papillary adenoma type of cancer. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.161565
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Associate degree or some college. Male. Patient measures 67 inches. White. Patient weights 180 pounds. Patient has a history of 46 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 9 mm. Patient smokes ciggaretes. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has a BMI of 28.19. Lung cancer grade of 0.5. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.376101
+shape xtorch.Size([32, 2])
+tensor(2.7006, device='cuda:0')
+tensor(-0.5949, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.7596, device='cuda:0')
+tensor(-0.4540, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.7797, device='cuda:0')
+tensor(-0.4687, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.6550, device='cuda:0')
+tensor(-0.6177, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 75, 1s = 32
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7327656149864197
+Cindex Lifelines: 0.7250608272506083
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Graduate School. Female. Patient measures 61 inches. White. Patient weights 135 pounds. Patient has a history of 60 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 30 years. Patient has a lesion size of 19 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has heart disease. Patient has a BMI of 25.51. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.135261
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Bachelors Degree. Male. Patient measures 68 inches. White. Patient weights 174 pounds. Patient has a history of 107.5 pack years,  smokes 50 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 6 mm. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient has a BMI of 26.45. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.204193
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Post high school training (non-college). Male. Patient measures 67 inches. White. Patient weights 145 pounds. Patient has a history of 55 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 74 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in painting environment. Patient has emphysema. Patient has a BMI of 22.71. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.200164
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Associate degree or some college. Female. Patient measures 66 inches. White. Patient weights 181 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right upper lobe. Patient has Stroke history. father have lung cancer. Patient has a BMI of 29.21. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.096614
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Male. Patient measures 73 inches. White. Patient weights 210 pounds. Patient has a history of 96 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 24 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has a BMI of 27.7. Lung cancer grade of 0.75. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046224
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, High school graduate/GED. Male. Patient measures 67 inches. White. Patient weights 155 pounds. Patient has a history of 69 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 40 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in asbestos environment. Patient worked in chemical environment. Patient worked in farm environment. Patient worked in hard rock mining environment. Patient has adult asthma. Patient has bronchiectasis. Patient has chronic bronchitis. Patient has emphysema. Patient has pneumonia. Patient has tuberculosis. Patient has a BMI of 24.27. Lung cancer grade of 0.5. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.179657
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, 8th grade or less. Male. Patient measures 64 inches. White. Patient weights 153 pounds. Patient has a history of 40 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 29 mm. Patient smokes ciggaretes. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. father have lung cancer. Patient has a BMI of 26.26. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074940
+shape xtorch.Size([32, 2])
+tensor(3.2637, device='cuda:0')
+tensor(-0.6590, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.6945, device='cuda:0')
+tensor(-0.8300, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.4005, device='cuda:0')
+tensor(-0.5385, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.5818, device='cuda:0')
+tensor(-0.7063, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 56, 1s = 51
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.772100567817688
+Cindex Lifelines: 0.764801297648013
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, 9th-11th grade. Female. Patient measures 65 inches. White. Patient weights 160 pounds. Patient has a history of 66 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 33 years. Patient has a lesion size of 22 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in flour environment. Patient has pneumonia. brother have lung cancer. Patient has a BMI of 26.62. Lung cancer grade of 0.5. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.221715
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, High school graduate/GED. Female. Patient measures 67 inches. White. Patient weights 145 pounds. Patient has a history of 78 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 52 years. Patient has a lesion size of 50 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient has Stroke history. Patient has a BMI of 22.71. Lung cancer grade of 0.75. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.131781
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, High school graduate/GED. Female. Patient measures 64 inches. White. Patient weights 140 pounds. Patient has a history of 57 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 57 years. Patient has a lesion size of 35 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has chronic bronchitis. Patient has diabetes. brother and father have lung cancer. Patient has a BMI of 24.03. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086118
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, 8th grade or less. Female. Patient measures 59 inches. White. Patient weights 122 pounds. Patient has a history of 46 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 24 mm. Patient smokes cigar. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient diagnosed with oral cancer. Patient has a BMI of 24.64. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.150671
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Post high school training (non-college). Male. Patient measures 67 inches. White. Patient weights 145 pounds. Patient has a history of 55 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 74 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in painting environment. Patient has emphysema. Patient has a BMI of 22.71. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.041793
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 225 pounds. Patient has a history of 70 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 35 years. Patient has a lesion size of 13 mm. Patient smokes cigar. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has adult asthma. Patient has childhood asthma. brother have lung cancer. Patient has a BMI of 31.38. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.190146
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 205 pounds. Patient has a history of 50 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 25 years. Patient has a lesion size of 38 mm. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in baking environment. Patient worked in farm environment. Patient worked in welding environment. Patient has a BMI of 29.41. Lung cancer grade of 0.5. Stage IV. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086182
+shape xtorch.Size([32, 2])
+tensor(4.2760, device='cuda:0')
+tensor(-0.7360, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.6694, device='cuda:0')
+tensor(-0.8037, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(4.4207, device='cuda:0')
+tensor(-0.6104, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(3.6069, device='cuda:0')
+tensor(-0.7850, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 64, 1s = 43
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7639902830123901
+Cindex Lifelines: 0.7631792376317924
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, High school graduate/GED. Female. Patient measures 63 inches. White. Patient weights 138 pounds. Patient has a history of 54 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 54 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has a BMI of 24.44. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.089962
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Post high school training (non-college). Male. Patient measures 76 inches. White. Patient weights 285 pounds. Patient has a history of 42 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has Hypertension. father have lung cancer. Patient has a BMI of 34.69. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Papillary adenoma type of cancer. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.104272
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Associate degree or some college. Male. Patient measures 73 inches. White. Patient weights 203 pounds. Patient has a history of 40 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 20 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. father have lung cancer. Patient has a BMI of 26.78. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.076523
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, High school graduate/GED. Female. Patient measures 65 inches. White. Patient weights 138 pounds. Patient has a history of 98 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 10 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has chronic bronchitis. Patient has COPD. Patient has emphysema. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. father have lung cancer. Patient has a BMI of 22.96. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.069912
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, 9th-11th grade. Male. Patient measures 72 inches. White. Patient weights 195 pounds. Patient has a history of 34 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 34 years. Patient has a lesion size of 13 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 26.44. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.048860
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, High school graduate/GED. Female. Patient measures 62 inches. African-American. Patient weights 205 pounds. Patient has a history of 39 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 39 years. Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in chemical environment. Patient has Hypertension. brother have lung cancer. Patient has a BMI of 37.49. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.041694
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, 8th grade or less. Female. Patient measures 60 inches. White. Patient weights 101 pounds. Patient has a history of 55 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 55 years. Patient has a lesion size of 25 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has adult asthma. Patient has chronic bronchitis. Patient has emphysema. Patient has heart disease. Patient has pneumonia. Patient has a BMI of 19.72. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046676
+shape xtorch.Size([32, 2])
+tensor(5.2730, device='cuda:0')
+tensor(-0.5031, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.1805, device='cuda:0')
+tensor(-0.7400, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.3208, device='cuda:0')
+tensor(-0.4676, device='cuda:0')
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+shape xtorch.Size([11, 2])
+tensor(4.4988, device='cuda:0')
+tensor(-0.7612, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 73, 1s = 34
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7502027750015259
+Cindex Lifelines: 0.7522303325223033
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 72 years old, Associate degree or some college. Female. Patient measures 60 inches. White. Patient weights 180 pounds. Patient has a history of 110 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 55 years. Patient has a lesion size of 22 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has a BMI of 35.15. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. MissingMain tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.049455
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, 9th-11th grade. Male. Patient measures 72 inches. White. Patient weights 180 pounds. Patient has a history of 150 pack years,  smokes 60 cigarettes a day. Patient smoked for a total of 50 years. Patient has a lesion size of 15 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in asbestos environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has Hypertension. Patient has a BMI of 24.41. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.291485
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Associate degree or some college. Male. Patient measures 74 inches. White. Patient weights 225 pounds. Patient has a history of 157.5 pack years,  smokes 70 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 30 mm. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has diabetes. Patient has emphysema. Patient has heart disease. Patient diagnosed with lung cancer. father have lung cancer. Patient has a BMI of 28.89. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. MissingTumor has tissueVALGCSG stage of 0.0. Adenosquamous carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.046235
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 69 inches. White. Patient weights 201 pounds. Patient has a history of 112.5 pack years,  smokes 50 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 29.68. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.509282
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 170 pounds. Patient has a history of 49 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 30 mm. Patient smokes pipe. Patient has the main cancer located in the right lower lobe. Patient has COPD. Patient has Hypertension. Patient has a BMI of 24.39. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.038837
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Post high school training (non-college). Male. Patient measures 68 inches. White. Patient weights 145 pounds. Patient has a history of 63.75 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 4 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has chronic bronchitis. Patient has emphysema. Patient has a BMI of 22.04. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.684762
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Graduate School. Female. Patient measures 65 inches. White. Patient weights 286 pounds. Patient has a history of 48 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has diabetes. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 47.59. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Upper lobe. '
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.042767
+shape xtorch.Size([32, 2])
+tensor(5.5262, device='cuda:0')
+tensor(-0.5491, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.6500, device='cuda:0')
+tensor(-0.7467, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(6.3330, device='cuda:0')
+tensor(-0.4575, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(4.4409, device='cuda:0')
+tensor(-0.7103, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 81, 1s = 26
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7400648593902588
+Cindex Lifelines: 0.7412814274128142
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Graduate School. Female. Patient measures 65 inches. White. Patient weights 286 pounds. Patient has a history of 48 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has diabetes. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 47.59. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.032997
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, High school graduate/GED. Female. Patient measures 65 inches. White. Patient weights 138 pounds. Patient has a history of 98 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 10 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has chronic bronchitis. Patient has COPD. Patient has emphysema. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. father have lung cancer. Patient has a BMI of 22.96. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.081230
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 150 pounds. Patient has a history of 82 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 41 years. Patient has a lesion size of 49 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in flour environment. Patient has Hypertension. Patient has pneumonia. father have lung cancer. Patient has a BMI of 21.52. Lung cancer grade of 0.75. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. medium tumor was found. VALGCSG stage of 0.0. Large cell neuroendocrine carcinoma type of cancer. Large cell neuroendocrine carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.178916
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, High school graduate/GED. Male. Patient measures 75 inches. White. Patient weights 200 pounds. Patient has a history of 84 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 56 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 25.0. Lung cancer grade of 0.75. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.053459
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 61 years old, Post high school training (non-college). Female. Patient measures 63 inches. White. Patient weights 154 pounds. Patient has a history of 74 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 37 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has COPD. Patient has emphysema. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 27.28. Lung cancer grade of 0.5. Occult Carcinoma. Has 1 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.079805
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 56 years old, Associate degree or some college. Female. Patient measures 63 inches. White. Patient weights 168 pounds. Patient has a history of 132 pack years,  smokes 60 cigarettes a day. Patient smoked for a total of 44 years. Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. Patient diagnosed with breast cancer. Patient diagnosed with cervical cancer. Patient has a BMI of 29.76. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.186512
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, High school graduate/GED. Male. Patient measures 75 inches. White. Patient weights 200 pounds. Patient has a history of 84 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 56 years. Patient has a lesion size of 12 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 25.0. Lung cancer grade of 0.75. Stage IIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.187016
+shape xtorch.Size([32, 2])
+tensor(5.8129, device='cuda:0')
+tensor(-0.5102, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(6.3089, device='cuda:0')
+tensor(-0.6961, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(7.0616, device='cuda:0')
+tensor(-0.3585, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(4.6163, device='cuda:0')
+tensor(-0.4880, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 82, 1s = 25
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7485806941986084
+Cindex Lifelines: 0.7506082725060828
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Associate degree or some college. Female. Patient measures 62 inches. White. Patient weights 188 pounds. Patient has a history of 75 pack years,  smokes 50 cigarettes a day. Patient smoked for a total of 30 years. Patient has a lesion size of 28 mm. Patient lives with a smoker. Patient has the main cancer located in the right lower lobe. Patient has COPD. Patient has diabetes. Patient has emphysema. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 34.38. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. MissingMain tumor cannot be found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.086748
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 190 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has a BMI of 28.06. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.060067
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Associate degree or some college. Female. Patient measures 64 inches. White. Patient weights 158 pounds. Patient has a history of 60 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 7 mm. Patient smokes cigar. Patient lives with a smoker. Patient has the main cancer located in the right upper lobe. Patient has chronic bronchitis. Patient has a BMI of 27.12. Lung cancer grade of 0.25. Occult Carcinoma. Has 1 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Acinar cell carcinoma type of cancer. Acinar cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.454392
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, 9th-11th grade. Female. Patient measures 63 inches. White. Patient weights 140 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of  mm. Patient lives with a smoker. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient diagnosed with breast cancer. Patient has a BMI of 24.8. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.042476
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 190 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has a BMI of 28.06. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.248175
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Post high school training (non-college). Female. Patient measures 65 inches. White. Patient weights 250 pounds. Patient has a history of 45 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 30 years. Patient has a lesion size of 15 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in chemical environment. Patient has Hypertension. Patient has a BMI of 41.6. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Bronchiolo-alveolar carcinoma type of cancer. Bronchiolo-alveolar carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.084995
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Associate degree or some college. Female. Patient measures 60 inches. White. Patient weights 196 pounds. Patient has a history of 47 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 21 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has diabetes. Patient has Hypertension. Patient has a BMI of 38.27. Lung cancer grade of 0.5. Stage IIIA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. big tumor was found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 1.122793
+shape xtorch.Size([32, 2])
+tensor(5.6778, device='cuda:0')
+tensor(-0.4602, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(6.5768, device='cuda:0')
+tensor(-0.5114, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(7.2063, device='cuda:0')
+tensor(-0.4935, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(5.4296, device='cuda:0')
+tensor(-0.4759, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 86, 1s = 21
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.7303324937820435
+Cindex Lifelines: 0.7347931873479319
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, 9th-11th grade. Male. Patient measures 68 inches. Asian. Patient weights 130 pounds. Patient has a history of 53 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 53 years. Patient has a lesion size of 23 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has tuberculosis. Patient has a BMI of 19.76. Lung cancer grade of 0.0. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma, keratinizing type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.266010
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 72 years old, Associate degree or some college. Female. Patient measures 62 inches. White. Patient weights 120 pounds. Patient has a history of 81 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 54 years. Patient has a lesion size of 22 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has COPD. Patient has Hypertension. brother have lung cancer. Patient has a BMI of 21.95. Lung cancer grade of 0.5. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.048584
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Post high school training (non-college). Female. Patient measures 66 inches. White. Patient weights 130 pounds. Patient has a history of 36.75 pack years,  smokes 15 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 30 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has pneumonia. brother have lung cancer. Patient has a BMI of 20.98. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. Cancer as not spread to other parts of the body. Cancer in nearby limph nodes cannot be measured. Missing tumorVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.120550
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Associate degree or some college. Male. Patient measures 71 inches. White. Patient weights 190 pounds. Patient has a history of 61.25 pack years,  smokes 25 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 25 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in painting environment. Patient has adult asthma. Patient diagnosed with bladder cancer. Patient has a BMI of 26.5. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.112933
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, Associate degree or some college. Female. Patient measures 67 inches. White. Patient weights 127 pounds. Patient has a history of 39.75 pack years,  smokes 15 cigarettes a day. Patient smoked for a total of 53 years. Patient has a lesion size of 43 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the Mediastinum. Patient has the main cancer located in the right upper lobe. Patient has a BMI of 19.89. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Missing tumorVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.058866
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Bachelors Degree. Female. Patient measures 68 inches. White. Patient weights 165 pounds. Patient has a history of 40 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 40 years. Patient has a lesion size of 6 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the Lingula. Patient has a BMI of 25.09. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.168287
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Female. Patient measures 68 inches. White. Patient weights 216 pounds. Patient has a history of 42 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 8 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right upper lobe. sister have lung cancer. Patient has a BMI of 32.84. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. Cancer in nearby limph nodes cannot be measured. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.418331
+shape xtorch.Size([32, 2])
+tensor(5.4649, device='cuda:0')
+tensor(-0.3908, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.8938, device='cuda:0')
+tensor(-0.4214, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.7434, device='cuda:0')
+tensor(-0.5761, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(4.8661, device='cuda:0')
+tensor(-0.2700, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 92, 1s = 15
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6784266233444214
+Cindex Lifelines: 0.6763990267639902
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, 9th-11th grade. Male. Patient measures 72 inches. White. Patient weights 165 pounds. Patient has a history of 76 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 38 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has heart disease. Patient has a BMI of 22.38. Lung cancer grade of 0.0. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.062527
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Bachelors Degree. Male. Patient measures 70 inches. White. Patient weights 178 pounds. Patient has a history of 56 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 56 years. Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. Patient has pneumonia. father have lung cancer. Patient has a BMI of 25.54. Lung cancer grade of 0.5. Stage IIB. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. Lymph nodes contain cancer. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.054470
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 69 years old, Post high school training (non-college). Male. Patient measures 71 inches. White. Patient weights 155 pounds. Patient has a history of 51 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 40 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in baking environment. Patient worked in farm environment. Patient has heart disease. Patient has a BMI of 21.62. Lung cancer grade of 0.5. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.032596
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 63 years old, Bachelors Degree. Female. Patient measures 63 inches. White. Patient weights 108 pounds. Patient has a history of 43.2 pack years,  smokes 18 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 14 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has pneumonia. Patient has a BMI of 19.13. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.082339
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 66 years old, Post high school training (non-college). Male. Patient measures 76 inches. White. Patient weights 222 pounds. Patient has a history of 175 pack years,  smokes 70 cigarettes a day. Patient smoked for a total of 50 years. Patient has a lesion size of 15 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in baking environment. Patient worked in fire fighting environment. Patient has pneumonia. sister have lung cancer. Patient has a BMI of 27.02. Lung cancer grade of 0.75. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.250715
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, High school graduate/GED. Male. Patient measures 67 inches. White. Patient weights 155 pounds. Patient has a history of 69 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 40 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient worked in asbestos environment. Patient worked in chemical environment. Patient worked in farm environment. Patient worked in hard rock mining environment. Patient has adult asthma. Patient has bronchiectasis. Patient has chronic bronchitis. Patient has emphysema. Patient has pneumonia. Patient has tuberculosis. Patient has a BMI of 24.27. Lung cancer grade of 0.5. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.863322
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, High school graduate/GED. Female. Patient measures 63 inches. White. Patient weights 165 pounds. Patient has a history of 49 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 49 years. Patient has a lesion size of 13 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient has the main cancer located in the right lower lobe. Patient has Hypertension. Patient has a BMI of 29.23. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.108597
+shape xtorch.Size([32, 2])
+tensor(6.0348, device='cuda:0')
+tensor(0.2930, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(6.2982, device='cuda:0')
+tensor(-0.5035, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(5.7214, device='cuda:0')
+tensor(-0.8987, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(5.7653, device='cuda:0')
+tensor(-0.3377, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 103, 1s = 4
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6520681381225586
+Cindex Lifelines: 0.654095701540957
+Saved test predictions and probabilities to validation_results_fold_final.csv
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Post high school training (non-college). Male. Patient measures 76 inches. White. Patient weights 285 pounds. Patient has a history of 42 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has Hypertension. father have lung cancer. Patient has a BMI of 34.69. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Papillary adenoma type of cancer. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.067002
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 70 years old, Bachelors Degree. Male. Patient measures 72 inches. White. Patient weights 168 pounds. Patient has a history of 96 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 18 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has adult asthma. Patient has chronic bronchitis. Patient has COPD. Patient has emphysema. Patient has a BMI of 22.78. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.557968
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Associate degree or some college. Male. Patient measures 70 inches. White. Patient weights 141 pounds. Patient has a history of 107.5 pack years,  smokes 50 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 20 mm. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right lower lobe. Patient has COPD. Patient has heart disease. Patient has a BMI of 20.23. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.097556
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Bachelors Degree. Male. Patient measures 69 inches. White. Patient weights 180 pounds. Patient has a history of 94 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 7 mm. Patient smokes cigar. Patient smokes pipe. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has a BMI of 26.58. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.352473
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 64 years old, Graduate School. Male. Patient measures 72 inches. White. Patient weights 219 pounds. Patient has a history of 49.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 33 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes pipe. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has heart disease. Patient has a BMI of 29.7. Lung cancer grade of 0.75. Stage IV. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. nao seiMain tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.036811
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 190 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has a BMI of 28.06. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.040437
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, 8th grade or less. Male. Patient measures 70 inches. White. Patient weights 193 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 30 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient worked in painting environment. Patient worked in welding environment. Patient has Hypertension. Patient has a BMI of 27.69. Lung cancer grade of 0.0. Occult Carcinoma. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.0. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.042532
+/nas-ctm01/homes/fmferreira/.conda/envs/ai4lungs/lib/python3.11/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+shape xtorch.Size([32, 2])
+tensor(4.2826, device='cuda:0')
+tensor(-0.9783, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(4.9932, device='cuda:0')
+tensor(-1.0341, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.4153, device='cuda:0')
+tensor(-1.3393, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(3.6414, device='cuda:0')
+tensor(-0.8933, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 53, 1s = 54
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6974858045578003
+Cindex Lifelines: 0.7019464720194647
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 73 years old, Associate degree or some college. Female. Patient measures 60 inches. White. Patient weights 196 pounds. Patient has a history of 47 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 21 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has diabetes. Patient has Hypertension. Patient has a BMI of 38.27. Lung cancer grade of 0.5. Stage IIIA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. big tumor was found. VALGCSG stage of 0.0. Pulmonary adenomatosis type of cancer. Pulmonary adenomatosis type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074424
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 59 years old, High school graduate/GED. Male. Patient measures 67 inches. White. Patient weights 167 pounds. Patient has a history of 76.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of  mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has the main cancer located in the left upper lobe. Patient worked in chemical environment. Patient worked in farm environment. Patient worked in fire fighting environment. Patient has diabetes. Patient has Hypertension. brother and sister have lung cancer. Patient has a BMI of 26.15. Lung cancer grade of 0.75. Occult Carcinoma. Has 0 confirmed cancers. Invasive. Cancer as not spread to other parts of the body. Cancer in nearby limph nodes cannot be measured. Missing tumorVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.184746
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Associate degree or some college. Male. Patient measures 68 inches. White. Patient weights 189 pounds. Patient has a history of 94 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 47 years. Patient has a lesion size of 17 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. Patient has sarcoidosis. Patient has a BMI of 28.73. Lung cancer grade of 0.75. Stage IA. Has 1 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.522819
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 58 years old, Bachelors Degree. Female. Patient measures 62 inches. White. Patient weights 125 pounds. Patient has a history of 46 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 46 years. Patient has a lesion size of 14 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient has chronic bronchitis. Patient has pneumonia. Patient diagnosed with cervical cancer. Patient diagnosed with oral cancer. brother have lung cancer. Patient has a BMI of 22.86. Lung cancer grade of 0.5. Stage IIIA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. big tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.063513
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Graduate School. Male. Patient measures 72 inches. White. Patient weights 235 pounds. Patient has a history of 48 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 48 years. Patient has a lesion size of 11 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has Hypertension. Patient has a BMI of 31.87. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.056492
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 65 years old, Post high school training (non-college). Male. Patient measures 67 inches. Asian. Patient weights 162 pounds. Patient has a history of 102 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 25 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient has a BMI of 25.37. Lung cancer grade of 0.5. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Tumor has tissueVALGCSG stage of 0.0. Squamous cell carcinoma type of cancer. Squamous cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.074752
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 68 years old, High school graduate/GED. Female. Patient measures 67 inches. White. Patient weights 145 pounds. Patient has a history of 78 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 52 years. Patient has a lesion size of 50 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has Hypertension. Patient has Stroke history. Patient has a BMI of 22.71. Lung cancer grade of 0.75. Stage IB. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. medium tumor was found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.044615
+shape xtorch.Size([32, 2])
+tensor(3.4493, device='cuda:0')
+tensor(-1.3202, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(3.8006, device='cuda:0')
+tensor(-1.1375, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(1.9825, device='cuda:0')
+tensor(-1.3464, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(1.6061, device='cuda:0')
+tensor(-0.9111, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 31, 1s = 76
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6954582333564758
+Cindex Lifelines: 0.7222222222222222
+Saved test predictions and probabilities to validation_results_fold_final.csv
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 55 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 190 pounds. Patient has a history of 43 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 43 years. Patient has a lesion size of 15 mm. Patient smokes cigar. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient worked in farm environment. Patient worked in painting environment. Patient worked in sandblasting environment. Patient has a BMI of 28.06. Lung cancer grade of 0.75. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.059703
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 62 years old, 8th grade or less. Male. Patient measures 70 inches. Patient weights 170 pounds. Patient has a history of 67.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 11 mm. Patient smokes ciggaretes. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the left lower lobe. Patient worked in painting environment. Patient has diabetes. Patient has a BMI of 24.39. Lung cancer grade of 0.75. Stage IA. Has 1 confirmed cancers. Invasive. zero metastasisThere is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Non-small cell carcinoma type of cancer. Non-small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.068877
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 74 years old, Post high school training (non-college). Male. Patient measures 76 inches. White. Patient weights 285 pounds. Patient has a history of 42 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 42 years. Patient has a lesion size of 20 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has Hypertension. father have lung cancer. Patient has a BMI of 34.69. Lung cancer grade of 0.25. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Papillary adenoma type of cancer. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.035876
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 71 years old, High school graduate/GED. Male. Patient measures 69 inches. White. Patient weights 178 pounds. Patient has a history of 102 pack years,  smokes 40 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 19 mm. Patient smokes cigar. Patient smokes pipe. Patient lives with a smoker. Patient has the main cancer located in the left lower lobe. Patient has Hypertension. Patient diagnosed with bladder cancer. sister have lung cancer. Patient has a BMI of 26.28. Lung cancer grade of 0.75. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.5. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Lower lobe.'
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.091404
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 57 years old, Post high school training (non-college). Male. Patient measures 66 inches. White. Patient weights 168 pounds. Patient has a history of 35 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 35 years. Patient has a lesion size of 15 mm. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right middle lobe. Patient has bronchiectasis. Patient has heart disease. Patient has Hypertension. Patient has pneumonia. Patient has a BMI of 27.11. Lung cancer grade of 0.0. Stage IA. Has 0 confirmed cancers. Invasive. Metastasis cannot be measured. There is no cancer in nearby lymph nodes. Main tumor cannot be found. VALGCSG stage of 0.0. Location: Middle lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.077033
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 60 years old, Graduate School. Female. Patient measures 58 inches. White. Patient weights 110 pounds. Patient has a history of 67.5 pack years,  smokes 30 cigarettes a day. Patient smoked for a total of 45 years. Patient has a lesion size of 20 mm. Patient smokes ciggaretes. Patient lives with a smoker. Patient works with exposure to smokers. Patient has the main cancer located in the right upper lobe. Patient has pneumonia. Patient has a BMI of 22.99. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisMissingMain tumor cannot be measuredVALGCSG stage of 0.0. Adenoma type of cancer. Adenoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.223893
+[DEBUG] Multimodal Text Example (Batch): 'Patient is 67 years old, Graduate School. Female. Patient measures 67 inches. White. Patient weights 120 pounds. Patient has a history of 51 pack years,  smokes 20 cigarettes a day. Patient smoked for a total of 51 years. Patient has a lesion size of 40 mm. Patient works with exposure to smokers. Patient has the main cancer located in the left upper lobe. Patient has chronic bronchitis. Patient has emphysema. Patient has Hypertension. Patient has a BMI of 18.79. Lung cancer grade of 0.0. Stage IIIB. Has 0 confirmed cancers. Invasive. zero metastasisCancer in nearby limph nodes cannot be measured. Main tumor cannot be measuredVALGCSG stage of 0.5. Small cell carcinoma type of cancer. Small cell carcinoma type of morphology. Location: Upper lobe. '
+SUCCESS: vision_encoder.blocks.2.1.spatial_block.conv1.fn.dw.weight is Updating! Grad Norm: 0.057460
+shape xtorch.Size([32, 2])
+tensor(4.1490, device='cuda:0')
+tensor(-1.2035, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(4.3350, device='cuda:0')
+tensor(-1.0831, device='cuda:0')
+shape xtorch.Size([32, 2])
+tensor(2.5738, device='cuda:0')
+tensor(-1.3135, device='cuda:0')
+shape xtorch.Size([11, 2])
+tensor(2.1449, device='cuda:0')
+tensor(-0.7839, device='cuda:0')
+shape PREDS: torch.Size([107, 2])
+shape time: torch.Size([107])
+shape log_hz: torch.Size([107, 107])
+shape log_hz_t: torch.Size([107])
+==================================================
+Stage: VAL
+Predicted class distribution: 0s = 48, 1s = 59
+Actual label distribution:    0s = 80, 1s = 27
+Actual Imbalance Ratio (0:1): 2.96:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(107,), log_hz=(107,), events=(107,)
+Cindex TorchSurv: 0.6849148273468018
+Cindex Lifelines: 0.6958637469586375
+Saved test predictions and probabilities to validation_results_fold_final.csv
+Restoring states from the checkpoint path at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestmultimodal-epoch=03-val_loss=0.47.ckpt
+Epoch 18/99 ━━━━━━━━━━━━━━━━━━ 7/7 0:00:45 • 0:00:00 0.16it/s v_num: jdcw
+                                                              train_loss_step:
+                                                              0.066 val_loss:
+                                                              0.779
+                                                              train_loss_epoch:
+                                                              0.146
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Loaded model weights from the checkpoint at /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_01/bestmultimodal-epoch=03-val_loss=0.47.ckpt
+Saved test predictions and probabilities to test_results_fold_final.xlsx
+shape PREDS: torch.Size([80, 2])
+shape time: torch.Size([80])
+shape log_hz: torch.Size([80, 80])
+shape log_hz_t: torch.Size([80])
+==================================================
+Stage: TEST
+Predicted class distribution: 0s = 53, 1s = 27
+Actual label distribution:    0s = 60, 1s = 20
+Actual Imbalance Ratio (0:1): 3.00:1
+==================================================
+✅ Model is predicting both classes.
+DEBUG SHAPES: time=(80,), log_hz=(80,), events=(80,)
+Cindex TorchSurv: 0.7573919892311096
+Cindex Lifelines: 0.7217589082638363
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│        test_auroc         │    0.7759259343147278     │
+│     test_balanced_acc     │    0.7416666746139526     │
+│        test_cindex        │    0.7573919892311096     │
+│       test_f1_score       │    0.5957446694374084     │
+│         test_ibs          │    0.09606591612100601    │
+│      test_precision       │    0.7026554942131042     │
+│        test_recall        │    0.7416666746139526     │
+└───────────────────────────┴───────────────────────────┘
+Testing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3/3 0:00:04 • 0:00:00 0.82it/s

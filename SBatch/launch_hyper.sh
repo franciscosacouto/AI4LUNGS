@@ -14,7 +14,7 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
 
 # Define your configs in an array
-CONFIGS=("config_lung_med.yaml" "config_masked_med.yaml" "config_ws_med.yaml" )
+CONFIGS=(  "config_ws.yaml"  )
 
 for CFG in "${CONFIGS[@]}"; do
     echo "Starting job with config: $CFG"

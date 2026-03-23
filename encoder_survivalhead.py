@@ -25,6 +25,7 @@ from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
 from FM_MLP_binary import encoder_decoder as encoder_decoder_binary
 from RadioDino_MLP import encoder_decoder as radiodino_decoder
+from FM_MLP_tab import encoder_decoder as encoder_decoder_tab
 
 import timm
 
@@ -42,8 +43,9 @@ classifier = MedImageInsight(
 
 radioDino = timm.create_model("hf_hub:Snarcy/RadioDino-s16", pretrained=True)
 
-def load_data(cancer_path, rootdir):
+def load_data(cancer_path, rootdir, text_path):
     # Load cancer metadata
+
     cancer_df = pd.read_csv(cancer_path, usecols=[
         'pid', 
         '5y', 
@@ -61,12 +63,14 @@ def load_data(cancer_path, rootdir):
 
     # Dynamically search for file paths
     df_paths = search_files(rootdir, pd.DataFrame())  # returns DataFrame with 'pid' index and 'file_path'
-    
-    # Merge dynamically found file paths
-    merged_df = cancer_df.merge(df_paths, left_on='pid', right_index=True, how='inner')
-    print(merged_df.columns)
-    # Set PID as index
+    text_df = pd.read_csv(text_path)
 
+    # Merge dynamically found file paths
+    merged_df = cancer_df.merge(df_paths, on='pid', how='inner')
+    print(type(merged_df['pid'][0]))
+    print(type(text_df['pid'][0]))
+
+    merged_df = merged_df.merge(text_df, how='inner', on='pid')    
     return merged_df
 
 
@@ -84,13 +88,7 @@ def search_files(rootdir, df):
     return pd.DataFrame(records).set_index('pid')
 
 
-def collate_survival(batch):
-    # item[0] is now a Tensor [3, H, W] from _get_data
-    imgs = torch.stack([item[0] for item in batch]) 
-    events = torch.stack([item[1] for item in batch])
-    time_to_event = torch.stack([item[2] for item in batch])
 
-    return imgs, events, time_to_event
 
 def save_results_to_excel(file_path, new_row):
    
@@ -120,6 +118,7 @@ def save_results_to_excel(file_path, new_row):
 
 @hydra.main(version_base=None, config_path="Configs/", config_name="config_ws")
 def main(config):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     EPOCHS = config.EPOCHS
     LEARNING_RATE = config.LEARNING_RATE
@@ -139,10 +138,12 @@ def main(config):
     # Mapping logic for which LightningModule wrapper to use
     # Key: (is_binary, encoder_name)
     MODULE_MAP = {
-        (True, 'MedImageInsights'): encoder_decoder_binary,
-        (False, 'MedImageInsights'): encoder_decoder,
-        (True, 'RadioDino'): radiodino_decoder,
-        (False, 'RadioDino'): radiodino_decoder, # Use same for both if logic allows
+        (True, 'MedImageInsights', False): encoder_decoder_binary,
+        (False, 'MedImageInsights', False): encoder_decoder,
+        (False, 'MedImageInsights', True): encoder_decoder_tab, # Your new class
+        (True, 'RadioDino', False): radiodino_decoder,
+        (False, 'RadioDino', False): radiodino_decoder,
+        (False, 'RadioDino', True): encoder_decoder_tab, # Assuming it handles both encoders
     }
     if any([torch.cuda.is_available(), torch.backends.mps.is_available()]):
         print("CUDA-enabled GPU/TPU is available.")
@@ -161,7 +162,11 @@ def main(config):
 
     rootdir = config.directories.rootdir
 
-    lung_metadataframe = load_data(config.directories.cancer_path, rootdir)
+    lung_metadataframe = load_data(
+            config.directories.cancer_path, 
+            rootdir, 
+            config.directories.rootdir_text
+        )
     print(lung_metadataframe.columns) # <-- Run this line to check column names!
     lung_metadataframe = lung_metadataframe.rename(columns={'file_path': 'path', '5y': 'label', 'sct_slice_final_mapped': 'sct_slice_num'})
     lung_metadataframe['label'] = lung_metadataframe['label'].astype(int)
@@ -174,10 +179,23 @@ def main(config):
     # 3. Increase the width of the display so it doesn't wrap lines too much
     pd.set_option('display.width', 1000)
 
+    tabular_feature_count = 0
+    if config.tabular:
+        # READ THE SEPARATE CORRECTED FILE HERE
+        tab_df_for_count = pd.read_csv(config.directories.rootdir_tab)
+        
+        # Define what is NOT a feature in that specific file
+        # (Exclude PID and any target/group variables in the corrected file)
+        exclude_from_tab = ['pid', 'rndgroup_1', 'rndgroup_2', 'label', 'fup_days']
+        
+        actual_features = [c for c in tab_df_for_count.columns if c not in exclude_from_tab]
+        tabular_feature_count = len(actual_features)
+        
+        print(f"✅ Tabular features loaded from separate file: {config.directories.rootdir_tab}")
+        print(f"✅ Tabular features enabled: {tabular_feature_count} columns.")
+        # Store this in config so the model knows the input dim
 
-
-
-    # 3. Instantiate the NLSTPreprocessedKFoldDataLoader
+    # 3. Instantiate the DataLoader
     data_loader_manager = NLSTPreprocessedKFoldDataLoader(
         config=config,
         lung_metadataframe=lung_metadataframe
@@ -192,11 +210,12 @@ def main(config):
     n_neg = len(train_labels) - n_pos
     pos_weight = torch.tensor([n_neg / n_pos], dtype=torch.float32)
 
-    x_sample, event_sample, time_sample = next(iter(dataloaders['train'][0])) 
-    
+    batch_sample = next(iter(dataloaders['train'][0])) 
+    inputs_sample, event_sample, time_sample = batch_sample[0], batch_sample[1], batch_sample[2]    
+    inputs_sample = {k: v.to(device) if isinstance(v, torch.Tensor) else v 
+                 for k, v in inputs_sample.items()}
     encoder_obj = ENCODER_MAP.get(config.Encoder)
-    module_class = MODULE_MAP.get((config.Binary_model, config.Encoder))
-
+    module_class = MODULE_MAP.get((config.Binary_model, config.Encoder, config.tabular))
     if not encoder_obj or not module_class:
         raise ValueError(f"Unsupported combination: {config.Encoder} & Binary={config.Binary_model}")
 
@@ -206,23 +225,19 @@ def main(config):
         torch.nn.Identity(), 
         LEARNING_RATE, 
         pos_weight, 
+        config= config,
         freeze_encoder=True
     )
 
     
-    # Move model to GPU (this is what caused the mismatch)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     temp_model.to(device)
     
     with torch.no_grad():
         temp_model.eval()
-        # MOVE INPUT TO DEVICE HERE:
-        x_sample = x_sample.to(device) 
-        
-        sample_output = temp_model(x_sample) 
-        num_features = sample_output.shape[-1]
+        sample_output = temp_model(inputs_sample) 
+        total_input_features = sample_output.shape[-1]
 
-    print(f"Embedding dimension determined: {num_features}")
+    print(f"Total MLP Input Dimension: {total_input_features}")
 
     for fold_id in range(num_folds):
             print(f"\n====================== STARTING FOLD {fold_id + 1}/{num_folds} ======================")
@@ -235,8 +250,8 @@ def main(config):
             # 1. Determine the output head architecture
             out_features = 1 if config.Binary_model else 2
             head_architecture = torch.nn.Sequential(
-                torch.nn.BatchNorm1d(num_features),
-                torch.nn.Linear(num_features, 128),
+                torch.nn.BatchNorm1d(total_input_features),
+                torch.nn.Linear(total_input_features, 128),
                 torch.nn.ReLU(),
                 torch.nn.Dropout(p=0.5),
                 torch.nn.Linear(128, 128),
@@ -270,6 +285,7 @@ def main(config):
                 head_architecture, 
                 LEARNING_RATE, 
                 pos_weight, 
+                config = config,
                 freeze_encoder=config.Freeze_weights
             )
 
