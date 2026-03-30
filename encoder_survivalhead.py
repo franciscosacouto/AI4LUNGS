@@ -26,7 +26,6 @@ from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
 from FM_MLP_binary import encoder_decoder as encoder_decoder_binary
 from RadioDino_MLP import encoder_decoder as radiodino_decoder
 from FM_MLP_tab import encoder_decoder as encoder_decoder_tab
-
 import timm
 
 
@@ -143,7 +142,6 @@ def main(config):
         (False, 'MedImageInsights', True): encoder_decoder_tab, # Your new class
         (True, 'RadioDino', False): radiodino_decoder,
         (False, 'RadioDino', False): radiodino_decoder,
-        (False, 'RadioDino', True): encoder_decoder_tab, # Assuming it handles both encoders
     }
     if any([torch.cuda.is_available(), torch.backends.mps.is_available()]):
         print("CUDA-enabled GPU/TPU is available.")
@@ -253,13 +251,24 @@ def main(config):
                 torch.nn.BatchNorm1d(total_input_features),
                 torch.nn.Linear(total_input_features, 128),
                 torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.5),
-                torch.nn.Linear(128, 128),
+                torch.nn.Dropout(p=0.4),
+                torch.nn.Linear(128,64),
                 torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.5),
-                torch.nn.Linear(128, out_features),
+                torch.nn.Dropout(p=0.4),
+                torch.nn.Linear(64, out_features),
             )
-
+            # head_architecture = torch.nn.Sequential(
+            #     torch.nn.Linear(total_input_features, 256),
+            #     torch.nn.BatchNorm1d(256),
+            #     torch.nn.ReLU(),
+                
+            #     # Add two Residual Blocks for "Deep" tabular learning
+            #     TabularResBlock(256, dropout=0.3),
+            #     TabularResBlock(256, dropout=0.3),
+                
+            #     # Final projection to Weibull parameters (Scale and Concentration)
+            #     torch.nn.Linear(256, out_features) 
+            # )
 
             early_stop_callback = L.callbacks.EarlyStopping(
             monitor=config.early_stopping.monitor, 

@@ -14,7 +14,7 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
 
 # Define your configs in an array
-CONFIGS=(  "config_ws.yaml"  )
+CONFIGS=( "config_ws.yaml" "config_ws_ad.yaml" "config_ws_fi.yaml" )
 
 for CFG in "${CONFIGS[@]}"; do
     echo "Starting job with config: $CFG"

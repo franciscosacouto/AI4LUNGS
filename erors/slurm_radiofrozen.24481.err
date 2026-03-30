@@ -1,0 +1,192 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Token indices sequence length is longer than the specified maximum sequence length for this model (134 > 77). Running this sequence through the model will result in indexing errors
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws.yaml ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /nas-ctm01/homes/fmferreira/.netrc.
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run ez7ksahd
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in wandb/run-20260330_150157-ez7ksahd
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pre_CoOp_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/Text
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/Text/runs/ez7ksahd
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 322, in main
+    current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1121, in _run_stage
+    self._run_sanity_check()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1150, in _run_sanity_check
+    val_loop.run()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 146, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 441, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 284, in validation_step
+    loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/loss/weibull.py", line 277, in neg_log_likelihood_weibull
+    validate_survival_data(event, time)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 220, in validate_survival_data
+    validate_event(event)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 70, in validate_event
+    raise ValueError("Input 'event' should be of boolean type.")
+ValueError: Input 'event' should be of boolean type.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Token indices sequence length is longer than the specified maximum sequence length for this model (206 > 77). Running this sequence through the model will result in indexing errors
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_ad.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /nas-ctm01/homes/fmferreira/.netrc.
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 6krcijkg
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in wandb/run-20260330_150230-6krcijkg
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run ad_CoOp_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/Text
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/Text/runs/6krcijkg
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 322, in main
+    current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1121, in _run_stage
+    self._run_sanity_check()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1150, in _run_sanity_check
+    val_loop.run()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 146, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 441, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 284, in validation_step
+    loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/loss/weibull.py", line 277, in neg_log_likelihood_weibull
+    validate_survival_data(event, time)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 220, in validate_survival_data
+    validate_event(event)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 70, in validate_event
+    raise ValueError("Input 'event' should be of boolean type.")
+ValueError: Input 'event' should be of boolean type.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Token indices sequence length is longer than the specified maximum sequence length for this model (249 > 77). Running this sequence through the model will result in indexing errors
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/lightning_fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python encoder_survivalhead.py --config-name config_ws_fi.y ...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /nas-ctm01/homes/fmferreira/.netrc.
+wandb: Currently logged in as: franciscosacouto (franciscosacouto-inesc-tec) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 74qvhltu
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in wandb/run-20260330_150305-74qvhltu
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run FI_CoOp_Fold_1
+wandb: ⭐️ View project at https://wandb.ai/franciscosacouto-inesc-tec/Text
+wandb: 🚀 View run at https://wandb.ai/franciscosacouto-inesc-tec/Text/runs/74qvhltu
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 322, in main
+    current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1121, in _run_stage
+    self._run_sanity_check()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1150, in _run_sanity_check
+    val_loop.run()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 146, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 441, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 284, in validation_step
+    loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/loss/weibull.py", line 277, in neg_log_likelihood_weibull
+    validate_survival_data(event, time)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 220, in validate_survival_data
+    validate_event(event)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 70, in validate_event
+    raise ValueError("Input 'event' should be of boolean type.")
+ValueError: Input 'event' should be of boolean type.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

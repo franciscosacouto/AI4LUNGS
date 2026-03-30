@@ -7,8 +7,6 @@ from torch.utils.data import DataLoader as TorchDataLoader, WeightedRandomSample
 import numpy
 import random
 import torch
-import torchvision
-import pydicom
 import os
 import matplotlib.pyplot as plt
 from collections import defaultdict

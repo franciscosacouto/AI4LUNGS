@@ -1,0 +1,62 @@
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:881: Checkpoint directory /nas-ctm01/homes/fmferreira/AI4LUNGS/checkpoints/fold_00 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name           ┃ Type                ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ survival_head  │ Sequential          │  407 K │ train │     0 │
+│ 1 │ vision_encoder │ DaViT               │  360 M │ train │     0 │
+│ 2 │ text_encoder   │ Transformer         │  252 M │ eval  │     0 │
+│ 3 │ prompt_learner │ TextContextPrompter │ 16.4 K │ train │     0 │
+│ 4 │ f1score        │ BinaryF1Score       │      0 │ train │     0 │
+└───┴────────────────┴─────────────────────┴────────┴───────┴───────┘
+Trainable params: 613 M
+Non-trainable params: 0
+Total params: 613 M
+Total estimated model params size (MB): 2.5 K
+Modules in train mode: 537
+Modules in eval mode: 164
+Total FLOPs: 0
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+shape xtorch.Size([32, 2])
+tensor(0.1032, device='cuda:0')
+tensor(-0.1511, device='cuda:0')
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/encoder_survivalhead.py", line 322, in main
+    current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1121, in _run_stage
+    self._run_sanity_check()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1150, in _run_sanity_check
+    val_loop.run()
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 146, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 441, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 412, in validation_step
+    return self.lightning_module.validation_step(*args, **kwargs)
+  File "/nas-ctm01/homes/fmferreira/AI4LUNGS/FM_MLP.py", line 284, in validation_step
+    loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/loss/weibull.py", line 277, in neg_log_likelihood_weibull
+    validate_survival_data(event, time)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 220, in validate_survival_data
+    validate_event(event)
+  File "/nas-ctm01/homes/fmferreira/.conda/envs/ctClip/lib/python3.9/site-packages/torchsurv/tools/validate_data.py", line 70, in validate_event
+    raise ValueError("Input 'event' should be of boolean type.")
+ValueError: Input 'event' should be of boolean type.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

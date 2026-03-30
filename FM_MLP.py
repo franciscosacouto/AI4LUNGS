@@ -14,8 +14,23 @@ import matplotlib.pyplot as plt
 import wandb
 import pandas as pd
 from lifelines.utils import concordance_index
+import torch.nn as nn
 
+class TextContextPrompter(nn.Module):
+    def __init__(self, n_ctx=16, embedding_dim=512, tokenizer=None):
+        super().__init__()
+        # n_ctx is the number of learnable "tokens"
+        self.n_ctx = n_ctx
+        
+        # Initialize with random normal or actual word embeddings
+        ctx_vectors = torch.empty(n_ctx, embedding_dim)
+        nn.init.normal_(ctx_vectors, std=0.02)
+        self.ctx = nn.Parameter(ctx_vectors) # These are the learnable parameters
 
+    def forward(self, prefix_embed, suffix_embed, content_embed):
+        # Concatenate: [SOT] + [Learnable Context] + [Content] + [EOT] + [PADs]
+        # Shapes must match: (Batch, 1, Dim) + (Batch, n_ctx, Dim) + (Batch, Seq, Dim) ...
+        return torch.cat([prefix_embed, self.ctx.unsqueeze(0).expand(prefix_embed.shape[0], -1, -1), content_embed, suffix_embed], dim=1)
 
 class encoder_decoder(L.LightningModule):
     def __init__(self, encoder, survival_head, learning_rate, pos_weight, config, freeze_encoder=True):
@@ -26,7 +41,13 @@ class encoder_decoder(L.LightningModule):
         self.text_encoder = encoder.model.lang_encoder
         self.learning_rate = learning_rate
         self.config = config 
-        
+        self.n_ctx = 16
+        self.prompt_learner = TextContextPrompter(
+            n_ctx=self.n_ctx, 
+            embedding_dim=self.text_encoder.width # Dynamic width check
+)
+        for param in self.prompt_learner.parameters():
+            param.requires_grad = True
      # Metrics
         self.cindex_metric = ConcordanceIndex()
         self.auroc_metric = Auc() 
@@ -34,7 +55,7 @@ class encoder_decoder(L.LightningModule):
         self.cindex_metric = ConcordanceIndex()
 
 
-        self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
+        # self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
         self.test_preds = []
         self.test_events = []
         self.test_time= []
@@ -125,62 +146,89 @@ class encoder_decoder(L.LightningModule):
         if 'text' in inputs and getattr(self.config, 'text', False):
             sentences = inputs['text']
             max_len = 77
-            content_per_chunk = max_len - 2 
+            # Room for SOT (1) + EOT (1) + Learnable Prompts (n_ctx)
+            content_per_chunk = max_len - 2 - self.prompt_learner.n_ctx 
             
-            # Access the tokenizer from the internal model
-            # Try a few common paths for the MedImageInsight wrapper
-            tokenizer = getattr(self._encoder_wrapper, 'tokenizer', None)
-            if tokenizer is None:
-                tokenizer = getattr(self._encoder_wrapper.model, 'tokenizer', None)
-            
-            if tokenizer is None:
-                raise AttributeError("Could not find tokenizer in _encoder_wrapper or _encoder_wrapper.model")
+            # 1. Get Tokenizer and Embeddings from your Transformer class
+            tokenizer = getattr(self._encoder_wrapper, 'tokenizer', None) or getattr(self._encoder_wrapper.model, 'tokenizer', None)
+            token_embedding_layer = self.text_encoder.token_embedding
+            pos_embedding = self.text_encoder.positional_embedding # [77, width]
 
-            # 1. Tokenize everything to raw IDs without special tokens
-            tokenized_output = tokenizer(
-                sentences, 
-                truncation=False, 
-                add_special_tokens=False
-            )
+            tokenized_output = tokenizer(sentences, truncation=False, add_special_tokens=False)
             full_encodings = tokenized_output['input_ids']
             
-            batch_embeddings = []
-            
-            # Extract special token IDs
             sot = tokenizer.bos_token_id if tokenizer.bos_token_id is not None else 49406
             eot = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else 49407
             pad = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
 
+            batch_embeddings = []
+
             for ids in full_encodings:
-                # 2. Break the list of IDs into chunks
+                # Split into chunks
                 chunks = [ids[i : i + content_per_chunk] for i in range(0, len(ids), content_per_chunk)]
-                if not chunks: chunks = [[]]
+                if not chunks or len(chunks[0]) == 0: 
+                    chunks = [[]] # Handle empty strings
                 
                 chunk_outputs = []
                 for c in chunks:
-                    # 3. Manually reconstruct: [SOT] + content + [EOT]
-                    full_chunk = [sot] + c + [eot]
+                    # A. Convert IDs to Embeddings
+                    sot_idx = torch.tensor([sot], device=self.device)
+                    eot_idx = torch.tensor([eot], device=self.device)
+                    content_idx = torch.tensor([c], device=self.device) if len(c) > 0 else torch.tensor([[]], device=self.device, dtype=torch.long)
                     
-                    # Ensure exactly 77 tokens
-                    full_chunk += [pad] * (max_len - len(full_chunk))
+                    sot_emb = token_embedding_layer(sot_idx).unsqueeze(0)    # [1, 1, width]
+                    eot_emb = token_embedding_layer(eot_idx).unsqueeze(0)    # [1, 1, width]
                     
-                    # 4. Prepare tensors
-                    chunk_tensor = torch.tensor([full_chunk], device=self.device)
-                    mask = (chunk_tensor != pad).long()
+                    # Handle empty content embedding if text is empty
+                    if len(c) > 0:
+                        content_emb = token_embedding_layer(content_idx)    # [1, len, width]
+                    else:
+                        content_emb = torch.empty((1, 0, self.text_encoder.width), device=self.device)
+
+                    # B. CoOp Injection: [SOT] + [Prompt] + [Content] + [EOT]
+                    # self.prompt_learner returns (1, 1 + n_ctx + len(c) + 1, width)
+                    full_embeddings = self.prompt_learner(sot_emb, eot_emb, content_emb)
+
+                    # C. Manual Padding and Masking
+                    curr_len = full_embeddings.shape[1]
+                    pad_amt = max_len - curr_len
                     
-                    # 5. Forward through the LangEncoder
-                    t_out = self.text_encoder(chunk_tensor, attention_mask=mask)
-                    # Extract last hidden state
-                    chunk_outputs.append(t_out['last_hidden_state'])
+                    if pad_amt > 0:
+                        pad_idx = torch.tensor([pad] * pad_amt, device=self.device)
+                        pad_emb = token_embedding_layer(pad_idx).unsqueeze(0)
+                        full_embeddings = torch.cat([full_embeddings, pad_emb], dim=1)
+                    
+                    # Mask: 1 for tokens/prompts, 0 for pads (used for MultiHeadAttention)
+                    # key_padding_mask in your Transformer is (attention_mask == 0)
+                    # So we create an attention_mask where 1 is real and 0 is pad
+                    attn_mask = torch.zeros(max_len, device=self.device)
+                    attn_mask[:curr_len] = 1
+                    key_padding_mask = (attn_mask == 0).unsqueeze(0) # [1, 77]
+
+                    # D. Add Positional Encodings
+                    full_embeddings = full_embeddings + pos_embedding.unsqueeze(0)
+
+                    # E. Manual Transformer Forward (Since we have embeds, not IDs)
+                    x = full_embeddings.permute(1, 0, 2)  # [L, N, D]
+                    for block in self.text_encoder.resblocks:
+                        x = block(x, key_padding_mask=key_padding_mask)
+                    
+                    x = x.permute(1, 0, 2)  # [N, L, D]
+                    x = self.text_encoder.ln_final(x)
+                    chunk_outputs.append(x)
                 
-                # Combine chunks: (1, NumChunks * 77, Hidden)
+                # Mean pool across all chunks for this specific sentence
                 combined_sentence = torch.cat(chunk_outputs, dim=1)
-                
-                # Mean pool the sequence to get (1, Hidden)
                 batch_embeddings.append(combined_sentence.mean(dim=1))
 
-            # Stack into (Batch, Hidden)
-            text_emb = torch.cat(batch_embeddings, dim=0)
+            # 2. Safety check before cat
+            if len(batch_embeddings) == 0:
+                # Fallback to zero tensor if batch is somehow empty
+                print("just zeros")
+                text_emb = torch.zeros((len(sentences), self.text_encoder.width), device=self.device)
+            else:
+                text_emb = torch.cat(batch_embeddings, dim=0)
+            
             features.append(text_emb)
         # --- 3. Fusion & Survival Head ---
         combined_features = torch.cat(features, dim=1) if len(features) > 1 else features[0]
@@ -201,7 +249,7 @@ class encoder_decoder(L.LightningModule):
         log_params = self(inputs).squeeze() 
 
         # Calculate loss
-        loss = weibull.neg_log_likelihood(log_params, event, time)
+        loss = weibull.neg_log_likelihood_weibull(log_params, event, time)
         
         # Log metrics
         self.log("train_loss", loss, on_epoch=True, prog_bar=True)
@@ -227,13 +275,13 @@ class encoder_decoder(L.LightningModule):
         inputs, event, time = batch
         event = event.squeeze() # Ensure 1D
         time = time.squeeze()          # Ensure 1D
-        
+        event= event.bool()
         log_params = self(inputs).squeeze()
         print(f'shape x{log_params.shape}')
 
         print(log_params.max())
         print(log_params.min())
-        loss = weibull.neg_log_likelihood(log_params, event, time, reduction='mean')
+        loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
         log_hz =weibull.log_hazard(log_params, time)
         new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
         log_hz_t= weibull.log_hazard(log_params,  new_time)
@@ -282,13 +330,13 @@ class encoder_decoder(L.LightningModule):
         # Now log_hz will have the same length as time (N)
         log_hz = weibull.log_hazard(preds, time)
         preds, events, time, log_hz_t= preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
-        self.stats_metric = self.stats_metric.cpu()
+        # self.stats_metric = self.stats_metric.cpu()
         time_5y = torch.tensor(1825.0 / 2786.0).cpu()
         print(f'shape log_hz: {log_hz.shape}')
         print(f'shape log_hz_t: {log_hz_t.shape}')
 
-        surv_prob_t = weibull.survival_function(preds, time_5y)
-        surv = weibull.survival_function(preds, time) 
+        surv_prob_t = weibull.survival_function_weibull(preds, time_5y)
+        surv = weibull.survival_function_weibull(preds, time) 
 
         hard_preds = (surv_prob_t < 0.6).int()
 
@@ -392,7 +440,7 @@ class encoder_decoder(L.LightningModule):
         eval_time = torch.tensor(1825.0 / 2786.0).cpu()
 
         with torch.no_grad():
-            surv_probs = weibull.survival_function(preds, eval_time)
+            surv_probs = weibull.survival_function_weibull(preds, eval_time)
         
         # 4. Prepare data for Excel
         # Convert to CPU/Numpy for Pandas compatibility
@@ -460,7 +508,7 @@ class encoder_decoder(L.LightningModule):
         # 3. Calculate Survival Probability S(t | x)
         # Shape will be (num_samples, 1)
         with torch.no_grad():
-            surv_probs = weibull.survival_function(preds, time = eval_time)
+            surv_probs = weibull.survival_function_weibull(preds, time = eval_time)
         
         # 4. Prepare data for Excel
         # Convert to CPU/Numpy for Pandas compatibility
@@ -516,6 +564,8 @@ class encoder_decoder(L.LightningModule):
             param.requires_grad = True
         param_groups.append({'params': self.survival_head.parameters(), 'lr': self.learning_rate})
 
+
+        param_groups.append({'params': self.prompt_learner.parameters(), 'lr': self.learning_rate})
         # 2. Vision Encoder Logic
         if self.vision_encoder is not None and use_image is not None:
             if self.freeze_encoder:
