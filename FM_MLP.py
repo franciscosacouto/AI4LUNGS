@@ -508,7 +508,7 @@ class encoder_decoder(L.LightningModule):
         # 3. Calculate Survival Probability S(t | x)
         # Shape will be (num_samples, 1)
         with torch.no_grad():
-            surv_probs = weibull.survival_function_weibull(preds, time = eval_time)
+            surv_probs = weibull.survival_function_weibull(preds, eval_time)
         
         # 4. Prepare data for Excel
         # Convert to CPU/Numpy for Pandas compatibility
