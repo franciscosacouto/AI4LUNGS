@@ -8,16 +8,17 @@
 
 # Commands / scripts to run (e.g., python3 train.py)
 # (...)
+
+# 1. Deterministic flags (keep these to ensure GPU behavior is consistent)
 export CUBLAS_WORKSPACE_CONFIG=:4096:8
 
+# 2. Run the specific setup/test script
+# We don't need the loop or the config files yet because we are 
+# just verifying the model loading and the forward passes.
+echo "Running Encoder Setup Test..."
 
 
+python best_models_pipeline.py
 
-# Define your configs in an array
-CONFIGS=("config_ws_2.yaml" )
 
-for CFG in "${CONFIGS[@]}"; do
-    echo "Starting job with config: $CFG"
-    # Note: we use --config-name to tell Hydra which file to load from the search path
-    python encoder_survivalhead.py --config-name "$CFG"
-done
+echo "Test complete. Check the .out file for Success/Failure logs."

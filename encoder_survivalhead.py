@@ -25,23 +25,14 @@ from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
 from FM_MLP_binary import encoder_decoder as encoder_decoder_binary
 from RadioDino_MLP import encoder_decoder as radiodino_decoder
+from FM_CTClip import ctClip_mlp as ctClip_mlp
+
 from FM_MLP_tab import encoder_decoder as encoder_decoder_tab
 import timm
+import torch.nn as nn
+from model_setup import get_encoders
 
-
-sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
-from medimageinsightmodel import MedImageInsight
-# os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
-
-classifier = MedImageInsight(
-    model_dir="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27",
-
-    vision_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/vision_model/medimageinsigt-v1.0.0.pt",
-    language_model_name="/nas-ctm01/homes/fmferreira/MedImageInsights/2024.09.27/language_model/language_model.pth"
-)
-
-radioDino = timm.create_model("hf_hub:Snarcy/RadioDino-s16", pretrained=True)
-
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 def load_data(cancer_path, rootdir, text_path):
     # Load cancer metadata
 
@@ -129,19 +120,18 @@ def main(config):
     torch.cuda.manual_seed_all(SEED)
     torch.use_deterministic_algorithms(True)
 
-    ENCODER_MAP = {
-        'MedImageInsights': classifier,
-        'RadioDino': radioDino
-    }
+    encoders = get_encoders(config.get('image_encoder'), config.get('text_encoder'), device)  
 
     # Mapping logic for which LightningModule wrapper to use
     # Key: (is_binary, encoder_name)
     MODULE_MAP = {
         (True, 'MedImageInsights', False): encoder_decoder_binary,
         (False, 'MedImageInsights', False): encoder_decoder,
-        (False, 'MedImageInsights', True): encoder_decoder_tab, # Your new class
+        (False, 'MedImageInsights', True): encoder_decoder_tab, 
         (True, 'RadioDino', False): radiodino_decoder,
         (False, 'RadioDino', False): radiodino_decoder,
+        (False, 'CTCLIP', False): ctClip_mlp,
+        (False, None, False): encoder_decoder,
     }
     if any([torch.cuda.is_available(), torch.backends.mps.is_available()]):
         print("CUDA-enabled GPU/TPU is available.")
@@ -150,10 +140,12 @@ def main(config):
         print("No CUDA-enabled GPU found, using CPU.")
         BATCH_SIZE = config.BATCH_SIZE_CPU  # batch size for training
 
-    encoder_obj = ENCODER_MAP[config.Encoder]
-    if config.Encoder == 'MedImageInsights':
-        encoder_obj.load_model()
-
+    # 3. Determine the correct LightningModule class
+    module_key = (config.Binary_model, config.image_encoder, config.tabular)
+    module_class = MODULE_MAP.get(module_key)
+    
+    if not module_class:
+        raise ValueError(f"No module found for configuration: {module_key}")
 
     
 
@@ -212,30 +204,27 @@ def main(config):
     inputs_sample, event_sample, time_sample = batch_sample[0], batch_sample[1], batch_sample[2]    
     inputs_sample = {k: v.to(device) if isinstance(v, torch.Tensor) else v 
                  for k, v in inputs_sample.items()}
-    encoder_obj = ENCODER_MAP.get(config.Encoder)
-    module_class = MODULE_MAP.get((config.Binary_model, config.Encoder, config.tabular))
-    if not encoder_obj or not module_class:
-        raise ValueError(f"Unsupported combination: {config.Encoder} & Binary={config.Binary_model}")
+   
+    # Pass the encoder_obj (the SimpleNamespace) directly
+    module_key = (config.Binary_model, config.image_encoder, config.tabular)
+    module_class = MODULE_MAP.get(module_key)
 
-    # Initialize temp model
     temp_model = module_class(
-        encoder_obj, 
+        encoders, 
         torch.nn.Identity(), 
         LEARNING_RATE, 
         pos_weight, 
-        config= config,
+        config=config,
         freeze_encoder=True
-    )
-
-    
-    temp_model.to(device)
+    ).to(device)
     
     with torch.no_grad():
         temp_model.eval()
         sample_output = temp_model(inputs_sample) 
         total_input_features = sample_output.shape[-1]
 
-    print(f"Total MLP Input Dimension: {total_input_features}")
+    print(f"✅ Total MLP Input Dimension: {total_input_features}")
+    
 
     for fold_id in range(num_folds):
             print(f"\n====================== STARTING FOLD {fold_id + 1}/{num_folds} ======================")
@@ -251,11 +240,11 @@ def main(config):
                 torch.nn.BatchNorm1d(total_input_features),
                 torch.nn.Linear(total_input_features, 128),
                 torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.4),
-                torch.nn.Linear(128,64),
+                torch.nn.Dropout(p=0.5),
+                torch.nn.Linear(128,128),
                 torch.nn.ReLU(),
-                torch.nn.Dropout(p=0.4),
-                torch.nn.Linear(64, out_features),
+                torch.nn.Dropout(p=0.5),
+                torch.nn.Linear(128, out_features),
             )
             # head_architecture = torch.nn.Sequential(
             #     torch.nn.Linear(total_input_features, 256),
@@ -290,7 +279,7 @@ def main(config):
 
                         # 2. Instantiate the Lightning model using the registry lookup from earlier
             lightning_model = module_class(
-                encoder_obj, 
+                encoders, 
                 head_architecture, 
                 LEARNING_RATE, 
                 pos_weight, 

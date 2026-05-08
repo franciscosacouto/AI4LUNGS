@@ -15,7 +15,14 @@ import wandb
 import pandas as pd
 from lifelines.utils import concordance_index
 import torch.nn as nn
+from transformers import BertTokenizer, AutoTokenizer
+import  sys
+sys.path.insert(0, '/nas-ctm01/homes/fmferreira/CT-CLIP/CT_CLIP')
 
+from ct_clip.tokenizer import SimpleTokenizer
+
+# 2. Initialize it 
+# It usually expects the 'data' folder to be present (which is in your image!)
 class TextContextPrompter(nn.Module):
     def __init__(self, n_ctx=16, embedding_dim=512, tokenizer=None):
         super().__init__()
@@ -37,17 +44,40 @@ class encoder_decoder(L.LightningModule):
         super().__init__()
         self.survival_head = survival_head
         self._encoder_wrapper = encoder        
-        self.vision_encoder = encoder.model.image_encoder
-        self.text_encoder = encoder.model.lang_encoder
+        full_model = encoder.get('vision') # This is the MedImageInsight object
+        
+        if hasattr(full_model, 'model'): 
+            self.vision_encoder = full_model.model.image_encoder
+        elif hasattr(full_model, 'image_encoder'): # CT-CLIP structure
+            self.vision_encoder = full_model.image_encoder
+        else:
+            # Fallback for RadioDino/Timm models
+            self.vision_encoder = full_model
+        provided_lang_encoder = encoder.get('language')
+
+        if provided_lang_encoder is not None:
+            self.text_encoder = provided_lang_encoder
+        elif hasattr(full_model, 'model'):
+            self.text_encoder = full_model.model.lang_encoder
+        elif hasattr(full_model, 'lang_encoder'):
+            self.text_encoder = full_model.lang_encoder
+        else:
+            self.text_encoder = None
         self.learning_rate = learning_rate
         self.config = config 
         self.n_ctx = 16
-        self.prompt_learner = TextContextPrompter(
-            n_ctx=self.n_ctx, 
-            embedding_dim=self.text_encoder.width # Dynamic width check
-)
-        for param in self.prompt_learner.parameters():
-            param.requires_grad = True
+        self.prompt_learner = None
+        if getattr(self.config, 'text', False) and self.text_encoder is not None:
+            # Check for width attribute (common in CLIP-style models) 
+            # or fallback to a standard dimension if 'width' isn't the attribute name
+            emb_dim = getattr(self.text_encoder, 'width', 512) 
+            
+            self.prompt_learner = TextContextPrompter(
+                n_ctx=self.n_ctx, 
+                embedding_dim=emb_dim
+            )
+            for param in self.prompt_learner.parameters():
+                param.requires_grad = True
      # Metrics
         self.cindex_metric = ConcordanceIndex()
         self.auroc_metric = Auc() 
@@ -73,167 +103,189 @@ class encoder_decoder(L.LightningModule):
         self.test_balanced_accuracy = None
         self.freeze_encoder = freeze_encoder
         # Set the freeze state
-        if self.freeze_encoder:
+        if self.freeze_encoder and  getattr(self.config, 'image', False):
             for param in self.vision_encoder.parameters():
                 param.requires_grad = False
-            for param in self.text_encoder.parameters():
-                param.requires_grad = False
-        else:
+        elif  getattr(self.config, 'image', False):
             self.vision_encoder.train()
             for param in self.vision_encoder.parameters():
                 param.requires_grad = True
+
+        if self.freeze_encoder and getattr(self.config, 'text', False):
+
+            for param in self.text_encoder.parameters():
+                param.requires_grad = False
+        elif getattr(self.config, 'text', False):
             for param in self.text_encoder.parameters():
                 param.requires_grad = True
 
-
     def encode_batch(self, inputs):
-        """
-        Encodes a batch into a fused feature vector.
-        'inputs' is the dictionary: {'image': tensor, 'text': [strings]}
-        """
-        # Simply call forward up to the point of fusion
-        # If your forward method is already set up to return log_params,
-        # you can split the logic so encode_batch returns the features.
-        
-        features = []
-        modality = self.config.modality.lower()
-
-        # 1. Image features
-        if 'image' in inputs and getattr(self.config, 'image', False):
-            v_out = self.vision_encoder(inputs['image'])
-            img_emb = v_out.pooler_output if hasattr(v_out, "pooler_output") else v_out
-            features.append(img_emb)
-
-        # 2. Text features
-        if 'text' in inputs and getattr(self.config, 'text', False):
-            tokenized = self._encoder_wrapper.tokenize(
-                inputs['text'], 
-                padding='max_length', 
-                max_length=self._encoder_wrapper.max_length, 
-                truncation=True, 
-                return_tensors='pt'
-            )
-            input_ids = tokenized['input_ids'].to(self.device)
-            attention_mask = tokenized['attention_mask'].to(self.device)
+            features = []
             
-            t_out_dict = self.text_encoder(input_ids, attention_mask=attention_mask)
-            text_emb = t_out_dict['last_hidden_state'][:, 0, :] 
-            features.append(text_emb)
+            # 1. Image Branch (MedImageInsight)
+            if 'image' in inputs and getattr(self.config, 'image', False):
+                v_out = self.vision_encoder(inputs['image'])
+                
+                # Use the pooled output
+                img_emb = v_out.pooler_output if hasattr(v_out, "pooler_output") else v_out
+                
+                # Handle list/tuple outputs from standard ViTs
+                if isinstance(img_emb, (list, tuple)): 
+                    img_emb = img_emb[0][:, 0, :]
+                                    
+                # CRITICAL: Flatten to [Batch, Dim]
+                # This ensures 1024 or 2048 is a clean vector for the MLP
+                img_emb = img_emb.view(img_emb.size(0), -1)
+                features.append(img_emb)
 
-        # 3. Fuse
-        if len(features) > 1:
-            return torch.cat(features, dim=1)
-        return features[0]
+            # 2. Text Branch (CT-CLIP)
+            if 'text' in inputs and getattr(self.config, 'text', False):
+                if getattr(self.config, 'text_encoder', 'MedImageInsights') == 'MedImageInsights':
+
+                    sentences = inputs['text']
+                    max_len = 77
+                    # Room for SOT (1) + EOT (1) + Learnable Prompts (n_ctx)
+                    content_per_chunk = max_len - 2 - self.prompt_learner.n_ctx 
+                    
+                    # 1. Get Tokenizer and Embeddings from your Transformer class
+                    tokenizer = AutoTokenizer.from_pretrained('microsoft/BiomedVLP-CXR-BERT-specialized',do_lower_case=True, trust_remote_code=True)
+
+                    # tokenizer = getattr(self._encoder_wrapper, 'tokenizer', None) or getattr(self._encoder_wrapper.model, 'tokenizer', None)
+                    token_embedding_layer = self.text_encoder.token_embedding
+                    pos_embedding = self.text_encoder.positional_embedding # [77, width]
+
+                    tokenized_output = tokenizer(sentences, truncation=False, add_special_tokens=False)
+                    full_encodings = tokenized_output['input_ids']
+                    
+                    sot = tokenizer.bos_token_id if tokenizer.bos_token_id is not None else 49406
+                    eot = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else 49407
+                    pad = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
+
+                    batch_embeddings = []
+
+                    for ids in full_encodings:
+                        # Split into chunks
+                        chunks = [ids[i : i + content_per_chunk] for i in range(0, len(ids), content_per_chunk)]
+                        if not chunks or len(chunks[0]) == 0: 
+                            chunks = [[]] # Handle empty strings
+                        
+                        chunk_outputs = []
+                        for c in chunks:
+                            # A. Convert IDs to Embeddings
+                            sot_idx = torch.tensor([sot], device=self.device)
+                            eot_idx = torch.tensor([eot], device=self.device)
+                            content_idx = torch.tensor([c], device=self.device) if len(c) > 0 else torch.tensor([[]], device=self.device, dtype=torch.long)
+                            
+                            sot_emb = token_embedding_layer(sot_idx).unsqueeze(0)    # [1, 1, width]
+                            eot_emb = token_embedding_layer(eot_idx).unsqueeze(0)    # [1, 1, width]
+                            
+                            # Handle empty content embedding if text is empty
+                            if len(c) > 0:
+                                content_emb = token_embedding_layer(content_idx)    # [1, len, width]
+                            else:
+                                content_emb = torch.empty((1, 0, self.text_encoder.width), device=self.device)
+
+                            # B. CoOp Injection: [SOT] + [Prompt] + [Content] + [EOT]
+                            # self.prompt_learner returns (1, 1 + n_ctx + len(c) + 1, width)
+                            full_embeddings = self.prompt_learner(sot_emb, eot_emb, content_emb)
+
+                            # C. Manual Padding and Masking
+                            curr_len = full_embeddings.shape[1]
+                            pad_amt = max_len - curr_len
+                            
+                            if pad_amt > 0:
+                                pad_idx = torch.tensor([pad] * pad_amt, device=self.device)
+                                pad_emb = token_embedding_layer(pad_idx).unsqueeze(0)
+                                full_embeddings = torch.cat([full_embeddings, pad_emb], dim=1)
+                            
+                            # Mask: 1 for tokens/prompts, 0 for pads (used for MultiHeadAttention)
+                            # key_padding_mask in your Transformer is (attention_mask == 0)
+                            # So we create an attention_mask where 1 is real and 0 is pad
+                            attn_mask = torch.zeros(max_len, device=self.device)
+                            attn_mask[:curr_len] = 1
+                            key_padding_mask = (attn_mask == 0).unsqueeze(0) # [1, 77]
+
+                            # D. Add Positional Encodings
+                            full_embeddings = full_embeddings + pos_embedding.unsqueeze(0)
+
+                            # E. Manual Transformer Forward (Since we have embeds, not IDs)
+                            x = full_embeddings.permute(1, 0, 2)  # [L, N, D]
+                            for block in self.text_encoder.resblocks:
+                                x = block(x, key_padding_mask=key_padding_mask)
+                            
+                            x = x.permute(1, 0, 2)  # [N, L, D]
+                            x = self.text_encoder.ln_final(x)
+                            chunk_outputs.append(x)
+                        
+                        # Mean pool across all chunks for this specific sentence
+                        combined_sentence = torch.cat(chunk_outputs, dim=1)
+                        batch_embeddings.append(combined_sentence.mean(dim=1))
+
+                    # 2. Safety check before cat
+                    if len(batch_embeddings) == 0:
+                        # Fallback to zero tensor if batch is somehow empty
+                        print("just zeros")
+                        text_emb = torch.zeros((len(sentences), self.text_encoder.width), device=self.device)
+                    else:
+                        text_emb = torch.cat(batch_embeddings, dim=0)
+                    
+                    features.append(text_emb)
+                else:
+
+                    
+                    tokenizer = BertTokenizer.from_pretrained('microsoft/BiomedVLP-CXR-BERT-specialized', do_lower_case=True)
+                    # Tokenize and ensure tensors are on CPU
+                    tokens = tokenizer(
+                    inputs['text'], 
+                    padding="max_length", 
+                    truncation=True, 
+                    max_length=256, 
+                    return_tensors="pt"
+                    )
+                    print("After diagnosis tokens:")
+                    print(tokens['input_ids'].size(1))             
+                    actual_count = tokens['attention_mask'][0].sum().item()
+                    print(f"Actual tokens used: {actual_count}")
+
+                    # print(f"Text Encoder Class: {self.text_encoder.__class__.__name__}")
+                    # print(f"DEBUG: All attributes of text_encoder: {dir(self.text_encoder)}")
+                    self.text_encoder.text_transformer.resize_token_embeddings(len(tokenizer))
+
+                    input_ids = tokens['input_ids'].to(self.device)
+
+                    # 2. Now you can slice it because it is a Tensor
+                    # input_ids = input_ids[:, :254]
+                    # Fix the vocab mismatch without resizing
+                    # vocab_limit = self.text_encoder.text_transformer.token_emb.num_embeddings
+                    # input_ids[input_ids >= vocab_limit] = tokenizer.unk_token_id
+
+                    # Pass to transformer (Correct keyword)
+                    model_output = self.text_encoder.text_transformer(input_ids=input_ids)
+
+                    # Extract Hidden State then CLS
+                    enc_text = model_output.last_hidden_state
+                    text_embeds = enc_text[:, 0, :]
+
+                    # Project
+                    text_latents = self.text_encoder.to_text_latent(text_embeds)
+                    features.append(text_latents)
+                    
+
+            # 3. Tabular Branch
+            if 'tabular' in inputs and getattr(self.config, 'tabular', False):
+                features.append(inputs['tabular'])
+
+            # 4. Final Fusion
+            if len(features) > 1:
+                return torch.cat(features, dim=1)
+            elif len(features) == 1:
+                return features[0]
+            else:
+                raise ValueError("No modalities enabled in config!")
 
     def forward(self, inputs):
-
-        # inputs is the dictionary from the Dataloader: {'image': tensor, 'text': "sentence"}
-        img_emb = None
-        text_emb = None
-        features = []
-
-        # --- 1. Process Vision if present ---
-        if 'image' in inputs and getattr(self.config, 'image', False):
-            x = inputs['image']
-            vision_outputs = self.vision_encoder(x)
-            
-            if hasattr(vision_outputs, "pooler_output"):
-                img_emb = vision_outputs.pooler_output
-            else:
-                img_emb = vision_outputs[0][:, 0, :] if isinstance(vision_outputs, (list, tuple)) else vision_outputs
-            features.append(img_emb)
-
-        if 'text' in inputs and getattr(self.config, 'text', False):
-            sentences = inputs['text']
-            max_len = 77
-            # Room for SOT (1) + EOT (1) + Learnable Prompts (n_ctx)
-            content_per_chunk = max_len - 2 - self.prompt_learner.n_ctx 
-            
-            # 1. Get Tokenizer and Embeddings from your Transformer class
-            tokenizer = getattr(self._encoder_wrapper, 'tokenizer', None) or getattr(self._encoder_wrapper.model, 'tokenizer', None)
-            token_embedding_layer = self.text_encoder.token_embedding
-            pos_embedding = self.text_encoder.positional_embedding # [77, width]
-
-            tokenized_output = tokenizer(sentences, truncation=False, add_special_tokens=False)
-            full_encodings = tokenized_output['input_ids']
-            
-            sot = tokenizer.bos_token_id if tokenizer.bos_token_id is not None else 49406
-            eot = tokenizer.eos_token_id if tokenizer.eos_token_id is not None else 49407
-            pad = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
-
-            batch_embeddings = []
-
-            for ids in full_encodings:
-                # Split into chunks
-                chunks = [ids[i : i + content_per_chunk] for i in range(0, len(ids), content_per_chunk)]
-                if not chunks or len(chunks[0]) == 0: 
-                    chunks = [[]] # Handle empty strings
-                
-                chunk_outputs = []
-                for c in chunks:
-                    # A. Convert IDs to Embeddings
-                    sot_idx = torch.tensor([sot], device=self.device)
-                    eot_idx = torch.tensor([eot], device=self.device)
-                    content_idx = torch.tensor([c], device=self.device) if len(c) > 0 else torch.tensor([[]], device=self.device, dtype=torch.long)
-                    
-                    sot_emb = token_embedding_layer(sot_idx).unsqueeze(0)    # [1, 1, width]
-                    eot_emb = token_embedding_layer(eot_idx).unsqueeze(0)    # [1, 1, width]
-                    
-                    # Handle empty content embedding if text is empty
-                    if len(c) > 0:
-                        content_emb = token_embedding_layer(content_idx)    # [1, len, width]
-                    else:
-                        content_emb = torch.empty((1, 0, self.text_encoder.width), device=self.device)
-
-                    # B. CoOp Injection: [SOT] + [Prompt] + [Content] + [EOT]
-                    # self.prompt_learner returns (1, 1 + n_ctx + len(c) + 1, width)
-                    full_embeddings = self.prompt_learner(sot_emb, eot_emb, content_emb)
-
-                    # C. Manual Padding and Masking
-                    curr_len = full_embeddings.shape[1]
-                    pad_amt = max_len - curr_len
-                    
-                    if pad_amt > 0:
-                        pad_idx = torch.tensor([pad] * pad_amt, device=self.device)
-                        pad_emb = token_embedding_layer(pad_idx).unsqueeze(0)
-                        full_embeddings = torch.cat([full_embeddings, pad_emb], dim=1)
-                    
-                    # Mask: 1 for tokens/prompts, 0 for pads (used for MultiHeadAttention)
-                    # key_padding_mask in your Transformer is (attention_mask == 0)
-                    # So we create an attention_mask where 1 is real and 0 is pad
-                    attn_mask = torch.zeros(max_len, device=self.device)
-                    attn_mask[:curr_len] = 1
-                    key_padding_mask = (attn_mask == 0).unsqueeze(0) # [1, 77]
-
-                    # D. Add Positional Encodings
-                    full_embeddings = full_embeddings + pos_embedding.unsqueeze(0)
-
-                    # E. Manual Transformer Forward (Since we have embeds, not IDs)
-                    x = full_embeddings.permute(1, 0, 2)  # [L, N, D]
-                    for block in self.text_encoder.resblocks:
-                        x = block(x, key_padding_mask=key_padding_mask)
-                    
-                    x = x.permute(1, 0, 2)  # [N, L, D]
-                    x = self.text_encoder.ln_final(x)
-                    chunk_outputs.append(x)
-                
-                # Mean pool across all chunks for this specific sentence
-                combined_sentence = torch.cat(chunk_outputs, dim=1)
-                batch_embeddings.append(combined_sentence.mean(dim=1))
-
-            # 2. Safety check before cat
-            if len(batch_embeddings) == 0:
-                # Fallback to zero tensor if batch is somehow empty
-                print("just zeros")
-                text_emb = torch.zeros((len(sentences), self.text_encoder.width), device=self.device)
-            else:
-                text_emb = torch.cat(batch_embeddings, dim=0)
-            
-            features.append(text_emb)
-        # --- 3. Fusion & Survival Head ---
-        combined_features = torch.cat(features, dim=1) if len(features) > 1 else features[0]
-        log_params = self.survival_head(combined_features)
-        
+        combined = self.encode_batch(inputs)
+        log_params = self.survival_head(combined)
         return log_params
 
     
@@ -247,6 +299,8 @@ class encoder_decoder(L.LightningModule):
 
         # The magic happens here: gradients flow through log_params back to vision_encoder
         log_params = self(inputs).squeeze() 
+        print("Printing log parameters shape:")
+        print(log_params.shape)
 
         # Calculate loss
         loss = weibull.neg_log_likelihood_weibull(log_params, event, time)
@@ -254,12 +308,12 @@ class encoder_decoder(L.LightningModule):
         # Log metrics
         self.log("train_loss", loss, on_epoch=True, prog_bar=True)
         
-        # Verify gradients are working (only once)
-        if batch_idx == 0 and self.current_epoch == 0:
-            for name, param in self.vision_encoder.named_parameters():
-                if param.requires_grad:
-                    print(f"🔥 Successfully training: {name}")
-                    break # Just confirm one to be sure
+        # # Verify gradients are working (only once)
+        # if batch_idx == 0 and self.current_epoch == 0:
+        #     for name, param in self.vision_encoder.named_parameters():
+        #         if param.requires_grad:
+        #             print(f"🔥 Successfully training: {name}")
+        #             break # Just confirm one to be sure
 
         return loss
 
@@ -564,8 +618,9 @@ class encoder_decoder(L.LightningModule):
             param.requires_grad = True
         param_groups.append({'params': self.survival_head.parameters(), 'lr': self.learning_rate})
 
+        if self.prompt_learner is not None:
+            param_groups.append({'params': self.prompt_learner.parameters(), 'lr': self.learning_rate})
 
-        param_groups.append({'params': self.prompt_learner.parameters(), 'lr': self.learning_rate})
         # 2. Vision Encoder Logic
         if self.vision_encoder is not None and use_image is not None:
             if self.freeze_encoder:

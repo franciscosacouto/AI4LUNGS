@@ -24,8 +24,8 @@ Freeze_weights: False
 Binary_model: False
 
 Threshold_metrics: 0.6
-model_name: FI_CoOp
-project: Text
+model_name: multi_fi_CTCLIP
+project: reset_baseline
 seed_value: 22
 early_stopping:
   monitor: 'val_loss'
@@ -35,12 +35,12 @@ early_stopping:
 
 
 
-Encoder: MedImageInsights
+image_encoder: MedImageInsights # Options: MedImageInsights, RadioDino, CTCLIP
+text_encoder: CTCLIP            # Options: MedImageInsights, CTCLIP, null
 image: True
 text: True
 tabular: False
 stage_type: full_information
-
 
 
 test_fraction_of_entire_dataset: 0.2
@@ -58,7 +58,7 @@ dataset_name: NLST
 data_preprocessing_protocol_number: 4
 data_type: whole_slice
 data_augmentation:
-  apply: True
+  apply: False
   augmented_to_original_data_ratio: 2
   parameters:
     number_of_augmentations: 3

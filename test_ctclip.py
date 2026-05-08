@@ -39,13 +39,12 @@ model.to(device) # Ensure model is on CPU
 model.eval()
 
 # 6. Setup Tokenizer
-tokenizer = AutoTokenizer.from_pretrained('microsoft/BiomedVLP-CXR-BERT-specialized',do_lower_case=True, trust_remote_code=True)
-
+tokenizer = AutoTokenizer.from_pretrained("microsoft/BiomedVLP-CXR-BERT-specialized", trust_remote_code=True)
 
 # Verify it's the right class
 print(f"Loaded tokenizer class: {tokenizer.__class__.__name__}")
 # 7. Extract Text Embeddings
-text_input = ["No evidence of acute intracranial hemorrhage or mass effect."]
+text_input = ["No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect. No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect.No evidence of acute intracranial hemorrhage or mass effect."]
 
 with torch.no_grad():
     # Tokenize and ensure tensors are on CPU
