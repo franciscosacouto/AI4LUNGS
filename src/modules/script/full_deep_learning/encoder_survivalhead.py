@@ -20,14 +20,14 @@ import wandb
 from collections import defaultdict 
 from lightning.pytorch.loggers import WandbLogger   
 from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
-from FM_MLP import encoder_decoder as encoder_decoder
+from AI4LUNGS.src.modules.architecture.FM_MLP import encoder_decoder as encoder_decoder
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
-from FM_MLP_binary import encoder_decoder as encoder_decoder_binary
+from AI4LUNGS.src.modules.architecture.FM_MLP_binary import encoder_decoder as encoder_decoder_binary
 from RadioDino_MLP import encoder_decoder as radiodino_decoder
-from FM_CTClip import ctClip_mlp as ctClip_mlp
+from AI4LUNGS.src.modules.architecture.FM_CTClip import ctClip_mlp as ctClip_mlp
 
-from FM_MLP_tab import encoder_decoder as encoder_decoder_tab
+from AI4LUNGS.src.modules.architecture.FM_MLP_tab import encoder_decoder as encoder_decoder_tab
 import timm
 import torch.nn as nn
 from model_setup import get_encoders

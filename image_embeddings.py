@@ -38,7 +38,7 @@ def main(config):
     model.eval()
 
     # 2. Data Loading Logic
-    from encoder_survivalhead import load_data 
+    from AI4LUNGS.src.modules.script.full_deep_learning.encoder_survivalhead import load_data 
     lung_metadataframe = load_data(
         config.directories.cancer_path, 
         config.directories.rootdir, 
