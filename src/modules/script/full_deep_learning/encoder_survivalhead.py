@@ -20,17 +20,23 @@ import wandb
 from collections import defaultdict 
 from lightning.pytorch.loggers import WandbLogger   
 from torchmetrics.classification import BinaryAUROC, BinaryF1Score, BinaryStatScores
-from AI4LUNGS.src.modules.architecture.FM_MLP import encoder_decoder as encoder_decoder
+
+project_root = "/nas-ctm01/homes/fmferreira/AI4LUNGS" 
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+# Now your import will work
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedDataLoader
-from AI4LUNGS.src.modules.architecture.FM_MLP_binary import encoder_decoder as encoder_decoder_binary
-from RadioDino_MLP import encoder_decoder as radiodino_decoder
-from AI4LUNGS.src.modules.architecture.FM_CTClip import ctClip_mlp as ctClip_mlp
-
-from AI4LUNGS.src.modules.architecture.FM_MLP_tab import encoder_decoder as encoder_decoder_tab
+from src.modules.architecture.FM_MLP import encoder_decoder
+from src.modules.architecture.FM_MLP_binary import encoder_decoder as encoder_decoder_binary
+from src.modules.architecture.RadioDino_MLP import encoder_decoder as radiodino_decoder
+from src.modules.architecture.FM_CTClip import ctClip_mlp as ctClip_mlp
+from src.modules.architecture.FM_MLP_tab import encoder_decoder as encoder_decoder_tab
 import timm
 import torch.nn as nn
 from model_setup import get_encoders
+
 
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 def load_data(cancer_path, rootdir, text_path):
@@ -48,6 +54,8 @@ def load_data(cancer_path, rootdir, text_path):
     ])
     print(cancer_df.columns)
     max_time = cancer_df['fup_days'].max()
+    print("MAX TIME:")
+    print(max_time)
     cancer_df['fup_days'] = cancer_df['fup_days'] / max_time
     
 
@@ -106,7 +114,7 @@ def save_results_to_excel(file_path, new_row):
 
 
 
-@hydra.main(version_base=None, config_path="Configs/", config_name="config_ws")
+@hydra.main(version_base=None, config_path=f"/nas-ctm01/homes/fmferreira/AI4LUNGS/Configs/", config_name="config_ws")
 def main(config):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -287,7 +295,8 @@ def main(config):
                 freeze_encoder=config.Freeze_weights
             )
 
-
+            lightning_model.fold_id = fold_id + 1
+            
             trainable = sum(p.numel() for p in lightning_model.parameters() if p.requires_grad)
             print(f"The model has {trainable:,} trainable parameters.")
      
@@ -311,7 +320,7 @@ def main(config):
             current_trainer.fit(lightning_model, dataloader_train, dataloader_val)
             
             # Run test and capture results
-            test_results_list = current_trainer.test(ckpt_path='best', dataloaders=dataloader_test)
+            test_results_list = current_trainer.test(ckpt_path='best', dataloaders=dataloader_test, weights_only=False)
             test_results_fold = test_results_list[0] # Test returns a list of dictionaries
 
             # 6. Store Results and Finalize Run
@@ -336,6 +345,8 @@ def main(config):
     std_recall = np.std([r.get('test_recall', 0) for r in all_fold_results])
     avg_precision = np.mean([r.get('test_precision', 0) for r in all_fold_results])
     std_precision = np.std([r.get('test_precision', 0) for r in all_fold_results])
+    avg_td_auc = np.mean([r.get('test_td_auc', 0) for r in all_fold_results])
+    std_td_auc = np.std([r.get('test_td_auc', 0) for r in all_fold_results])
     
     print(f"\n====================== CV COMPLETE ({num_folds} Folds) ======================")
     print(f"Average Test AUROC: {avg_auroc:.4f}")
@@ -360,6 +371,8 @@ def main(config):
         "Std_Test_recall": std_recall,
         "Avg_Test_precision":avg_precision,
         "Std_Test_precision": std_precision,
+        "Avg_Test_td_auc": avg_td_auc,
+        "std_Test_td_auc": std_td_auc,
         "Seed": config.SEED,
     }
     

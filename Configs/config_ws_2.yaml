@@ -2,8 +2,9 @@ directories:
   rootdir_lung: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
   rootdir_ws: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
   rootdir: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/preprocessed_data/protocol_5/2d/ws
-  rootdir_text: /nas-ctm01/homes/fmferreira/AI4LUNGS/text_data_new.csv
-  image_df_path: /nas-ctm01/homes/fmferreira/AI4LUNGS/lung_file_paths.csv
+  rootdir_text: /nas-ctm01/homes/fmferreira/AI4LUNGS/data/text_data_new.csv
+  rootdir_tab: /nas-ctm01/homes/fmferreira/AI4LUNGS/data/NLST_preclinical_final_processed_normalized.csv
+  image_df_path: /nas-ctm01/homes/fmferreira/AI4LUNGS/data/lung_file_paths.csv
   cancer_path: /nas-ctm01/datasets/public/medical_datasets/lung_ct_datasets/nlst/cancer_info_final_mapped.csv
 data:
   columns:
@@ -19,11 +20,11 @@ EPOCHS: 100
 LEARNING_RATE: 1e-4
 Freeze_weights: False
 
-Binary_model: False
+Binary_model: True
 
 Threshold_metrics: 0.6
-model_name: text
-project: test_encoder
+model_name: Image_binary
+project: reset_baseline
 seed_value: 22
 early_stopping:
   monitor: 'val_loss'
@@ -33,9 +34,12 @@ early_stopping:
 
 
 
-Encoder: MedImageInsights
-modality: text  #multi, image, text
-text_type: afterdiagnosis
+image_encoder: MedImageInsights # Options: MedImageInsights, RadioDino, CTCLIP
+text_encoder: null            # Options: MedImageInsights, CTCLIP, null
+image: True
+text: False
+tabular: False
+stage_type: preclinical
 
 
 test_fraction_of_entire_dataset: 0.2
@@ -53,7 +57,7 @@ dataset_name: NLST
 data_preprocessing_protocol_number: 4
 data_type: whole_slice
 data_augmentation:
-  apply: True
+  apply: False
   augmented_to_original_data_ratio: 2
   parameters:
     number_of_augmentations: 3

@@ -419,9 +419,16 @@ class NLSTPreprocessedDataLoader(Dataset):
         return str(dataframe_row[self.text_column].values[0])
 
     def __getitem__(self, data_index):
+        dataframe_row = self.lung_metadataframe.loc[
+        self.lung_metadataframe['path'] == self.file_names[data_index]]
+        current_pid = int(dataframe_row['pid'].values[0])
+        
         try:
+
             # We use a dictionary to make the model inputs interchangeable
             inputs = {}
+            inputs['pid'] = current_pid
+
 
             if self.use_image:
                         inputs['image'] = self._get_data(data_index)

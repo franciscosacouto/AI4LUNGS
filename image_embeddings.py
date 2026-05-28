@@ -10,6 +10,8 @@ import sys
 sys.path.insert(1, '/nas-ctm01/homes/fmferreira/MedImageInsights')
 
 from medimageinsightmodel import MedImageInsight
+sys.path.insert(1, '/nas-ctm01/homes/fmferreira/AI4LUNGS')
+
 from NLSTPreprocessedKFoldDataLoader import NLSTPreprocessedKFoldDataLoader
 
 def save_combined_fold(df_list, fold_id, output_dir):
@@ -38,7 +40,7 @@ def main(config):
     model.eval()
 
     # 2. Data Loading Logic
-    from AI4LUNGS.src.modules.script.full_deep_learning.encoder_survivalhead import load_data 
+    from src.modules.script.full_deep_learning.encoder_survivalhead import load_data 
     lung_metadataframe = load_data(
         config.directories.cancer_path, 
         config.directories.rootdir, 

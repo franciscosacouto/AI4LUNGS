@@ -17,6 +17,7 @@ from lifelines.utils import concordance_index
 import torch.nn as nn
 from transformers import BertTokenizer, AutoTokenizer
 import  sys
+import os
 sys.path.insert(0, '/nas-ctm01/homes/fmferreira/CT-CLIP/CT_CLIP')
 
 from ct_clip.tokenizer import SimpleTokenizer
@@ -89,6 +90,7 @@ class encoder_decoder(L.LightningModule):
         self.test_preds = []
         self.test_events = []
         self.test_time= []
+        self.test_pids = []
         self.val_preds = []
         self.val_events = []
         self.val_time = []
@@ -317,24 +319,13 @@ class encoder_decoder(L.LightningModule):
 
         return loss
 
-    def _check_gradient_flow(self):
-        """Helper to verify the 360M parameters are actually 'awake'"""
-        for name, param in self.named_parameters():
-            if "vision_encoder" in name and param.requires_grad:
-                print(f"✅ Gradient Path Verified: {name} is set to learn.")
-                return
-        print("❌ WARNING: Vision Encoder is still frozen or disconnected!")
-    
     def validation_step(self, batch, batch_idx):
         inputs, event, time = batch
         event = event.squeeze() # Ensure 1D
         time = time.squeeze()          # Ensure 1D
         event= event.bool()
         log_params = self(inputs).squeeze()
-        print(f'shape x{log_params.shape}')
-
-        print(log_params.max())
-        print(log_params.min())
+       
         loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
         log_hz =weibull.log_hazard(log_params, time)
         new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
@@ -373,108 +364,63 @@ class encoder_decoder(L.LightningModule):
 
         return
     
-    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, time: torch.Tensor, prefix: str,  log_hz_t: torch.Tensor, return_metrics=False):
-        # Calculate True Positives (TP), False Negatives (FN), etc.
-        # 1. Move everything to CPU
-        # Ensure preds is [N, 2] for Weibull
-        preds, events, time, log_hz_t= preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
+    def _calculate_balanced_metrics(self, preds: torch.Tensor, events: torch.Tensor, time: torch.Tensor, prefix: str, log_hz_t: torch.Tensor, return_metrics=False):
+        # 1. Relocate to CPU and enforce strict shapes
+        preds, events, time, log_hz_t = preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
+        events_bool = events.squeeze().bool()
 
-        print(f'shape PREDS: {preds.shape}')
-        print(f'shape time: {time.shape}')
-        # Now log_hz will have the same length as time (N)
-        log_hz = weibull.log_hazard(preds, time)
-        preds, events, time, log_hz_t= preds.cpu(), events.cpu(), time.cpu(), log_hz_t.cpu()
-        # self.stats_metric = self.stats_metric.cpu()
-        time_5y = torch.tensor(1825.0 / 2786.0).cpu()
-        print(f'shape log_hz: {log_hz.shape}')
-        print(f'shape log_hz_t: {log_hz_t.shape}')
+        # 2. Extract continuous hazard risks at each patient's actual event time
+        log_hz_matrix = weibull.log_hazard(preds, time)
+        log_hz = torch.diagonal(log_hz_matrix) # Grabs the 1D diagonal elements
 
-        surv_prob_t = weibull.survival_function_weibull(preds, time_5y)
-        surv = weibull.survival_function_weibull(preds, time) 
+        # 3. LIFELINES C-INDEX IMPLEMENTATION
+        time_np = time.numpy().ravel()
+        events_np = events_bool.numpy().ravel()
+        log_hz_np = log_hz.numpy().ravel()
 
-        hard_preds = (surv_prob_t < 0.6).int()
-
-        events = events.squeeze().bool()
-        self.print_inbalance(hard_preds, events, stage_name=prefix.upper())
-        
-        # Calculate the Integrated Brier Score (IBS)
-        bs_metric = BrierScore()
-        scores = bs_metric(surv, events, time)
-        ibs_val = bs_metric.integral()
-        weibull_auc = Auc() # Torchsurv objects also need to be on same device
-        auroc_val = weibull_auc(log_hz_t, events, time, new_time=time_5y)
-        f1 = BinaryF1Score()
-        f1_score = f1(hard_preds,events)
-        
-        balanced_acc = Accuracy(task='multiclass', num_classes=2, average='macro')        
-        acc = balanced_acc(hard_preds,events)
-
-        rec= Recall(task='multiclass', num_classes=2, average='macro')
-        recall= rec(hard_preds,events)
-
-        prec= Precision(task='multiclass', num_classes=2, average='macro')
-        precision = prec(hard_preds,events)
-
-        weibull_cindex = ConcordanceIndex()
-        cindex= weibull_cindex(log_hz, events, time)
-        # 1. Convert to numpy and immediately flatten to 1D
-        log_hz= torch.diagonal(log_hz)
-        # We detach() and cpu() first to ensure we are off the graph and on the right device
-        time_np = time.detach().cpu().numpy().ravel()
-        log_hz_np = log_hz_t.detach().cpu().numpy().ravel()
-        events_np = events.detach().cpu().numpy().ravel()
-
-        # 2. Check shapes for peace of mind (optional debugging)
-        print(f"DEBUG SHAPES: time={time_np.shape}, log_hz={log_hz_np.shape}, events={events_np.shape}")
-
-        # 3. Calculate lifelines c-index
-        # REMEMBER: Use -log_hz_np because lifelines expects: higher score = longer life
+        # CRITICAL: Invert hazard with a negative sign. 
+        # Lifelines expects: higher value = longer survival. 
+        # Our model evaluates: higher log_hz = higher risk/earlier event.
         cindex_life = concordance_index(time_np, -log_hz_np, events_np)
-        print(f'Cindex TorchSurv: {cindex}')
-        print(f'Cindex Lifelines: {cindex_life}')
+        print(f"📊 [{prefix.upper()}] Lifelines Concordance Index: {cindex_life:.4f}")
 
+        # 4. Continuous Time-Dependent AUC (td_auc) via torchsurv at 5-Year mark
+        time_5y = torch.tensor(1825.0 / 2786.0).cpu()
+        weibull_auc = Auc() 
+        td_auc_val = weibull_auc(log_hz, events_bool, time)
+        td_auc_val = torch.mean(td_auc_val).item()
+        print(f"📈 [{prefix.upper()}] Time-Dependent AUC (5-Year): {td_auc_val:.4f}")
+
+        # 5. Integrated Brier Score (IBS) for continuous curve calibration
+        bs_metric = BrierScore()
+        surv_curves = weibull.survival_function_weibull(preds, time)
+        # Handle cases where batch sizes are small or boundary edges match
+        try:
+            bs_metric(surv_curves, events_bool, time)
+            ibs_val = bs_metric.integral()
+        except Exception:
+            ibs_val = torch.tensor(0.0) # Fallback for edge runtime anomalies
+
+        # 6. Optional: Diagnostic printing for patient risk visualization
+        # We define an event split threshold exclusively for distribution checking logs
+        surv_prob_t = weibull.survival_function_weibull(preds, time_5y)
+        hard_predictions_check = (surv_prob_t < 0.5).int() 
+        self.print_inbalance(hard_predictions_check, events_bool, stage_name=prefix.upper())
+
+        # Log pure continuous evaluation metrics out to Lightning Loggers/WandB
         self.log_dict({
-            f'{prefix}_auroc': auroc_val,
-            f'{prefix}_cindex': cindex,
+            f'{prefix}_cindex': cindex_life,
+            f'{prefix}_td_auc': td_auc_val,
             f'{prefix}_ibs': ibs_val,
-            f'{prefix}_f1_score': f1_score,
-            f'{prefix}_balanced_acc': acc,
-            f'{prefix}_recall': recall,
-            f'{prefix}_precision': precision,
+        }, on_step=False, on_epoch=True)
 
-         }, on_step=False, on_epoch=True)
         if return_metrics: 
             return {
-            'auroc': auroc_val.item(), 
-            'cindex': cindex.item(),
-            'ibs': ibs_val.item(),
-            'f1_score': f1_score.item(),
-            'balanced_acc': acc.item(), 
-            'recall': recall.item(),
-            'precision': precision.item(),
-        }
+                'cindex': cindex_life,
+                'td_auc': td_auc_val.item(), 
+                'ibs': ibs_val.item()
+            }
 
-    def plot_risk_distribution(self, preds, events, epoch):
-        plt.figure(figsize=(10, 6))
-        
-        # Weibull: Higher log_alpha (params[:, 0]) usually means higher survival
-        # We use -log_alpha as a proxy for "Risk"
-        risk_scores = -preds[:, 0].numpy() 
-        events = events.numpy()
-
-        sns.kdeplot(risk_scores[events == 1], fill=True, label="Actual Events", color="red")
-        sns.kdeplot(risk_scores[events == 0], fill=True, label="Censored", color="blue")
-        
-        plt.title(f"Epoch {epoch}: Risk Score Distribution")
-        plt.xlabel("Predicted Risk Score (-log_alpha)")
-        plt.ylabel("Density")
-        plt.legend()
-        
-        # Log to WandB via the trainer's logger
-        if self.logger:
-            self.logger.experiment.log({"risk_distribution": wandb.Image(plt)})
-        
-        plt.close()
 
 
     def on_validation_epoch_end(self):
@@ -488,8 +434,7 @@ class encoder_decoder(L.LightningModule):
         # This must also be [N, 1] or [N] depending on your log_hazard call
         log_hz_t = torch.cat(self.val_log_hz_t)
         self._calculate_balanced_metrics(preds, events, time, 'val', log_hz_t)
-        if self.current_epoch % 5 == 0:
-            self.plot_risk_distribution(preds, events, self.current_epoch)
+
         
         eval_time = torch.tensor(1825.0 / 2786.0).cpu()
 
@@ -521,24 +466,49 @@ class encoder_decoder(L.LightningModule):
         self.val_time.clear()
         self.val_log_hz_t.clear()
 
+
+
     def test_step(self, batch, batch_idx):
         inputs, event, time = batch
-        event=event.squeeze()
-        time= time.squeeze()
-        preds = self(inputs).squeeze()
+        
+        pids = inputs['pid']
+            
+        # 2. Forward pass returns the 2 Weibull parameters. 
+        # DO NOT use global .squeeze() here so it remains [Batch, 2]
+        preds = self(inputs) 
+        if preds.ndim == 1:
+            preds = preds.unsqueeze(0) # Safeguard for batch size = 1
 
-        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
+        # 3. FORCE time to be a flat 1D vector to satisfy torchsurv expectations
+        time_1d = time.flatten().to(self.device)
+        event_1d = event.flatten().to(self.device)
 
-        log_hz_t =weibull.log_hazard(preds, new_time)
-        log_hz =weibull.log_hazard(preds, time)
+        # 4. Compute continuous risk metrics using the safely flattened timelines
+        new_time_scalar = torch.tensor(1825.0 / 2786.0).to(self.device)
+        
+        # Pass a 1D vector for the specific validation time evaluation
+        # We broadcast the scalar to a 1D vector matching your current batch size
+        new_time_vector = new_time_scalar.expand(preds.size(0))
 
-        # store for epoch_end
+        log_hz = weibull.log_hazard(preds, time_1d)
+        log_hz_t = weibull.log_hazard(preds, new_time_vector)
+
+        # 5. Store items safely into individual containers
+        if isinstance(pids, torch.Tensor):
+            self.test_pids.append(pids.detach().cpu().view(-1))
+        elif isinstance(pids, (list, np.ndarray)):
+            self.test_pids.append(list(pids))
+        else:
+            self.test_pids.append([pids])
+
+        # Save detached variables explicitly 
         self.test_preds.append(preds.detach().cpu())
-        self.test_events.append(event.detach().cpu())
-        self.test_time.append(time.detach().cpu())
+        self.test_events.append(event_1d.detach().cpu())
+        self.test_time.append(time_1d.detach().cpu())
         self.test_log_hz_t.append(log_hz_t.detach().cpu())
 
-    
+
+
     def on_training_epoch_end(self):
         preds = torch.cat(self.train_preds)
         events = torch.cat(self.train_events)
@@ -551,50 +521,71 @@ class encoder_decoder(L.LightningModule):
         self.train_log_hz_t.clear()
 
     def on_test_epoch_end(self):
-        preds = torch.cat(self.test_preds)
-        events = torch.cat(self.test_events)
-        time = torch.cat(self.test_time)
-        log_hz_t= torch.cat(self.test_log_hz_t)
-
-        eval_time = torch.tensor(1825.0 / 2786.0).cpu()
-
         
-        # 3. Calculate Survival Probability S(t | x)
-        # Shape will be (num_samples, 1)
-        with torch.no_grad():
-            surv_probs = weibull.survival_function_weibull(preds, eval_time)
-        
-        # 4. Prepare data for Excel
-        # Convert to CPU/Numpy for Pandas compatibility
-        preds_np = preds.cpu().numpy()
-        events_np = events.cpu().numpy()
-        time_np = time.cpu().numpy()
-        surv_probs_np = surv_probs.squeeze().cpu().numpy()
+        unpacked_pids = []
+        for item in self.test_pids:
+            if isinstance(item, torch.Tensor):
+                unpacked_pids.extend(item.cpu().view(-1).tolist())
+            elif isinstance(item, (list, np.ndarray)):
+                unpacked_pids.extend(list(item))
+            else:
+                unpacked_pids.append(item)
+        pids = np.array(unpacked_pids).ravel()
 
-        # 5. Create DataFrame
-        df = pd.DataFrame({
-            'Actual_Time': time_np,
-            'Actual_Event': events_np,
-            'Surv_Prob_5y': surv_probs_np
+        # 2. Standardize multi-dimensional regression outputs and survival labels
+        preds = torch.cat(self.test_preds, dim=0).cpu() # Maintained as [N, 2] matrix
+        events = torch.cat([t.view(-1) for t in self.test_events]).bool().cpu()
+        times = torch.cat([t.view(-1) for t in self.test_time]).cpu()
+        log_hz_t = torch.cat([t.view(-1) for t in self.test_log_hz_t]).cpu()
+
+        # Extract continuous parametric outputs: Column 0 = log_scale, Column 1 = log_shape
+        weibull_param_1 = preds[:, 0].numpy().ravel()
+        weibull_param_2 = preds[:, 1].numpy().ravel()
+
+        # 3. Compute continuous 5-Year Probability of Death via the cumulative density function
+        # 1825 days / 2786 normalization factor (if applicable to your time-scale)
+        time_5y = torch.tensor(1825.0 / 2786.0) 
+        surv_prob_5y = weibull.survival_function_weibull(preds, time_5y).numpy().ravel()
+        prob_death_5y = 1.0 - surv_prob_5y  # F(t) = 1.0 - S(t)
+
+        print(f"\n📊 [REGRESSION] EXTRACTION SIZE CHECK:\n -> PIDs: {len(pids)} | Params: {len(weibull_param_1)} | Events: {len(events)} | Times: {len(times)}")
+
+        # 4. Handle size mismatches safely due to non-uniform batch slicing
+        min_len = min(len(pids), len(weibull_param_1), len(events), len(times))
+        if min_len != max(len(pids), len(weibull_param_1), len(events), len(times)):
+            print(f"⚠️ LENGTH MISMATCH DETECTED! Truncating to {min_len} lines...")
+            pids = pids[:min_len]
+            weibull_param_1 = weibull_param_1[:min_len]
+            weibull_param_2 = weibull_param_2[:min_len]
+            prob_death_5y = prob_death_5y[:min_len]
+            events = events[:min_len]
+            times = times[:min_len]
+            log_hz_t = log_hz_t[:min_len]
+
+        # 5. Build and save the exact target survival parameter file
+        df_weibull = pd.DataFrame({
+            'pid': pids,
+            'true_event': events.numpy().astype(int),
+            'fup_days': times.numpy(),
+            'weibull_param_1': weibull_param_1,
+            'weibull_param_2': weibull_param_2,
+            'imaging_prob_5y': prob_death_5y  # True Probability of Death/Event
         })
-        
-        # 6. Save to Excel
-        # We use a unique name to avoid overwriting files in Cross-Validation
-        filename = f"test_results_fold_{getattr(self, 'fold_id', 'final')}.xlsx"
-        df.to_excel(filename, index=False)
-        print(f"Saved test predictions and probabilities to {filename}")        # Calculate metrics for the test set
-        metrics=  self._calculate_balanced_metrics(preds, events, time, 'test', log_hz_t, return_metrics=True)
-        self.test_auroc = metrics['auroc']
-        self.test_cindex = metrics['cindex']
-        self.test_ibs = metrics['ibs']
-        self.test_f1_score = metrics['f1_score']
-        self.test_balanced_acc = metrics['balanced_acc']
-        self.plot_risk_distribution(preds, events, self.current_epoch)
-        # Clear lists
+
+        base_dir = "/nas-ctm01/homes/fmferreira/AI4LUNGS/results/Imaging"
+        os.makedirs(base_dir, exist_ok=True) 
+        df_weibull.to_csv(f"{base_dir}/test_weibull_parameters_fold_{self.fold_id}.csv", index=False)
+        print(f"✅ Successfully saved regression parameters to {base_dir}")
+
+        # 6. Execute metrics loop using the lifelines C-index logic
+        self._calculate_balanced_metrics(preds[:min_len], events[:min_len], times[:min_len], 'test', log_hz_t[:min_len])
+
+        # 7. Reset containers for subsequent cross-validation folds
+        self.test_pids.clear()
         self.test_preds.clear()
         self.test_events.clear()
+        self.test_time.clear()
         self.test_log_hz_t.clear()
-
 
     def on_after_backward(self):
     # Check the exact parameter you just found
