@@ -83,7 +83,6 @@ class encoder_decoder(L.LightningModule):
         self.cindex_metric = ConcordanceIndex()
         self.auroc_metric = Auc() 
         self.f1score = BinaryF1Score()
-        self.cindex_metric = ConcordanceIndex()
 
 
         # self.stats_metric = BinaryStatScores(threshold=0.5, average='none')
@@ -288,6 +287,7 @@ class encoder_decoder(L.LightningModule):
     def forward(self, inputs):
         combined = self.encode_batch(inputs)
         log_params = self.survival_head(combined)
+        log_params = torch.clamp(log_params, min=-10.0, max = 10.0)
         return log_params
 
     
@@ -310,32 +310,11 @@ class encoder_decoder(L.LightningModule):
         # Log metrics
         self.log("train_loss", loss, on_epoch=True, prog_bar=True)
         
-        # # Verify gradients are working (only once)
-        # if batch_idx == 0 and self.current_epoch == 0:
-        #     for name, param in self.vision_encoder.named_parameters():
-        #         if param.requires_grad:
-        #             print(f"🔥 Successfully training: {name}")
-        #             break # Just confirm one to be sure
+   
 
         return loss
 
-    def validation_step(self, batch, batch_idx):
-        inputs, event, time = batch
-        event = event.squeeze() # Ensure 1D
-        time = time.squeeze()          # Ensure 1D
-        event= event.bool()
-        log_params = self(inputs).squeeze()
-       
-        loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
-        log_hz =weibull.log_hazard(log_params, time)
-        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
-        log_hz_t= weibull.log_hazard(log_params,  new_time)
-        self.log("val_loss", loss, prog_bar=True)
-        self.val_preds.append(log_params.detach().cpu())
-        self.val_events.append(event.detach().cpu())
-        self.val_time.append(time.detach().cpu())
-        self.val_log_hz_t.append(log_hz_t.detach().cpu())
-
+    
     
 
     def print_inbalance(self, predicted_activated_labels, labels, stage_name=""):
@@ -467,6 +446,22 @@ class encoder_decoder(L.LightningModule):
         self.val_log_hz_t.clear()
 
 
+    def validation_step(self, batch, batch_idx):
+        inputs, event, time = batch
+        event = event.squeeze() # Ensure 1D
+        time = time.squeeze()          # Ensure 1D
+        event= event.bool()
+        log_params = self(inputs).squeeze()
+       
+        loss = weibull.neg_log_likelihood_weibull(log_params, event, time, reduction='mean')
+        log_hz =weibull.log_hazard(log_params, time)
+        new_time = torch.tensor(1825.0 / 2786.0).to(self.device)
+        log_hz_t= weibull.log_hazard(log_params,  new_time)
+        self.log("val_loss", loss, prog_bar=True)
+        self.val_preds.append(log_params.detach().cpu())
+        self.val_events.append(event.detach().cpu())
+        self.val_time.append(time.detach().cpu())
+        self.val_log_hz_t.append(log_hz_t.detach().cpu())
 
     def test_step(self, batch, batch_idx):
         inputs, event, time = batch
@@ -475,9 +470,9 @@ class encoder_decoder(L.LightningModule):
             
         # 2. Forward pass returns the 2 Weibull parameters. 
         # DO NOT use global .squeeze() here so it remains [Batch, 2]
-        preds = self(inputs) 
-        if preds.ndim == 1:
-            preds = preds.unsqueeze(0) # Safeguard for batch size = 1
+        log_params = self(inputs) 
+        if log_params.ndim == 1:
+            log_params = log_params.unsqueeze(0) # Safeguard for batch size = 1
 
         # 3. FORCE time to be a flat 1D vector to satisfy torchsurv expectations
         time_1d = time.flatten().to(self.device)
@@ -488,10 +483,10 @@ class encoder_decoder(L.LightningModule):
         
         # Pass a 1D vector for the specific validation time evaluation
         # We broadcast the scalar to a 1D vector matching your current batch size
-        new_time_vector = new_time_scalar.expand(preds.size(0))
+        # new_time_vector = new_time_scalar.expand(preds.size(0))
 
-        log_hz = weibull.log_hazard(preds, time_1d)
-        log_hz_t = weibull.log_hazard(preds, new_time_vector)
+        log_hz = weibull.log_hazard(log_params, time_1d)
+        log_hz_t = weibull.log_hazard(log_params, new_time_scalar)
 
         # 5. Store items safely into individual containers
         if isinstance(pids, torch.Tensor):
@@ -502,7 +497,7 @@ class encoder_decoder(L.LightningModule):
             self.test_pids.append([pids])
 
         # Save detached variables explicitly 
-        self.test_preds.append(preds.detach().cpu())
+        self.test_preds.append(log_params.detach().cpu())
         self.test_events.append(event_1d.detach().cpu())
         self.test_time.append(time_1d.detach().cpu())
         self.test_log_hz_t.append(log_hz_t.detach().cpu())
@@ -550,17 +545,7 @@ class encoder_decoder(L.LightningModule):
 
         print(f"\n📊 [REGRESSION] EXTRACTION SIZE CHECK:\n -> PIDs: {len(pids)} | Params: {len(weibull_param_1)} | Events: {len(events)} | Times: {len(times)}")
 
-        # 4. Handle size mismatches safely due to non-uniform batch slicing
-        min_len = min(len(pids), len(weibull_param_1), len(events), len(times))
-        if min_len != max(len(pids), len(weibull_param_1), len(events), len(times)):
-            print(f"⚠️ LENGTH MISMATCH DETECTED! Truncating to {min_len} lines...")
-            pids = pids[:min_len]
-            weibull_param_1 = weibull_param_1[:min_len]
-            weibull_param_2 = weibull_param_2[:min_len]
-            prob_death_5y = prob_death_5y[:min_len]
-            events = events[:min_len]
-            times = times[:min_len]
-            log_hz_t = log_hz_t[:min_len]
+        
 
         # 5. Build and save the exact target survival parameter file
         df_weibull = pd.DataFrame({
@@ -578,7 +563,7 @@ class encoder_decoder(L.LightningModule):
         print(f"✅ Successfully saved regression parameters to {base_dir}")
 
         # 6. Execute metrics loop using the lifelines C-index logic
-        self._calculate_balanced_metrics(preds[:min_len], events[:min_len], times[:min_len], 'test', log_hz_t[:min_len])
+        self._calculate_balanced_metrics(preds, events, times, 'test', log_hz_t)
 
         # 7. Reset containers for subsequent cross-validation folds
         self.test_pids.clear()
@@ -653,9 +638,9 @@ class encoder_decoder(L.LightningModule):
                     'lr': group['lr']
                 })
 
-        optimizer = torch.optim.Adam(
+        optimizer = torch.optim.AdamW(
             trainable_param_groups, 
             lr=self.learning_rate,
-            weight_decay=1e-5 
+            weight_decay=1e-5
         )
         return optimizer

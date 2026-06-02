@@ -23,14 +23,14 @@ Freeze_weights: False
 Binary_model: False
 
 Threshold_metrics: 0.6
-model_name: Image_only
-project: reset_baseline
+model_name: loss_and_adamw
+project: simplified_code
 seed_value: 22
 early_stopping:
-  monitor: 'val_loss'
+  monitor: 'val_cindex'
   patience: 15
   verbose: False
-  mode: 'min' 
+  mode: 'max' 
 
 
 

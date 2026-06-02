@@ -17,7 +17,7 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 # just verifying the model loading and the forward passes.
 echo "Running Encoder Setup Test..."
 
-python /nas-ctm01/homes/fmferreira/AI4LUNGS/src/modules/script/full_deep_learning/encoder_survivalhead.py
+python /nas-ctm01/homes/fmferreira/AI4LUNGS/src/modules/script/full_deep_learning/simple.py
 
 
 echo "Test complete. Check the .out file for Success/Failure logs."

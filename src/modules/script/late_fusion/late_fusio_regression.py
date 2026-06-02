@@ -9,44 +9,12 @@ from lifelines.utils import concordance_index
 from sksurv.metrics import cumulative_dynamic_auc
 warnings.filterwarnings('ignore')
 
-# ================== PARAMETRIC WEIBULL MATHEMATICS ==================
-def compute_weibull_hazard(t, log_scale, log_shape):
-    """
-    Computes the continuous instantaneous hazard h(t) for a Weibull AFT model.
-    Used to generate true, variable risk scores for global ranking metrics.
-    """
-    scale = np.exp(log_scale)
-    shape = np.exp(log_shape)
-    
-    scale = np.clip(scale, 1e-6, None)
-    shape = np.clip(shape, 1e-6, None)
-    
-    # h(t) = (shape / scale) * (t / scale) ** (shape - 1)
-    hazard = (shape / scale) * np.power(t / scale, shape - 1.0)
-    
-    # Return log-hazard to avoid exponential scale distortion during linear fusion blends
-    return np.log(np.clip(hazard, 1e-15, None))
-
-
-def compute_weibull_death_probability(t, log_scale, log_shape):
-    """
-    Computes the Cumulative Incidence Function (Probability of Death) 
-    using torchsurv's log-space parameter definitions.
-    """
-    scale = np.exp(log_scale)
-    shape = np.exp(log_shape)
-    
-    scale = np.clip(scale, 1e-6, None)
-    shape = np.clip(shape, 1e-6, None)
-    
-    return 1.0 - np.exp(-np.power(t / scale, shape))
-
 # ================== LATE FUSION ENGINE ==================
 
 def execute_late_fusion(clinical_df, imaging_df, time_milestone_days=1825.0, time_normalization_factor=2786.0, weight_imaging=0.5):
     """
     Merges clinical and imaging metrics to perform late decision-level fusion.
-    Guarantees weight_imaging = 1.0 matches standalone deep learning models exactly.
+    weight_imaging = 1.0 reproduces the standalone imaging ensemble c-index exactly.
     """
     # Align data matrices on unique patient identifiers
     fusion_df = pd.merge(clinical_df, imaging_df, on='pid', suffixes=('_clin', '_img'))
@@ -54,78 +22,67 @@ def execute_late_fusion(clinical_df, imaging_df, time_milestone_days=1825.0, tim
         return None, None
 
     weight_clinical = 1.0 - weight_imaging
-    normalized_times = fusion_df['time'].astype(float).values / time_normalization_factor
-    # --- 1. HARMONIZE RISK TRAJECTORIES FOR RANKING METRICS (C-INDEX) ---
 
-    fusion_df['imaging_dynamic_risk'] = compute_weibull_hazard(
-        normalized_times,
-        fusion_df['weibull_param_1'].values, # log_scale
-        fusion_df['weibull_param_2'].values  # log_shape
-    )
-    # print(f'Imaging_dynamic_risk: {fusion_df['imaging_dynamic_risk'].shape():.4f}')
-    # Standardize via Z-Score normalization
+    # --- 1. BLEND RISK SCORES FOR RANKING METRICS (C-INDEX) ---
+    # imaging_prob_5y is the true per-fold-averaged death probability — use it directly
+    # as the imaging risk score. Weibull hazard from averaged params degrades ranking
+    # because averaging params ≠ averaging hazards (Jensen's inequality).
     fusion_df['clin_risk_norm'] = (fusion_df['clinical_risk'] - fusion_df['clinical_risk'].mean()) / (fusion_df['clinical_risk'].std() + 1e-8)
-    fusion_df['img_risk_norm'] = (fusion_df['imaging_dynamic_risk'] - fusion_df['imaging_dynamic_risk'].mean()) / (fusion_df['imaging_dynamic_risk'].std() + 1e-8)
+    fusion_df['img_risk_norm'] = (fusion_df['imaging_prob_5y'] - fusion_df['imaging_prob_5y'].mean()) / (fusion_df['imaging_prob_5y'].std() + 1e-8)
 
-    # Core Linear Risk Blend (Higher score = Higher Risk / Earlier Death)
+    # Higher score = higher risk = earlier death
     fusion_df['fused_risk_score'] = (weight_clinical * fusion_df['clin_risk_norm']) + \
                                     (weight_imaging * fusion_df['img_risk_norm'])
 
-    # --- 2. CONVERT TIME HORIZON & CALCULATE PROBABILITIES OF DEATH ---
-    normalized_target_time = time_milestone_days / time_normalization_factor
-
+    # --- 2. BLEND PROBABILITIES OF DEATH ---
     clinical_death_prob_5y = 1.0 - fusion_df['clinical_surv_prob_5y']
-    
-    imaging_death_prob_5y = compute_weibull_death_probability(
-        normalized_target_time, 
-        fusion_df['weibull_param_1'].values, 
-        fusion_df['weibull_param_2'].values
-    )
-    
+    imaging_death_prob_5y = fusion_df['imaging_prob_5y'].values
+
     fusion_df['fused_death_prob_5y'] = (weight_clinical * clinical_death_prob_5y) + \
                                        (weight_imaging * imaging_death_prob_5y)
     
     y_events = fusion_df['event'].astype(int)
-    y_times_days = fusion_df['time'].astype(float) 
-    
-    # CRITICAL DIRECTIONAL FIX FOR LIFELINES:
-    # lifelines c-index expects: higher score = longer life.
-    # Since our fused_risk_score is mapped as: higher score = earlier death, 
-    # we pass -fusion_df['fused_risk_score'] to flip the orientation.
+    y_times_days = fusion_df['time'].astype(float)
+
+    # lifelines c-index expects: higher score = longer life; flip sign since our score is risk
     c_index_fused = concordance_index(
         event_times=y_times_days,
         predicted_scores=-fusion_df['fused_risk_score'].values,
         event_observed=y_events
     )
 
+    # sksurv structured array required by cumulative_dynamic_auc
+    y_surv = np.array(
+        list(zip(y_events.astype(bool), y_times_days.astype(float))),
+        dtype=[('event', bool), ('time', float)]
+    )
     target_time_arr = np.array([time_milestone_days])
     try:
         va_auc, _ = cumulative_dynamic_auc(
-            y_train=y_surv_train, 
-            y_test=y_surv_test, 
-            estimate=fusion_df['fused_risk_score'].values, 
-            times=target_time_arr
+            y_surv,
+            y_surv,
+            fusion_df['fused_risk_score'].values,
+            target_time_arr
         )
-        td_auc_5y = va_auc[0]
+        td_auc_5y = float(va_auc[0])
     except Exception as e:
         td_auc_5y = np.nan
-        print(f"⚠️ Warning calculating td-AUC: {e}")
+        print(f"Warning calculating td-AUC: {e}")
 
-    # Exclude uninformative records (patients censored prior to the 5-year milestone)
+    # Evaluable cohort: event before 5y OR survived past 5y (exclude early censored)
     true_event_before_5y = (y_events == 1) & (y_times_days <= time_milestone_days)
     true_survived_past_5y = (y_times_days > time_milestone_days)
     evaluable_mask = true_event_before_5y | true_survived_past_5y
-    
-    # Filter arrays down to the informatively active cohort
+
     y_true_eval = true_event_before_5y[evaluable_mask].astype(int)
     prob_eval = fusion_df['fused_death_prob_5y'].values[evaluable_mask]
     pred_eval = (prob_eval >= 0.50).astype(int)
-    
+
     metrics = {
         "cohort_size": len(fusion_df),
         "evaluable_size": int(evaluable_mask.sum()),
         "c_index_fused": c_index_fused,
-        "auc_fused": roc_auc_score(y_true_eval, prob_eval) if len(np.unique(y_true_eval)) > 1 else np.nan,
+        "auc_fused": td_auc_5y,
         "brier_fused": brier_score_loss(y_true_eval, prob_eval),
         "accuracy_fused": accuracy_score(y_true_eval, pred_eval)
     }
